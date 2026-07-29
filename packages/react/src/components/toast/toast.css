@@ -2,7 +2,7 @@
   position: fixed;
   right: var(--z-spacing-gap-page-section);
   bottom: var(--z-spacing-gap-page-section);
-  z-index: 2;
+  z-index: 60;
   display: flex;
   flex-direction: column;
   gap: var(--z-spacing-gap-component);
