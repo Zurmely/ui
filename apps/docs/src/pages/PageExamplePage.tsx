@@ -5,6 +5,7 @@ import {
   Breadcrumbs,
 } from '@z-ui/react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import { withBasePath } from '../base-path';
 import { pageExampleBySlug } from '../examples/registry';
 
 export function PageExamplePage() {
@@ -19,11 +20,11 @@ export function PageExamplePage() {
     <div className="docs-page">
       <Breadcrumbs className="docs-page__breadcrumbs">
         <BreadcrumbItem>
-          <BreadcrumbLink href="/pages">Pages</BreadcrumbLink>
+          <BreadcrumbLink href={withBasePath('/pages')}>Pages</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={`/pages/${doc.slug}`} current>
+          <BreadcrumbLink href={withBasePath(`/pages/${doc.slug}`)} current>
             {doc.name}
           </BreadcrumbLink>
         </BreadcrumbItem>

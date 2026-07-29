@@ -5,6 +5,7 @@ import {
   Breadcrumbs,
 } from '@z-ui/react';
 import { Link, Navigate, useParams } from 'react-router-dom';
+import { withBasePath } from '../base-path';
 import { elementBySlug } from '../examples/registry';
 
 export function ElementPage() {
@@ -19,11 +20,11 @@ export function ElementPage() {
     <div className="docs-page">
       <Breadcrumbs className="docs-page__breadcrumbs">
         <BreadcrumbItem>
-          <BreadcrumbLink href="/elements">Elements</BreadcrumbLink>
+          <BreadcrumbLink href={withBasePath('/elements')}>Elements</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={`/elements/${doc.slug}`} current>
+          <BreadcrumbLink href={withBasePath(`/elements/${doc.slug}`)} current>
             {doc.name}
           </BreadcrumbLink>
         </BreadcrumbItem>

@@ -5,6 +5,7 @@ import {
   Breadcrumbs,
 } from '@z-ui/react';
 import type { ReactNode } from 'react';
+import { withBasePath } from '../base-path';
 
 export function FoundationPageHeader({
   title,
@@ -17,11 +18,11 @@ export function FoundationPageHeader({
     <>
       <Breadcrumbs className="docs-page__breadcrumbs">
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Docs</BreadcrumbLink>
+          <BreadcrumbLink href={withBasePath('/')}>Docs</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href="/" current>
+          <BreadcrumbLink href={withBasePath('/')} current>
             {title}
           </BreadcrumbLink>
         </BreadcrumbItem>

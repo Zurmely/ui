@@ -9,6 +9,7 @@ import {
 } from '@z-ui/react';
 import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
+import { withBasePath } from '../base-path';
 import { componentBySlug, componentRegistry } from '../components/registry';
 import { DocsSection } from '../layout/DocsSection';
 import { TableOfContents, type TocItem } from '../layout/TableOfContents';
@@ -59,15 +60,15 @@ export function ComponentPage() {
       <div className="docs-page__main">
         <Breadcrumbs className="docs-page__breadcrumbs">
           <BreadcrumbItem>
-            <BreadcrumbLink href="/">Docs</BreadcrumbLink>
+            <BreadcrumbLink href={withBasePath('/')}>Docs</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/components">{doc.category}</BreadcrumbLink>
+            <BreadcrumbLink href={withBasePath('/components')}>{doc.category}</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href={`/components/${doc.slug}`} current>
+            <BreadcrumbLink href={withBasePath(`/components/${doc.slug}`)} current>
               {doc.name}
             </BreadcrumbLink>
           </BreadcrumbItem>

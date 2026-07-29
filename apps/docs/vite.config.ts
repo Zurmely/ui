@@ -3,6 +3,7 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -11,6 +12,7 @@ export default defineConfig({
       '@z-ui/tokens/sizes.css': resolve(__dirname, '../../sizes.css'),
       '@z-ui/tokens/text.css': resolve(__dirname, '../../text.css'),
       '@z-ui/tokens/motion.css': resolve(__dirname, '../../motion.css'),
+      '@z-ui/tokens/elevation.css': resolve(__dirname, '../../elevation.css'),
     },
   },
   server: {

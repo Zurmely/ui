@@ -1,6 +1,7 @@
 import { ListItem } from '@z-ui/react';
 import type { MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { withBasePath } from '../base-path';
 import { ELEMENT_NAV, PAGE_EXAMPLE_NAV } from '../examples/registry';
 import { FOUNDATION_NAV, getNavGroups } from '../components/registry';
 import { getActiveSection } from './sections';
@@ -39,7 +40,7 @@ function DocsNavLink({
     <li>
       <ListItem
         as="a"
-        href={to}
+        href={withBasePath(to)}
         size="sm"
         label={label}
         selected={selected}
