@@ -67,7 +67,8 @@ body {
 /* Section blocks */
 .docs-section-block {
   margin-bottom: var(--z-spacing-stack-page-section);
-  scroll-margin-top: 5rem;
+  /* Sticky header clearance plus a little overhead above the section title. */
+  scroll-margin-top: calc(5rem + var(--z-spacing-stack-component));
 }
 
 .docs-section-block__title {
