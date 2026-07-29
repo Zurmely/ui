@@ -9,7 +9,7 @@
 }
 
 .z-popover__content {
-  z-index: 1;
+  z-index: 50;
   min-width: 12rem;
   padding: var(--z-spacing-inset-box);
   border: 1px solid var(--z-color-border-subtle);

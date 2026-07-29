@@ -7,7 +7,7 @@ import {
   type AccessibilityPreferences,
 } from '@z-ui/react';
 import { useLocation } from 'react-router-dom';
-import { DocsHeader } from './DocsHeader';
+import { DocsHeader, DOCS_NAV_DRAWER_ID } from './DocsHeader';
 import { DocsNavContent } from './DocsNav';
 import { getActiveSection, sectionHasSidebar } from './sections';
 
@@ -41,12 +41,13 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
           accessibility={accessibility}
           onAccessibilityChange={setAccessibility}
           showMenuButton={showSidebar}
+          menuOpen={navOpen}
           onMenuClick={() => setNavOpen(true)}
         />
 
         {showSidebar ? (
           <Drawer open={navOpen} onOpenChange={setNavOpen}>
-            <DrawerContent side="left" className="docs-drawer">
+            <DrawerContent side="left" className="docs-drawer" id={DOCS_NAV_DRAWER_ID}>
               <DrawerHeader>
                 <DrawerTitle>Navigation</DrawerTitle>
               </DrawerHeader>

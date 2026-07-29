@@ -21,7 +21,7 @@ body {
 }
 
 .docs-shell--with-toc .docs-content {
-  max-width: min(100%, 62vw);
+  max-width: 100%;
   padding-inline: var(--z-spacing-inset-container);
 }
 
@@ -507,6 +507,7 @@ body {
   flex-direction: column;
 }
 
+/* Sticky chrome sits below portaled overlays (library z-index 50+ / 100+). */
 .docs-header {
   position: sticky;
   top: 0;
@@ -856,7 +857,7 @@ body {
 
 .docs-display-menu__content {
   grid-template-columns: minmax(0, 1fr);
-  min-width: 18rem;
+  min-width: min(18rem, calc(100vw - 2 * var(--z-spacing-inset-container)));
   max-width: 22rem;
 }
 
@@ -882,7 +883,7 @@ body {
   flex: 1;
   min-width: 0;
   width: 100%;
-  max-width: min(100%, 72vw);
+  max-width: 100%;
   margin-inline: auto;
   padding-block: var(--z-spacing-inset-container);
   padding-inline: var(--z-spacing-inset-container);
@@ -971,7 +972,7 @@ body {
 /* Home grid */
 .docs-home-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
   gap: var(--z-spacing-gap-component);
 }
 
@@ -2394,9 +2395,26 @@ body {
   font-weight: var(--z-text-label-weight);
 }
 
-@media (max-width: 48rem) {
+/* Desktop reading measure — rem caps so wide monitors do not stretch endlessly.
+   Below 64rem, content stays max-width: 100% of .docs-main (larger share of vw). */
+@media (min-width: 64.01rem) {
+  .docs-content {
+    max-width: 72rem;
+  }
+
+  .docs-shell--with-toc .docs-content {
+    max-width: 56rem;
+  }
+}
+
+/* Tablet: collapse TOC column; content already full-width of main. */
+@media (max-width: 64rem) {
   .docs-page--with-toc {
     grid-template-columns: 1fr;
+  }
+
+  .docs-toc {
+    order: -1;
   }
 
   .docs-toc__desktop {
@@ -2420,22 +2438,6 @@ body {
     text-align: left;
   }
 
-  .docs-sidebar--desktop {
-    display: none;
-  }
-
-  .docs-header__menu {
-    display: inline-flex;
-  }
-
-  .docs-primitive-scale {
-    overflow-x: auto;
-  }
-
-  .docs-primitive-scale__steps {
-    min-width: 36rem;
-  }
-
   .docs-playground__stage {
     flex-direction: column;
   }
@@ -2456,15 +2458,6 @@ body {
     max-height: none;
   }
 
-  .docs-header {
-    flex-wrap: wrap;
-  }
-
-  .docs-header__sections {
-    order: 3;
-    flex-basis: 100%;
-  }
-
   .docs-dashboard__body {
     flex-direction: column;
   }
@@ -2477,5 +2470,33 @@ body {
 
   .docs-dashboard__split {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile: drawer nav, hamburger, wrapped header. */
+@media (max-width: 48rem) {
+  .docs-sidebar--desktop {
+    display: none;
+  }
+
+  .docs-header__menu {
+    display: inline-flex;
+  }
+
+  .docs-primitive-scale {
+    overflow-x: auto;
+  }
+
+  .docs-primitive-scale__steps {
+    min-width: 36rem;
+  }
+
+  .docs-header {
+    flex-wrap: wrap;
+  }
+
+  .docs-header__sections {
+    order: 3;
+    flex-basis: 100%;
   }
 }

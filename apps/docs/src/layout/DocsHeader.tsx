@@ -13,6 +13,8 @@ import {
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { getActiveSection, SECTIONS } from './sections';
 
+export const DOCS_NAV_DRAWER_ID = 'docs-nav-drawer';
+
 function MenuIcon() {
   return (
     <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
@@ -30,11 +32,13 @@ export function DocsHeader({
   accessibility,
   onAccessibilityChange,
   showMenuButton,
+  menuOpen,
   onMenuClick,
 }: {
   accessibility: AccessibilityPreferences;
   onAccessibilityChange: (value: AccessibilityPreferences) => void;
   showMenuButton: boolean;
+  menuOpen: boolean;
   onMenuClick: () => void;
 }) {
   const { pathname } = useLocation();
@@ -47,6 +51,8 @@ export function DocsHeader({
         <IconButton
           className="docs-header__menu"
           aria-label="Open navigation"
+          aria-expanded={menuOpen}
+          aria-controls={DOCS_NAV_DRAWER_ID}
           variant="secondary"
           size="sm"
           onClick={onMenuClick}
