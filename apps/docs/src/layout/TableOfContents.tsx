@@ -1,5 +1,6 @@
 import { Button } from '@z-ui/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
+import { prefersReducedMotion } from '../prefers-reduced-motion';
 
 export interface TocItem {
   id: string;
@@ -8,6 +9,17 @@ export interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[];
+}
+
+function scrollToHeading(id: string) {
+  const target = document.getElementById(id);
+  if (!target) {
+    return;
+  }
+
+  const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
+  target.scrollIntoView({ behavior, block: 'start' });
+  history.pushState(null, '', `#${id}`);
 }
 
 export function TableOfContents({ items }: TableOfContentsProps) {
@@ -49,6 +61,13 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     return null;
   }
 
+  const onTocClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    setMobileOpen(false);
+    setActiveId(id);
+    scrollToHeading(id);
+  };
+
   const nav = (
     <nav className="docs-toc__nav" aria-label="On this page">
       <p className="docs-toc__label">On this page</p>
@@ -58,7 +77,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
             <a
               href={`#${item.id}`}
               className={`docs-toc__link${activeId === item.id ? ' docs-toc__link--active' : ''}`}
-              onClick={() => setMobileOpen(false)}
+              onClick={(event) => onTocClick(event, item.id)}
             >
               {item.title}
             </a>
