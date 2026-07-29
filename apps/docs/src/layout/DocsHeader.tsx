@@ -31,13 +31,11 @@ function MenuIcon() {
 export function DocsHeader({
   accessibility,
   onAccessibilityChange,
-  showMenuButton,
   menuOpen,
   onMenuClick,
 }: {
   accessibility: AccessibilityPreferences;
   onAccessibilityChange: (value: AccessibilityPreferences) => void;
-  showMenuButton: boolean;
   menuOpen: boolean;
   onMenuClick: () => void;
 }) {
@@ -47,19 +45,17 @@ export function DocsHeader({
 
   return (
     <header className="docs-header">
-      {showMenuButton ? (
-        <IconButton
-          className="docs-header__menu"
-          aria-label="Open navigation"
-          aria-expanded={menuOpen}
-          aria-controls={DOCS_NAV_DRAWER_ID}
-          variant="secondary"
-          size="sm"
-          onClick={onMenuClick}
-        >
-          <MenuIcon />
-        </IconButton>
-      ) : null}
+      <IconButton
+        className="docs-header__menu"
+        aria-label="Open navigation"
+        aria-expanded={menuOpen}
+        aria-controls={DOCS_NAV_DRAWER_ID}
+        variant="secondary"
+        size="sm"
+        onClick={onMenuClick}
+      >
+        <MenuIcon />
+      </IconButton>
 
       <div className="docs-header__brand">
         <NavLink to="/" className="docs-header__brand-link">
