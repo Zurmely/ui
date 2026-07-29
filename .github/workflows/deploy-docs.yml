@@ -33,10 +33,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # Custom domain ui.zurmely.com serves Pages at site root (not /ui/).
       - name: Build docs site
         run: pnpm build
         env:
-          VITE_BASE_PATH: /ui/
+          VITE_BASE_PATH: /
 
       - name: Add SPA fallback for client-side routing
         run: cp apps/docs/dist/index.html apps/docs/dist/404.html
