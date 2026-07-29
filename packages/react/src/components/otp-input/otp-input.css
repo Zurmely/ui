@@ -1,0 +1,42 @@
+.z-otp-input {
+  display: inline-flex;
+  gap: var(--z-spacing-gap-inline);
+}
+
+.z-otp-input__digit {
+  width: 2.5rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-control);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-align: center;
+  transition: border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-otp-input__digit:hover:not(:disabled) {
+  border-color: var(--z-color-border-default);
+}
+
+.z-otp-input__digit:focus-visible {
+  border-color: var(--z-color-border-focus);
+}
+
+.z-otp-input[data-invalid='true'] .z-otp-input__digit {
+  border-color: var(--z-color-border-danger);
+}
+
+.z-otp-input__digit:disabled,
+.z-otp-input[data-disabled='true'] .z-otp-input__digit {
+  background-color: var(--z-color-background-muted);
+  color: var(--z-color-text-disabled);
+  border-color: var(--z-color-border-disabled);
+  cursor: not-allowed;
+}

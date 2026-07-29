@@ -1,0 +1,37 @@
+.z-spinner {
+  display: inline-block;
+  border: 2px solid var(--z-color-border-strong);
+  border-top-color: transparent;
+  border-radius: var(--z-radius-circle);
+  animation: z-spinner-spin var(--z-motion-duration-continuous) var(--z-motion-easing-continuous)
+    infinite;
+}
+
+.z-spinner[data-size='sm'] {
+  width: 1rem;
+  height: 1rem;
+}
+
+.z-spinner[data-size='md'] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.z-spinner[data-size='lg'] {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@keyframes z-spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z-spinner {
+    animation: none;
+    border-top-color: var(--z-color-border-strong);
+    opacity: 0.7;
+  }
+}

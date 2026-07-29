@@ -1,0 +1,62 @@
+.z-radial-progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.z-radial-progress[data-size='sm'] {
+  width: 2rem;
+  height: 2rem;
+}
+
+.z-radial-progress[data-size='md'] {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.z-radial-progress[data-size='lg'] {
+  width: 3rem;
+  height: 3rem;
+}
+
+.z-radial-progress__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.z-radial-progress__track {
+  stroke: var(--z-color-background-muted);
+}
+
+.z-radial-progress__indicator {
+  stroke: var(--z-color-background-primary);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--z-motion-duration-interaction)
+    var(--z-motion-easing-interaction);
+}
+
+.z-radial-progress__indicator[data-indeterminate='true'],
+.z-radial-progress__svg[data-indeterminate='true'] .z-radial-progress__indicator {
+  stroke-dashoffset: 0;
+  animation: z-radial-progress-spin var(--z-motion-duration-continuous)
+    var(--z-motion-easing-continuous) infinite;
+  transform-origin: center;
+}
+
+@keyframes z-radial-progress-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z-radial-progress__indicator {
+    transition: none;
+  }
+
+  .z-radial-progress__indicator[data-indeterminate='true'],
+  .z-radial-progress__svg[data-indeterminate='true'] .z-radial-progress__indicator {
+    animation: none;
+    opacity: 0.7;
+  }
+}

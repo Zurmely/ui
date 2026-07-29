@@ -1,0 +1,65 @@
+.z-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-x);
+  border: 1px solid transparent;
+  border-radius: var(--z-radius-pill);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-badge[data-size='sm'] {
+  padding: var(--z-spacing-inset-box-tight) var(--z-spacing-inset-control-compact-x);
+  font-family: var(--z-text-badge-font-family);
+  font-size: var(--z-text-badge-size);
+  font-weight: var(--z-text-badge-weight);
+  line-height: var(--z-text-badge-line-height);
+}
+
+.z-badge[data-size='lg'] {
+  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+}
+
+.z-badge[data-tone='neutral'] {
+  background-color: var(--z-color-background-subtle);
+  color: var(--z-color-text-secondary);
+  border-color: var(--z-color-border-subtle);
+}
+
+.z-badge[data-tone='primary'] {
+  background-color: var(--z-color-background-primary);
+  color: var(--z-color-text-on-primary);
+  border-color: var(--z-color-border-primary);
+}
+
+.z-badge[data-tone='success'] {
+  background-color: var(--z-color-background-success-subtle);
+  color: var(--z-color-text-success);
+  border-color: var(--z-color-border-success);
+}
+
+.z-badge[data-tone='warning'] {
+  background-color: var(--z-color-background-warning-subtle);
+  color: var(--z-color-text-warning);
+  border-color: var(--z-color-border-warning);
+}
+
+.z-badge[data-tone='danger'] {
+  background-color: var(--z-color-background-danger-subtle);
+  color: var(--z-color-text-danger);
+  border-color: var(--z-color-border-danger);
+}
+
+.z-badge[data-tone='info'] {
+  background-color: var(--z-color-background-info-subtle);
+  color: var(--z-color-text-info);
+  border-color: var(--z-color-border-info);
+}

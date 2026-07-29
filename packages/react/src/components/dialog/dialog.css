@@ -1,0 +1,154 @@
+.z-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--z-color-overlay-scrim);
+}
+
+.z-dialog__overlay[data-state='open'] {
+  animation: z-dialog-overlay-in var(--z-motion-duration-enter) var(--z-motion-easing-enter);
+}
+
+.z-dialog__overlay[data-state='closed'] {
+  animation: z-dialog-overlay-out var(--z-motion-duration-exit) var(--z-motion-easing-exit);
+}
+
+.z-dialog__content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-gap-component);
+  width: min(90vw, 28rem);
+  max-height: 85vh;
+  padding: var(--z-spacing-inset-box-comfortable);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-container);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  box-shadow: var(--z-elevation-modal);
+  transform: translate(-50%, -50%);
+  overflow: auto;
+}
+
+.z-dialog__content[data-state='open'] {
+  animation: z-dialog-content-in var(--z-motion-duration-enter) var(--z-motion-easing-enter);
+}
+
+.z-dialog__content[data-state='closed'] {
+  animation: z-dialog-content-out var(--z-motion-duration-exit) var(--z-motion-easing-exit);
+}
+
+.z-dialog__content:focus {
+  outline: none;
+}
+
+.z-dialog__title {
+  margin: 0;
+  font-family: var(--z-text-title-font-family);
+  font-size: var(--z-text-title-size);
+  font-weight: var(--z-text-title-weight);
+  line-height: var(--z-text-title-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--z-color-text-primary);
+}
+
+.z-dialog__description {
+  margin: 0;
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-body-font-family);
+  font-size: var(--z-text-body-size);
+  font-weight: var(--z-text-body-weight);
+  line-height: var(--z-text-body-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-dialog__close {
+  align-self: flex-end;
+  padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-compact-x);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-control-compact);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.z-dialog__close:hover:not(:disabled) {
+  background-color: var(--z-color-background-subtle);
+}
+
+.z-dialog__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-stack-form);
+}
+
+.z-dialog__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--z-spacing-gap-inline);
+  margin-top: auto;
+}
+
+@keyframes z-dialog-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes z-dialog-overlay-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes z-dialog-content-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes z-dialog-content-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z-dialog__overlay[data-state='open'],
+  .z-dialog__overlay[data-state='closed'],
+  .z-dialog__content[data-state='open'],
+  .z-dialog__content[data-state='closed'] {
+    animation: none;
+  }
+}

@@ -1,0 +1,76 @@
+.z-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-stack-component);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.z-steps__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--z-spacing-gap-component);
+  align-items: start;
+}
+
+.z-steps__indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-circle);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-steps__indicator[data-state='current'] {
+  border-color: var(--z-color-border-strong);
+  background-color: var(--z-color-background-primary);
+  color: var(--z-color-text-on-primary);
+}
+
+.z-steps__indicator[data-state='completed'] {
+  border-color: var(--z-color-border-strong);
+  background-color: var(--z-color-background-success-subtle);
+  color: var(--z-color-text-success);
+}
+
+.z-steps__title {
+  display: block;
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-steps__step[data-state='upcoming'] .z-steps__title {
+  color: var(--z-color-text-secondary);
+}
+
+.z-steps__description {
+  display: block;
+  grid-column: 2;
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-caption-font-family);
+  font-size: var(--z-text-caption-size);
+  font-weight: var(--z-text-caption-weight);
+  line-height: var(--z-text-caption-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-steps__step[data-state='current'] .z-steps__description {
+  color: var(--z-color-text-primary);
+}

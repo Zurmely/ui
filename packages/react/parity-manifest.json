@@ -1,0 +1,244 @@
+{
+  "$schema": "./parity-manifest.schema.json",
+  "version": "0.0.0",
+  "figmaVersion": "pending",
+  "packageVersion": "0.0.0",
+  "components": [
+    {
+      "name": "Button",
+      "variants": ["primary", "secondary", "ghost", "danger"],
+      "sizes": ["sm", "md", "lg"],
+      "states": ["default", "hover", "active", "focus", "disabled", "loading"],
+      "slots": ["children", "icon"],
+      "tokens": [
+        "background.primary",
+        "background.primary.hover",
+        "background.primary.active",
+        "background.primary.disabled",
+        "background.danger",
+        "background.surface",
+        "background.subtle",
+        "text.on-primary",
+        "text.on-solid",
+        "text.primary",
+        "text.disabled",
+        "border.default",
+        "border.strong",
+        "border.disabled",
+        "focus.ring"
+      ]
+    },
+    {
+      "name": "IconButton",
+      "variants": ["primary", "secondary", "ghost", "danger"],
+      "sizes": ["sm", "md", "lg"],
+      "states": ["default", "hover", "active", "focus", "disabled", "loading"],
+      "slots": ["children"],
+      "tokens": ["background.primary", "text.on-primary", "focus.ring"]
+    },
+    {
+      "name": "Link",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "hover", "focus", "disabled"],
+      "slots": ["children"],
+      "tokens": ["text.link", "text.link.hover", "text.disabled", "focus.ring"]
+    },
+    {
+      "name": "Badge",
+      "variants": [],
+      "sizes": ["sm", "md", "lg"],
+      "tones": ["neutral", "primary", "success", "warning", "danger", "info"],
+      "states": ["default"],
+      "slots": ["children"],
+      "tokens": ["background.*-subtle", "text.*"]
+    },
+    {
+      "name": "Avatar",
+      "variants": [],
+      "sizes": ["sm", "md", "lg"],
+      "states": ["default"],
+      "slots": ["fallback"],
+      "tokens": ["background.muted", "text.primary", "text.secondary"]
+    },
+    {
+      "name": "CodeBlock",
+      "variants": ["single", "multi"],
+      "sizes": [],
+      "states": ["default", "hover"],
+      "slots": ["children", "language"],
+      "tokens": [
+        "background.muted",
+        "background.subtle",
+        "background.primary.subtle",
+        "text.primary",
+        "text.tertiary",
+        "text.secondary",
+        "text.success",
+        "text.info",
+        "text.warning",
+        "border.subtle",
+        "border.default"
+      ]
+    },
+    {
+      "name": "Separator",
+      "variants": ["horizontal", "vertical"],
+      "sizes": [],
+      "states": ["default"],
+      "slots": [],
+      "tokens": ["border.subtle"]
+    },
+    {
+      "name": "Spinner",
+      "variants": [],
+      "sizes": ["sm", "md", "lg"],
+      "states": ["loading"],
+      "slots": [],
+      "tokens": ["border.strong"]
+    },
+    {
+      "name": "Skeleton",
+      "variants": [
+        "control",
+        "control-compact",
+        "surface",
+        "container",
+        "pill",
+        "circle"
+      ],
+      "sizes": [],
+      "states": ["loading"],
+      "slots": [],
+      "tokens": [
+        "background.muted",
+        "background.subtle",
+        "radius.control",
+        "radius.control.compact",
+        "radius.surface",
+        "radius.container",
+        "radius.pill",
+        "radius.circle"
+      ]
+    },
+    {
+      "name": "Alert",
+      "variants": [],
+      "sizes": [],
+      "tones": ["neutral", "primary", "success", "warning", "danger", "info"],
+      "states": ["default"],
+      "slots": ["title", "description", "action"],
+      "tokens": ["background.*-subtle", "text.*", "icon.*"]
+    },
+    {
+      "name": "Field",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "disabled", "invalid"],
+      "slots": ["label", "description", "error", "children"],
+      "tokens": ["text.primary", "text.secondary", "text.danger"]
+    },
+    {
+      "name": "TextField",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "hover", "focus", "invalid", "disabled"],
+      "slots": [],
+      "tokens": [
+        "background.surface",
+        "background.muted",
+        "border.default",
+        "border.strong",
+        "border.focus",
+        "border.danger",
+        "border.disabled",
+        "text.primary",
+        "text.tertiary",
+        "text.disabled"
+      ]
+    },
+    {
+      "name": "Textarea",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "hover", "focus", "invalid", "disabled"],
+      "slots": [],
+      "tokens": ["background.surface", "border.default", "border.focus", "border.danger", "text.primary"]
+    },
+    {
+      "name": "Checkbox",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "checked", "focus", "invalid", "disabled"],
+      "slots": [],
+      "tokens": ["background.surface", "background.primary", "border.default", "border.focus", "border.danger", "icon.on-primary"]
+    },
+    {
+      "name": "RadioGroup",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "checked", "focus", "disabled"],
+      "slots": [],
+      "tokens": ["background.surface", "background.primary", "border.default", "icon.on-primary"]
+    },
+    {
+      "name": "Switch",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "checked", "focus", "disabled"],
+      "slots": [],
+      "tokens": ["background.muted", "background.primary", "icon.on-primary"]
+    },
+    {
+      "name": "Select",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "open", "focus", "disabled"],
+      "slots": ["trigger", "content", "item"],
+      "tokens": ["background.surface", "background.subtle", "background.selected", "border.default", "text.primary"]
+    },
+    {
+      "name": "Tabs",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "selected", "focus"],
+      "slots": ["list", "trigger", "content"],
+      "tokens": ["background.surface", "background.selected", "text.primary", "focus.ring"]
+    },
+    {
+      "name": "Dialog",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "open", "focus"],
+      "slots": ["trigger", "title", "description", "content", "close"],
+      "tokens": ["overlay.scrim", "background.surface", "border.default", "text.primary"]
+    },
+    {
+      "name": "Tooltip",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "open"],
+      "slots": ["trigger", "content"],
+      "tokens": ["overlay.tooltip", "text.inverse"]
+    },
+    {
+      "name": "Popover",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "open"],
+      "slots": ["trigger", "content"],
+      "tokens": ["background.surface", "border.default"]
+    },
+    {
+      "name": "Menu",
+      "variants": [],
+      "sizes": [],
+      "states": ["default", "open", "selected", "focus"],
+      "slots": ["trigger", "item", "separator"],
+      "tokens": ["background.surface", "background.subtle", "background.selected", "border.default", "border.subtle"]
+    }
+  ],
+  "knownTokenGaps": [
+    "No dedicated invalid/loading semantic tokens — composed from border.danger and aria states"
+  ]
+}

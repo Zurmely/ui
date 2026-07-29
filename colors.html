@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colors — Primitive &amp; Semantic</title>
+    <link rel="stylesheet" href="colors.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-size: 13px;
+        line-height: 1.4;
+        background: #fff;
+        color: #111;
+      }
+
+      /* ---- App chrome ---- */
+      .app-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid #e5e5e5;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+
+      .app-header h1 {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 600;
+      }
+
+      .app-header span {
+        color: #888;
+        font-size: 0.75rem;
+      }
+
+      .layer {
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .layer-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        background: #fafafa;
+        border-bottom: 1px solid #eee;
+      }
+
+      .layer-header h2 {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .layer-header span {
+        color: #888;
+        font-size: 0.6875rem;
+      }
+
+      .panels {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .panel {
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow: auto;
+      }
+
+      .panel-title {
+        margin: 0;
+        font-size: 0.625rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      /* ---- Primitive layer ---- */
+      .prim-panel.panel-light {
+        background: #ffffff;
+        border-right: 1px solid #e5e5e5;
+      }
+
+      .prim-panel.panel-dark {
+        background: #0f0f0f;
+      }
+
+      .prim-panel.panel-light .panel-title {
+        color: #666;
+      }
+
+      .prim-panel.panel-dark .panel-title {
+        color: #888;
+      }
+
+      .families {
+        display: grid;
+        grid-template-columns: repeat(11, minmax(0, 1fr));
+        gap: 2px;
+        min-height: 14rem;
+      }
+
+      .family {
+        display: grid;
+        grid-template-rows: auto repeat(11, minmax(0, 1fr));
+        gap: 1px;
+        min-height: 0;
+      }
+
+      .family-name {
+        margin: 0;
+        font-size: 0.5rem;
+        font-weight: 600;
+        text-align: center;
+        text-transform: capitalize;
+        line-height: 1.2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .prim-panel.panel-light .family-name {
+        color: #444;
+      }
+
+      .prim-panel.panel-dark .family-name {
+        color: #aaa;
+      }
+
+      .prim-swatch {
+        min-height: 1.25rem;
+        border-radius: 1px;
+        cursor: default;
+      }
+
+      /* ---- Semantic layer ---- */
+      .sem-panel.panel-light {
+        background: var(--z-color-background-canvas);
+        color: var(--z-color-text-primary);
+        border-right: 1px solid #e5e5e5;
+      }
+
+      .sem-panel.panel-dark {
+        background: var(--z-color-background-canvas);
+        color: var(--z-color-text-primary);
+      }
+
+      .sem-panel .panel-title {
+        color: var(--z-color-text-secondary);
+      }
+
+      .section h3 {
+        margin: 0 0 0.375rem;
+        font-size: 0.6875rem;
+        font-weight: 600;
+        color: var(--z-color-text-secondary);
+      }
+
+      .swatch-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+      }
+
+      .swatch {
+        width: 4.5rem;
+        border-radius: 6px;
+        border: 1px solid var(--z-color-border-subtle);
+        overflow: hidden;
+        background: var(--z-color-background-surface);
+      }
+
+      .swatch-fill {
+        height: 2rem;
+      }
+
+      .swatch-meta {
+        padding: 0.25rem 0.35rem;
+        font-size: 0.5625rem;
+        line-height: 1.25;
+        color: var(--z-color-text-secondary);
+        word-break: break-all;
+      }
+
+      .stack {
+        display: grid;
+        gap: 0.375rem;
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+        align-items: center;
+      }
+
+      .btn {
+        border: none;
+        border-radius: 6px;
+        padding: 0.4rem 0.75rem;
+        font: inherit;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: default;
+      }
+
+      .btn:focus-visible {
+        outline: 2px solid var(--z-color-focus-ring);
+        outline-offset: 2px;
+      }
+
+      .btn-primary {
+        background: var(--z-color-background-primary);
+        color: var(--z-color-text-on-primary);
+      }
+
+      .btn-primary.is-hover {
+        background: var(--z-color-background-primary-hover);
+      }
+
+      .btn-primary.is-active {
+        background: var(--z-color-background-primary-active);
+      }
+
+      .btn-primary:disabled,
+      .btn-primary.is-disabled {
+        background: var(--z-color-background-primary-disabled);
+        color: var(--z-color-text-disabled);
+      }
+
+      .btn-danger {
+        background: var(--z-color-background-danger);
+        color: var(--z-color-text-on-solid);
+      }
+
+      .btn-danger.is-hover {
+        background: var(--z-color-background-danger-hover);
+      }
+
+      .btn-outline {
+        background: var(--z-color-background-surface);
+        color: var(--z-color-text-primary);
+        border: 1px solid var(--z-color-border-default);
+      }
+
+      .field {
+        border: 1px solid var(--z-color-border-default);
+        background: var(--z-color-background-surface);
+        color: var(--z-color-text-primary);
+        border-radius: 6px;
+        padding: 0.4rem 0.55rem;
+        font: inherit;
+        font-size: 0.75rem;
+        width: 100%;
+        max-width: 14rem;
+      }
+
+      .field::placeholder {
+        color: var(--z-color-text-tertiary);
+      }
+
+      .field.is-focus {
+        border-color: var(--z-color-border-focus);
+        outline: 2px solid var(--z-color-focus-ring);
+        outline-offset: 0;
+      }
+
+      .field.is-invalid {
+        border-color: var(--z-color-border-danger);
+      }
+
+      .field:disabled {
+        background: var(--z-color-background-muted);
+        color: var(--z-color-text-disabled);
+        border-color: var(--z-color-border-disabled);
+      }
+
+      .alert {
+        border-radius: 6px;
+        padding: 0.5rem 0.65rem;
+        font-size: 0.75rem;
+        border: 1px solid;
+      }
+
+      .alert-danger {
+        background: var(--z-color-background-danger-subtle);
+        color: var(--z-color-text-danger);
+        border-color: var(--z-color-border-danger);
+      }
+
+      .alert-success {
+        background: var(--z-color-background-success-subtle);
+        color: var(--z-color-text-success);
+        border-color: var(--z-color-border-success);
+      }
+
+      .alert-warning {
+        background: var(--z-color-background-warning-subtle);
+        color: var(--z-color-text-warning);
+        border-color: var(--z-color-border-warning);
+      }
+
+      .alert-info {
+        background: var(--z-color-background-info-subtle);
+        color: var(--z-color-text-info);
+        border-color: var(--z-color-border-info);
+      }
+
+      .link {
+        color: var(--z-color-text-link);
+        font-size: 0.75rem;
+      }
+
+      .text-samples span {
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .text-primary {
+        color: var(--z-color-text-primary);
+      }
+      .text-secondary {
+        color: var(--z-color-text-secondary);
+      }
+      .text-tertiary {
+        color: var(--z-color-text-tertiary);
+      }
+      .text-disabled {
+        color: var(--z-color-text-disabled);
+      }
+
+      .surface-card {
+        background: var(--z-color-background-surface);
+        border: 1px solid var(--z-color-border-default);
+        border-radius: 8px;
+        padding: 0.65rem;
+      }
+
+      .inverse-bar {
+        background: var(--z-color-background-inverse);
+        color: var(--z-color-text-inverse);
+        border-radius: 6px;
+        padding: 0.5rem 0.65rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .selected-row {
+        background: var(--z-color-background-selected);
+        border: 1px solid var(--z-color-border-strong);
+        border-radius: 6px;
+        padding: 0.4rem 0.55rem;
+        font-size: 0.75rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Colors</h1>
+      <span>primitive scales · semantic tokens · light / dark</span>
+    </header>
+
+    <!-- Primitive -->
+    <section class="layer" aria-labelledby="prim-label">
+      <div class="layer-header">
+        <h2 id="prim-label">Primitives</h2>
+        <span>OKLCH family scales (50–950)</span>
+      </div>
+      <div class="panels">
+        <section
+          class="panel prim-panel panel-light"
+          data-theme="light"
+          id="prim-light"
+        >
+          <h3 class="panel-title">Light</h3>
+        </section>
+        <section
+          class="panel prim-panel panel-dark"
+          data-theme="dark"
+          id="prim-dark"
+        >
+          <h3 class="panel-title">Dark</h3>
+        </section>
+      </div>
+    </section>
+
+    <!-- Semantic -->
+    <section class="layer" aria-labelledby="sem-label">
+      <div class="layer-header">
+        <h2 id="sem-label">Semantics</h2>
+        <span>purpose tokens · maps to primitives via meaning palettes</span>
+      </div>
+      <div class="panels">
+        <section
+          class="panel sem-panel panel-light"
+          data-theme="light"
+          id="sem-light"
+        ></section>
+        <section
+          class="panel sem-panel panel-dark"
+          data-theme="dark"
+          id="sem-dark"
+        ></section>
+      </div>
+    </section>
+
+    <script>
+      /* ---------- Primitives ---------- */
+      const FAMILIES = [
+        "green",
+        "blue",
+        "purple",
+        "pink",
+        "rose",
+        "red",
+        "salmon",
+        "orange",
+        "yellow",
+        "olive",
+        "neutral",
+      ];
+      const STEPS = [
+        "50",
+        "100",
+        "200",
+        "300",
+        "400",
+        "500",
+        "600",
+        "700",
+        "800",
+        "900",
+        "950",
+      ];
+
+      function buildPrimitivePanel(root) {
+        const styles = getComputedStyle(root);
+        const grid = document.createElement("div");
+        grid.className = "families";
+
+        for (const family of FAMILIES) {
+          const group = document.createElement("div");
+          group.className = "family";
+          group.dataset.family = family;
+
+          const title = document.createElement("h4");
+          title.className = "family-name";
+          title.textContent = family;
+          group.appendChild(title);
+
+          for (const step of STEPS) {
+            const token = `--${family}-${step}`;
+            const value = styles.getPropertyValue(token).trim();
+
+            const swatch = document.createElement("div");
+            swatch.className = "prim-swatch";
+            swatch.dataset.step = step;
+            swatch.style.background = `var(${token})`;
+            swatch.title = `${token}\n${value}`;
+            group.appendChild(swatch);
+          }
+
+          grid.appendChild(group);
+        }
+
+        root.appendChild(grid);
+      }
+
+      buildPrimitivePanel(document.getElementById("prim-light"));
+      buildPrimitivePanel(document.getElementById("prim-dark"));
+
+      /* ---------- Semantics ---------- */
+      const STRUCTURE_BG = [
+        "background-canvas",
+        "background-surface",
+        "background-subtle",
+        "background-muted",
+        "background-inverse",
+        "background-selected",
+      ];
+
+      const SOLID = ["primary", "danger", "success", "warning", "info"];
+      const STATES = ["", "-hover", "-active", "-disabled"];
+      const SUBTLE = SOLID.map((m) => `background-${m}-subtle`);
+
+      const TEXT = [
+        "text-primary",
+        "text-secondary",
+        "text-tertiary",
+        "text-disabled",
+        "text-inverse",
+        "text-danger",
+        "text-success",
+        "text-warning",
+        "text-info",
+        "text-link",
+        "text-link-hover",
+      ];
+
+      const BORDER = [
+        "border-subtle",
+        "border-default",
+        "border-strong",
+        "border-disabled",
+        "border-primary",
+        "border-danger",
+        "border-focus",
+      ];
+
+      function tokenName(suffix) {
+        return `--z-color-${suffix}`;
+      }
+
+      function swatch(root, suffix, label) {
+        const name = tokenName(suffix);
+        const el = document.createElement("div");
+        el.className = "swatch";
+        el.innerHTML = `<div class="swatch-fill" style="background:var(${name})"></div>
+          <div class="swatch-meta">${label || suffix}</div>`;
+        el.title = name;
+        root.appendChild(el);
+      }
+
+      function section(parent, title) {
+        const wrap = document.createElement("div");
+        wrap.className = "section";
+        const h = document.createElement("h3");
+        h.textContent = title;
+        wrap.appendChild(h);
+        parent.appendChild(wrap);
+        return wrap;
+      }
+
+      function buildSemanticPanel(panel, title) {
+        const h2 = document.createElement("h3");
+        h2.className = "panel-title";
+        h2.textContent = title;
+        panel.appendChild(h2);
+
+        let sec = section(panel, "Background · structure");
+        let row = document.createElement("div");
+        row.className = "swatch-row";
+        STRUCTURE_BG.forEach((s) => swatch(row, s));
+        sec.appendChild(row);
+
+        sec = section(panel, "Background · status subtle");
+        row = document.createElement("div");
+        row.className = "swatch-row";
+        SUBTLE.forEach((s) => swatch(row, s));
+        sec.appendChild(row);
+
+        SOLID.forEach((meaning) => {
+          sec = section(panel, `Background · ${meaning} states`);
+          row = document.createElement("div");
+          row.className = "swatch-row";
+          STATES.forEach((st) => {
+            const suffix = `background-${meaning}${st}`;
+            swatch(row, suffix, st ? st.slice(1) : "default");
+          });
+          sec.appendChild(row);
+        });
+
+        sec = section(panel, "Text");
+        row = document.createElement("div");
+        row.className = "swatch-row";
+        TEXT.forEach((s) => swatch(row, s));
+        sec.appendChild(row);
+
+        sec = section(panel, "Border & focus");
+        row = document.createElement("div");
+        row.className = "swatch-row";
+        BORDER.forEach((s) => swatch(row, s));
+        swatch(row, "focus-ring");
+        swatch(row, "overlay-scrim");
+        sec.appendChild(row);
+
+        sec = section(panel, "Recipes");
+        const stack = document.createElement("div");
+        stack.className = "stack";
+        stack.innerHTML = `
+          <div class="surface-card">
+            <div class="text-samples">
+              <span class="text-primary">Primary text on surface</span>
+              <span class="text-secondary">Secondary supporting copy</span>
+              <span class="text-tertiary">Tertiary / placeholder</span>
+              <span class="text-disabled">Disabled label</span>
+              <a class="link" href="#">Text link</a>
+            </div>
+          </div>
+          <div class="inverse-bar">Inverse bar · text.inverse</div>
+          <div class="selected-row">Selected row · background.selected</div>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn btn-primary is-hover">Hover</button>
+            <button type="button" class="btn btn-primary is-active">Active</button>
+            <button type="button" class="btn btn-primary is-disabled" disabled>Disabled</button>
+            <button type="button" class="btn btn-danger">Danger</button>
+            <button type="button" class="btn btn-outline">Outline</button>
+          </div>
+          <div class="btn-row">
+            <input class="field" placeholder="Default field" />
+            <input class="field is-focus" placeholder="Focus" value="Focused" />
+            <input class="field is-invalid" placeholder="Invalid" value="Invalid" />
+            <input class="field" placeholder="Disabled" disabled />
+          </div>
+          <div class="alert alert-danger">Danger alert on subtle surface</div>
+          <div class="alert alert-success">Success alert on subtle surface</div>
+          <div class="alert alert-warning">Warning alert on subtle surface</div>
+          <div class="alert alert-info">Info alert on subtle surface</div>
+        `;
+        sec.appendChild(stack);
+      }
+
+      buildSemanticPanel(document.getElementById("sem-light"), "Light");
+      buildSemanticPanel(document.getElementById("sem-dark"), "Dark");
+    </script>
+  </body>
+</html>

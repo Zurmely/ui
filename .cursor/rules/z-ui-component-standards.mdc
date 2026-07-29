@@ -1,0 +1,23 @@
+---
+description: Enforces Z-UI component API, styling, accessibility, documentation, and test conventions
+globs: packages/react/src/components/**/*
+alwaysApply: false
+---
+
+# Z-UI component standards
+
+- Load and follow `.cursor/skills/z-ui-component-editing/SKILL.md` before editing a component.
+- Treat `PRD.md`, `packages/react/docs/NAMING.md`, and the relevant `*-SEMANTICS.md` documents as authoritative. Ask before exceptions.
+- Read the component's TSX, CSS, test, Markdown documentation, and barrel export before changing its contract.
+- Component CSS must consume semantic variables. Never use primitive color, spacing, typography, or motion variables.
+- **12px (`font.size.1`) is the minimum font size.** Use `text.badge` for the smallest UI text; differentiate density with spacing, not smaller type.
+- Verify a token's semantic role in the relevant documentation and canonical root CSS; do not choose it only because its value looks right.
+- If no semantic token fits, report the gap and ask before adding a semantic or component-scoped token. Do not substitute a primitive.
+- Use PascalCase exports, camelCase props, `z-` BEM classes, and canonical `data-*` modifiers from `packages/react/docs/NAMING.md`.
+- Preserve semantic HTML, keyboard behavior, accessible names, `:focus-visible`, forced-colors behavior, and correct ARIA/state reflection.
+- Check applicable default, hover, active, focus, selected, loading, disabled, and invalid states in both themes.
+- Use semantic motion variables and honor reduced motion. Do not animate focus.
+- Keep TSX, CSS, tests, docs, exports, and parity metadata synchronized when affected.
+- Include an axe check and behavior tests appropriate to the changed contract.
+- After edits, run only the changed component's test file by default; broaden to package or repo suites only when shared code, public API, or cross-package risk warrants it.
+- Do not turn existing inconsistencies into new conventions or perform unrelated cleanup.

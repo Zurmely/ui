@@ -1,0 +1,14 @@
+.z-validator {
+  display: contents;
+}
+
+.z-validator__message {
+  margin: 0;
+  color: var(--z-color-text-danger);
+  font-family: var(--z-text-caption-font-family);
+  font-size: var(--z-text-caption-size);
+  font-weight: var(--z-text-caption-weight);
+  line-height: var(--z-text-caption-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}

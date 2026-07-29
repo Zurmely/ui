@@ -1,0 +1,22 @@
+.z-link {
+  color: var(--z-color-text-link);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.z-link:hover:not([aria-disabled='true']) {
+  color: var(--z-color-text-link-hover);
+}
+
+.z-link[aria-disabled='true'] {
+  color: var(--z-color-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+  text-decoration: var(--z-text-link-decoration);
+}

@@ -1,0 +1,14 @@
+.z-separator {
+  border: 0;
+  background-color: var(--z-color-border-subtle);
+}
+
+.z-separator[data-orientation='horizontal'] {
+  width: 100%;
+  height: 1px;
+}
+
+.z-separator[data-orientation='vertical'] {
+  width: 1px;
+  height: 100%;
+}

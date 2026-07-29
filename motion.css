@@ -1,0 +1,52 @@
+/*
+ * Z-UI motion
+ *
+ * Layers in this file:
+ *   1. Primitives  — duration steps and easing curves
+ *   2. Semantics   — purpose-based motion aliases (what components consume)
+ *
+ * Spec: MOTION-SEMANTICS.md
+ */
+
+:root {
+  /* ----- Duration primitives ----- */
+  --z-duration-0: 0ms;
+  --z-duration-100: 100ms;
+  --z-duration-150: 150ms;
+  --z-duration-200: 200ms;
+  --z-duration-400: 400ms;
+  --z-duration-800: 800ms;
+
+  /* ----- Easing primitives ----- */
+  --z-easing-standard: ease;
+  --z-easing-linear: linear;
+  --z-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --z-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ----- Semantic motion ----- */
+  --z-motion-duration-interaction: var(--z-duration-150);
+  --z-motion-duration-layout: var(--z-duration-400);
+  --z-motion-duration-continuous: var(--z-duration-800);
+  --z-motion-duration-enter: var(--z-duration-200);
+  --z-motion-duration-exit: var(--z-duration-100);
+  --z-motion-easing-interaction: var(--z-easing-standard);
+  --z-motion-easing-continuous: var(--z-easing-linear);
+  --z-motion-easing-enter: var(--z-easing-decelerate);
+  --z-motion-easing-exit: var(--z-easing-accelerate);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) {
+    --z-motion-duration-interaction: var(--z-duration-0);
+    --z-motion-duration-layout: var(--z-duration-0);
+    --z-motion-duration-enter: var(--z-duration-0);
+    --z-motion-duration-exit: var(--z-duration-0);
+  }
+}
+
+:root[data-motion="reduced"] {
+  --z-motion-duration-interaction: var(--z-duration-0);
+  --z-motion-duration-layout: var(--z-duration-0);
+  --z-motion-duration-enter: var(--z-duration-0);
+  --z-motion-duration-exit: var(--z-duration-0);
+}

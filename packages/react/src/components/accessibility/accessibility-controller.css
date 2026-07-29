@@ -1,0 +1,66 @@
+.z-accessibility-controller {
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-gap-component);
+}
+
+.z-accessibility-controller__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-gap-inline-tight);
+}
+
+.z-accessibility-controller__label {
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-accessibility-controller__options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--z-spacing-gap-inline-tight);
+  padding: var(--z-spacing-inset-box-tight);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-container);
+  background-color: var(--z-color-background-surface);
+}
+
+.z-accessibility-controller__option {
+  padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-compact-x);
+  border: 1px solid transparent;
+  border-radius: var(--z-radius-control-compact);
+  background-color: transparent;
+  color: var(--z-color-text-secondary);
+  cursor: pointer;
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-accessibility-controller__option:hover:not([data-selected='true']) {
+  background-color: var(--z-color-background-subtle);
+  color: var(--z-color-text-primary);
+}
+
+.z-accessibility-controller__option[data-selected='true'] {
+  background-color: var(--z-color-background-primary-subtle);
+  border-color: var(--z-color-border-strong);
+  color: var(--z-color-text-primary);
+}
+
+.z-accessibility-controller__option:focus {
+  outline: none;
+}

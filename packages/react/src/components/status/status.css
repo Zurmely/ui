@@ -1,0 +1,72 @@
+.z-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--z-spacing-gap-inline-tight);
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-status[data-size='sm'] {
+  font-family: var(--z-text-badge-font-family);
+  font-size: var(--z-text-badge-size);
+  font-weight: var(--z-text-badge-weight);
+  line-height: var(--z-text-badge-line-height);
+}
+
+.z-status[data-size='lg'] {
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+}
+
+.z-status__indicator {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--z-radius-circle);
+  background-color: currentColor;
+}
+
+.z-status[data-size='sm'] .z-status__indicator {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+.z-status[data-size='lg'] .z-status__indicator {
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+.z-status[data-tone='neutral'] {
+  color: var(--z-color-text-secondary);
+}
+
+.z-status[data-tone='primary'] {
+  color: var(--z-color-text-primary);
+}
+
+.z-status[data-tone='success'] {
+  color: var(--z-color-text-success);
+}
+
+.z-status[data-tone='warning'] {
+  color: var(--z-color-text-warning);
+}
+
+.z-status[data-tone='danger'] {
+  color: var(--z-color-text-danger);
+}
+
+.z-status[data-tone='info'] {
+  color: var(--z-color-text-info);
+}
+
+.z-status__label {
+  color: inherit;
+}

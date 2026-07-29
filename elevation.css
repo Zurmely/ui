@@ -1,0 +1,55 @@
+/*
+ * Z-UI elevation
+ *
+ * Layers in this file:
+ *   1. Primitives  — shadow scale (light + dark)
+ *   2. Semantics   — purpose tokens (what components consume)
+ *
+ * Spec: ELEVATION-SEMANTICS.md
+ */
+
+/* ========================================================================== */
+/* Primitives — light                                                          */
+/* ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-2: 0 2px 8px rgb(0 0 0 / 0.06);
+  --shadow-3: 0 4px 12px rgb(0 0 0 / 0.08);
+  --shadow-4: 0 8px 24px rgb(0 0 0 / 0.12);
+}
+
+/* ========================================================================== */
+/* Primitives — dark                                                           */
+/* ========================================================================== */
+
+[data-theme="dark"] {
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.16);
+  --shadow-2: 0 2px 8px rgb(0 0 0 / 0.22);
+  --shadow-3: 0 4px 12px rgb(0 0 0 / 0.28);
+  --shadow-4: 0 8px 24px rgb(0 0 0 / 0.34);
+}
+
+/* ========================================================================== */
+/* Semantics — light                                                           */
+/* ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  --z-elevation-raised: var(--shadow-2);
+  --z-elevation-overlay: var(--shadow-3);
+  --z-elevation-modal: var(--shadow-4);
+  --z-elevation-ring: 0 0 0 2px var(--z-color-background-surface);
+}
+
+/* ========================================================================== */
+/* Semantics — dark                                                            */
+/* ========================================================================== */
+
+[data-theme="dark"] {
+  --z-elevation-raised: var(--shadow-2);
+  --z-elevation-overlay: var(--shadow-3);
+  --z-elevation-modal: var(--shadow-4);
+  --z-elevation-ring: 0 0 0 2px var(--z-color-background-surface);
+}

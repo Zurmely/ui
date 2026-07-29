@@ -1,0 +1,116 @@
+/*
+ * Z-UI text
+ *
+ * Layers in this file:
+ *   1. Primitives  — font family, size, weight, and line-height scales
+ *   2. Semantics   — purpose-based text roles (what components consume)
+ *
+ * Spec: TEXT-SEMANTICS.md
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+:root {
+  /* ----- Font family primitives ----- */
+  --z-font-family-sans: "Manrope", sans-serif;
+  --z-font-family-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+
+  /* ----- Font size primitives ----- */
+  --z-font-size-1: 0.75rem; /* 12px — minimum size in the design system */
+  --z-font-size-2: 0.875rem; /* 14px */
+  --z-font-size-3: 1rem; /* 16px */
+  --z-font-size-4: 1.125rem; /* 18px */
+  --z-font-size-5: 1.25rem; /* 20px */
+  --z-font-size-6: 1.5rem; /* 24px */
+  --z-font-size-7: 1.875rem; /* 30px */
+  --z-font-size-8: 2.25rem; /* 36px */
+  --z-font-size-9: 3rem; /* 48px */
+
+  /* ----- Font weight primitives ----- */
+  --z-font-weight-regular: 400;
+  --z-font-weight-medium: 500;
+  --z-font-weight-semibold: 600;
+  --z-font-weight-bold: 700;
+
+  /* ----- Line height primitives ----- */
+  --z-font-line-height-tight: 1;
+  --z-font-line-height-snug: 1.25;
+  --z-font-line-height-normal: 1.5;
+  --z-font-line-height-relaxed: 1.625;
+
+  /* ----- Display ----- */
+  --z-text-display-font-family: var(--z-font-family-sans);
+  --z-text-display-size: var(--z-font-size-9);
+  --z-text-display-weight: var(--z-font-weight-bold);
+  --z-text-display-line-height: var(--z-font-line-height-tight);
+
+  /* ----- Headings ----- */
+  --z-text-h1-font-family: var(--z-font-family-sans);
+  --z-text-h1-size: var(--z-font-size-8);
+  --z-text-h1-weight: var(--z-font-weight-bold);
+  --z-text-h1-line-height: var(--z-font-line-height-tight);
+
+  --z-text-h2-font-family: var(--z-font-family-sans);
+  --z-text-h2-size: var(--z-font-size-7);
+  --z-text-h2-weight: var(--z-font-weight-semibold);
+  --z-text-h2-line-height: var(--z-font-line-height-snug);
+
+  --z-text-h3-font-family: var(--z-font-family-sans);
+  --z-text-h3-size: var(--z-font-size-6);
+  --z-text-h3-weight: var(--z-font-weight-semibold);
+  --z-text-h3-line-height: var(--z-font-line-height-snug);
+
+  --z-text-h4-font-family: var(--z-font-family-sans);
+  --z-text-h4-size: var(--z-font-size-5);
+  --z-text-h4-weight: var(--z-font-weight-semibold);
+  --z-text-h4-line-height: var(--z-font-line-height-snug);
+
+  --z-text-h5-font-family: var(--z-font-family-sans);
+  --z-text-h5-size: var(--z-font-size-4);
+  --z-text-h5-weight: var(--z-font-weight-semibold);
+  --z-text-h5-line-height: var(--z-font-line-height-normal);
+
+  --z-text-h6-font-family: var(--z-font-family-sans);
+  --z-text-h6-size: var(--z-font-size-3);
+  --z-text-h6-weight: var(--z-font-weight-semibold);
+  --z-text-h6-line-height: var(--z-font-line-height-normal);
+
+  /* ----- UI roles ----- */
+  --z-text-body-font-family: var(--z-font-family-sans);
+  --z-text-body-size: var(--z-font-size-3);
+  --z-text-body-weight: var(--z-font-weight-regular);
+  --z-text-body-line-height: var(--z-font-line-height-relaxed);
+
+  --z-text-control-font-family: var(--z-font-family-sans);
+  --z-text-control-size: var(--z-font-size-3);
+  --z-text-control-weight: var(--z-font-weight-medium);
+  --z-text-control-line-height: var(--z-font-line-height-tight);
+
+  --z-text-label-font-family: var(--z-font-family-sans);
+  --z-text-label-size: var(--z-font-size-2);
+  --z-text-label-weight: var(--z-font-weight-medium);
+  --z-text-label-line-height: var(--z-font-line-height-snug);
+
+  --z-text-caption-font-family: var(--z-font-family-sans);
+  --z-text-caption-size: var(--z-font-size-2);
+  --z-text-caption-weight: var(--z-font-weight-regular);
+  --z-text-caption-line-height: var(--z-font-line-height-snug);
+
+  --z-text-badge-font-family: var(--z-font-family-sans);
+  --z-text-badge-size: var(--z-font-size-1);
+  --z-text-badge-weight: var(--z-font-weight-medium);
+  --z-text-badge-line-height: var(--z-font-line-height-tight);
+
+  --z-text-title-font-family: var(--z-font-family-sans);
+  --z-text-title-size: var(--z-font-size-4);
+  --z-text-title-weight: var(--z-font-weight-semibold);
+  --z-text-title-line-height: var(--z-font-line-height-snug);
+
+  /* ----- Link decoration (accessibility flag) ----- */
+  --z-text-link-decoration: none;
+}
+
+:root[data-link-underline="always"] {
+  --z-text-link-decoration: underline;
+}

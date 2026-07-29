@@ -1,0 +1,156 @@
+.z-select__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--z-spacing-gap-inline);
+  width: 100%;
+  min-height: auto;
+  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-control);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-select__trigger:hover:not(:disabled) {
+  background-color: var(--z-color-background-subtle);
+}
+
+.z-select__trigger:focus-visible {
+  border-color: var(--z-color-border-focus);
+}
+
+.z-select__trigger[data-invalid='true'] {
+  border-color: var(--z-color-border-danger);
+}
+
+.z-select__trigger:disabled {
+  cursor: not-allowed;
+  background-color: var(--z-color-background-muted);
+  border-color: var(--z-color-border-disabled);
+  color: var(--z-color-text-disabled);
+}
+
+.z-select__value {
+  flex: 1;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.z-select__value[data-placeholder] {
+  color: var(--z-color-text-tertiary);
+}
+
+.z-select__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--z-color-icon-primary);
+}
+
+.z-select__icon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.z-select__trigger:disabled .z-select__icon {
+  color: var(--z-color-icon-disabled);
+}
+
+.z-select__content {
+  overflow: hidden;
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-container);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  box-shadow: var(--z-elevation-overlay);
+  z-index: 50;
+}
+
+.z-select__content[data-state='open'] {
+  animation: z-select-in var(--z-motion-duration-enter) var(--z-motion-easing-enter);
+}
+
+.z-select__viewport {
+  padding: var(--z-spacing-inset-box-tight);
+}
+
+.z-select__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--z-spacing-gap-inline);
+  padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-compact-x)
+    var(--z-spacing-inset-control-compact-y) var(--z-spacing-select-item-padding-start);
+  border-radius: var(--z-radius-control-compact);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.z-select__item[data-highlighted] {
+  background-color: var(--z-color-background-selected);
+}
+
+.z-select__item:hover:not([data-disabled]) {
+  background-color: var(--z-color-background-subtle);
+}
+
+.z-select__item[data-disabled] {
+  color: var(--z-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.z-select__item-indicator {
+  position: absolute;
+  left: var(--z-spacing-select-item-indicator-inset);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--z-color-icon-primary);
+}
+
+.z-select__item-indicator svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.z-select__item[data-state='checked'] {
+  background-color: var(--z-color-background-selected);
+}
+
+@keyframes z-select-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z-select__content[data-state='open'] {
+    animation: none;
+  }
+}

@@ -1,0 +1,41 @@
+.z-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-circle);
+  background-color: var(--z-color-background-muted);
+  color: var(--z-color-text-secondary);
+}
+
+.z-avatar[data-size='sm'] {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-avatar[data-size='md'] {
+  width: 2rem;
+  height: 2rem;
+}
+
+.z-avatar[data-size='lg'] {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.z-avatar__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.z-avatar__fallback {
+  color: var(--z-color-text-secondary);
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@z-ui/tokens",
+  "version": "0.0.0",
+  "description": "Z-UI semantic design tokens (color, spacing, radius, text, motion, and elevation)",
+  "type": "module",
+  "files": ["dist"],
+  "exports": {
+    "./colors.css": "./dist/colors.css",
+    "./sizes.css": "./dist/sizes.css",
+    "./text.css": "./dist/text.css",
+    "./motion.css": "./dist/motion.css",
+    "./elevation.css": "./dist/elevation.css"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "contrast": "node scripts/contrast.mjs",
+    "typecheck": "echo 'No TypeScript in tokens package'",
+    "lint": "echo 'No lint in tokens package'",
+    "test": "echo 'No tests in tokens package'"
+  }
+}

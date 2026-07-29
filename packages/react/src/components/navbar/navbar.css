@@ -1,0 +1,76 @@
+.z-navbar {
+  border-bottom: 1px solid var(--z-color-border-subtle);
+  background-color: var(--z-color-background-surface);
+}
+
+.z-navbar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--z-spacing-gap-component);
+  padding: var(--z-spacing-inset-box-compact) var(--z-spacing-inset-box-comfortable);
+}
+
+.z-navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--z-spacing-gap-inline);
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-title-font-family);
+  font-size: var(--z-text-title-size);
+  font-weight: var(--z-text-title-weight);
+  line-height: var(--z-text-title-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-navbar__content {
+  display: flex;
+  align-items: center;
+  gap: var(--z-spacing-gap-inline);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.z-navbar__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.z-navbar__item > a,
+.z-navbar__item > button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  border: none;
+  border-radius: var(--z-radius-control-compact);
+  background-color: transparent;
+  color: var(--z-color-text-secondary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-decoration: var(--z-text-link-decoration);
+  cursor: pointer;
+}
+
+.z-navbar__item > a:hover,
+.z-navbar__item > button:hover {
+  color: var(--z-color-text-primary);
+  background-color: var(--z-color-background-subtle);
+}
+
+.z-navbar__item > a:focus-visible,
+.z-navbar__item > button:focus-visible {
+  outline: 2px solid var(--z-color-focus-ring);
+  outline-offset: 2px;
+}
+
+.z-navbar__item > a[aria-current='page'],
+.z-navbar__item > button[aria-current='page'] {
+  color: var(--z-color-text-primary);
+  background-color: var(--z-color-background-selected);
+}

@@ -1,0 +1,96 @@
+/*
+ * Z-UI sizes
+ *
+ * Layers in this file:
+ *   1. Primitives  — spacing scale (8px grid + 4px half-step) and radius scale
+ *   2. Semantics   — purpose-based spacing and radius aliases (what components consume)
+ *   3. Component   — narrowly scoped aliases where layout cannot use shared semantics
+ *
+ * Spec: SIZES-SEMANTICS.md
+ */
+
+:root {
+  /* ----- Spacing primitives (8px grid + 4px half-step) ----- */
+  --z-space-0: 0;
+  --z-space-0-5: 0.25rem; /*  4px */
+  --z-space-1: 0.5rem; /*  8px */
+  --z-space-2: 1rem; /* 16px */
+  --z-space-3: 1.5rem; /* 24px */
+  --z-space-4: 2rem; /* 32px */
+  --z-space-5: 2.5rem; /* 40px */
+  --z-space-6: 3rem; /* 48px */
+  --z-space-8: 4rem; /* 64px */
+  --z-space-10: 5rem; /* 80px */
+  --z-space-12: 6rem; /* 96px */
+  --z-space-16: 8rem; /* 128px */
+
+  /* ----- Radius primitives ----- */
+  --z-radius-0: 0;
+  --z-radius-1: 0.25rem; /*  4px */
+  --z-radius-2: 0.375rem; /*  6px */
+  --z-radius-3: 0.5rem; /*  8px */
+  --z-radius-full: 9999px;
+
+  /* ----- Inset: control padding ----- */
+  --z-spacing-inset-control-compact-y: var(--z-space-0-5);
+  --z-spacing-inset-control-compact-x: var(--z-space-1);
+  --z-spacing-inset-control-y: var(--z-space-1);
+  --z-spacing-inset-control-x: var(--z-space-2);
+  --z-spacing-inset-control-comfortable-y: var(--z-space-2);
+  --z-spacing-inset-control-comfortable-x: var(--z-space-3);
+
+  /* ----- Inset: symmetric box padding ----- */
+  --z-spacing-inset-box-tight: var(--z-space-0-5);
+  --z-spacing-inset-box-compact: var(--z-space-1);
+  --z-spacing-inset-box: var(--z-space-2);
+  --z-spacing-inset-box-comfortable: var(--z-space-3);
+
+  /* ----- Inset: containers and surfaces (aliases of box ladder) ----- */
+  --z-spacing-inset-compact: var(--z-spacing-inset-box-tight);
+  --z-spacing-inset-panel: var(--z-spacing-inset-box);
+  --z-spacing-inset-container: var(--z-spacing-inset-box-comfortable);
+  --z-spacing-inset-tooltip-y: var(--z-space-0-5);
+  --z-spacing-inset-tooltip-x: var(--z-space-1);
+
+  /* ----- Gap: related elements ----- */
+  --z-spacing-gap-inline-tight: var(--z-space-0-5);
+  --z-spacing-gap-inline: var(--z-space-1);
+  --z-spacing-gap-component: var(--z-space-2);
+  --z-spacing-gap-section: var(--z-space-4);
+  --z-spacing-gap-page-section: var(--z-space-6);
+
+  /* ----- Stack: vertical rhythm ----- */
+  --z-spacing-stack-form: var(--z-space-0-5);
+  --z-spacing-stack-control: var(--z-space-1);
+  --z-spacing-stack-component: var(--z-space-2);
+  --z-spacing-stack-section: var(--z-space-4);
+  --z-spacing-stack-page-section: var(--z-space-6);
+
+  /* ----- Overlay separation ----- */
+  --z-spacing-offset-overlay: 4px;
+
+  /* ----- Radius semantics ----- */
+  --z-radius-control-compact: var(--z-radius-1);
+  --z-radius-control: var(--z-radius-2);
+  --z-radius-surface: var(--z-radius-2);
+  --z-radius-container: var(--z-radius-3);
+  --z-radius-pill: var(--z-radius-full);
+  --z-radius-circle: 50%;
+
+  /* ----- Focus ring ----- */
+  --z-focus-ring-width: 2px;
+
+  /* ----- Component escape hatches ----- */
+  --z-spacing-select-item-indicator-inset: var(--z-space-1);
+  --z-spacing-select-item-padding-start: var(--z-space-3);
+}
+
+@media (prefers-contrast: more) {
+  :root:not([data-contrast="standard"]) {
+    --z-focus-ring-width: 3px;
+  }
+}
+
+:root[data-contrast="high"] {
+  --z-focus-ring-width: 3px;
+}

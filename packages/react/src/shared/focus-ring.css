@@ -1,0 +1,16 @@
+/* Shared focus ring using semantic tokens */
+.z-focus-ring:focus {
+  outline: none;
+}
+
+.z-focus-ring:focus-visible {
+  outline: var(--z-focus-ring-width) solid var(--z-color-focus-ring);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 var(--z-focus-ring-width) var(--z-color-background-surface);
+}
+
+@media (forced-colors: active) {
+  .z-focus-ring:focus-visible {
+    outline: var(--z-focus-ring-width) solid Highlight;
+  }
+}

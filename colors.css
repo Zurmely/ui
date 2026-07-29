@@ -1,0 +1,673 @@
+/*
+ * Z-UI colors
+ *
+ * Layers in this file:
+ *   1. Primitives  — OKLCH scales (green…neutral, light + dark)
+ *   2. Semantics   — meaning palettes + purpose tokens (what components consume)
+ *
+ * Spec: COLOR-SEMANTICS.md
+ */
+
+/* ========================================================================== */
+/* Primitives                                                                  */
+/* ========================================================================== */
+
+:root,
+[data-theme="light"] {
+  --green-50: oklch(0.961 0.063 150.7);
+  --green-100: oklch(0.949 0.08 149.7);
+  --green-200: oklch(0.888 0.11 149.6);
+  --green-300: oklch(0.799 0.158 149.5);
+  --green-400: oklch(0.736 0.189 149.6);
+  --green-500: oklch(0.717 0.199 149.7);
+  --green-600: oklch(0.675 0.188 149.5);
+  --green-700: oklch(0.547 0.155 148.8);
+  --green-800: oklch(0.356 0.106 147);
+  --green-900: oklch(0.23 0.072 145);
+  --green-950: oklch(0.185 0.061 143.6);
+  --blue-50: oklch(0.958 0.063 196.2);
+  --blue-100: oklch(0.943 0.074 199.1);
+  --blue-200: oklch(0.886 0.107 208.9);
+  --blue-300: oklch(0.804 0.146 219.5);
+  --blue-400: oklch(0.76 0.144 225.3);
+  --blue-500: oklch(0.745 0.145 227.9);
+  --blue-600: oklch(0.701 0.137 228);
+  --blue-700: oklch(0.57 0.112 228.4);
+  --blue-800: oklch(0.37 0.075 231.4);
+  --blue-900: oklch(0.238 0.05 235);
+  --blue-950: oklch(0.194 0.042 236.8);
+  --purple-50: oklch(0.958 0.02 257.5);
+  --purple-100: oklch(0.936 0.03 265.3);
+  --purple-200: oklch(0.875 0.061 272.9);
+  --purple-300: oklch(0.781 0.112 276.8);
+  --purple-400: oklch(0.719 0.148 277.7);
+  --purple-500: oklch(0.698 0.16 277.9);
+  --purple-600: oklch(0.668 0.178 277.6);
+  --purple-700: oklch(0.545 0.157 277.3);
+  --purple-800: oklch(0.351 0.111 277.7);
+  --purple-900: oklch(0.222 0.08 277.7);
+  --purple-950: oklch(0.179 0.07 278);
+  --pink-50: oklch(0.954 0.041 325.9);
+  --pink-100: oklch(0.939 0.055 326);
+  --pink-200: oklch(0.885 0.097 322.4);
+  --pink-300: oklch(0.797 0.157 317);
+  --pink-400: oklch(0.737 0.189 316.5);
+  --pink-500: oklch(0.716 0.199 316.4);
+  --pink-600: oklch(0.674 0.188 316.6);
+  --pink-700: oklch(0.544 0.158 316.4);
+  --pink-800: oklch(0.352 0.111 316.3);
+  --pink-900: oklch(0.222 0.08 316.6);
+  --pink-950: oklch(0.18 0.068 316.8);
+  --rose-50: oklch(0.941 0.039 341.8);
+  --rose-100: oklch(0.923 0.049 346.5);
+  --rose-200: oklch(0.862 0.086 352.6);
+  --rose-300: oklch(0.78 0.144 356.7);
+  --rose-400: oklch(0.73 0.184 359);
+  --rose-500: oklch(0.714 0.196 359.9);
+  --rose-600: oklch(0.673 0.189 359.7);
+  --rose-700: oklch(0.545 0.158 0.3);
+  --rose-800: oklch(0.353 0.112 359.8);
+  --rose-900: oklch(0.223 0.079 359.8);
+  --rose-950: oklch(0.179 0.069 0.1);
+  --red-50: oklch(0.928 0.037 13.7);
+  --red-100: oklch(0.899 0.053 13.9);
+  --red-200: oklch(0.814 0.106 15.3);
+  --red-300: oklch(0.702 0.191 16.7);
+  --red-400: oklch(0.62 0.236 17.3);
+  --red-500: oklch(0.597 0.239 18.6);
+  --red-600: oklch(0.565 0.226 18.8);
+  --red-700: oklch(0.50 0.20 19.2);
+  --red-800: oklch(0.321 0.129 19.9);
+  --red-900: oklch(0.223 0.09 21.2);
+  --red-950: oklch(0.19 0.077 21.9);
+  --salmon-50: oklch(0.94 0.033 46.4);
+  --salmon-100: oklch(0.918 0.044 40.9);
+  --salmon-200: oklch(0.858 0.078 36.3);
+  --salmon-300: oklch(0.773 0.135 33);
+  --salmon-400: oklch(0.72 0.176 31.6);
+  --salmon-500: oklch(0.703 0.189 31.6);
+  --salmon-600: oklch(0.673 0.189 31.2);
+  --salmon-700: oklch(0.545 0.157 31.2);
+  --salmon-800: oklch(0.351 0.112 31.2);
+  --salmon-900: oklch(0.223 0.079 31.3);
+  --salmon-950: oklch(0.179 0.07 30.6);
+  --orange-50: oklch(0.932 0.045 64);
+  --orange-100: oklch(0.912 0.057 61);
+  --orange-200: oklch(0.848 0.094 51.9);
+  --orange-300: oklch(0.757 0.157 46.9);
+  --orange-400: oklch(0.7 0.202 44.4);
+  --orange-500: oklch(0.683 0.213 40.3);
+  --orange-600: oklch(0.673 0.22 38.1);
+  --orange-700: oklch(0.547 0.184 36.7);
+  --orange-800: oklch(0.353 0.128 33.8);
+  --orange-900: oklch(0.225 0.09 29.9);
+  --orange-950: oklch(0.184 0.076 29.2);
+  --yellow-50: oklch(0.949 0.055 85.1);
+  --yellow-100: oklch(0.941 0.064 85.4);
+  --yellow-200: oklch(0.911 0.09 83.2);
+  --yellow-300: oklch(0.867 0.132 81.4);
+  --yellow-400: oklch(0.838 0.161 81);
+  --yellow-500: oklch(0.827 0.171 80.5);
+  --yellow-600: oklch(0.798 0.171 72.2);
+  --yellow-700: oklch(0.66 0.152 62.1);
+  --yellow-800: oklch(0.407 0.098 57.2);
+  --yellow-900: oklch(0.24 0.066 47.8);
+  --yellow-950: oklch(0.182 0.055 41.5);
+  --olive-50: oklch(0.97 0.069 109.4);
+  --olive-100: oklch(0.949 0.079 108.6);
+  --olive-200: oklch(0.889 0.112 109);
+  --olive-300: oklch(0.797 0.157 108.7);
+  --olive-400: oklch(0.74 0.16 108.1);
+  --olive-500: oklch(0.722 0.155 107.6);
+  --olive-600: oklch(0.678 0.146 107.4);
+  --olive-700: oklch(0.548 0.118 107.3);
+  --olive-800: oklch(0.355 0.076 106.6);
+  --olive-900: oklch(0.226 0.048 106);
+  --olive-950: oklch(0.183 0.039 104.9);
+  --neutral-50: oklch(0.975 0 0);
+  --neutral-100: oklch(0.96 0.001 17.2);
+  --neutral-200: oklch(0.94 0 0);
+  --neutral-300: oklch(0.895 0.001 17.2);
+  --neutral-400: oklch(0.83 0 0);
+  --neutral-500: oklch(0.755 0.001 17.2);
+  --neutral-600: oklch(0.665 0.001 17.2);
+  --neutral-700: oklch(0.55 0 0);
+  --neutral-800: oklch(0.42 0.001 17.2);
+  --neutral-900: oklch(0.29 0.002 17.3);
+  --neutral-950: oklch(0.18 0.002 17.3);
+}
+
+/*
+ * Dark palette — derived from light via OKLCH rules:
+ * 1. Reverse step assignment (dark-50 ← light-950 DNA) so token roles match
+ *    (50 = surface-adjacent, 950 = highlight/text-adjacent in both themes).
+ * 2. Remap L onto a monotonic dark-UI ramp (~0.17 → ~0.94) with family character retained.
+ * 3. Temper C at low L (avoid neon), peak C mid-scale for accents, soften C at high L.
+ * 4. Preserve H from the mirrored light step for hue continuity.
+ * 5. Neutrals use a pure L ramp (50 = surface-adjacent, 950 = ink/highlight).
+ */
+[data-theme="dark"] {
+  --green-50: oklch(0.17 0.038 143.6);
+  --green-100: oklch(0.208 0.05 145);
+  --green-200: oklch(0.279 0.087 147);
+  --green-300: oklch(0.379 0.141 148.8);
+  --green-400: oklch(0.483 0.197 149.5);
+  --green-500: oklch(0.575 0.208 149.7);
+  --green-600: oklch(0.656 0.203 149.6);
+  --green-700: oklch(0.743 0.154 149.5);
+  --green-800: oklch(0.829 0.087 149.6);
+  --green-900: oklch(0.893 0.06 149.7);
+  --green-950: oklch(0.938 0.045 150.7);
+  --blue-50: oklch(0.171 0.026 236.8);
+  --blue-100: oklch(0.209 0.035 235);
+  --blue-200: oklch(0.281 0.062 231.4);
+  --blue-300: oklch(0.382 0.102 228.4);
+  --blue-400: oklch(0.486 0.144 228);
+  --blue-500: oklch(0.579 0.152 227.9);
+  --blue-600: oklch(0.659 0.151 225.3);
+  --blue-700: oklch(0.744 0.143 219.5);
+  --blue-800: oklch(0.828 0.085 208.9);
+  --blue-900: oklch(0.892 0.056 199.1);
+  --blue-950: oklch(0.938 0.045 196.2);
+  --purple-50: oklch(0.169 0.043 278);
+  --purple-100: oklch(0.207 0.055 277.7);
+  --purple-200: oklch(0.278 0.091 277.7);
+  --purple-300: oklch(0.379 0.143 277.3);
+  --purple-400: oklch(0.482 0.173 277.6);
+  --purple-500: oklch(0.573 0.167 277.9);
+  --purple-600: oklch(0.654 0.161 277.7);
+  --purple-700: oklch(0.741 0.11 276.8);
+  --purple-800: oklch(0.827 0.048 272.9);
+  --purple-900: oklch(0.891 0.023 265.3);
+  --purple-950: oklch(0.938 0.014 257.5);
+  --pink-50: oklch(0.17 0.042 316.8);
+  --pink-100: oklch(0.207 0.055 316.6);
+  --pink-200: oklch(0.279 0.091 316.3);
+  --pink-300: oklch(0.379 0.144 316.4);
+  --pink-400: oklch(0.483 0.197 316.6);
+  --pink-500: oklch(0.575 0.208 316.4);
+  --pink-600: oklch(0.657 0.203 316.5);
+  --pink-700: oklch(0.743 0.153 317);
+  --pink-800: oklch(0.828 0.077 322.4);
+  --pink-900: oklch(0.892 0.042 326);
+  --pink-950: oklch(0.937 0.03 325.9);
+  --rose-50: oklch(0.169 0.042 0.1);
+  --rose-100: oklch(0.207 0.054 359.8);
+  --rose-200: oklch(0.279 0.092 359.8);
+  --rose-300: oklch(0.379 0.144 0.3);
+  --rose-400: oklch(0.482 0.196 359.7);
+  --rose-500: oklch(0.575 0.205 359.9);
+  --rose-600: oklch(0.656 0.198 359);
+  --rose-700: oklch(0.741 0.141 356.7);
+  --rose-800: oklch(0.825 0.068 352.6);
+  --rose-900: oklch(0.89 0.037 346.5);
+  --rose-950: oklch(0.936 0.028 341.8);
+  --red-50: oklch(0.171 0.048 21.9);
+  --red-100: oklch(0.207 0.062 21.2);
+  --red-200: oklch(0.275 0.105 19.9);
+  --red-300: oklch(0.369 0.169 19.2);
+  --red-400: oklch(0.469 0.224 18.8);
+  --red-500: oklch(0.56 0.25 18.6);
+  --red-600: oklch(0.642 0.249 17.3);
+  --red-700: oklch(0.731 0.187 16.7);
+  --red-800: oklch(0.819 0.1 15.3);
+  --red-900: oklch(0.887 0.04 13.9);
+  --red-950: oklch(0.934 0.027 13.7);
+  --salmon-50: oklch(0.169 0.043 30.6);
+  --salmon-100: oklch(0.207 0.054 31.3);
+  --salmon-200: oklch(0.278 0.092 31.2);
+  --salmon-300: oklch(0.379 0.143 31.2);
+  --salmon-400: oklch(0.482 0.193 31.2);
+  --salmon-500: oklch(0.574 0.198 31.6);
+  --salmon-600: oklch(0.654 0.191 31.6);
+  --salmon-700: oklch(0.74 0.132 33);
+  --salmon-800: oklch(0.825 0.062 36.3);
+  --salmon-900: oklch(0.889 0.033 40.9);
+  --salmon-950: oklch(0.936 0.024 46.4);
+  --orange-50: oklch(0.17 0.047 29.2);
+  --orange-100: oklch(0.208 0.062 29.9);
+  --orange-200: oklch(0.279 0.105 33.8);
+  --orange-300: oklch(0.379 0.168 36.7);
+  --orange-400: oklch(0.482 0.221 38.1);
+  --orange-500: oklch(0.571 0.223 40.3);
+  --orange-600: oklch(0.652 0.217 44.4);
+  --orange-700: oklch(0.738 0.154 46.9);
+  --orange-800: oklch(0.824 0.075 51.9);
+  --orange-900: oklch(0.888 0.043 61);
+  --orange-950: oklch(0.935 0.032 64);
+  --yellow-50: oklch(0.17 0.034 41.5);
+  --yellow-100: oklch(0.209 0.046 47.8);
+  --yellow-200: oklch(0.286 0.081 57.2);
+  --yellow-300: oklch(0.393 0.14 62.1);
+  --yellow-400: oklch(0.498 0.176 72.2);
+  --yellow-500: oklch(0.589 0.179 80.5);
+  --yellow-600: oklch(0.669 0.173 81);
+  --yellow-700: oklch(0.752 0.129 81.4);
+  --yellow-800: oklch(0.831 0.071 83.2);
+  --yellow-900: oklch(0.892 0.048 85.4);
+  --yellow-950: oklch(0.937 0.04 85.1);
+  --olive-50: oklch(0.17 0.024 104.9);
+  --olive-100: oklch(0.208 0.033 106);
+  --olive-200: oklch(0.279 0.062 106.6);
+  --olive-300: oklch(0.379 0.108 107.3);
+  --olive-400: oklch(0.483 0.153 107.4);
+  --olive-500: oklch(0.576 0.162 107.6);
+  --olive-600: oklch(0.657 0.165 108.1);
+  --olive-700: oklch(0.743 0.153 108.7);
+  --olive-800: oklch(0.829 0.089 109);
+  --olive-900: oklch(0.893 0.06 108.6);
+  --olive-950: oklch(0.939 0.05 109.4);
+  --neutral-50: oklch(0.168 0.002 17.3);
+  --neutral-100: oklch(0.205 0.002 17.3);
+  --neutral-200: oklch(0.268 0 0);
+  --neutral-300: oklch(0.355 0.001 17.2);
+  --neutral-400: oklch(0.455 0.001 17.2);
+  --neutral-500: oklch(0.555 0.001 17.2);
+  --neutral-600: oklch(0.645 0 0);
+  --neutral-700: oklch(0.735 0.001 17.2);
+  --neutral-800: oklch(0.82 0 0);
+  --neutral-900: oklch(0.885 0.001 17.2);
+  --neutral-950: oklch(0.935 0 0);
+}
+
+/* ========================================================================== */
+/* Semantics                                                                   */
+/* ========================================================================== */
+/*
+ * Meaning palettes alias primitive scales (rebind to retheme).
+ * Semantic tokens are purpose + state — what components consume.
+ *
+ * Theme notes:
+ *   Primitive dark scales reverse step roles (50 = surface-adjacent,
+ *   950 = text/highlight-adjacent). Neutral structure tokens can share
+ *   step indices across themes.
+ *
+ *   Non-structure background defaults:
+ *     light status → {meaning}-500 (mid-luminance; dark on-solid ink)
+ *     dark status  → {meaning}-400 (deeper; light on-solid ink for AA)
+ *   Primary emphasis uses neutral end-of-ramp (950 default).
+ *   Structure backgrounds (canvas, surface, subtle, muted, inverse) use neutrals.
+ *   Status-subtle backgrounds use 50/100 tints (not 500).
+ *
+ *   Interaction steps from the solid default:
+ *     light → hover 600, active 700 (darker)
+ *     dark  → hover 300, active 200 (deeper on the reversed ramp)
+ *
+ *   text/icon.on-solid labels solid accent fills (not inverse).
+ *   text/icon.inverse pairs only with background.inverse.
+ */
+
+/* -------------------------------------------------------------------------- */
+/* Light                                                                       */
+/* -------------------------------------------------------------------------- */
+
+:root,
+[data-theme="light"] {
+  /* ----- Absolute helpers (not in primitive scales) ----- */
+  --z-absolute-white: oklch(1 0 0);
+  --z-absolute-black: oklch(0 0 0);
+
+  /* ----- Meaning palettes (alias primitives) ----- */
+  /* Danger — destructive / error */
+  --z-color-danger-50: var(--red-50);
+  --z-color-danger-100: var(--red-100);
+  --z-color-danger-200: var(--red-200);
+  --z-color-danger-300: var(--red-300);
+  --z-color-danger-400: var(--red-400);
+  --z-color-danger-500: var(--red-500);
+  --z-color-danger-600: var(--red-600);
+  --z-color-danger-700: var(--red-700);
+  --z-color-danger-800: var(--red-800);
+  --z-color-danger-900: var(--red-900);
+  --z-color-danger-950: var(--red-950);
+
+  /* Success — positive completion */
+  --z-color-success-50: var(--green-50);
+  --z-color-success-100: var(--green-100);
+  --z-color-success-200: var(--green-200);
+  --z-color-success-300: var(--green-300);
+  --z-color-success-400: var(--green-400);
+  --z-color-success-500: var(--green-500);
+  --z-color-success-600: var(--green-600);
+  --z-color-success-700: var(--green-700);
+  --z-color-success-800: var(--green-800);
+  --z-color-success-900: var(--green-900);
+  --z-color-success-950: var(--green-950);
+
+  /* Warning — caution */
+  --z-color-warning-50: var(--yellow-50);
+  --z-color-warning-100: var(--yellow-100);
+  --z-color-warning-200: var(--yellow-200);
+  --z-color-warning-300: var(--yellow-300);
+  --z-color-warning-400: var(--yellow-400);
+  --z-color-warning-500: var(--yellow-500);
+  --z-color-warning-600: var(--yellow-600);
+  --z-color-warning-700: var(--yellow-700);
+  --z-color-warning-800: var(--yellow-800);
+  --z-color-warning-900: var(--yellow-900);
+  --z-color-warning-950: var(--yellow-950);
+
+  /* Info — guidance (blue) */
+  --z-color-info-50: var(--blue-50);
+  --z-color-info-100: var(--blue-100);
+  --z-color-info-200: var(--blue-200);
+  --z-color-info-300: var(--blue-300);
+  --z-color-info-400: var(--blue-400);
+  --z-color-info-500: var(--blue-500);
+  --z-color-info-600: var(--blue-600);
+  --z-color-info-700: var(--blue-700);
+  --z-color-info-800: var(--blue-800);
+  --z-color-info-900: var(--blue-900);
+  --z-color-info-950: var(--blue-950);
+
+  /* ======================================================================== */
+  /* Semantic tokens                                                           */
+  /* ======================================================================== */
+
+  /* ----- Background: structure ----- */
+  --z-color-background-canvas: var(--neutral-100);
+  --z-color-background-surface: var(--neutral-50);
+  --z-color-background-subtle: var(--neutral-100);
+  --z-color-background-muted: var(--neutral-200);
+  --z-color-background-inverse: var(--neutral-900);
+  --z-color-background-selected: var(--neutral-200);
+
+  /* Soft status surfaces (alerts, banners, chips) */
+  --z-color-background-primary-subtle: var(--neutral-200);
+  --z-color-background-danger-subtle: var(--z-color-danger-50);
+  --z-color-background-success-subtle: var(--z-color-success-50);
+  --z-color-background-warning-subtle: var(--z-color-warning-50);
+  --z-color-background-info-subtle: var(--z-color-info-50);
+
+  /* Solid interactive fills — primary uses neutral end-of-ramp; status uses 500 */
+  --z-color-background-primary: var(--neutral-950);
+  --z-color-background-primary-hover: var(--neutral-900);
+  --z-color-background-primary-active: var(--neutral-800);
+  --z-color-background-primary-disabled: var(--neutral-300);
+
+  --z-color-background-danger: var(--z-color-danger-500);
+  --z-color-background-danger-hover: var(--z-color-danger-600);
+  --z-color-background-danger-active: var(--z-color-danger-700);
+  --z-color-background-danger-disabled: var(--neutral-300);
+
+  --z-color-background-success: var(--z-color-success-500);
+  --z-color-background-success-hover: var(--z-color-success-600);
+  --z-color-background-success-active: var(--z-color-success-700);
+  --z-color-background-success-disabled: var(--neutral-300);
+
+  --z-color-background-warning: var(--z-color-warning-500);
+  --z-color-background-warning-hover: var(--z-color-warning-600);
+  --z-color-background-warning-active: var(--z-color-warning-700);
+  --z-color-background-warning-disabled: var(--neutral-300);
+
+  --z-color-background-info: var(--z-color-info-500);
+  --z-color-background-info-hover: var(--z-color-info-600);
+  --z-color-background-info-active: var(--z-color-info-700);
+  --z-color-background-info-disabled: var(--neutral-300);
+
+  /* ----- Text ----- */
+  --z-color-text-primary: var(--neutral-950);
+  --z-color-text-secondary: var(--neutral-800);
+  --z-color-text-tertiary: var(--neutral-700);
+  --z-color-text-disabled: var(--neutral-700);
+  /* Paired with background.inverse only */
+  --z-color-text-inverse: var(--neutral-50);
+  /* On solid status fills: dark ink for AA (mid-luminance accents) */
+  --z-color-text-on-solid: var(--z-absolute-black);
+  /* On primary end-of-ramp fills */
+  --z-color-text-on-primary: var(--neutral-50);
+  --z-color-text-danger: var(--z-color-danger-700);
+  --z-color-text-success: var(--z-color-success-800);
+  --z-color-text-warning: var(--z-color-warning-800);
+  --z-color-text-info: var(--z-color-info-800);
+  --z-color-text-link: var(--z-color-text-primary);
+  --z-color-text-link-hover: var(--neutral-800);
+
+  /* ----- Icon (mirror text meanings) ----- */
+  --z-color-icon-primary: var(--z-color-text-primary);
+  --z-color-icon-secondary: var(--z-color-text-secondary);
+  --z-color-icon-disabled: var(--z-color-text-disabled);
+  --z-color-icon-inverse: var(--z-color-text-inverse);
+  --z-color-icon-on-solid: var(--z-color-text-on-solid);
+  --z-color-icon-on-primary: var(--z-color-text-on-primary);
+  --z-color-icon-danger: var(--z-color-text-danger);
+  --z-color-icon-success: var(--z-color-text-success);
+  --z-color-icon-warning: var(--z-color-text-warning);
+  --z-color-icon-info: var(--z-color-text-info);
+
+  /* ----- Border ----- */
+  --z-color-border-subtle: var(--neutral-400);
+  --z-color-border-default: var(--neutral-700);
+  --z-color-border-strong: var(--neutral-800);
+  --z-color-border-disabled: var(--neutral-400);
+  --z-color-border-primary: var(--neutral-950);
+  --z-color-border-danger: var(--z-color-danger-600);
+  --z-color-border-success: var(--z-color-success-600);
+  --z-color-border-warning: var(--z-color-warning-600);
+  --z-color-border-info: var(--z-color-info-600);
+  --z-color-border-focus: var(--neutral-950);
+
+  /* ----- Focus ----- */
+  --z-color-focus-ring: var(--neutral-950);
+
+  /* ----- Overlay ----- */
+  --z-color-overlay-scrim: oklch(0 0 0 / 0.45);
+  --z-color-overlay-tooltip: var(--neutral-900);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Dark                                                                        */
+/* -------------------------------------------------------------------------- */
+
+[data-theme="dark"] {
+  --z-absolute-white: oklch(1 0 0);
+  --z-absolute-black: oklch(0 0 0);
+
+  /*
+   * Meaning palettes still alias the same primitive names; dark values come
+   * from [data-theme="dark"] primitives above (role-aligned steps).
+   */
+  --z-color-danger-50: var(--red-50);
+  --z-color-danger-100: var(--red-100);
+  --z-color-danger-200: var(--red-200);
+  --z-color-danger-300: var(--red-300);
+  --z-color-danger-400: var(--red-400);
+  --z-color-danger-500: var(--red-500);
+  --z-color-danger-600: var(--red-600);
+  --z-color-danger-700: var(--red-700);
+  --z-color-danger-800: var(--red-800);
+  --z-color-danger-900: var(--red-900);
+  --z-color-danger-950: var(--red-950);
+
+  --z-color-success-50: var(--green-50);
+  --z-color-success-100: var(--green-100);
+  --z-color-success-200: var(--green-200);
+  --z-color-success-300: var(--green-300);
+  --z-color-success-400: var(--green-400);
+  --z-color-success-500: var(--green-500);
+  --z-color-success-600: var(--green-600);
+  --z-color-success-700: var(--green-700);
+  --z-color-success-800: var(--green-800);
+  --z-color-success-900: var(--green-900);
+  --z-color-success-950: var(--green-950);
+
+  --z-color-warning-50: var(--yellow-50);
+  --z-color-warning-100: var(--yellow-100);
+  --z-color-warning-200: var(--yellow-200);
+  --z-color-warning-300: var(--yellow-300);
+  --z-color-warning-400: var(--yellow-400);
+  --z-color-warning-500: var(--yellow-500);
+  --z-color-warning-600: var(--yellow-600);
+  --z-color-warning-700: var(--yellow-700);
+  --z-color-warning-800: var(--yellow-800);
+  --z-color-warning-900: var(--yellow-900);
+  --z-color-warning-950: var(--yellow-950);
+
+  --z-color-info-50: var(--blue-50);
+  --z-color-info-100: var(--blue-100);
+  --z-color-info-200: var(--blue-200);
+  --z-color-info-300: var(--blue-300);
+  --z-color-info-400: var(--blue-400);
+  --z-color-info-500: var(--blue-500);
+  --z-color-info-600: var(--blue-600);
+  --z-color-info-700: var(--blue-700);
+  --z-color-info-800: var(--blue-800);
+  --z-color-info-900: var(--blue-900);
+  --z-color-info-950: var(--blue-950);
+
+  /* ----- Background: structure ----- */
+  --z-color-background-canvas: var(--neutral-50);
+  --z-color-background-surface: var(--neutral-100);
+  --z-color-background-subtle: var(--neutral-200);
+  --z-color-background-muted: var(--neutral-300);
+  /* Flipped chrome: light bar in dark theme */
+  --z-color-background-inverse: var(--neutral-900);
+  --z-color-background-selected: var(--neutral-200);
+
+  --z-color-background-primary-subtle: var(--neutral-200);
+  --z-color-background-danger-subtle: var(--z-color-danger-100);
+  --z-color-background-success-subtle: var(--z-color-success-100);
+  --z-color-background-warning-subtle: var(--z-color-warning-100);
+  --z-color-background-info-subtle: var(--z-color-info-100);
+
+  /*
+   * Primary emphasis uses neutral end-of-ramp (950 = highlight in dark).
+   * Status fills use step 400 (deeper than light’s 500) so light on-solid
+   * ink meets AA; hover 300 / active 200 on the reversed ramp.
+   */
+  --z-color-background-primary: var(--neutral-950);
+  --z-color-background-primary-hover: var(--neutral-900);
+  --z-color-background-primary-active: var(--neutral-800);
+  --z-color-background-primary-disabled: var(--neutral-300);
+
+  --z-color-background-danger: var(--z-color-danger-400);
+  --z-color-background-danger-hover: var(--z-color-danger-300);
+  --z-color-background-danger-active: var(--z-color-danger-200);
+  --z-color-background-danger-disabled: var(--neutral-300);
+
+  --z-color-background-success: var(--z-color-success-400);
+  --z-color-background-success-hover: var(--z-color-success-300);
+  --z-color-background-success-active: var(--z-color-success-200);
+  --z-color-background-success-disabled: var(--neutral-300);
+
+  --z-color-background-warning: var(--z-color-warning-400);
+  --z-color-background-warning-hover: var(--z-color-warning-300);
+  --z-color-background-warning-active: var(--z-color-warning-200);
+  --z-color-background-warning-disabled: var(--neutral-300);
+
+  --z-color-background-info: var(--z-color-info-400);
+  --z-color-background-info-hover: var(--z-color-info-300);
+  --z-color-background-info-active: var(--z-color-info-200);
+  --z-color-background-info-disabled: var(--neutral-300);
+
+  /* ----- Text ----- */
+  --z-color-text-primary: var(--neutral-950);
+  --z-color-text-secondary: var(--neutral-800);
+  --z-color-text-tertiary: var(--neutral-700);
+  --z-color-text-disabled: var(--neutral-600);
+  /* Dark ink on light inverse bar */
+  --z-color-text-inverse: var(--neutral-50);
+  /* Light ink on deep solid status fills (400/300/200) */
+  --z-color-text-on-solid: var(--z-absolute-white);
+  /* On primary end-of-ramp fills (dark ink on light bar in dark theme) */
+  --z-color-text-on-primary: var(--neutral-50);
+  --z-color-text-danger: var(--z-color-danger-600);
+  --z-color-text-success: var(--z-color-success-600);
+  --z-color-text-warning: var(--z-color-warning-600);
+  --z-color-text-info: var(--z-color-info-500);
+  --z-color-text-link: var(--z-color-text-primary);
+  --z-color-text-link-hover: var(--neutral-800);
+
+  /* ----- Icon ----- */
+  --z-color-icon-primary: var(--z-color-text-primary);
+  --z-color-icon-secondary: var(--z-color-text-secondary);
+  --z-color-icon-disabled: var(--z-color-text-disabled);
+  --z-color-icon-inverse: var(--z-color-text-inverse);
+  --z-color-icon-on-solid: var(--z-color-text-on-solid);
+  --z-color-icon-on-primary: var(--z-color-text-on-primary);
+  --z-color-icon-danger: var(--z-color-text-danger);
+  --z-color-icon-success: var(--z-color-text-success);
+  --z-color-icon-warning: var(--z-color-text-warning);
+  --z-color-icon-info: var(--z-color-text-info);
+
+  /* ----- Border ----- */
+  --z-color-border-subtle: var(--neutral-300);
+  --z-color-border-default: var(--neutral-500);
+  --z-color-border-strong: var(--neutral-600);
+  --z-color-border-disabled: var(--neutral-200);
+  --z-color-border-primary: var(--neutral-950);
+  --z-color-border-danger: var(--z-color-danger-500);
+  --z-color-border-success: var(--z-color-success-500);
+  --z-color-border-warning: var(--z-color-warning-500);
+  --z-color-border-info: var(--z-color-info-500);
+  --z-color-border-focus: var(--neutral-950);
+
+  /* ----- Focus ----- */
+  --z-color-focus-ring: var(--neutral-950);
+
+  /* ----- Overlay ----- */
+  --z-color-overlay-scrim: oklch(0 0 0 / 0.65);
+  --z-color-overlay-tooltip: var(--neutral-200);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Accessibility overrides                                                     */
+/* -------------------------------------------------------------------------- */
+
+/* ----- High contrast: light theme ----- */
+
+@media (prefers-contrast: more) {
+  :root:not([data-theme="dark"]):not([data-contrast="standard"]),
+  [data-theme="light"]:not([data-contrast="standard"]) {
+    --z-color-text-secondary: var(--z-color-text-primary);
+    --z-color-text-tertiary: var(--z-color-text-primary);
+    --z-color-text-disabled: var(--neutral-800);
+    --z-color-border-subtle: var(--neutral-800);
+    --z-color-border-default: var(--neutral-800);
+    --z-color-border-strong: var(--neutral-900);
+    --z-color-border-disabled: var(--neutral-700);
+  }
+
+  [data-theme="dark"]:not([data-contrast="standard"]) {
+    --z-color-text-secondary: var(--z-color-text-primary);
+    --z-color-text-tertiary: var(--z-color-text-primary);
+    --z-color-text-disabled: var(--neutral-800);
+    --z-color-border-subtle: var(--neutral-700);
+    --z-color-border-default: var(--neutral-800);
+    --z-color-border-strong: var(--neutral-900);
+    --z-color-border-disabled: var(--neutral-600);
+  }
+}
+
+:root[data-contrast="high"]:not([data-theme="dark"]),
+[data-theme="light"][data-contrast="high"] {
+  --z-color-text-secondary: var(--z-color-text-primary);
+  --z-color-text-tertiary: var(--z-color-text-primary);
+  --z-color-text-disabled: var(--neutral-800);
+  --z-color-border-subtle: var(--neutral-800);
+  --z-color-border-default: var(--neutral-800);
+  --z-color-border-strong: var(--neutral-900);
+  --z-color-border-disabled: var(--neutral-700);
+}
+
+[data-theme="dark"][data-contrast="high"] {
+  --z-color-text-secondary: var(--z-color-text-primary);
+  --z-color-text-tertiary: var(--z-color-text-primary);
+  --z-color-text-disabled: var(--neutral-800);
+  --z-color-border-subtle: var(--neutral-700);
+  --z-color-border-default: var(--neutral-800);
+  --z-color-border-strong: var(--neutral-900);
+  --z-color-border-disabled: var(--neutral-600);
+}
+
+/* ----- Reduced transparency ----- */
+
+@media (prefers-reduced-transparency: reduce) {
+  :root:not([data-transparency="full"]) {
+    --z-color-overlay-scrim: var(--neutral-950);
+  }
+}
+
+:root[data-transparency="reduced"] {
+  --z-color-overlay-scrim: var(--neutral-950);
+}

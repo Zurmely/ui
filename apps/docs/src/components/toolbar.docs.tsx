@@ -1,0 +1,102 @@
+import { Button, Separator, Toolbar } from '@z-ui/react';
+import type { ComponentDoc } from '../playground/types';
+import { textControl } from './shared-controls';
+
+export const toolbarDoc: ComponentDoc = {
+  slug: 'toolbar',
+  name: 'Toolbar',
+  category: 'Layout',
+  summary: 'Grouped actions with leading, center, and trailing regions and roving keyboard focus.',
+  importPath: '@z-ui/react/toolbar',
+  componentName: 'Toolbar',
+  controls: {
+    label: textControl('label', 'Document actions'),
+    orientation: {
+      type: 'select',
+      label: 'orientation',
+      options: ['horizontal', 'vertical'],
+      defaultValue: 'horizontal',
+    },
+  },
+  render: (props) => (
+    <Toolbar
+      label={props.label as string}
+      orientation={props.orientation as 'horizontal' | 'vertical'}
+      style={{ width: '100%', maxWidth: '28rem' }}
+    >
+      <Button size="sm">Save</Button>
+      <Separator orientation={props.orientation === 'vertical' ? 'horizontal' : 'vertical'} />
+      <Button size="sm" variant="secondary">
+        Cancel
+      </Button>
+    </Toolbar>
+  ),
+  code: (props) => `<Toolbar label="${props.label}" orientation="${props.orientation}">
+  <Button size="sm">Save</Button>
+  <Separator orientation="${props.orientation === 'vertical' ? 'horizontal' : 'vertical'}" />
+  <Button size="sm" variant="secondary">Cancel</Button>
+</Toolbar>`,
+  examples: [
+    {
+      label: 'Horizontal actions',
+      description: 'Save and cancel actions in a horizontal toolbar.',
+      code: `<Toolbar label="Document actions">
+  <Button size="sm">Save</Button>
+  <Separator orientation="vertical" />
+  <Button size="sm" variant="secondary">Cancel</Button>
+</Toolbar>`,
+      render: () => (
+        <Toolbar label="Document actions" style={{ width: '100%', maxWidth: '28rem' }}>
+          <Button size="sm">Save</Button>
+          <Separator orientation="vertical" />
+          <Button size="sm" variant="secondary">
+            Cancel
+          </Button>
+        </Toolbar>
+      ),
+    },
+    {
+      label: 'Vertical toolbar',
+      description: 'Stacked actions for narrow panels.',
+      code: `<Toolbar label="Sidebar actions" orientation="vertical">
+  <Button size="sm" variant="ghost">Edit</Button>
+  <Button size="sm" variant="ghost">Share</Button>
+</Toolbar>`,
+      render: () => (
+        <Toolbar label="Sidebar actions" orientation="vertical">
+          <Button size="sm" variant="ghost">
+            Edit
+          </Button>
+          <Button size="sm" variant="ghost">
+            Share
+          </Button>
+        </Toolbar>
+      ),
+    },
+    {
+      label: 'Editor toolbar',
+      description: 'Formatting actions in a text editor chrome.',
+      code: `<Toolbar label="Formatting">
+  <Button size="sm" variant="ghost">Bold</Button>
+  <Button size="sm" variant="ghost">Italic</Button>
+  <Separator orientation="vertical" />
+  <Button size="sm" variant="primary">Publish</Button>
+</Toolbar>`,
+      render: () => (
+        <Toolbar label="Formatting" style={{ width: '100%', maxWidth: '28rem' }}>
+          <Button size="sm" variant="ghost">
+            Bold
+          </Button>
+          <Button size="sm" variant="ghost">
+            Italic
+          </Button>
+          <Separator orientation="vertical" />
+          <Button size="sm" variant="primary">
+            Publish
+          </Button>
+        </Toolbar>
+      ),
+      fullWidth: true,
+    },
+  ],
+};

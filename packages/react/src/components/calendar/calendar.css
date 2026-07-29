@@ -1,0 +1,128 @@
+.z-calendar {
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--z-spacing-stack-control);
+  padding: var(--z-spacing-inset-box);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-surface);
+  background-color: var(--z-color-background-surface);
+}
+
+.z-calendar[data-invalid='true'] {
+  border-color: var(--z-color-border-danger);
+}
+
+.z-calendar[data-disabled='true'] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.z-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--z-spacing-gap-inline);
+}
+
+.z-calendar__caption {
+  flex: 1;
+  text-align: center;
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-label-font-family);
+  font-size: var(--z-text-label-size);
+  font-weight: var(--z-text-label-weight);
+  line-height: var(--z-text-label-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.z-calendar__nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-control-compact);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  cursor: pointer;
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-calendar__nav:hover:not(:disabled):not([data-disabled='true']) {
+  border-color: var(--z-color-border-default);
+  background-color: var(--z-color-background-muted);
+}
+
+.z-calendar__nav:disabled,
+.z-calendar__nav[data-disabled='true'] {
+  color: var(--z-color-text-disabled);
+  border-color: var(--z-color-border-disabled);
+  cursor: not-allowed;
+}
+
+.z-calendar__grid {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.z-calendar__weekday {
+  padding: var(--z-spacing-inset-box-tight);
+  color: var(--z-color-text-tertiary);
+  font-family: var(--z-text-caption-font-family);
+  font-size: var(--z-text-caption-size);
+  font-weight: var(--z-text-caption-weight);
+  line-height: var(--z-text-caption-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  text-align: center;
+}
+
+.z-calendar__day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--z-radius-control-compact);
+  background-color: transparent;
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-calendar__day:hover:not(:disabled) {
+  background-color: var(--z-color-background-muted);
+}
+
+.z-calendar__day[data-selected='true'] {
+  background-color: var(--z-color-background-primary);
+  color: var(--z-color-text-on-primary);
+}
+
+.z-calendar__day[data-today='true']:not([data-selected='true']) {
+  border: 1px solid var(--z-color-border-strong);
+}
+
+.z-calendar__day[data-outside-month='true']:not([data-selected='true']) {
+  color: var(--z-color-text-tertiary);
+}
+
+.z-calendar__day:disabled {
+  color: var(--z-color-text-disabled);
+  cursor: not-allowed;
+}

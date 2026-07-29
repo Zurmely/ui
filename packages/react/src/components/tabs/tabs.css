@@ -1,0 +1,52 @@
+.z-tabs__list {
+  display: inline-flex;
+  gap: var(--z-spacing-gap-inline-tight);
+  padding: var(--z-spacing-inset-box-tight);
+  border: 1px solid var(--z-color-border-subtle);
+  border-radius: var(--z-radius-container);
+  background-color: var(--z-color-background-surface);
+}
+
+.z-tabs__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  border: none;
+  border-radius: var(--z-radius-control-compact);
+  background-color: var(--z-color-background-surface);
+  color: var(--z-color-text-primary);
+  font-family: var(--z-text-control-font-family);
+  font-size: var(--z-text-control-size);
+  font-weight: var(--z-text-control-weight);
+  line-height: var(--z-text-control-line-height);
+  font-optical-sizing: auto;
+  font-style: normal;
+  cursor: pointer;
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-tabs__trigger[data-state='active'] {
+  background-color: var(--z-color-background-selected);
+}
+
+.z-tabs__trigger:disabled {
+  color: var(--z-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.z-tabs__content {
+  margin-top: var(--z-spacing-stack-component);
+  color: var(--z-color-text-primary);
+}
+
+.z-tabs__content:focus {
+  outline: none;
+}
+
+.z-tabs__content:focus-visible {
+  outline: 2px solid var(--z-color-focus-ring);
+  outline-offset: 2px;
+}
