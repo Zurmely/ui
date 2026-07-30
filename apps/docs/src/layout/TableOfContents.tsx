@@ -9,6 +9,8 @@ export interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[];
+  pageTitle?: string;
+  pageDescription?: string;
 }
 
 function scrollToHeading(id: string) {
@@ -22,7 +24,11 @@ function scrollToHeading(id: string) {
   history.pushState(null, '', `#${id}`);
 }
 
-export function TableOfContents({ items }: TableOfContentsProps) {
+export function TableOfContents({
+  items,
+  pageTitle,
+  pageDescription,
+}: TableOfContentsProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? '');
 
   useEffect(() => {
@@ -87,9 +93,22 @@ export function TableOfContents({ items }: TableOfContentsProps) {
     </nav>
   );
 
+  const mobilePageHeader =
+    pageTitle || pageDescription ? (
+      <header className="docs-toc__page-header">
+        {pageTitle ? <h1 className="docs-toc__page-title">{pageTitle}</h1> : null}
+        {pageDescription ? (
+          <p className="docs-toc__page-summary">{pageDescription}</p>
+        ) : null}
+      </header>
+    ) : null;
+
   return (
     <aside className="docs-toc">
-      <div className="docs-toc__mobile">{nav}</div>
+      <div className="docs-toc__mobile">
+        {mobilePageHeader}
+        {nav}
+      </div>
       <div className="docs-toc__desktop">{nav}</div>
     </aside>
   );
