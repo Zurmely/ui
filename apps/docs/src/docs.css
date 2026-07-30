@@ -1225,6 +1225,7 @@ body {
 .docs-playground__preview {
   flex: 1 1 0;
   min-width: 0;
+  min-height: 12rem;
   padding: var(--z-spacing-inset-panel);
   display: flex;
   align-items: center;
@@ -2450,6 +2451,11 @@ body {
 
   .docs-playground__stage {
     flex-direction: column;
+  }
+
+  /* Keep the preview taller than typical demos once the stage stacks. */
+  .docs-playground__preview {
+    min-height: 16rem;
   }
 
   .docs-playground__divider--vertical {
