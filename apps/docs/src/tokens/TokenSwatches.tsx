@@ -1,6 +1,14 @@
 import {
+  Button,
   Card,
   CodeBlock,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
   Separator,
 } from '@z-ui/react';
 import {
@@ -158,6 +166,8 @@ export function PrimitiveColorSwatch({ varName }: { varName: string }) {
   const hostRef = useRef<HTMLDivElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
   const { mode, expandedWidth } = useSwatchHoverExpand(hostRef, detailsRef, [resolved, varName]);
+  const [open, setOpen] = useState(false);
+  const valueText = resolved || '—';
 
   return (
     <div
@@ -170,18 +180,52 @@ export function PrimitiveColorSwatch({ varName }: { varName: string }) {
         } as CSSProperties
       }
     >
+      <button
+        type="button"
+        className="docs-primitive-swatch__open"
+        aria-label={`View ${varName}`}
+        onClick={() => setOpen(true)}
+      />
       <div ref={detailsRef} className="docs-primitive-swatch__details">
         <CodeBlock
           variant="single"
           className="docs-primitive-swatch__text"
           title={resolved || undefined}
         >
-          {resolved || '—'}
+          {valueText}
         </CodeBlock>
         <CodeBlock variant="single" className="docs-primitive-swatch__text" title={varName}>
           {varName}
         </CodeBlock>
       </div>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{varName}</DialogTitle>
+            <DialogDescription>Primitive color token</DialogDescription>
+          </DialogHeader>
+          <div className="docs-primitive-swatch-dialog">
+            <div
+              className="docs-primitive-swatch-dialog__preview"
+              style={{ background: `var(${varName})` }}
+              aria-hidden="true"
+            />
+            <div className="docs-primitive-swatch-dialog__meta">
+              <CodeBlock variant="single" title={valueText}>
+                {valueText}
+              </CodeBlock>
+              <CodeBlock variant="single" title={varName}>
+                {varName}
+              </CodeBlock>
+            </div>
+          </div>
+          <DialogFooter>
+            <DialogClose asChild>
+              <Button variant="secondary">Close</Button>
+            </DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
