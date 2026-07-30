@@ -1,4 +1,4 @@
-import { Button } from '@z-ui/react';
+import { ListItem } from '@z-ui/react';
 import { useEffect, useState, type MouseEvent } from 'react';
 import { prefersReducedMotion } from '../prefers-reduced-motion';
 
@@ -24,7 +24,6 @@ function scrollToHeading(id: string) {
 
 export function TableOfContents({ items }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? '');
-  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -63,7 +62,6 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   const onTocClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     event.preventDefault();
-    setMobileOpen(false);
     setActiveId(id);
     scrollToHeading(id);
   };
@@ -74,13 +72,15 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       <ul className="docs-toc__list">
         {items.map((item) => (
           <li key={item.id}>
-            <a
+            <ListItem
+              as="a"
               href={`#${item.id}`}
-              className={`docs-toc__link${activeId === item.id ? ' docs-toc__link--active' : ''}`}
+              size="sm"
+              label={item.title}
+              selected={activeId === item.id}
+              className="docs-toc__item"
               onClick={(event) => onTocClick(event, item.id)}
-            >
-              {item.title}
-            </a>
+            />
           </li>
         ))}
       </ul>
@@ -89,19 +89,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
 
   return (
     <aside className="docs-toc">
-      <div className="docs-toc__mobile">
-        <Button
-          type="button"
-          variant="ghost"
-          size="sm"
-          className="docs-toc__disclosure"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-expanded={mobileOpen}
-        >
-          On this page
-        </Button>
-        {mobileOpen ? <div className="docs-toc__mobile-panel">{nav}</div> : null}
-      </div>
+      <div className="docs-toc__mobile">{nav}</div>
       <div className="docs-toc__desktop">{nav}</div>
     </aside>
   );
