@@ -1,10 +1,10 @@
-import { ListItem } from '@z-ui/react';
+import { ListItem, Separator } from '@z-ui/react';
 import type { MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { withBasePath } from '../base-path';
 import { ELEMENT_NAV, PAGE_EXAMPLE_NAV } from '../examples/registry';
 import { FOUNDATION_NAV, getNavGroups } from '../components/registry';
-import { getActiveSection } from './sections';
+import { getActiveSection, SECTIONS, sectionHasSidebar } from './sections';
 
 function DocsNavLink({
   to,
@@ -47,6 +47,48 @@ function DocsNavLink({
         onClick={handleClick}
       />
     </li>
+  );
+}
+
+export function DocsSectionNav({ onNavigate }: { onNavigate?: () => void }) {
+  const { pathname } = useLocation();
+  const activeSection = getActiveSection(pathname);
+
+  return (
+    <nav className="docs-sidebar__nav" aria-label="Documentation sections">
+      <div className="docs-sidebar__group">
+        <h2 className="docs-sidebar__group-title">Sections</h2>
+        <ul className="docs-sidebar__list">
+          {SECTIONS.map((section) => (
+            <DocsNavLink
+              key={section.id}
+              to={section.path}
+              label={section.label}
+              selected={activeSection === section.id}
+              onNavigate={onNavigate}
+            />
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export function DocsMobileNav({ onNavigate }: { onNavigate?: () => void }) {
+  const { pathname } = useLocation();
+  const activeSection = getActiveSection(pathname);
+  const showPages = sectionHasSidebar(activeSection);
+
+  return (
+    <div className="docs-mobile-nav">
+      <DocsSectionNav onNavigate={onNavigate} />
+      {showPages ? (
+        <>
+          <Separator className="docs-mobile-nav__separator" />
+          <DocsNavContent onNavigate={onNavigate} />
+        </>
+      ) : null}
+    </div>
   );
 }
 
