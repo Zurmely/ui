@@ -116,24 +116,6 @@ body {
 .docs-toc__mobile {
   display: none;
   margin-bottom: var(--z-spacing-gap-component);
-}
-
-.docs-toc__disclosure {
-  width: 100%;
-  padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-compact-x);
-  border: 1px solid var(--z-color-border-subtle);
-  border-radius: var(--z-radius-control);
-  background: var(--z-color-background-surface);
-  color: var(--z-color-text-primary);
-  font-family: var(--z-text-control-font-family);
-  font-size: var(--z-text-control-size);
-  font-weight: var(--z-text-control-weight);
-  text-align: left;
-  cursor: pointer;
-}
-
-.docs-toc__mobile-panel {
-  margin-top: var(--z-spacing-gap-inline-tight);
   padding: var(--z-spacing-inset-box-compact);
   border: 1px solid var(--z-color-border-subtle);
   border-radius: var(--z-radius-surface);
@@ -141,7 +123,8 @@ body {
 }
 
 .docs-toc__label {
-  margin: 0 0 var(--z-spacing-gap-inline);
+  margin: 0 0 var(--z-spacing-gap-component);
+  padding-inline: var(--z-spacing-inset-box-compact);
   font-family: var(--z-text-label-font-family);
   font-size: var(--z-text-label-size);
   font-weight: var(--z-text-label-weight);
@@ -156,31 +139,10 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--z-spacing-gap-inline-tight);
 }
 
-.docs-toc__link {
-  display: block;
-  padding: var(--z-spacing-inset-box-compact);
-  border-radius: var(--z-radius-control-compact);
-  color: var(--z-color-text-secondary);
-  text-decoration: none;
-  font-size: var(--z-text-caption-size);
-  line-height: var(--z-text-caption-line-height);
-  transition:
-    color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
-    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.docs-toc__link:hover {
-  color: var(--z-color-text-primary);
-  background: var(--z-color-background-subtle);
-}
-
-.docs-toc__link--active {
-  color: var(--z-color-text-primary);
-  background: var(--z-color-background-selected);
-  font-weight: 600;
+.docs-toc__list .docs-toc__item {
+  width: 100%;
 }
 
 /* Examples */
