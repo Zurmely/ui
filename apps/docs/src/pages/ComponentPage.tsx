@@ -132,7 +132,11 @@ export function ComponentPage() {
         </nav>
       </div>
 
-      <TableOfContents items={tocItems} />
+      <TableOfContents
+        items={tocItems}
+        pageTitle={doc.name}
+        pageDescription={doc.summary}
+      />
     </div>
   );
 }

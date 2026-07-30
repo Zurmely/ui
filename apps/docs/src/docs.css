@@ -122,6 +122,24 @@ body {
   background: var(--z-color-background-surface);
 }
 
+.docs-toc__page-header {
+  margin-bottom: var(--z-spacing-gap-component);
+  padding-inline: var(--z-spacing-inset-box-compact);
+}
+
+.docs-toc__page-title {
+  margin: 0 0 var(--z-spacing-gap-inline-tight);
+  font-family: var(--z-text-h1-font-family);
+  font-size: var(--z-text-h1-size);
+  font-weight: var(--z-text-h1-weight);
+  line-height: var(--z-text-h1-line-height);
+}
+
+.docs-toc__page-summary {
+  margin: 0;
+  color: var(--z-color-text-secondary);
+}
+
 .docs-toc__label {
   margin: 0 0 var(--z-spacing-gap-component);
   padding-inline: var(--z-spacing-inset-box-compact);
@@ -2420,6 +2438,11 @@ body {
 
   .docs-toc__mobile {
     display: block;
+  }
+
+  .docs-page__header .docs-page__title,
+  .docs-page__header .docs-page__summary {
+    display: none;
   }
 
   .docs-callout-grid {
