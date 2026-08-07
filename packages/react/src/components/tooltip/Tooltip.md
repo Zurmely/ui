@@ -2,7 +2,9 @@
 
 ## Overview
 
-Tooltip shows brief, supplementary information on hover or focus. Tooltip does not clutter the interface.
+Tooltip shows brief, supplementary information on hover or focus.
+
+Tooltip does not clutter the interface.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Tooltip shows brief, supplementary information on hover or focus. Tooltip does n
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@z-ui/react/tooltip';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@z-ux/ui/tooltip';
 ```
 
 ## API

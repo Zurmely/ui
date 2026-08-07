@@ -1,4 +1,4 @@
-import { CodeBlock as ZCodeBlock } from '@z-ui/react';
+import { CodeBlock as ZCodeBlock } from '@z-ux/ui';
 
 interface CodeBlockProps {
   code: string;

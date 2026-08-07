@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Stack puts child elements in a horizontal or vertical flex layout. Stack uses semantic spacing that stays the same between items.
+Stack puts child elements in a horizontal or vertical flex layout.
+
+Stack uses semantic spacing that stays the same between items.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Stack puts child elements in a horizontal or vertical flex layout. Stack uses se
 ## Import
 
 ```tsx
-import { Stack } from '@z-ui/react/stack';
+import { Stack } from '@z-ux/ui/stack';
 ```
 
 ## Compose

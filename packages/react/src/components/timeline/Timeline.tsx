@@ -42,8 +42,9 @@ export const TimelineItem = forwardRef<HTMLLIElement, TimelineItemProps>(functio
 
   return (
     <li ref={ref} className={cx('z-timeline__item', className)} {...props}>
-      <div className="z-timeline__marker" aria-hidden="true">
-        {icon ?? <span className="z-timeline__dot" />}
+      <div className="z-timeline__rail" aria-hidden="true">
+        <div className="z-timeline__indicator">{icon ?? <span className="z-timeline__dot" />}</div>
+        <div className="z-timeline__connector" />
       </div>
       <div className="z-timeline__content">
         {date ? <div className="z-timeline__date">{date}</div> : null}

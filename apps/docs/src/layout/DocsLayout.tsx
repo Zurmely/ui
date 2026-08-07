@@ -5,7 +5,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   type AccessibilityPreferences,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import { useLocation } from 'react-router-dom';
 import { DocsHeader, DOCS_NAV_DRAWER_ID } from './DocsHeader';
 import { DocsMobileNav, DocsNavContent } from './DocsNav';

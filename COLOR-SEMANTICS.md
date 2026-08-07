@@ -2,7 +2,7 @@
 
 **Status:** Draft  
 **Audience:** Designers and developers  
-**Related:** [PRD.md](./PRD.md), [`colors.css`](./colors.css), [`colors.html`](./colors.html)
+**Related:** [PRD.md](./PRD.md), [`colors.css`](./colors.css), [`colors.html`](./colors.html), [CHART-SEMANTICS.md](./CHART-SEMANTICS.md)
 
 This document defines how **color semantics** work in Z-UI: purpose-based color tokens that stay stable across light and dark themes, map cleanly between Figma and code, and remain usable under interaction states (hover, focus, disabled, and more).
 

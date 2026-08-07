@@ -4,6 +4,8 @@
 
 Menu shows a list of actions or choices in a dropdown anchored to a trigger.
 
+Dropdown menu for actions.
+
 ## Select when
 
 - You give secondary actions for a control or a row.
@@ -19,7 +21,7 @@ Menu shows a list of actions or choices in a dropdown anchored to a trigger.
 ## Import
 
 ```tsx
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ui/react/menu';
+import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ux/ui/menu';
 ```
 
 ## Compose

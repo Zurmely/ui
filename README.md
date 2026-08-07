@@ -6,8 +6,9 @@ Semantic color tokens and React component library.
 
 | Package | Description |
 | --- | --- |
-| [`@z-ui/tokens`](./packages/tokens) | Semantic CSS design tokens (`colors.css`, `sizes.css`, `text.css`, `motion.css`, `elevation.css`) |
-| [`@z-ui/react`](./packages/react) | React 19 component library |
+| [`@z-ux/tokens`](./packages/tokens) | Semantic CSS design tokens (`colors.css`, `sizes.css`, `text.css`, `motion.css`, `elevation.css`) |
+| [`@z-ux/ui`](./packages/react) | React 19 component library |
+| [`@z-ux/charts`](./packages/charts) | Chart components (visx) — in development |
 | [`@z-ui/docs`](./apps/docs) | Interactive documentation site with playgrounds and token reference |
 
 ## Quick start
@@ -24,13 +25,13 @@ Open http://localhost:5173 for the documentation site: foundation token pages, p
 Legacy preview app: `pnpm dev:preview` (single-page showcase). Static color reference: [`colors.html`](./colors.html).
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import '@z-ui/tokens/elevation.css';
-import '@z-ui/react/styles.css';
-import { Button } from '@z-ui/react/button';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import '@z-ux/tokens/elevation.css';
+import '@z-ux/ui/styles.css';
+import { Button } from '@z-ux/ui/button';
 
 export function App() {
   return (
@@ -44,9 +45,12 @@ export function App() {
 ## Documentation
 
 - [PRD](./PRD.md)
+- [Versioning](./VERSIONING.md) — lockstep SemVer for `@z-ux/tokens`, `@z-ux/ui`, and `@z-ux/charts`
 - [Color semantics](./COLOR-SEMANTICS.md)
+- [Chart color semantics](./CHART-SEMANTICS.md)
 - [Size semantics](./SIZES-SEMANTICS.md)
 - [Text semantics](./TEXT-SEMANTICS.md)
 - [Motion semantics](./MOTION-SEMANTICS.md)
+- [Elevation semantics](./ELEVATION-SEMANTICS.md)
 - [Naming conventions](./packages/react/docs/NAMING.md)
 - [Component docs](./packages/react/README.md)

@@ -2,7 +2,9 @@
 
 ## Overview
 
-Dialog shows focused modal content that needs user attention or action. Dialog blocks interaction with the page behind it.
+Dialog shows focused modal content that needs user attention or action.
+
+Dialog blocks interaction with the page behind it.
 
 ## When to use
 
@@ -19,15 +21,15 @@ Dialog shows focused modal content that needs user attention or action. Dialog b
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import '@z-ui/tokens/elevation.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import '@z-ux/tokens/elevation.css';
 import {
   Dialog,
   DialogClose,
@@ -37,7 +39,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@z-ui/react/dialog';
+} from '@z-ux/ui/dialog';
 ```
 
 ## API

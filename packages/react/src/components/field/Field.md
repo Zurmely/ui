@@ -2,7 +2,9 @@
 
 ## Overview
 
-Field groups a form control with a label, a description, and an error message. Field uses context to connect shared ids and accessibility attributes.
+Field groups a form control with a label, a description, and an error message.
+
+Field uses context to connect shared ids and accessibility attributes.
 
 ## When to use
 
@@ -18,13 +20,13 @@ Field groups a form control with a label, a description, and an error message. F
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import { Field, FieldDescription, FieldError, FieldLabel } from '@z-ui/react/field';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import { Field, FieldDescription, FieldError, FieldLabel } from '@z-ux/ui/field';
 ```
 
 ## API

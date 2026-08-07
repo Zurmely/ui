@@ -3,6 +3,7 @@
 ## Overview
 
 Popover shows rich content near a trigger.
+
 The rest of the page stays interactive.
 
 ## When to use
@@ -20,14 +21,14 @@ The rest of the page stays interactive.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Popover, PopoverContent, PopoverTrigger } from '@z-ui/react/popover';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Popover, PopoverContent, PopoverTrigger } from '@z-ux/ui/popover';
 ```
 
 ## API

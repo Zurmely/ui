@@ -2,7 +2,9 @@
 
 ## Purpose
 
-TextField gives a styled native `<input>`. TextField works with `Field` context for ids, validation state, and `aria-describedby` wiring.
+TextField gives a styled native `<input>`.
+
+TextField works with `Field` context for ids, validation state, and `aria-describedby` wiring.
 
 ## Select when
 
@@ -19,7 +21,7 @@ TextField gives a styled native `<input>`. TextField works with `Field` context 
 ## Import
 
 ```tsx
-import { TextField } from '@z-ui/react/text-field';
+import { TextField } from '@z-ux/ui/text-field';
 ```
 
 ## Compose

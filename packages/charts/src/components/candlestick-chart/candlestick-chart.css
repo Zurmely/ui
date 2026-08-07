@@ -1,0 +1,15 @@
+.z-candlestick-chart__wick,
+.z-candlestick-chart__tick {
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.z-candlestick-chart__bar--up .z-candlestick-chart__wick,
+.z-candlestick-chart__bar--up .z-candlestick-chart__tick {
+  stroke: var(--z-color-chart-positive);
+}
+
+.z-candlestick-chart__bar--down .z-candlestick-chart__wick,
+.z-candlestick-chart__bar--down .z-candlestick-chart__tick {
+  stroke: var(--z-color-chart-negative);
+}

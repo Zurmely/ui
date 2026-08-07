@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@z-ui/react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@z-ux/ui';
 import { Link } from 'react-router-dom';
 import type { AnyComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';

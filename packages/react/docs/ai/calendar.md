@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Calendar shows an accessible month grid for picking a single date. Day buttons accept keyboard focus. You can move between months.
+Calendar shows an accessible month grid for picking a single date.
+
+Day buttons accept keyboard focus.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Calendar shows an accessible month grid for picking a single date. Day buttons a
 ## Import
 
 ```tsx
-import { Calendar } from '@z-ui/react/calendar';
+import { Calendar } from '@z-ux/ui/calendar';
 ```
 
 ## Compose

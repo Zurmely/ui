@@ -4,6 +4,8 @@
 
 OTPInput collects one-time passwords in many single-digit fields.
 
+The component moves focus to the next field after you enter a digit.
+
 ## Select when
 
 - You check an SMS code or an email code.
@@ -18,7 +20,7 @@ OTPInput collects one-time passwords in many single-digit fields.
 ## Import
 
 ```tsx
-import { OTPInput } from '@z-ui/react/otp-input';
+import { OTPInput } from '@z-ux/ui/otp-input';
 ```
 
 ## Compose

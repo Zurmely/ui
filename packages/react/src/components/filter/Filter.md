@@ -2,7 +2,9 @@
 
 ## Overview
 
-Filter shows a chip-style toggle group for list filtering. Filter supports single selection or multiple selection.
+Filter shows a chip-style toggle group for list filtering.
+
+Filter supports single selection or multiple selection.
 
 ## When to use
 
@@ -18,7 +20,7 @@ Filter shows a chip-style toggle group for list filtering. Filter supports singl
 ## Install
 
 ```tsx
-import { Filter, FilterItem } from '@z-ui/react/filter';
+import { Filter, FilterItem } from '@z-ux/ui/filter';
 ```
 
 ## API

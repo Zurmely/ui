@@ -2,7 +2,9 @@
 
 ## Overview
 
-IconButton triggers icon-only actions. IconButton uses the same semantic color tokens in the light theme and in the dark theme. You need to give an accessible name.
+IconButton triggers icon-only actions.
+
+IconButton uses the same semantic color tokens in the light theme and in the dark theme.
 
 ## When to use
 
@@ -19,15 +21,15 @@ IconButton triggers icon-only actions. IconButton uses the same semantic color t
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { IconButton } from '@z-ui/react/icon-button';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { IconButton } from '@z-ux/ui/icon-button';
 ```
 
 ## API

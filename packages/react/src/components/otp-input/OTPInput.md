@@ -3,9 +3,8 @@
 ## Overview
 
 OTPInput collects one-time passwords in many single-digit fields.
+
 The component moves focus to the next field after you enter a digit.
-You can paste a full code into the fields.
-OTPInput works with `Field`.
 
 ## When to use
 
@@ -21,7 +20,7 @@ OTPInput works with `Field`.
 ## Install
 
 ```tsx
-import { OTPInput } from '@z-ui/react/otp-input';
+import { OTPInput } from '@z-ux/ui/otp-input';
 ```
 
 ## API

@@ -2,7 +2,9 @@
 
 ## Overview
 
-FileInput shows a styled file upload control. FileInput supports an optional drag-and-drop dropzone and `Field` integration.
+FileInput shows a styled file upload control.
+
+FileInput supports an optional drag-and-drop dropzone and `Field` integration.
 
 ## When to use
 
@@ -18,7 +20,7 @@ FileInput shows a styled file upload control. FileInput supports an optional dra
 ## Install
 
 ```tsx
-import { FileInput } from '@z-ui/react/file-input';
+import { FileInput } from '@z-ux/ui/file-input';
 ```
 
 ## API

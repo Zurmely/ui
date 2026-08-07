@@ -1,10 +1,12 @@
 import {
   Avatar,
   Badge,
+  Button,
   ListItem,
   ListItemIcon,
   Switch,
-} from '@z-ui/react';
+  Toolbar,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { sizeControl, textControl } from './shared-controls';
 
@@ -26,7 +28,7 @@ export const listItemDoc: ComponentDoc = {
   category: 'Layout',
   summary:
     'Unified row layout for lists, settings, navigation, and flexible compositions with open leading and trailing slots.',
-  importPath: '@z-ui/react/list-item',
+  importPath: '@z-ux/ui/list-item',
   componentName: 'ListItem',
   controls: {
     label: textControl('label', 'Notifications'),
@@ -89,6 +91,25 @@ export const listItemDoc: ComponentDoc = {
   description="${props.description}"
   trailing={<Badge tone="info">New</Badge>}
 />`,
+  whenToUsePreviews: {
+    use: () => (
+      <ListItem
+        variant="contained"
+        style={{ width: '100%', maxWidth: '20rem' }}
+        leading={<ListItemIcon>{bellIcon}</ListItemIcon>}
+        label="Notifications"
+        description="Email and push alerts"
+        trailing={<Badge tone="info">New</Badge>}
+      />
+    ),
+    doNotUse: () => (
+      <Toolbar label="Notifications" style={{ width: '100%', maxWidth: '20rem' }}>
+        <Button size="sm" variant="ghost">
+          Settings
+        </Button>
+      </Toolbar>
+    ),
+  },
   examples: [
     {
       label: 'Contained',

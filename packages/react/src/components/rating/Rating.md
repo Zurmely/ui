@@ -4,6 +4,8 @@
 
 Rating gives a star input to collect or show scores from 1 to `max`.
 
+Star rating input.
+
 ## When to use
 
 **Use when:**
@@ -18,7 +20,7 @@ Rating gives a star input to collect or show scores from 1 to `max`.
 ## Install
 
 ```tsx
-import { Rating } from '@z-ui/react/rating';
+import { Rating } from '@z-ux/ui/rating';
 ```
 
 ## API

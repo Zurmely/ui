@@ -2,7 +2,9 @@
 
 ## Overview
 
-Tabs organize related content into switchable panels. Users can move between views without leaving the page.
+Tabs organize related content into switchable panels.
+
+Users can move between views without leaving the page.
 
 ## When to use
 
@@ -19,15 +21,15 @@ Tabs organize related content into switchable panels. Users can move between vie
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ui/react/tabs';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ux/ui/tabs';
 ```
 
 ## API

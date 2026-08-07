@@ -1,0 +1,103 @@
+name: Publish packages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/tokens/**'
+      - 'packages/react/**'
+      - 'scripts/bump-publishable-versions.mjs'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+    inputs:
+      level:
+        description: SemVer bump level (patch, minor, or major)
+        required: false
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  publish:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip ci]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.6.5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Detect bump level
+        id: bump
+        env:
+          MANUAL_LEVEL: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.level || '' }}
+        run: |
+          if [ -n "$MANUAL_LEVEL" ]; then
+            echo "level=$MANUAL_LEVEL" >> "$GITHUB_OUTPUT"
+            echo "Using manual level: $MANUAL_LEVEL"
+            exit 0
+          fi
+
+          LAST_BUMP_SHA=$(git log -1 --grep='chore: bump package versions' --format='%H' || true)
+          if [ -n "$LAST_BUMP_SHA" ]; then
+            RANGE="${LAST_BUMP_SHA}..HEAD"
+          else
+            RANGE="HEAD~20..HEAD"
+          fi
+
+          COMMITS=$(git log --format='%s%n%b' "$RANGE" || true)
+          LEVEL=$(node scripts/bump-publishable-versions.mjs --from-commits="$COMMITS" --print-level)
+          echo "level=${LEVEL:-patch}" >> "$GITHUB_OUTPUT"
+          echo "Detected level: ${LEVEL:-patch}"
+
+      - name: Bump package versions
+        run: node scripts/bump-publishable-versions.mjs --level="${{ steps.bump.outputs.level }}"
+
+      - name: Build publishable packages
+        run: pnpm --filter @z-ux/tokens build && pnpm --filter @z-ux/ui build
+
+      - name: Typecheck UI package
+        run: pnpm --filter @z-ux/ui typecheck
+
+      - name: Publish to npm
+        run: |
+          pnpm --filter @z-ux/tokens publish --access public --no-git-checks --provenance
+          pnpm --filter @z-ux/ui publish --access public --no-git-checks --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit version bump
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add packages/tokens/package.json packages/react/package.json
+          git diff --staged --quiet && echo "No version changes to commit" && exit 0
+          VERSION=$(node -p "require('./packages/tokens/package.json').version")
+          git commit -m "chore: bump package versions to ${VERSION} [skip ci]"
+          git push

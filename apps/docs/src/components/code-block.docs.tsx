@@ -1,4 +1,4 @@
-import { CodeBlock } from '@z-ui/react';
+import { CodeBlock } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { childrenControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const codeBlockDoc: ComponentDoc = (() => {
     name: 'CodeBlock',
     category: 'Display',
     summary: 'Inline or multi-line code surface for token names and samples.',
-    importPath: '@z-ui/react/code-block',
+    importPath: '@z-ux/ui/code-block',
     componentName: 'CodeBlock',
     controls: {
       variant: {
@@ -49,37 +49,60 @@ export const codeBlockDoc: ComponentDoc = (() => {
       }
       return `<CodeBlock variant="single">${children}</CodeBlock>`;
     },
+    whenToUsePreviews: {
+      use: () => <CodeBlock variant="single">--z-color-text-primary</CodeBlock>,
+      doNotUse: () => <code>--z-color-text-primary</code>,
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
       label: 'Single line',
       description: 'Compact inline chip for token names and short identifiers.',
-      code: doc.code ? doc.code(defaults) : '<CodeBlock />',
-      render: () => doc.render(defaults),
+      code: '<CodeBlock variant="single">--z-color-text-primary</CodeBlock>',
+      render: () => <CodeBlock variant="single">--z-color-text-primary</CodeBlock>,
     },
     {
       label: 'Multi line',
       description: 'Block sample with an optional language label.',
-      code: doc.code
-        ? doc.code({
-            ...defaults,
-            variant: 'multi',
-            children: "import { Button } from '@z-ui/react';",
-          })
-        : '<CodeBlock />',
-      render: () =>
-        doc.render({
-          ...defaults,
-          variant: 'multi',
-          children: "import { Button } from '@z-ui/react';",
-        }),
+      code: `<CodeBlock
+  variant="multi"
+  language="tsx"
+  code={\`import { Button, Stack } from '@z-ux/ui';
+
+export function SaveBar() {
+  return (
+    <Stack direction="horizontal" gap="sm">
+      <Button variant="ghost">Cancel</Button>
+      <Button variant="primary">Save</Button>
+    </Stack>
+  );
+}\`}
+/>`,
+      render: () => (
+        <div style={{ width: '100%', maxWidth: '28rem' }}>
+          <CodeBlock
+            variant="multi"
+            language="tsx"
+            code={`import { Button, Stack } from '@z-ux/ui';
+
+export function SaveBar() {
+  return (
+    <Stack direction="horizontal" gap="sm">
+      <Button variant="ghost">Cancel</Button>
+      <Button variant="primary">Save</Button>
+    </Stack>
+  );
+}`}
+          />
+        </div>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with playground props.',
-      code: doc.code ? doc.code(defaults) : '<CodeBlock />',
-      render: () => doc.render(defaults),
+      label: 'Token reference',
+      description: 'Inline code for a spacing token in documentation.',
+      code: '<CodeBlock variant="single">--z-spacing-stack-component</CodeBlock>',
+      render: () => <CodeBlock variant="single">--z-spacing-stack-component</CodeBlock>,
     },
   ];
   return doc;

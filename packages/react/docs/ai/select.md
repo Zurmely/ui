@@ -4,6 +4,8 @@
 
 Select lets the user choose one value from a list in a compact, field-like control with an accessible dropdown menu.
 
+Dropdown selection with keyboard navigation.
+
 ## Select when
 
 - Users pick one option from more than ~7 choices.
@@ -18,7 +20,7 @@ Select lets the user choose one value from a list in a compact, field-like contr
 ## Import
 
 ```tsx
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@z-ui/react/select';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@z-ux/ui/select';
 ```
 
 ## Compose

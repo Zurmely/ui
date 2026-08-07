@@ -2,7 +2,9 @@
 
 ## Overview
 
-Carousel shows a sequence of content slides in a scrollable viewport. Carousel has previous and next controls. Carousel supports keyboard navigation.
+Carousel shows a sequence of content slides in a scrollable viewport.
+
+Carousel has previous and next controls.
 
 ## When to use
 
@@ -19,21 +21,21 @@ Carousel shows a sequence of content slides in a scrollable viewport. Carousel h
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@z-ui/react/carousel';
+} from '@z-ux/ui/carousel';
 ```
 
 ## API

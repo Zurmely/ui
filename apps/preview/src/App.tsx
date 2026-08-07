@@ -129,7 +129,7 @@ import {
   readStoredTheme,
   type ThemePreference,
   type AccessibilityPreferences,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import TokensPreview from './TokensPreview';
 
 function PlusIcon() {

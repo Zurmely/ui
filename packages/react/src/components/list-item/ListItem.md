@@ -3,6 +3,7 @@
 ## Overview
 
 ListItem gives a shared horizontal layout with leading, content, and trailing regions.
+
 Use it for list rows, settings rows, navigation links, and flexible compositions with open slots.
 
 ## When to use
@@ -21,14 +22,14 @@ Use it for list rows, settings rows, navigation links, and flexible compositions
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { ListItem, ListItemIcon } from '@z-ui/react/list-item';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { ListItem, ListItemIcon } from '@z-ux/ui/list-item';
 ```
 
 ## API

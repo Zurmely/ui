@@ -1,12 +1,13 @@
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@z-ui/react';
-import { Button } from '@z-ui/react';
+  Stack,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { textControl } from './shared-controls';
@@ -17,11 +18,11 @@ export const cardDoc: ComponentDoc = (() => {
   name: 'Card',
   category: 'Layout',
   summary: 'Container for grouped content with header, body, and footer.',
-  importPath: '@z-ui/react/card',
+  importPath: '@z-ux/ui/card',
   componentName: 'Card',
   controls: {
-    title: textControl('title', 'Card title'),
-    description: textControl('description', 'Card description goes here.'),
+    title: textControl('title', 'Project overview'),
+    description: textControl('description', 'Track milestones and team activity.'),
   },
   render: (props) => (
     <Card style={{ width: '100%', maxWidth: '24rem' }}>
@@ -30,10 +31,10 @@ export const cardDoc: ComponentDoc = (() => {
         <CardDescription>{props.description as string}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card content area for additional details.</p>
+        <p>3 tasks due this week.</p>
       </CardContent>
       <CardFooter>
-        <Button variant="primary">Action</Button>
+        <Button variant="primary">View project</Button>
       </CardFooter>
     </Card>
   ),
@@ -43,32 +44,117 @@ export const cardDoc: ComponentDoc = (() => {
     <CardDescription>${props.description}</CardDescription>
   </CardHeader>
   <CardContent>
-    <p>Card content area.</p>
+    <p>3 tasks due this week.</p>
   </CardContent>
   <CardFooter>
-    <Button variant="primary">Action</Button>
+    <Button variant="primary">View project</Button>
   </CardFooter>
 </Card>`,
+    whenToUsePreviews: {
+      use: () => (
+        <Card style={{ width: '100%', maxWidth: '20rem' }}>
+          <CardHeader>
+            <CardTitle>Project overview</CardTitle>
+            <CardDescription>Track milestones and team activity.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>3 tasks due this week.</p>
+          </CardContent>
+        </Card>
+      ),
+      doNotUse: () => (
+        <Button variant="ghost" style={{ width: '100%', maxWidth: '20rem', justifyContent: 'flex-start' }}>
+          Project overview
+        </Button>
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<card />',
-      render: () => doc.render(defaults),
+      label: 'Content card',
+      description: 'Grouped content with header, body, and footer actions.',
+      code: `<Card>
+  <CardHeader>
+    <CardTitle>Project overview</CardTitle>
+    <CardDescription>Track milestones and team activity.</CardDescription>
+  </CardHeader>
+  <CardContent><p>3 tasks due this week.</p></CardContent>
+  <CardFooter><Button variant="primary">View project</Button></CardFooter>
+</Card>`,
+      render: () => (
+        <Card style={{ width: '100%', maxWidth: '24rem' }}>
+          <CardHeader>
+            <CardTitle>Project overview</CardTitle>
+            <CardDescription>Track milestones and team activity.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p>3 tasks due this week.</p>
+          </CardContent>
+          <CardFooter>
+            <Button variant="primary">View project</Button>
+          </CardFooter>
+        </Card>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<card />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Metric summary',
+      description: 'Highlight a KPI with supporting detail.',
+      code: `<Card>
+  <CardHeader>
+    <CardTitle>Monthly revenue</CardTitle>
+    <CardDescription>Compared to last month</CardDescription>
+  </CardHeader>
+  <CardContent><p style={{ fontSize: 'var(--z-text-h3-size)', fontWeight: 'var(--z-text-h3-weight)', lineHeight: 'var(--z-text-h3-line-height)', margin: 0 }}>$42,800</p></CardContent>
+</Card>`,
+      render: () => (
+        <Card style={{ width: '100%', maxWidth: '20rem' }}>
+          <CardHeader>
+            <CardTitle>Monthly revenue</CardTitle>
+            <CardDescription>Compared to last month</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p
+              style={{
+                fontSize: 'var(--z-text-h3-size)',
+                fontWeight: 'var(--z-text-h3-weight)',
+                lineHeight: 'var(--z-text-h3-line-height)',
+                margin: 0,
+              }}
+            >
+              $42,800
+            </p>
+          </CardContent>
+        </Card>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<card />',
-      render: () => doc.render(defaults),
+      label: 'Confirm action',
+      description: 'Card footer with cancel and primary actions.',
+      code: `<Card>
+  <CardHeader><CardTitle>Publish changes?</CardTitle></CardHeader>
+  <CardFooter>
+    <Stack direction="horizontal" gap="sm" style={{ justifyContent: 'flex-end', width: '100%' }}>
+      <Button variant="ghost">Cancel</Button>
+      <Button variant="primary">Publish</Button>
+    </Stack>
+  </CardFooter>
+</Card>`,
+      render: () => (
+        <Card style={{ width: '100%', maxWidth: '24rem' }}>
+          <CardHeader>
+            <CardTitle>Publish changes?</CardTitle>
+            <CardDescription>Updates will be visible to all team members.</CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Stack direction="horizontal" gap="sm" style={{ justifyContent: 'flex-end', width: '100%' }}>
+              <Button variant="ghost">Cancel</Button>
+              <Button variant="primary">Publish</Button>
+            </Stack>
+          </CardFooter>
+        </Card>
+      ),
+      fullWidth: true,
     },
   ];
   return doc;

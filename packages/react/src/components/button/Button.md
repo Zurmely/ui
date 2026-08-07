@@ -2,7 +2,9 @@
 
 ## Overview
 
-Button starts actions and form submissions. Button uses consistent semantic colors in the light theme and in the dark theme.
+Button starts actions and form submissions.
+
+Use it for primary, secondary, ghost, and destructive actions in forms, dialogs, and toolbars.
 
 ## When to use
 
@@ -19,15 +21,15 @@ Button starts actions and form submissions. Button uses consistent semantic colo
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Button } from '@z-ui/react/button';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Button } from '@z-ux/ui/button';
 ```
 
 ## API

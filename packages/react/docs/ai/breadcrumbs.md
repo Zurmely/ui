@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Breadcrumbs show the current page location in a site hierarchy. Breadcrumbs let you go to ancestor pages with one click.
+Breadcrumbs show the current page location in a site hierarchy.
+
+Breadcrumbs let you go to ancestor pages with one click.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Breadcrumbs show the current page location in a site hierarchy. Breadcrumbs let 
 ## Import
 
 ```tsx
-import { BreadcrumbItem, BreadcrumbLink, Breadcrumbs, BreadcrumbSeparator } from '@z-ui/react';
+import { BreadcrumbItem, BreadcrumbLink, Breadcrumbs, BreadcrumbSeparator } from '@z-ux/ui';
 ```
 
 ## Compose

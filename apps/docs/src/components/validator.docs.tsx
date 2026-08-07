@@ -1,4 +1,10 @@
-import { TextField, Validator, ValidatorMessage } from '@z-ui/react';
+import {
+  Field,
+  FieldLabel,
+  TextField,
+  Validator,
+  ValidatorMessage,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { textControl } from './shared-controls';
@@ -9,7 +15,7 @@ export const validatorDoc: ComponentDoc = (() => {
   name: 'Validator',
   category: 'Forms',
   summary: 'Wraps a control with async validation feedback.',
-  importPath: '@z-ui/react/validator',
+  importPath: '@z-ux/ui/validator',
   componentName: 'Validator',
   controls: {
     value: textControl('value', ''),
@@ -34,26 +40,73 @@ export const validatorDoc: ComponentDoc = (() => {
   <TextField aria-label="Username" />
   <ValidatorMessage />
 </Validator>`,
+    whenToUsePreviews: {
+      use: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Username</FieldLabel>
+          <Validator value="ab" validate={(v) => (v.length < 3 ? 'Too short' : undefined)} defaultTouched>
+            <TextField value="ab" onChange={() => {}} aria-label="Username" />
+            <ValidatorMessage />
+          </Validator>
+        </Field>
+      ),
+      doNotUse: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Username</FieldLabel>
+          <TextField value="ab" onChange={() => {}} aria-label="Username" />
+        </Field>
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<validator />',
-      render: () => doc.render(defaults),
+      label: 'Username check',
+      description: 'Inline validation on a text field.',
+      code: `<Validator value={value} validate={(v) => v.length < 3 ? 'Too short' : undefined}>
+  <TextField aria-label="Username" />
+  <ValidatorMessage />
+</Validator>`,
+      render: () => (
+        <Validator value="ab" validate={(v) => (v.length < 3 ? 'Too short' : undefined)} defaultTouched>
+          <TextField value="ab" onChange={() => {}} aria-label="Username" style={{ width: '100%', maxWidth: '20rem' }} />
+          <ValidatorMessage />
+        </Validator>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, minLength: 4 }) : '<validator />',
-      render: () => doc.render({ ...defaults, minLength: 4 }),
+      label: 'Valid input',
+      description: 'No error when validation passes.',
+      code: `<Validator value={value} validate={(v) => v.length < 3 ? 'Too short' : undefined}>
+  <TextField aria-label="Username" />
+  <ValidatorMessage />
+</Validator>`,
+      render: () => (
+        <Validator value="jane" validate={(v) => (v.length < 3 ? 'Too short' : undefined)} defaultTouched>
+          <TextField value="jane" onChange={() => {}} aria-label="Username" style={{ width: '100%', maxWidth: '20rem' }} />
+          <ValidatorMessage />
+        </Validator>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<validator />',
-      render: () => doc.render(defaults),
+      label: 'Signup form',
+      description: 'Validator wrapped field in a registration form.',
+      code: `<Field>
+  <FieldLabel>Username</FieldLabel>
+  <Validator value={value} validate={validateUsername}>
+    <TextField aria-label="Username" />
+    <ValidatorMessage />
+  </Validator>
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Username</FieldLabel>
+          <Validator value="" validate={(v) => (v.length < 3 ? 'Too short' : undefined)} defaultTouched>
+            <TextField value="" onChange={() => {}} aria-label="Username" />
+            <ValidatorMessage />
+          </Validator>
+        </Field>
+      ),
     },
   ];
   return doc;

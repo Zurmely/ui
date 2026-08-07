@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Steps shows progress through a multi-step flow. Steps marks each step as current, completed, or upcoming.
+Steps shows progress through a multi-step flow.
+
+Steps marks each step as current, completed, or upcoming.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Steps shows progress through a multi-step flow. Steps marks each step as current
 ## Import
 
 ```tsx
-import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ui/react';
+import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ux/ui';
 ```
 
 ## Compose

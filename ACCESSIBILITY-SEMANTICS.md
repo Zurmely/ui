@@ -107,7 +107,7 @@ Flags apply at the **document root only** (`document.documentElement`).
 | `resolveAccessibilityPreferences` | Resolve `system` preferences from OS media queries |
 | `prefersReducedMotion` | SSR-safe motion check (attribute + media query) |
 
-Import from `@z-ui/react` or `@z-ui/react/accessibility`.
+Import from `@z-ux/ui` or `@z-ux/ui/accessibility`.
 
 ---
 
@@ -118,4 +118,4 @@ Import from `@z-ui/react` or `@z-ui/react/accessibility`.
 | Consume semantic tokens in components | Hardcode contrast, motion, or transparency values |
 | Use `applyAccessibilityPreferences` at app startup | Set primitive CSS variables in component styles |
 | Honor `prefersReducedMotion()` in JS-driven motion | Animate focus rings or outlines |
-| Run `pnpm --filter @z-ui/tokens contrast` after color changes | Edit `packages/tokens/dist/**` directly |
+| Run `pnpm --filter @z-ux/tokens contrast` after color changes | Edit `packages/tokens/dist/**` directly |

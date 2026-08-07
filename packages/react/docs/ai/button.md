@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Button starts actions and form submissions. Button uses consistent semantic colors in the light theme and in the dark theme.
+Button starts actions and form submissions.
+
+Use it for primary, secondary, ghost, and destructive actions in forms, dialogs, and toolbars.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Button starts actions and form submissions. Button uses consistent semantic colo
 ## Import
 
 ```tsx
-import { Button } from '@z-ui/react/button';
+import { Button } from '@z-ux/ui/button';
 ```
 
 ## Compose

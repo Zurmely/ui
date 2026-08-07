@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Toast shows brief, non-blocking feedback. Toast auto-dismisses without interrupting the current task.
+Toast shows brief, non-blocking feedback.
+
+Toast auto-dismisses without interrupting the current task.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Toast shows brief, non-blocking feedback. Toast auto-dismisses without interrupt
 ## Import
 
 ```tsx
-import { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@z-ui/react/toast';
+import { Toast, ToastAction, ToastClose, ToastDescription, ToastProvider, ToastTitle, ToastViewport } from '@z-ux/ui/toast';
 ```
 
 ## Compose

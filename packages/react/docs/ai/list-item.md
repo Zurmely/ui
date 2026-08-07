@@ -4,6 +4,8 @@
 
 ListItem gives a shared horizontal layout with leading, content, and trailing regions.
 
+Use it for list rows, settings rows, navigation links, and flexible compositions with open slots.
+
 ## Select when
 
 - You need a row with optional leading and trailing content.
@@ -19,7 +21,7 @@ ListItem gives a shared horizontal layout with leading, content, and trailing re
 ## Import
 
 ```tsx
-import { ListItem, ListItemIcon } from '@z-ui/react/list-item';
+import { ListItem, ListItemIcon } from '@z-ux/ui/list-item';
 ```
 
 ## Compose

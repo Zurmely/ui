@@ -18,16 +18,23 @@
 - {Anti-pattern — name the better component, e.g. Use `Link` instead.}
 - {Another case where a sibling component fits better.}
 
+In `apps/docs/src/components/{component-name}.docs.tsx`, add `whenToUsePreviews` with live mini-previews for each column:
+
+- `use` — correct usage vignette for this component in a realistic context.
+- `doNotUse` — the better alternative named in the anti-pattern bullets (not a duplicate of the good demo).
+
+Prose bullets stay in this markdown file; previews are defined only in the docs registry.
+
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import { {ComponentName} } from '@z-ui/react/{component-name}';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import { {ComponentName} } from '@z-ux/ui/{component-name}';
 ```
 
 ## API

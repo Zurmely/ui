@@ -2,7 +2,9 @@
 
 ## Overview
 
-ThemeController lets the user switch between light, dark, and system color themes. ThemeController sets `data-theme` on the document root.
+ThemeController lets the user switch between light, dark, and system color themes.
+
+ThemeController sets `data-theme` on the document root.
 
 ## When to use
 
@@ -19,15 +21,15 @@ ThemeController lets the user switch between light, dark, and system color theme
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { ThemeController } from '@z-ui/react/theme-controller';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { ThemeController } from '@z-ux/ui/theme-controller';
 ```
 
 ## API

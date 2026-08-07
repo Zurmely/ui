@@ -4,6 +4,8 @@
 
 Rating gives a star input to collect or show scores from 1 to `max`.
 
+Star rating input.
+
 ## Select when
 
 - You collect product or content ratings.
@@ -18,7 +20,7 @@ Rating gives a star input to collect or show scores from 1 to `max`.
 ## Import
 
 ```tsx
-import { Rating } from '@z-ui/react/rating';
+import { Rating } from '@z-ux/ui/rating';
 ```
 
 ## Compose

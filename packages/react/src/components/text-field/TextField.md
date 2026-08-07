@@ -2,7 +2,9 @@
 
 ## Overview
 
-TextField gives a styled native `<input>`. TextField works with `Field` context for ids, validation state, and `aria-describedby` wiring.
+TextField gives a styled native `<input>`.
+
+TextField works with `Field` context for ids, validation state, and `aria-describedby` wiring.
 
 ## When to use
 
@@ -19,15 +21,15 @@ TextField gives a styled native `<input>`. TextField works with `Field` context 
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { TextField } from '@z-ui/react/text-field';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { TextField } from '@z-ux/ui/text-field';
 ```
 
 ## API

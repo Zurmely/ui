@@ -2,7 +2,9 @@
 
 ## Purpose
 
-IconButton triggers icon-only actions. IconButton uses the same semantic color tokens in the light theme and in the dark theme. You need to give an accessible name.
+IconButton triggers icon-only actions.
+
+IconButton uses the same semantic color tokens in the light theme and in the dark theme.
 
 ## Select when
 
@@ -19,7 +21,7 @@ IconButton triggers icon-only actions. IconButton uses the same semantic color t
 ## Import
 
 ```tsx
-import { IconButton } from '@z-ui/react/icon-button';
+import { IconButton } from '@z-ux/ui/icon-button';
 ```
 
 ## Compose

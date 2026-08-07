@@ -9,7 +9,7 @@ import {
   MegamenuTrigger,
   ThemeController,
   type AccessibilityPreferences,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { getActiveSection, SECTIONS } from './sections';
 

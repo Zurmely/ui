@@ -39,33 +39,50 @@ function folderForSlug(slug) {
   return SLUG_TO_FOLDER[slug] ?? slug;
 }
 
-function readRegistrySlugs() {
+function isChartsImport(importPath) {
+  return importPath?.startsWith('@z-ux/charts');
+}
+
+function markdownPathForSlug(slug, importPath) {
+  const folder = folderForSlug(slug);
+  const packageRoots = isChartsImport(importPath)
+    ? [path.join(root, 'packages/charts/src/components', folder)]
+    : [path.join(root, 'packages/react/src/components', folder)];
+
+  if (!isChartsImport(importPath)) {
+    packageRoots.push(path.join(root, 'packages/charts/src/components', folder));
+  } else {
+    packageRoots.push(path.join(root, 'packages/react/src/components', folder));
+  }
+
+  for (const componentsDir of packageRoots) {
+    if (!fs.existsSync(componentsDir)) continue;
+    const files = fs.readdirSync(componentsDir).filter((f) => f.endsWith('.md'));
+    if (files.length > 0) {
+      return path.join(componentsDir, files[0]);
+    }
+  }
+  return null;
+}
+
+function aiDocPathForSlug(slug, importPath) {
+  if (isChartsImport(importPath)) {
+    return path.join(root, 'packages/charts/docs/ai', `${slug}.md`);
+  }
+  return path.join(root, 'packages/react/docs/ai', `${slug}.md`);
+}
+
+function readRegistryEntries() {
   const docsDir = path.join(root, 'apps/docs/src/components');
-  const slugs = [];
+  const entries = [];
   for (const file of fs.readdirSync(docsDir)) {
     if (!file.endsWith('.docs.tsx')) continue;
     const content = fs.readFileSync(path.join(docsDir, file), 'utf8');
     const slug = content.match(/slug: '([^']+)'/)?.[1];
-    if (slug) slugs.push(slug);
+    const importPath = content.match(/importPath: '([^']+)'/)?.[1];
+    if (slug) entries.push({ slug, importPath });
   }
-  return slugs.sort();
-}
-
-function markdownPathForSlug(slug) {
-  const folder = folderForSlug(slug);
-  const componentsDir = path.join(root, 'packages/react/src/components', folder);
-  if (!fs.existsSync(componentsDir)) {
-    return null;
-  }
-  const files = fs.readdirSync(componentsDir).filter((f) => f.endsWith('.md'));
-  if (files.length === 0) {
-    return null;
-  }
-  return path.join(componentsDir, files[0]);
-}
-
-function aiDocPathForSlug(slug) {
-  return path.join(root, 'packages/react/docs/ai', `${slug}.md`);
+  return entries;
 }
 
 function checkMarkdownHeadings(filePath, headingsList, label) {
@@ -118,11 +135,32 @@ function checkExamples(slug) {
   return errors;
 }
 
-const slugs = readRegistrySlugs();
+function checkWhenToUsePreviews(slug) {
+  const docsPath = path.join(root, `apps/docs/src/components/${slug}.docs.tsx`);
+  const content = fs.readFileSync(docsPath, 'utf8');
+  const errors = [];
+
+  if (!content.includes('whenToUsePreviews')) {
+    errors.push('missing whenToUsePreviews');
+    return errors;
+  }
+
+  if (!/whenToUsePreviews:\s*\{[\s\S]*?\buse:\s*\(\)/.test(content)) {
+    errors.push('whenToUsePreviews missing use render function');
+  }
+  if (!/whenToUsePreviews:\s*\{[\s\S]*?\bdoNotUse:\s*\(\)/.test(content)) {
+    errors.push('whenToUsePreviews missing doNotUse render function');
+  }
+
+  return errors;
+}
+
+const entries = readRegistryEntries();
+const slugs = entries.map((entry) => entry.slug).sort();
 const failures = [];
 
-for (const slug of slugs) {
-  const mdPath = markdownPathForSlug(slug);
+for (const { slug, importPath } of entries) {
+  const mdPath = markdownPathForSlug(slug, importPath);
   if (!mdPath) {
     failures.push(`${slug}: missing markdown file`);
     continue;
@@ -132,7 +170,7 @@ for (const slug of slugs) {
     failures.push(`${slug}: ${error}`);
   }
 
-  const aiPath = aiDocPathForSlug(slug);
+  const aiPath = aiDocPathForSlug(slug, importPath);
   if (!fs.existsSync(aiPath)) {
     failures.push(`${slug}: missing AI doc at packages/react/docs/ai/${slug}.md`);
   } else {
@@ -142,6 +180,10 @@ for (const slug of slugs) {
   }
 
   for (const error of checkExamples(slug)) {
+    failures.push(`${slug}: ${error}`);
+  }
+
+  for (const error of checkWhenToUsePreviews(slug)) {
     failures.push(`${slug}: ${error}`);
   }
 }

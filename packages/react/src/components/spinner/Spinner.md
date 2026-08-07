@@ -3,32 +3,34 @@
 ## Overview
 
 Spinner shows a loading or busy state.
+
 It uses primary-colored motion and respects reduced-motion preferences.
 
 ## When to use
 
 **Use when:**
 
-- Content or an action runs.
-- You need a small busy indicator. Use it inline or in buttons.
+- A page section loads data and you need a centered busy indicator.
+- A button submits a form and you want inline loading feedback with `isLoading`.
+- A short async action runs and duration is unknown.
 
 **Do not use when:**
 
-- Progress is measurable. Use a progress bar.
-- You can show loading by disabling the control alone. Pair with `aria-busy` on the parent.
+- Progress is measurable. Use `Progress` or `RadialProgress` instead.
+- The control can show loading state alone. Use `Button isLoading` and `aria-busy` on the parent.
 
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Spinner } from '@z-ui/react/spinner';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Spinner } from '@z-ux/ui/spinner';
 ```
 
 ## API

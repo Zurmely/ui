@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   Separator,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import {
   useEffect,
   useLayoutEffect,

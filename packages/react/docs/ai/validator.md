@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Validator wraps form controls with inline validation logic. Validator passes `invalid` state through `Field` context and shows feedback through `ValidatorMessage`.
+Validator wraps form controls with inline validation logic.
+
+Validator passes `invalid` state through `Field` context and shows feedback through `ValidatorMessage`.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Validator wraps form controls with inline validation logic. Validator passes `in
 ## Import
 
 ```tsx
-import { Validator, ValidatorMessage } from '@z-ui/react/validator';
+import { Validator, ValidatorMessage } from '@z-ux/ui/validator';
 ```
 
 ## Compose

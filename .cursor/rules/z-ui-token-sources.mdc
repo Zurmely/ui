@@ -6,10 +6,11 @@ alwaysApply: true
 # Z-UI token source policy
 
 - Canonical token implementations are root `colors.css`, `sizes.css`, `text.css`, `motion.css`, and `elevation.css`.
-- Their design contracts are `COLOR-SEMANTICS.md`, `SIZES-SEMANTICS.md`, `TEXT-SEMANTICS.md`, `MOTION-SEMANTICS.md`, and `ELEVATION-SEMANTICS.md`.
+- Their design contracts are `COLOR-SEMANTICS.md`, `CHART-SEMANTICS.md`, `SIZES-SEMANTICS.md`, `TEXT-SEMANTICS.md`, `MOTION-SEMANTICS.md`, and `ELEVATION-SEMANTICS.md`.
+- Chart series and structure colors are `--z-color-chart-*` in `colors.css`; do not use raw primitives in chart CSS.
 - Never edit `packages/tokens/dist/**` or other `dist/**` files directly.
 - Change the relevant semantics documentation and canonical root CSS when intentionally changing the token system.
-- Run `pnpm --filter @z-ui/tokens build` to regenerate published token CSS.
+- Run `pnpm --filter @z-ux/tokens build` to regenerate published token CSS.
 - Components consume semantic tokens; primitives are reserved for defining the token system.
 - **12px (`font.size.1` / `0.75rem`) is the minimum font size.** Do not add primitives, semantic roles, or component styles below this floor.
 - Ask before introducing a new semantic token, component-scoped token, or documented exception.

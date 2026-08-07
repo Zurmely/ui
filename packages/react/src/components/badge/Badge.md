@@ -2,7 +2,9 @@
 
 ## Overview
 
-Badge shows a short status label or a count. Badge uses a subtle background color for each tone, in the light theme and in the dark theme.
+Badge shows a short status label or a count.
+
+Badge uses a subtle background color for each tone, in the light theme and in the dark theme.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Badge shows a short status label or a count. Badge uses a subtle background colo
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Badge } from '@z-ui/react/badge';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Badge } from '@z-ux/ui/badge';
 ```
 
 ## API

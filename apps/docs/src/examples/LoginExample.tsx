@@ -15,7 +15,7 @@ import {
   Separator,
   Stack,
   TextField,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 
 export function LoginExample() {
   const [email, setEmail] = useState('');

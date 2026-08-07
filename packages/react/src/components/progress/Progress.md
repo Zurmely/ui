@@ -4,6 +4,8 @@
 
 Progress shows how much of a task is complete with a horizontal bar.
 
+Linear progress indicator.
+
 ## When to use
 
 **Use when:**
@@ -19,14 +21,14 @@ Progress shows how much of a task is complete with a horizontal bar.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/motion.css';
-import { Progress } from '@z-ui/react/progress';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/motion.css';
+import { Progress } from '@z-ux/ui/progress';
 ```
 
 ## API

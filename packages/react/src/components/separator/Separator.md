@@ -3,6 +3,7 @@
 ## Overview
 
 Separator shows a divider between content regions.
+
 It uses a subtle border color in a horizontal or vertical orientation.
 
 ## When to use
@@ -20,14 +21,14 @@ It uses a subtle border color in a horizontal or vertical orientation.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Separator } from '@z-ui/react/separator';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Separator } from '@z-ux/ui/separator';
 ```
 
 ## API

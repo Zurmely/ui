@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Timeline shows a sequence of events with markers, dates, titles, and descriptions. Timeline supports vertical and horizontal layouts.
+Timeline shows a sequence of events with markers, dates, titles, and descriptions.
+
+Timeline supports vertical and horizontal layouts.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Timeline shows a sequence of events with markers, dates, titles, and description
 ## Import
 
 ```tsx
-import { Timeline, TimelineItem } from '@z-ui/react/timeline';
+import { Timeline, TimelineItem } from '@z-ux/ui/timeline';
 ```
 
 ## Compose

@@ -2,7 +2,9 @@
 
 ## Overview
 
-Stack puts child elements in a horizontal or vertical flex layout. Stack uses semantic spacing that stays the same between items.
+Stack puts child elements in a horizontal or vertical flex layout.
+
+Stack uses semantic spacing that stays the same between items.
 
 ## When to use
 
@@ -19,12 +21,12 @@ Stack puts child elements in a horizontal or vertical flex layout. Stack uses se
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/sizes.css';
-import { Stack } from '@z-ui/react/stack';
+import '@z-ux/tokens/sizes.css';
+import { Stack } from '@z-ux/ui/stack';
 ```
 
 ## API

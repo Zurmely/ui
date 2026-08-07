@@ -40,7 +40,7 @@ import {
   Timeline,
   TimelineItem,
   Toolbar,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 
 function HomeIcon() {
   return (

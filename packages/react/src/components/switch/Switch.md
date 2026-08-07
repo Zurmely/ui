@@ -2,7 +2,9 @@
 
 ## Overview
 
-Switch turns a setting on or off with immediate effect. Switch uses semantic tokens for track and thumb states in the light theme and in the dark theme.
+Switch turns a setting on or off with immediate effect.
+
+Switch uses semantic tokens for track and thumb states in the light theme and in the dark theme.
 
 ## When to use
 
@@ -19,15 +21,15 @@ Switch turns a setting on or off with immediate effect. Switch uses semantic tok
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Switch } from '@z-ui/react/switch';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Switch } from '@z-ux/ui/switch';
 ```
 
 ## API

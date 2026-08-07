@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Alert shows an important status message. Alert uses a subtle background for each tone. Alert has optional `title`, `description`, and `action` slots.
+Alert shows an important status message.
+
+Alert uses a subtle background for each tone.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Alert shows an important status message. Alert uses a subtle background for each
 ## Import
 
 ```tsx
-import { Alert } from '@z-ui/react/alert';
+import { Alert } from '@z-ux/ui/alert';
 ```
 
 ## Compose

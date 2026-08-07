@@ -213,7 +213,7 @@ Tooltip does not use `data-state='open'`. Match `delayed-open` and `instant-open
 3. Does the component use looping `animation` with `--z-motion-duration-continuous`?
    - Yes → Add a component `@media` block. Set `animation: none`. Show a static muted state.
 4. Does the component drive motion from JavaScript?
-   - Yes → Call `prefersReducedMotion()` from `@z-ui/react/shared`. Use instant behavior when it returns `true`.
+   - Yes → Call `prefersReducedMotion()` from `@z-ux/ui/shared`. Use instant behavior when it returns `true`.
 
 Global token override:
 
@@ -293,11 +293,11 @@ When motion is triggered from JavaScript (for example `element.scrollTo({ behavi
 Import alongside other token stylesheets:
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import '@z-ui/tokens/elevation.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import '@z-ux/tokens/elevation.css';
 ```
 
 Override at the application root or a scoped subtree:

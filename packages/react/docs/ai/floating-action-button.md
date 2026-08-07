@@ -2,7 +2,9 @@
 
 ## Purpose
 
-FloatingActionButton shows one primary action. The action stays fixed above page content, usually in the bottom-right corner.
+FloatingActionButton shows one primary action.
+
+The action stays fixed above page content, usually in the bottom-right corner.
 
 ## Select when
 
@@ -18,7 +20,7 @@ FloatingActionButton shows one primary action. The action stays fixed above page
 ## Import
 
 ```tsx
-import { FloatingActionButton } from '@z-ui/react/floating-action-button';
+import { FloatingActionButton } from '@z-ux/ui/floating-action-button';
 ```
 
 ## Compose

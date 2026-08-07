@@ -1,4 +1,4 @@
-import { Progress } from '@z-ui/react';
+import { Progress, Spinner } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const progressDoc: ComponentDoc = (() => {
   name: 'Progress',
   category: 'Display',
   summary: 'Linear progress indicator.',
-  importPath: '@z-ui/react/progress',
+  importPath: '@z-ux/ui/progress',
   componentName: 'Progress',
   controls: {
     value: { type: 'number', label: 'value', defaultValue: 60, min: 0, max: 100 },
@@ -26,26 +26,30 @@ export const progressDoc: ComponentDoc = (() => {
     props.indeterminate
       ? '<Progress indeterminate />'
       : `<Progress value={${props.value}} />`,
+  whenToUsePreviews: {
+    use: () => <Progress value={60} aria-label="Upload progress" style={{ width: '12rem' }} />,
+    doNotUse: () => <Spinner aria-label="Loading" />,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<progress />',
-      render: () => doc.render(defaults),
+      label: 'Upload progress',
+      description: 'Determinate bar while a file uploads.',
+      code: '<Progress value={45} aria-label="Upload progress" />',
+      render: () => <Progress value={45} aria-label="Upload progress" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, value: 61 }) : '<progress />',
-      render: () => doc.render({ ...defaults, value: 61 }),
+      label: 'Indeterminate',
+      description: 'Loading state when duration is unknown.',
+      code: '<Progress indeterminate aria-label="Loading" />',
+      render: () => <Progress indeterminate aria-label="Loading" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<progress />',
-      render: () => doc.render(defaults),
+      label: 'Profile completion',
+      description: 'Progress toward completing an onboarding checklist.',
+      code: '<Progress value={80} aria-label="Profile completion" />',
+      render: () => <Progress value={80} aria-label="Profile completion" />,
     },
   ];
   return doc;

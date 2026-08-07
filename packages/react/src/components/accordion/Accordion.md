@@ -2,7 +2,9 @@
 
 ## Overview
 
-Accordion shows and hides sections of related content. By default, one section is open at a time. If you set `type="multiple"`, more than one section can be open. You can scan dense information with Accordion.
+Accordion shows and hides sections of related content.
+
+By default, one section is open at a time.
 
 ## When to use
 
@@ -19,20 +21,20 @@ Accordion shows and hides sections of related content. By default, one section i
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@z-ui/react/accordion';
+} from '@z-ux/ui/accordion';
 ```
 
 ## API

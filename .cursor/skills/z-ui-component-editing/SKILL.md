@@ -11,6 +11,7 @@ Follow the project's design-system documentation as an authoritative contract. A
 
 Read only the documents relevant to the change, but always read `packages/react/docs/NAMING.md`.
 
+- **Agent component guides:** `packages/react/docs/ai/` — read `{slug}.md` (index: [docs/ai/README.md](../../packages/react/docs/ai/README.md)) when choosing, composing, or styling a component
 - Product and component requirements: `PRD.md`
 - Public component vocabulary: `packages/react/docs/NAMING.md`
 - Color roles and themes: `COLOR-SEMANTICS.md`
@@ -86,7 +87,7 @@ Update all affected artifacts:
 - `index.ts` and package exports when the public API changes
 - parity metadata when required by the repository workflow
 
-Documentation should cover the problem, use cases, import, variants/states, accessible naming, keyboard behavior, token hooks, Figma parity, and SSR/portal/form concerns where relevant.
+Documentation should cover the problem, use cases, import, variants/states, accessible naming, keyboard behavior, token hooks, Figma parity, and SSR/portal/form concerns where relevant. Keep the human `Component.md` and agent `packages/react/docs/ai/{slug}.md` in sync (run `node apps/docs/scripts/sync-component-docs.mjs` after doc changes).
 
 Tests should cover rendering, public attributes, behavior, disabled/loading/invalid states as applicable, ref behavior when supported, and `checkA11y`.
 
@@ -97,20 +98,20 @@ Default to the smallest check that covers the files you changed. Do **not** run 
 For a single-component change, run only that component's test file:
 
 ```bash
-pnpm --filter @z-ui/react exec vitest run src/components/<name>/<Name>.test.tsx
+pnpm --filter @z-ux/ui exec vitest run src/components/<name>/<Name>.test.tsx
 ```
 
 Add further checks only when the change actually needs them:
 
 - `typecheck` — TypeScript/API surface changed (props, exports, shared types)
 - `lint` — you touched patterns the linter is likely to flag, or a prior edit introduced lint errors
-- Full `pnpm --filter @z-ui/react test` — shared utilities, cross-component behavior, or audit tests are in scope
+- Full `pnpm --filter @z-ux/ui test` — shared utilities, cross-component behavior, or audit tests are in scope
 - Repository-level `pnpm test` / `typecheck` / `lint` — cross-package or public API changes
 
 When token sources change:
 
 ```bash
-pnpm --filter @z-ui/tokens build
+pnpm --filter @z-ux/tokens build
 ```
 
 Confirm generated token output matches the root sources, but do not hand-edit it.

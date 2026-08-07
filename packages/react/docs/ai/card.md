@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Card groups related content in a bordered surface. Card has optional header, body, and footer slots.
+Card groups related content in a bordered surface.
+
+Card has optional header, body, and footer slots.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Card groups related content in a bordered surface. Card has optional header, bod
 ## Import
 
 ```tsx
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@z-ui/react/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@z-ux/ui/card';
 ```
 
 ## Compose

@@ -1,4 +1,4 @@
-import { RangeSlider } from '@z-ui/react';
+import { Field, FieldLabel, RangeSlider, Stack, TextField } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const rangeSliderDoc: ComponentDoc = (() => {
   name: 'RangeSlider',
   category: 'Forms',
   summary: 'Dual-thumb range slider for selecting a value interval.',
-  importPath: '@z-ui/react/range-slider',
+  importPath: '@z-ux/ui/range-slider',
   componentName: 'RangeSlider',
   controls: {
     min: { type: 'number', label: 'min', defaultValue: 0, min: 0, max: 100 },
@@ -17,36 +17,80 @@ export const rangeSliderDoc: ComponentDoc = (() => {
     disabled: booleanControl('disabled', false),
   },
   render: (props) => (
-    <RangeSlider
-      min={props.min as number}
-      max={props.max as number}
-      defaultValue={[20, 80]}
-      disabled={props.disabled as boolean}
-      aria-label="Range"
-      style={{ width: '100%', maxWidth: '20rem' }}
-    />
+    <Field style={{ width: '100%', maxWidth: '20rem' }}>
+      <FieldLabel>Price range</FieldLabel>
+      <RangeSlider
+        min={props.min as number}
+        max={props.max as number}
+        defaultValue={[20, 80]}
+        disabled={props.disabled as boolean}
+        aria-label="Price range"
+      />
+    </Field>
   ),
-  code: (props) => `<RangeSlider min={${props.min}} max={${props.max}} defaultValue={[20, 80]} aria-label="Range" />`,
+  code: (props) => `<Field>
+  <FieldLabel>Price range</FieldLabel>
+  <RangeSlider min={${props.min}} max={${props.max}} defaultValue={[20, 80]} aria-label="Price range" />
+</Field>`,
+    whenToUsePreviews: {
+      use: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Price range</FieldLabel>
+          <RangeSlider min={0} max={500} defaultValue={[50, 200]} aria-label="Price range" />
+        </Field>
+      ),
+      doNotUse: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <TextField type="number" aria-label="Min price" placeholder="Min" style={{ width: '5rem' }} />
+          <span>–</span>
+          <TextField type="number" aria-label="Max price" placeholder="Max" style={{ width: '5rem' }} />
+        </Stack>
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<range-slider />',
-      render: () => doc.render(defaults),
+      label: 'Price range',
+      description: 'Filter products by minimum and maximum price.',
+      code: `<Field>
+  <FieldLabel>Price range</FieldLabel>
+  <RangeSlider min={0} max={500} defaultValue={[50, 200]} aria-label="Price range" />
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Price range</FieldLabel>
+          <RangeSlider min={0} max={500} defaultValue={[50, 200]} aria-label="Price range" />
+        </Field>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, min: 1, max: 101 }) : '<range-slider />',
-      render: () => doc.render({ ...defaults, min: 1, max: 101 }),
+      label: 'Volume control',
+      description: 'Dual-handle slider for min and max volume.',
+      code: `<Field>
+  <FieldLabel>Volume</FieldLabel>
+  <RangeSlider min={0} max={100} defaultValue={[20, 80]} aria-label="Volume" />
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Volume</FieldLabel>
+          <RangeSlider min={0} max={100} defaultValue={[20, 80]} aria-label="Volume" />
+        </Field>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<range-slider />',
-      render: () => doc.render(defaults),
+      label: 'Filters unavailable',
+      description: 'Inactive range while filters are unavailable.',
+      code: `<Field>
+  <FieldLabel>Price range</FieldLabel>
+  <RangeSlider disabled min={0} max={100} defaultValue={[25, 75]} aria-label="Price range" />
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Price range</FieldLabel>
+          <RangeSlider disabled min={0} max={100} defaultValue={[25, 75]} aria-label="Price range" />
+        </Field>
+      ),
     },
   ];
   return doc;

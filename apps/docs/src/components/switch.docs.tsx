@@ -1,4 +1,4 @@
-import { Switch } from '@z-ui/react';
+import { Checkbox, Stack, Switch } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const switchDoc: ComponentDoc = (() => {
   name: 'Switch',
   category: 'Forms',
   summary: 'Toggle switch for binary on/off settings.',
-  importPath: '@z-ui/react/switch',
+  importPath: '@z-ux/ui/switch',
   componentName: 'Switch',
   controls: {
     checked: booleanControl('checked', false),
@@ -17,42 +17,85 @@ export const switchDoc: ComponentDoc = (() => {
     invalid: booleanControl('invalid', false),
   },
   render: (props) => (
-    <Switch
-      checked={props.checked as boolean}
-      disabled={props.disabled as boolean}
-      invalid={props.invalid as boolean}
-      aria-label="Enable notifications"
-    />
+    <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+      <Switch
+        id="playground-switch"
+        checked={props.checked as boolean}
+        disabled={props.disabled as boolean}
+        invalid={props.invalid as boolean}
+      />
+      <label htmlFor="playground-switch">Email notifications</label>
+    </Stack>
   ),
   code: (props) => {
     const parts = [
       props.checked ? 'checked' : null,
       props.disabled ? 'disabled' : null,
       props.invalid ? 'invalid' : null,
-      'aria-label="Enable notifications"',
     ].filter(Boolean);
-    return `<Switch ${parts.join(' ')} />`;
+    return `<Stack direction="horizontal" gap="sm">
+  <Switch id="notifications"${parts.length ? ` ${parts.join(' ')}` : ''} />
+  <label htmlFor="notifications">Email notifications</label>
+</Stack>`;
   },
+    whenToUsePreviews: {
+      use: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Switch id="dark-mode-preview" checked />
+          <label htmlFor="dark-mode-preview">Dark mode</label>
+        </Stack>
+      ),
+      doNotUse: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Checkbox aria-label="Dark mode" />
+          <span>Dark mode</span>
+        </Stack>
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<switch />',
-      render: () => doc.render(defaults),
+      label: 'Notifications',
+      description: 'Toggle email notifications in settings.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <Switch id="notifications" />
+  <label htmlFor="notifications">Email notifications</label>
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Switch id="notifications-example" />
+          <label htmlFor="notifications-example">Email notifications</label>
+        </Stack>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<switch />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Dark mode',
+      description: 'Switch turned on for an active feature.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <Switch id="dark-mode" checked />
+  <label htmlFor="dark-mode">Dark mode</label>
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Switch id="dark-mode-example" checked />
+          <label htmlFor="dark-mode-example">Dark mode</label>
+        </Stack>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<switch />',
-      render: () => doc.render(defaults),
+      label: 'Required toggle',
+      description: 'Validation error on a required toggle.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <Switch id="accept-terms" invalid />
+  <label htmlFor="accept-terms">Accept terms</label>
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Switch id="accept-terms-example" invalid />
+          <label htmlFor="accept-terms-example">Accept terms</label>
+        </Stack>
+      ),
     },
   ];
   return doc;

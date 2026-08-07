@@ -6,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 
 export interface TokenTableRow {
   name: string;

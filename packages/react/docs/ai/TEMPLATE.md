@@ -19,7 +19,7 @@
 ## Import
 
 ```tsx
-import { {ComponentName} } from '@z-ui/react/{import-path}';
+import { {ComponentName} } from '@z-ux/ui/{import-path}';
 ```
 
 ## Compose

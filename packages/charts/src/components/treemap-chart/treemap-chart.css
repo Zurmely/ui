@@ -1,0 +1,13 @@
+.z-treemap-chart__cell {
+  transition: opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+}
+
+.z-treemap-chart__cell:hover {
+  opacity: 0.85;
+}
+
+.z-treemap-chart__label {
+  fill: var(--z-color-text-inverse);
+  font-size: var(--z-text-caption-size);
+  font-family: inherit;
+}

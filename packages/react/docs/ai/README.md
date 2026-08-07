@@ -7,7 +7,7 @@ Machine-oriented guides for choosing, composing, and styling Z-UI React componen
 1. Read `packages/react/docs/ai/{slug}.md` when you need to pick or wire a component.
 2. Read the linked human doc for the full API, token matrix, keyboard table, and Figma mapping.
 3. Follow `packages/react/docs/NAMING.md` for variants, tones, and `data-*` state attributes.
-4. Dogfood `@z-ui/react` and semantic CSS variables — never invent one-off controls or colors.
+4. Dogfood `@z-ux/ui` and semantic CSS variables — never invent one-off controls or colors.
 
 ## Index
 

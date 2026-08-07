@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Status shows a tone-colored dot with an optional label. Use Status for live or operational state, such as online, degraded, or error.
+Status shows a tone-colored dot with an optional label.
+
+Use Status for live or operational state, such as online, degraded, or error.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Status shows a tone-colored dot with an optional label. Use Status for live or o
 ## Import
 
 ```tsx
-import { Status } from '@z-ui/react/status';
+import { Status } from '@z-ux/ui/status';
 ```
 
 ## Compose

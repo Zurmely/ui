@@ -2,7 +2,9 @@
 
 ## Overview
 
-Megamenu shows a large dropdown panel for navigation. Megamenu builds on the Popover pattern.
+Megamenu shows a large dropdown panel for navigation.
+
+Megamenu builds on the Popover pattern.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Megamenu shows a large dropdown panel for navigation. Megamenu builds on the Pop
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Megamenu, MegamenuContent, MegamenuItem, MegamenuTrigger } from '@z-ui/react';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Megamenu, MegamenuContent, MegamenuItem, MegamenuTrigger } from '@z-ux/ui';
 ```
 
 ## API

@@ -52,6 +52,11 @@ export interface Example {
   fullWidth?: boolean;
 }
 
+export interface WhenToUsePreviews {
+  use: () => ReactNode;
+  doNotUse: () => ReactNode;
+}
+
 export interface ComponentDoc {
   slug: string;
   name: string;
@@ -63,6 +68,7 @@ export interface ComponentDoc {
   render: (props: Record<string, unknown>) => ReactNode;
   code?: (props: Record<string, unknown>) => string;
   examples?: Example[];
+  whenToUsePreviews?: WhenToUsePreviews;
 }
 
 export type AnyComponentDoc = ComponentDoc;

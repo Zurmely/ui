@@ -2,7 +2,9 @@
 
 ## Overview
 
-Link shows styled navigation to another location. Link uses semantic tokens for link text color in the light theme and in the dark theme.
+Link shows styled navigation to another location.
+
+Link uses semantic tokens for link text color in the light theme and in the dark theme.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Link shows styled navigation to another location. Link uses semantic tokens for 
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Link } from '@z-ui/react/link';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Link } from '@z-ux/ui/link';
 ```
 
 ## API

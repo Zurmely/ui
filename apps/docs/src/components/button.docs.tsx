@@ -1,4 +1,4 @@
-import { Button, Stack } from '@z-ui/react';
+import { Button, Link, Stack } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import {
   actionVariantControl,
@@ -24,7 +24,7 @@ export const buttonDoc: ComponentDoc = {
   name: 'Button',
   category: 'Actions',
   summary: 'Triggers actions and form submissions with consistent semantic color treatment.',
-  importPath: '@z-ui/react/button',
+  importPath: '@z-ux/ui/button',
   componentName: 'Button',
   controls: {
     variant: actionVariantControl(),
@@ -45,28 +45,42 @@ export const buttonDoc: ComponentDoc = {
       {props.children as string}
     </Button>
   ),
+  code: (props) => {
+    const parts = [
+      props.variant !== 'primary' ? `variant="${props.variant}"` : null,
+      props.size !== 'md' ? `size="${props.size}"` : null,
+      props.isLoading ? 'isLoading' : null,
+      props.disabled ? 'disabled' : null,
+      props.icon && props.icon !== 'none' ? 'icon={/* icon */}' : null,
+    ].filter(Boolean);
+    return `<Button ${parts.join(' ')}>${props.children}</Button>`;
+  },
+  whenToUsePreviews: {
+    use: () => <Button variant="primary">Save changes</Button>,
+    doNotUse: () => <Link href="/settings">Save changes</Link>,
+  },
   examples: [
     {
-      label: 'Primary',
-      description: 'Default primary action.',
-      code: '<Button variant="primary">Save</Button>',
-      render: () => <Button variant="primary">Save</Button>,
+      label: 'Save action',
+      description: 'Primary button for committing the main form action, such as saving profile changes.',
+      code: '<Button variant="primary">Save changes</Button>',
+      render: () => <Button variant="primary">Save changes</Button>,
     },
     {
       label: 'Loading',
-      description: 'Secondary button in a loading state.',
-      code: '<Button variant="secondary" isLoading>Loading</Button>',
+      description: 'Secondary button with a loading spinner while an async save operation completes.',
+      code: '<Button variant="secondary" isLoading>Save draft</Button>',
       render: () => (
         <Button variant="secondary" isLoading>
-          Loading
+          Save draft
         </Button>
       ),
     },
     {
       label: 'Danger',
-      description: 'Destructive action styling.',
-      code: '<Button variant="danger">Delete</Button>',
-      render: () => <Button variant="danger">Delete</Button>,
+      description: 'High-emphasis destructive styling for irreversible actions such as deleting a resource.',
+      code: '<Button variant="danger">Delete project</Button>',
+      render: () => <Button variant="danger">Delete project</Button>,
     },
     {
       label: 'Form footer',

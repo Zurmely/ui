@@ -297,14 +297,14 @@ Current component-scoped tokens:
 ### 10.1 Install
 
 ```bash
-pnpm add @z-ui/tokens
+pnpm add @z-ux/tokens
 ```
 
 ### 10.2 Import
 
 ```tsx
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/react/styles.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/ui/styles.css';
 ```
 
 Size tokens are **opt-in at the app layer** — React component CSS references semantic variables; the consuming app must import `sizes.css` (alongside `colors.css`).
@@ -350,7 +350,7 @@ Legacy hard-coded radii:
 | `9999px` | `radius.pill` |
 | `50%` | `radius.circle` |
 
-`spacing.css` / `SPACING-SEMANTICS.md` were renamed to `sizes.css` / `SIZES-SEMANTICS.md`. Import `@z-ui/tokens/sizes.css` instead of `@z-ui/tokens/spacing.css`.
+`spacing.css` / `SPACING-SEMANTICS.md` were renamed to `sizes.css` / `SIZES-SEMANTICS.md`. Import `@z-ux/tokens/sizes.css` instead of `@z-ux/tokens/spacing.css`.
 
 ---
 

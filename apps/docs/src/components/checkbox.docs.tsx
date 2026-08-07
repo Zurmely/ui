@@ -1,4 +1,4 @@
-import { Checkbox } from '@z-ui/react';
+import { Checkbox, Field, FieldLabel, Stack, Switch } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -15,7 +15,7 @@ export const checkboxDoc: ComponentDoc = (() => {
   name: 'Checkbox',
   category: 'Forms',
   summary: 'Binary selection control with invalid and disabled states.',
-  importPath: '@z-ui/react/checkbox',
+  importPath: '@z-ux/ui/checkbox',
   componentName: 'Checkbox',
   controls: {
     checked: booleanControl('checked', false),
@@ -23,7 +23,17 @@ export const checkboxDoc: ComponentDoc = (() => {
     invalid: booleanControl('invalid', false),
   },
   render: (props) => (
-    <Checkbox checked={props.checked as boolean} disabled={props.disabled as boolean} invalid={props.invalid as boolean} />
+    <Field id="playground-checkbox">
+      <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+        <Checkbox
+          id="playground-checkbox"
+          checked={props.checked as boolean}
+          disabled={props.disabled as boolean}
+          invalid={props.invalid as boolean}
+        />
+        <FieldLabel>Accept terms</FieldLabel>
+      </Stack>
+    </Field>
   ),
   code: (props) => {
     const parts = [
@@ -31,28 +41,80 @@ export const checkboxDoc: ComponentDoc = (() => {
       props.disabled ? 'disabled' : null,
       props.invalid ? 'invalid' : null,
     ].filter(Boolean);
-    return `<Checkbox${parts.length ? ` ${parts.join(' ')}` : ''} />`;
+    return `<Field id="terms">
+  <Stack direction="horizontal" gap="sm">
+    <Checkbox id="terms"${parts.length ? ` ${parts.join(' ')}` : ''} />
+    <FieldLabel>Accept terms</FieldLabel>
+  </Stack>
+</Field>`;
   },
+    whenToUsePreviews: {
+      use: () => (
+        <Field id="terms-preview">
+          <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+            <Checkbox id="terms-preview" />
+            <FieldLabel>I agree to the terms</FieldLabel>
+          </Stack>
+        </Field>
+      ),
+      doNotUse: () => <Switch aria-label="I agree to the terms" />,
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<checkbox />',
-      render: () => doc.render(defaults),
+      label: 'Terms acceptance',
+      description: 'Checkbox with a visible label for optional consent.',
+      code: `<Field id="terms">
+  <Stack direction="horizontal" gap="sm">
+    <Checkbox id="terms" />
+    <FieldLabel>Accept terms and conditions</FieldLabel>
+  </Stack>
+</Field>`,
+      render: () => (
+        <Field id="terms-example">
+          <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+            <Checkbox id="terms-example" />
+            <FieldLabel>Accept terms and conditions</FieldLabel>
+          </Stack>
+        </Field>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<checkbox />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Email updates',
+      description: 'Pre-selected filter in a settings form.',
+      code: `<Field id="email-updates">
+  <Stack direction="horizontal" gap="sm">
+    <Checkbox id="email-updates" checked />
+    <FieldLabel>Send me email updates</FieldLabel>
+  </Stack>
+</Field>`,
+      render: () => (
+        <Field id="email-updates-example">
+          <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+            <Checkbox id="email-updates-example" checked />
+            <FieldLabel>Send me email updates</FieldLabel>
+          </Stack>
+        </Field>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<checkbox />',
-      render: () => doc.render(defaults),
+      label: 'Required consent',
+      description: 'Validation error on a required checkbox.',
+      code: `<Field id="agree-terms" invalid>
+  <Stack direction="horizontal" gap="sm">
+    <Checkbox id="agree-terms" invalid />
+    <FieldLabel>Agree to terms</FieldLabel>
+  </Stack>
+</Field>`,
+      render: () => (
+        <Field id="agree-terms-example" invalid>
+          <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+            <Checkbox id="agree-terms-example" invalid />
+            <FieldLabel>Agree to terms</FieldLabel>
+          </Stack>
+        </Field>
+      ),
     },
   ];
   return doc;

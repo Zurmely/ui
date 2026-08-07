@@ -2,7 +2,9 @@
 
 ## Overview
 
-AccessibilityController lets the user override contrast, motion, transparency, and link underline preferences. It sets `data-*` attributes on the document root.
+AccessibilityController lets the user override contrast, motion, transparency, and link underline preferences.
+
+It sets `data-*` attributes on the document root.
 
 ## When to use
 
@@ -19,15 +21,15 @@ AccessibilityController lets the user override contrast, motion, transparency, a
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { AccessibilityController } from '@z-ui/react/accessibility';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { AccessibilityController } from '@z-ux/ui/accessibility';
 ```
 
 ## API

@@ -2,7 +2,9 @@
 
 ## Overview
 
-Table shows tabular data in semantic HTML. Table uses token-based styling. Table has a scrollable wrapper for narrow viewports.
+Table shows tabular data in semantic HTML.
+
+Table uses token-based styling.
 
 ## When to use
 
@@ -19,13 +21,13 @@ Table shows tabular data in semantic HTML. Table uses token-based styling. Table
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
 import {
   Table,
   TableBody,
@@ -35,7 +37,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@z-ui/react/table';
+} from '@z-ux/ui/table';
 ```
 
 ## API

@@ -4,6 +4,8 @@
 
 Navbar shows a top application bar with dedicated logo and navigation content areas.
 
+Top navigation bar with logo and links.
+
 ## When to use
 
 **Use when:**
@@ -19,14 +21,14 @@ Navbar shows a top application bar with dedicated logo and navigation content ar
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ui/react';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ux/ui';
 ```
 
 ## API

@@ -1,4 +1,4 @@
-import { ListItem } from '@z-ui/react';
+import { ListItem } from '@z-ux/ui';
 import { useEffect, useState, type MouseEvent } from 'react';
 import { prefersReducedMotion } from '../prefers-reduced-motion';
 

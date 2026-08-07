@@ -1,4 +1,4 @@
-import { Badge } from '@z-ui/react';
+import { Badge } from '@z-ux/ui';
 import { componentRegistry, getComponentGroups } from '../components/registry';
 import { ComponentCard } from './ComponentCard';
 

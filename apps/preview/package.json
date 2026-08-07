@@ -11,8 +11,8 @@
     "lint": "echo 'No lint in preview app'"
   },
   "dependencies": {
-    "@z-ui/react": "workspace:*",
-    "@z-ui/tokens": "workspace:*",
+    "@z-ux/ui": "workspace:*",
+    "@z-ux/tokens": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

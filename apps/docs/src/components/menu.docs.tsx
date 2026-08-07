@@ -1,59 +1,154 @@
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ui/react';
-import { Button } from '@z-ui/react';
+import {
+  Button,
+  Megamenu,
+  MegamenuContent,
+  MegamenuItem,
+  MegamenuTrigger,
+  Menu,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  MenuTrigger,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 
 export const menuDoc: ComponentDoc = (() => {
   const doc: ComponentDoc = {
-  slug: 'menu',
-  name: 'Menu',
-  category: 'Overlays',
-  summary: 'Dropdown menu for actions.',
-  importPath: '@z-ui/react/menu',
-  componentName: 'Menu',
-  controls: {},
-  render: () => (
-    <Menu>
-      <MenuTrigger asChild>
-        <Button variant="secondary">Open menu</Button>
-      </MenuTrigger>
-      <MenuContent>
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>Settings</MenuItem>
-        <MenuSeparator />
-        <MenuItem>Log out</MenuItem>
-      </MenuContent>
-    </Menu>
-  ),
-  code: () => `<Menu>
+    slug: 'menu',
+    name: 'Menu',
+    category: 'Overlays',
+    summary: 'Dropdown menu for actions.',
+    importPath: '@z-ux/ui/menu',
+    componentName: 'Menu',
+    controls: {},
+    render: () => (
+      <Menu>
+        <MenuTrigger asChild>
+          <Button variant="secondary">Account</Button>
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>Settings</MenuItem>
+          <MenuSeparator />
+          <MenuItem>Log out</MenuItem>
+        </MenuContent>
+      </Menu>
+    ),
+    code: () => `<Menu>
   <MenuTrigger asChild>
-    <Button variant="secondary">Open menu</Button>
+    <Button variant="secondary">Account</Button>
   </MenuTrigger>
   <MenuContent>
     <MenuItem>Profile</MenuItem>
     <MenuItem>Settings</MenuItem>
   </MenuContent>
 </Menu>`,
+    whenToUsePreviews: {
+      use: () => (
+        <Menu defaultOpen>
+          <MenuTrigger asChild>
+            <Button variant="secondary">Account</Button>
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Settings</MenuItem>
+            <MenuSeparator />
+            <MenuItem>Log out</MenuItem>
+          </MenuContent>
+        </Menu>
+      ),
+      doNotUse: () => (
+        <Megamenu defaultOpen>
+          <MegamenuTrigger asChild>
+            <Button variant="secondary">Products</Button>
+          </MegamenuTrigger>
+          <MegamenuContent>
+            <MegamenuItem href="#">Analytics</MegamenuItem>
+            <MegamenuItem href="#">Automation</MegamenuItem>
+            <MegamenuItem href="#">Integrations</MegamenuItem>
+          </MegamenuContent>
+        </Megamenu>
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<menu />',
-      render: () => doc.render(defaults),
+      label: 'Account menu',
+      description: 'Dropdown for profile and settings actions.',
+      code: `<Menu>
+  <MenuTrigger asChild><Button variant="secondary">Account</Button></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
+    <MenuSeparator />
+    <MenuItem>Log out</MenuItem>
+  </MenuContent>
+</Menu>`,
+      render: () => (
+        <Menu>
+          <MenuTrigger asChild>
+            <Button variant="secondary">Account</Button>
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Settings</MenuItem>
+            <MenuSeparator />
+            <MenuItem>Log out</MenuItem>
+          </MenuContent>
+        </Menu>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<menu />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Row actions',
+      description: 'Context menu for a table or list row.',
+      code: `<Menu>
+  <MenuTrigger asChild><Button variant="ghost" size="sm">Actions</Button></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem>Duplicate</MenuItem>
+    <MenuItem>Delete</MenuItem>
+  </MenuContent>
+</Menu>`,
+      render: () => (
+        <Menu>
+          <MenuTrigger asChild>
+            <Button variant="ghost" size="sm">
+              Actions
+            </Button>
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem>Edit</MenuItem>
+            <MenuItem>Duplicate</MenuItem>
+            <MenuItem>Delete</MenuItem>
+          </MenuContent>
+        </Menu>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<menu />',
-      render: () => doc.render(defaults),
+      label: 'Sort menu',
+      description: 'Menu for changing list sort order.',
+      code: `<Menu>
+  <MenuTrigger asChild><Button variant="secondary">Sort by</Button></MenuTrigger>
+  <MenuContent>
+    <MenuItem>Newest</MenuItem>
+    <MenuItem>Oldest</MenuItem>
+    <MenuItem>Name</MenuItem>
+  </MenuContent>
+</Menu>`,
+      render: () => (
+        <Menu>
+          <MenuTrigger asChild>
+            <Button variant="secondary">Sort by</Button>
+          </MenuTrigger>
+          <MenuContent>
+            <MenuItem>Newest</MenuItem>
+            <MenuItem>Oldest</MenuItem>
+            <MenuItem>Name</MenuItem>
+          </MenuContent>
+        </Menu>
+      ),
     },
   ];
   return doc;

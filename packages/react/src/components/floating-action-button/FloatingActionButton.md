@@ -2,7 +2,9 @@
 
 ## Overview
 
-FloatingActionButton shows one primary action. The action stays fixed above page content, usually in the bottom-right corner.
+FloatingActionButton shows one primary action.
+
+The action stays fixed above page content, usually in the bottom-right corner.
 
 ## When to use
 
@@ -19,15 +21,15 @@ FloatingActionButton shows one primary action. The action stays fixed above page
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { FloatingActionButton } from '@z-ui/react/floating-action-button';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { FloatingActionButton } from '@z-ux/ui/floating-action-button';
 ```
 
 ## API

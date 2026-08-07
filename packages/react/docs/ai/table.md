@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Table shows tabular data in semantic HTML. Table uses token-based styling. Table has a scrollable wrapper for narrow viewports.
+Table shows tabular data in semantic HTML.
+
+Table uses token-based styling.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Table shows tabular data in semantic HTML. Table uses token-based styling. Table
 ## Import
 
 ```tsx
-import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@z-ui/react/table';
+import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from '@z-ux/ui/table';
 ```
 
 ## Compose

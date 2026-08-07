@@ -92,7 +92,7 @@ A technical name is allowed even if it is not an approved word. In this reposito
 - Token names: every `--z-*` variable, and every primitive such as `--purple-500`
 - Token contract names: `font.size.1`, `text.badge`
 - Attributes: `data-tone`, `data-size`, `aria-label`
-- Files, paths, and packages: `colors.css`, `packages/react/docs/NAMING.md`, `@z-ui/react`
+- Files, paths, and packages: `colors.css`, `packages/react/docs/NAMING.md`, `@z-ux/ui`
 - Commands: `pnpm add`, `pnpm test`
 - Standards and platform terms: CSS, HTML, ARIA, SSR, WCAG, DOM, TypeScript, React, Radix, Figma
 

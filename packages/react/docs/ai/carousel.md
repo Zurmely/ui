@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Carousel shows a sequence of content slides in a scrollable viewport. Carousel has previous and next controls. Carousel supports keyboard navigation.
+Carousel shows a sequence of content slides in a scrollable viewport.
+
+Carousel has previous and next controls.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Carousel shows a sequence of content slides in a scrollable viewport. Carousel h
 ## Import
 
 ```tsx
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@z-ui/react/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@z-ux/ui/carousel';
 ```
 
 ## Compose

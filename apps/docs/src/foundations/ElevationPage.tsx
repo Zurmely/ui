@@ -1,4 +1,4 @@
-import { Badge } from '@z-ui/react';
+import { Badge } from '@z-ux/ui';
 import { FoundationPageHeader } from '../components/FoundationPageHeader';
 import { TokenTable } from '../components/TokenTable';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';

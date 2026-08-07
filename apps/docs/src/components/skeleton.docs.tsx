@@ -1,4 +1,8 @@
-import { Skeleton } from '@z-ui/react';
+import {
+  Skeleton,
+  Spinner,
+  Stack,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 
@@ -8,7 +12,7 @@ export const skeletonDoc: ComponentDoc = (() => {
   name: 'Skeleton',
   category: 'Display',
   summary: 'Placeholder loading state.',
-  importPath: '@z-ui/react/skeleton',
+  importPath: '@z-ux/ui/skeleton',
   componentName: 'Skeleton',
   controls: {
     radius: {
@@ -48,26 +52,40 @@ export const skeletonDoc: ComponentDoc = (() => {
     ].filter(Boolean);
     return `<Skeleton ${parts.join(' ')} />`;
   },
+  whenToUsePreviews: {
+    use: () => <Skeleton text="body" width={200} />,
+    doNotUse: () => <Spinner aria-label="Loading" />,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<skeleton />',
-      render: () => doc.render(defaults),
+      label: 'Text placeholder',
+      description: 'Loading placeholder for body copy.',
+      code: '<Skeleton text="body" width={240} />',
+      render: () => <Skeleton text="body" width={240} />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, radius: 'control-compact', text: 'body', width: 201 }) : '<skeleton />',
-      render: () => doc.render({ ...defaults, radius: 'control-compact', text: 'body', width: 201 }),
+      label: 'Avatar loading',
+      description: 'Circular skeleton while profile data loads.',
+      code: '<Skeleton radius="circle" width={40} height={40} />',
+      render: () => <Skeleton radius="circle" width={40} height={40} />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<skeleton />',
-      render: () => doc.render(defaults),
+      label: 'Card loading',
+      description: 'Skeleton layout matching a content card.',
+      code: `<Stack gap="sm">
+  <Skeleton text="title" width={180} />
+  <Skeleton text="body" width={280} />
+  <Skeleton radius="control" width={120} height={32} />
+</Stack>`,
+      render: () => (
+        <Stack gap="sm" style={{ width: '100%', maxWidth: '20rem' }}>
+          <Skeleton text="title" width={180} />
+          <Skeleton text="body" width={280} />
+          <Skeleton radius="control" width={120} height={32} />
+        </Stack>
+      ),
     },
   ];
   return doc;

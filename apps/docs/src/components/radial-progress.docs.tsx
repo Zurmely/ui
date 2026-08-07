@@ -1,4 +1,4 @@
-import { RadialProgress } from '@z-ui/react';
+import { Progress, RadialProgress } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl, sizeControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const radialProgressDoc: ComponentDoc = (() => {
   name: 'RadialProgress',
   category: 'Display',
   summary: 'Circular progress indicator.',
-  importPath: '@z-ui/react/radial-progress',
+  importPath: '@z-ux/ui/radial-progress',
   componentName: 'RadialProgress',
   controls: {
     value: { type: 'number', label: 'value', defaultValue: 75, min: 0, max: 100 },
@@ -27,26 +27,30 @@ export const radialProgressDoc: ComponentDoc = (() => {
     props.indeterminate
       ? `<RadialProgress indeterminate${props.size !== 'md' ? ` size="${props.size}"` : ''} />`
       : `<RadialProgress value={${props.value}}${props.size !== 'md' ? ` size="${props.size}"` : ''} />`,
+  whenToUsePreviews: {
+    use: () => <RadialProgress value={75} aria-label="Daily goal" />,
+    doNotUse: () => <Progress value={75} aria-label="Daily goal" style={{ width: '8rem' }} />,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<radial-progress />',
-      render: () => doc.render(defaults),
+      label: 'Goal tracker',
+      description: 'Circular progress for a daily step goal.',
+      code: '<RadialProgress value={65} aria-label="Daily goal" />',
+      render: () => <RadialProgress value={65} aria-label="Daily goal" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, value: 76 }) : '<radial-progress />',
-      render: () => doc.render({ ...defaults, value: 76 }),
+      label: 'Indeterminate',
+      description: 'Spinner-style radial progress for async tasks.',
+      code: '<RadialProgress indeterminate aria-label="Loading" />',
+      render: () => <RadialProgress indeterminate aria-label="Loading" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<radial-progress />',
-      render: () => doc.render(defaults),
+      label: 'Compact metric',
+      description: 'Small radial indicator on a dashboard card.',
+      code: '<RadialProgress value={92} size="sm" aria-label="Uptime" />',
+      render: () => <RadialProgress value={92} size="sm" aria-label="Uptime" />,
     },
   ];
   return doc;

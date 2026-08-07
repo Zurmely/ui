@@ -4,21 +4,24 @@
 
 Spinner shows a loading or busy state.
 
+It uses primary-colored motion and respects reduced-motion preferences.
+
 ## Select when
 
-- Content or an action runs.
-- You need a small busy indicator. Use it inline or in buttons.
+- A page section loads data and you need a centered busy indicator.
+- A button submits a form and you want inline loading feedback with `isLoading`.
+- A short async action runs and duration is unknown.
 
 ## Prefer instead
 
 | Situation | Use |
 | --- | --- |
-| Task needs a different pattern | See Related components |
+| Progress is measurable. Use  or  instead | `Progress` |
 
 ## Import
 
 ```tsx
-import { Spinner } from '@z-ui/react/spinner';
+import { Spinner } from '@z-ux/ui/spinner';
 ```
 
 ## Compose
@@ -42,8 +45,8 @@ Use `Spinner` as documented in the human API section. Add child controls or slot
 
 ## Do not
 
-- Progress is measurable. Use a progress bar.
-- You can show loading by disabling the control alone. Pair with `aria-busy` on the parent.
+- Progress is measurable. Use `Progress` or `RadialProgress` instead.
+- The control can show loading state alone. Use `Button isLoading` and `aria-busy` on the parent.
 - With `prefers-reduced-motion: reduce`, rotation stops. The indicator becomes a static ring.
 - Do not recreate `Spinner` with raw HTML and one-off CSS when this component fits the task.
 

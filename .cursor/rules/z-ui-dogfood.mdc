@@ -5,11 +5,11 @@ alwaysApply: true
 
 # Z-UI dogfooding
 
-Before adding UI (controls, layout chrome, dividers, copy actions, feedback, overlays, or docs chrome), **search the library first**. Prefer shipping with `@z-ui/react` and semantic CSS variables over custom markup or one-off styles.
+Before adding UI (controls, layout chrome, dividers, copy actions, feedback, overlays, or docs chrome), **search the library first**. Prefer shipping with `@z-ux/ui` and semantic CSS variables over custom markup or one-off styles.
 
 ## Checklist (do this before inventing)
 
-1. **Components** — Search `packages/react/src/components/` and `@z-ui/react` / `@z-ui/react/<name>` exports. Use an existing component when it fits (e.g. `Button`, `IconButton`, `Card`, `Separator`, `Badge`, `Field`, `Stack`, `Spinner`, `Tooltip`).
+1. **Components** — Search `packages/react/src/components/` and `@z-ux/ui` / `@z-ux/ui/<name>` exports. Use an existing component when it fits (e.g. `Button`, `IconButton`, `Card`, `Separator`, `Badge`, `Field`, `Stack`, `Spinner`, `Tooltip`).
 2. **Tokens** — Style with semantic variables (`--z-color-*`, `--z-spacing-*`, `--z-text-*`, `--z-radius-*`, `--z-motion-*`, `--z-elevation-*`). Confirm role in the matching `*-SEMANTICS.md` and root CSS (`colors.css`, `sizes.css`, `text.css`, `motion.css`, `elevation.css`). Never hardcode colors, rem sizes, or easings when a semantic token exists.
 3. **Compose, don’t fork** — Build from library primitives + tokens. Do not recreate dividers with `border-top`, buttons with raw `<button>` + custom CSS, or cards with ad-hoc boxes when `Separator`, `Button`/`IconButton`, or `Card` exist.
 4. **Gaps** — If nothing fits, say so and ask before adding a new component, semantic token, or documented exception. Do not paper over gaps with primitives or one-off CSS.

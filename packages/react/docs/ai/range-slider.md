@@ -4,6 +4,8 @@
 
 RangeSlider selects a numeric value or a range on a track.
 
+Use one thumb or two thumbs in range mode.
+
 ## Select when
 
 - You adjust volume, price filters, or numeric preferences.
@@ -18,7 +20,7 @@ RangeSlider selects a numeric value or a range on a track.
 ## Import
 
 ```tsx
-import { RangeSlider } from '@z-ui/react/range-slider';
+import { RangeSlider } from '@z-ux/ui/range-slider';
 ```
 
 ## Compose

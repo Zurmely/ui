@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Megamenu shows a large dropdown panel for navigation. Megamenu builds on the Popover pattern.
+Megamenu shows a large dropdown panel for navigation.
+
+Megamenu builds on the Popover pattern.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Megamenu shows a large dropdown panel for navigation. Megamenu builds on the Pop
 ## Import
 
 ```tsx
-import { Megamenu, MegamenuContent, MegamenuItem, MegamenuTrigger } from '@z-ui/react';
+import { Megamenu, MegamenuContent, MegamenuItem, MegamenuTrigger } from '@z-ux/ui';
 ```
 
 ## Compose

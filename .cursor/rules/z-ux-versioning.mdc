@@ -1,0 +1,50 @@
+---
+description: Lockstep SemVer policy for @z-ux/tokens and @z-ux/ui publishes
+alwaysApply: true
+---
+
+# Z-UX versioning
+
+Full policy: [VERSIONING.md](../../VERSIONING.md).
+
+## Mode
+
+- **Lockstep SemVer**: `@z-ux/tokens` and `@z-ux/ui` always share the **same** version (`@z-ux/charts` joins when published).
+- Never bump only one publishable package.
+- Apps (`docs`, `preview`) stay private; do not publish them.
+
+## Bump choice
+
+| Change | `0.x` | `1.0+` |
+| --- | --- | --- |
+| Bug fix, no API change | patch | patch |
+| Additive feature / token | minor | minor |
+| Breaking API or token contract | **minor** | **major** |
+
+## Commits (drive CI)
+
+Use conventional commits so auto-publish picks the right bump:
+
+```text
+fix(button): correct dark focus ring     → patch
+feat(tokens): add elevation.ring         → minor
+feat(button)!: rename ghost to subtle    → breaking (minor in 0.x)
+```
+
+## Do / don't
+
+```text
+✅ Keep both package.json versions equal
+✅ Ask before a breaking token or prop rename
+✅ Update docs when public contracts change
+❌ Independent versions per package
+❌ Hand-edit only one version
+❌ Republish the same version
+❌ Always default to patch when the change is a feature or break
+```
+
+## Tooling
+
+- Bump: `node scripts/bump-publishable-versions.mjs --level=patch|minor|major`
+- Publish path: `.github/workflows/publish.yml` on `main` when `packages/**` change
+- Token source of truth remains `z-ui-token-sources` — never edit `dist/**` for a release

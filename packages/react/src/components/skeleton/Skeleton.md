@@ -3,8 +3,8 @@
 ## Overview
 
 Skeleton holds layout space while content loads.
+
 It shows structure-colored placeholder boxes with a shimmer.
-The `.z-skeleton` class applies to text lines and to blocks that look like components.
 
 ## When to use
 
@@ -21,15 +21,15 @@ The `.z-skeleton` class applies to text lines and to blocks that look like compo
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Skeleton } from '@z-ui/react/skeleton';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Skeleton } from '@z-ux/ui/skeleton';
 ```
 
 ## API

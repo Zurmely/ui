@@ -144,11 +144,11 @@ Components without a listed role should not apply drop shadows unless a new sema
 Import alongside other token stylesheets:
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import '@z-ui/tokens/elevation.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import '@z-ux/tokens/elevation.css';
 ```
 
 Override at the application root or a scoped subtree:

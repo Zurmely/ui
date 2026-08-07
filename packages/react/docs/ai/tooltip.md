@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Tooltip shows brief, supplementary information on hover or focus. Tooltip does not clutter the interface.
+Tooltip shows brief, supplementary information on hover or focus.
+
+Tooltip does not clutter the interface.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Tooltip shows brief, supplementary information on hover or focus. Tooltip does n
 ## Import
 
 ```tsx
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@z-ui/react/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@z-ux/ui/tooltip';
 ```
 
 ## Compose

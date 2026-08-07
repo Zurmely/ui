@@ -4,6 +4,8 @@
 
 Progress shows how much of a task is complete with a horizontal bar.
 
+Linear progress indicator.
+
 ## Select when
 
 - You know or estimate the percentage of an upload, a download, or a multi-step task.
@@ -19,7 +21,7 @@ Progress shows how much of a task is complete with a horizontal bar.
 ## Import
 
 ```tsx
-import { Progress } from '@z-ui/react/progress';
+import { Progress } from '@z-ux/ui/progress';
 ```
 
 ## Compose

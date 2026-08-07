@@ -1,4 +1,4 @@
-import { Rating } from '@z-ui/react';
+import { Field, FieldLabel, Rating, TextField } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const ratingDoc: ComponentDoc = (() => {
   name: 'Rating',
   category: 'Forms',
   summary: 'Star rating input.',
-  importPath: '@z-ui/react/rating',
+  importPath: '@z-ux/ui/rating',
   componentName: 'Rating',
   controls: {
     value: { type: 'number', label: 'value', defaultValue: 3, min: 0, max: 5 },
@@ -27,26 +27,37 @@ export const ratingDoc: ComponentDoc = (() => {
     />
   ),
   code: (props) => `<Rating value={${props.value}} max={${props.max}} aria-label="Rating" />`,
+    whenToUsePreviews: {
+      use: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Rate this product</FieldLabel>
+          <Rating value={4} onValueChange={() => {}} aria-label="Product rating" />
+        </Field>
+      ),
+      doNotUse: () => (
+        <TextField type="number" min={1} max={5} defaultValue={4} aria-label="Rating" style={{ width: '5rem' }} />
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<rating />',
-      render: () => doc.render(defaults),
+      label: 'Product review',
+      description: 'Star rating for a product review form.',
+      code: '<Rating value={4} onValueChange={setValue} aria-label="Rating" />',
+      render: () => <Rating value={4} onValueChange={() => {}} aria-label="Rating" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, value: 4, max: 6 }) : '<rating />',
-      render: () => doc.render({ ...defaults, value: 4, max: 6 }),
+      label: 'Read-only score',
+      description: 'Display average rating without editing.',
+      code: '<Rating value={4.5} readOnly aria-label="Average rating" />',
+      render: () => <Rating value={4.5} readOnly aria-label="Average rating" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<rating />',
-      render: () => doc.render(defaults),
+      label: 'Custom scale',
+      description: 'Ten-point satisfaction survey.',
+      code: '<Rating value={8} max={10} onValueChange={setValue} aria-label="Satisfaction" />',
+      render: () => <Rating value={8} max={10} onValueChange={() => {}} aria-label="Satisfaction" />,
     },
   ];
   return doc;

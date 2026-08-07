@@ -3,7 +3,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Breadcrumbs,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { withBasePath } from '../base-path';
 import { pageExampleBySlug } from '../examples/registry';

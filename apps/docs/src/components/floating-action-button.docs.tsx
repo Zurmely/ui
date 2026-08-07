@@ -1,4 +1,4 @@
-import { FloatingActionButton } from '@z-ui/react';
+import { Button, FloatingActionButton } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import {
@@ -15,7 +15,7 @@ export const floatingActionButtonDoc: ComponentDoc = (() => {
   name: 'FloatingActionButton',
   category: 'Actions',
   summary: 'Prominent circular action button.',
-  importPath: '@z-ui/react/floating-action-button',
+  importPath: '@z-ux/ui/floating-action-button',
   componentName: 'FloatingActionButton',
   controls: {
     variant: actionVariantControl(),
@@ -44,26 +44,30 @@ export const floatingActionButtonDoc: ComponentDoc = (() => {
     ].filter(Boolean);
     return `<FloatingActionButton ${parts.join(' ')} />`;
   },
+  whenToUsePreviews: {
+    use: () => <FloatingActionButton aria-label="Create">+</FloatingActionButton>,
+    doNotUse: () => <Button variant="primary">Create</Button>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<floating-action-button />',
-      render: () => doc.render(defaults),
+      label: 'Create action',
+      description: 'Primary floating action for the main page task.',
+      code: '<FloatingActionButton aria-label="Create">+</FloatingActionButton>',
+      render: () => <FloatingActionButton aria-label="Create">+</FloatingActionButton>,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<floating-action-button />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Loading',
+      description: 'FAB while an async create operation is in progress.',
+      code: '<FloatingActionButton isLoading aria-label="Saving">+</FloatingActionButton>',
+      render: () => <FloatingActionButton isLoading aria-label="Saving">+</FloatingActionButton>,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<floating-action-button />',
-      render: () => doc.render(defaults),
+      label: 'Secondary FAB',
+      description: 'Lower-emphasis action on content-heavy pages.',
+      code: '<FloatingActionButton variant="secondary" aria-label="Compose">✎</FloatingActionButton>',
+      render: () => <FloatingActionButton variant="secondary" aria-label="Compose">✎</FloatingActionButton>,
     },
   ];
   return doc;

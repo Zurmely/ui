@@ -2,7 +2,11 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "src",
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@z-ux/charts": ["../../packages/charts/dist/index.d.ts"],
+      "@z-ux/charts/*": ["../../packages/charts/dist/components/*/index.d.ts"]
+    }
   },
   "include": ["src", "src/vite-env.d.ts"]
 }

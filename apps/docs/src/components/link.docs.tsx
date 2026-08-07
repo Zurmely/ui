@@ -1,4 +1,4 @@
-import { Link } from '@z-ui/react';
+import { Button, Link } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl, childrenControl } from './shared-controls';
@@ -9,37 +9,51 @@ export const linkDoc: ComponentDoc = (() => {
   name: 'Link',
   category: 'Actions',
   summary: 'Styled anchor for navigation.',
-  importPath: '@z-ui/react/link',
+  importPath: '@z-ux/ui/link',
   componentName: 'Link',
   controls: {
     children: childrenControl('Learn more'),
     disabled: booleanControl('disabled', false),
   },
   render: (props) => (
-    <Link href="#" disabled={props.disabled as boolean}>
-      {props.children as string}
-    </Link>
+    <p>
+      Open the{' '}
+      <Link href="#" disabled={props.disabled as boolean}>
+        {props.children as string}
+      </Link>
+      {' '}page for full documentation.
+    </p>
   ),
+  whenToUsePreviews: {
+    use: () => (
+      <p>
+        Read the{' '}
+        <Link href="#">API reference</Link>
+        {' '}for integration details.
+      </p>
+    ),
+    doNotUse: () => <Button variant="ghost" size="sm">API reference</Button>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<link />',
-      render: () => doc.render(defaults),
+      label: 'Inline link',
+      description: 'Text link within a paragraph.',
+      code: '<Link href="#">Learn more</Link>',
+      render: () => <Link href="#">Learn more</Link>,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<link />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Navigation link',
+      description: 'Standalone link in a header or footer.',
+      code: '<Link href="/docs">Documentation</Link>',
+      render: () => <Link href="/docs">Documentation</Link>,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<link />',
-      render: () => doc.render(defaults),
+      label: 'Disabled link',
+      description: 'Unavailable destination while permissions are loading.',
+      code: '<Link href="#" disabled>Admin settings</Link>',
+      render: () => <Link href="#" disabled>Admin settings</Link>,
     },
   ];
   return doc;

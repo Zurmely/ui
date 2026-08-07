@@ -2,7 +2,9 @@
 
 ## Purpose
 
-AccessibilityController lets the user override contrast, motion, transparency, and link underline preferences. It sets `data-*` attributes on the document root.
+AccessibilityController lets the user override contrast, motion, transparency, and link underline preferences.
+
+It sets `data-*` attributes on the document root.
 
 ## Select when
 
@@ -18,7 +20,7 @@ AccessibilityController lets the user override contrast, motion, transparency, a
 ## Import
 
 ```tsx
-import { AccessibilityController } from '@z-ui/react/accessibility';
+import { AccessibilityController } from '@z-ux/ui/accessibility';
 ```
 
 ## Compose

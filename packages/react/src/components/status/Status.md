@@ -2,7 +2,9 @@
 
 ## Overview
 
-Status shows a tone-colored dot with an optional label. Use Status for live or operational state, such as online, degraded, or error.
+Status shows a tone-colored dot with an optional label.
+
+Use Status for live or operational state, such as online, degraded, or error.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Status shows a tone-colored dot with an optional label. Use Status for live or o
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Status } from '@z-ui/react/status';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Status } from '@z-ux/ui/status';
 ```
 
 ## API

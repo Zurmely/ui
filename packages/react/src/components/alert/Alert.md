@@ -2,7 +2,9 @@
 
 ## Overview
 
-Alert shows an important status message. Alert uses a subtle background for each tone. Alert has optional `title`, `description`, and `action` slots.
+Alert shows an important status message.
+
+Alert uses a subtle background for each tone.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Alert shows an important status message. Alert uses a subtle background for each
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Alert } from '@z-ui/react/alert';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Alert } from '@z-ux/ui/alert';
 ```
 
 ## API

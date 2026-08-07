@@ -5,18 +5,22 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import type { ReactNode } from 'react';
 import { isValidElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { Card, CardContent, CardHeader, CardTitle } from '@z-ui/react';
+import { Card, CardContent, CardHeader, CardTitle } from '@z-ux/ui';
 import { CodeBlock } from '../playground/CodeBlock';
 import { folderForSlug } from './component-slugs';
 
 interface MarkdownContentProps {
   content: string;
   sectionTitle?: string;
+  whenToUsePreviews?: {
+    use: () => ReactNode;
+    doNotUse: () => ReactNode;
+  };
 }
 
 function slugifyHeading(text: string): string {
@@ -68,7 +72,21 @@ function parseWhenToUse(content: string): { useWhen: string[]; doNotUse: string[
   return { useWhen, doNotUse };
 }
 
-function WhenToUseCards({ content }: { content: string }) {
+interface WhenToUseCardsProps {
+  content: string;
+  usePreview?: () => ReactNode;
+  doNotUsePreview?: () => ReactNode;
+}
+
+function WhenToUsePreview({ children }: { children: ReactNode }) {
+  return (
+    <div className="docs-callout__preview">
+      <div className="docs-callout__preview-inner">{children}</div>
+    </div>
+  );
+}
+
+function WhenToUseCards({ content, usePreview, doNotUsePreview }: WhenToUseCardsProps) {
   const { useWhen, doNotUse } = parseWhenToUse(content);
 
   return (
@@ -78,6 +96,9 @@ function WhenToUseCards({ content }: { content: string }) {
           <CardTitle className="docs-callout__title">Use when</CardTitle>
         </CardHeader>
         <CardContent>
+          {usePreview ? (
+            <WhenToUsePreview>{usePreview()}</WhenToUsePreview>
+          ) : null}
           <ul className="docs-markdown__ul">
             {useWhen.map((item) => (
               <li key={item} className="docs-markdown__li">
@@ -92,6 +113,9 @@ function WhenToUseCards({ content }: { content: string }) {
           <CardTitle className="docs-callout__title">Do not use when</CardTitle>
         </CardHeader>
         <CardContent>
+          {doNotUsePreview ? (
+            <WhenToUsePreview>{doNotUsePreview()}</WhenToUsePreview>
+          ) : null}
           <ul className="docs-markdown__ul">
             {doNotUse.map((item) => (
               <li key={item} className="docs-markdown__li">
@@ -163,11 +187,15 @@ const markdownComponents = {
   ),
 };
 
-export function MarkdownContent({ content, sectionTitle }: MarkdownContentProps) {
+export function MarkdownContent({ content, sectionTitle, whenToUsePreviews }: MarkdownContentProps) {
   if (sectionTitle === 'When to use') {
     return (
       <div className="docs-markdown docs-markdown--section">
-        <WhenToUseCards content={content} />
+        <WhenToUseCards
+          content={content}
+          usePreview={whenToUsePreviews?.use}
+          doNotUsePreview={whenToUsePreviews?.doNotUse}
+        />
       </div>
     );
   }
@@ -181,10 +209,18 @@ export function MarkdownContent({ content, sectionTitle }: MarkdownContentProps)
   );
 }
 
-const markdownModules = import.meta.glob(
-  '../../../../packages/react/src/components/*/*.md',
-  { query: '?raw', import: 'default', eager: true },
-) as Record<string, string>;
+const markdownModules = {
+  ...import.meta.glob('../../../../packages/react/src/components/*/*.md', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }),
+  ...import.meta.glob('../../../../packages/charts/src/components/*/*.md', {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }),
+} as Record<string, string>;
 
 export function getComponentMarkdown(slug: string): string | undefined {
   const folder = folderForSlug(slug);

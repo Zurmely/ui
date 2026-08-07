@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Accordion shows and hides sections of related content. By default, one section is open at a time. If you set `type="multiple"`, more than one section can be open. You can scan dense information with Accordion.
+Accordion shows and hides sections of related content.
+
+By default, one section is open at a time.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Accordion shows and hides sections of related content. By default, one section i
 ## Import
 
 ```tsx
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@z-ui/react/accordion';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@z-ux/ui/accordion';
 ```
 
 ## Compose

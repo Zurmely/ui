@@ -2,7 +2,9 @@
 
 ## Overview
 
-Steps shows progress through a multi-step flow. Steps marks each step as current, completed, or upcoming.
+Steps shows progress through a multi-step flow.
+
+Steps marks each step as current, completed, or upcoming.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Steps shows progress through a multi-step flow. Steps marks each step as current
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ui/react';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ux/ui';
 ```
 
 ## API

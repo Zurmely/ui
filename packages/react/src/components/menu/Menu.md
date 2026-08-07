@@ -4,6 +4,8 @@
 
 Menu shows a list of actions or choices in a dropdown anchored to a trigger.
 
+Dropdown menu for actions.
+
 ## When to use
 
 **Use when:**
@@ -19,14 +21,14 @@ Menu shows a list of actions or choices in a dropdown anchored to a trigger.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ui/react/menu';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ux/ui/menu';
 ```
 
 ## API

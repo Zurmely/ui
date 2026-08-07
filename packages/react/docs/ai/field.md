@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Field groups a form control with a label, a description, and an error message. Field uses context to connect shared ids and accessibility attributes.
+Field groups a form control with a label, a description, and an error message.
+
+Field uses context to connect shared ids and accessibility attributes.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Field groups a form control with a label, a description, and an error message. F
 ## Import
 
 ```tsx
-import { Field, FieldDescription, FieldError, FieldLabel } from '@z-ui/react/field';
+import { Field, FieldDescription, FieldError, FieldLabel } from '@z-ux/ui/field';
 ```
 
 ## Compose

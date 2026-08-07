@@ -4,6 +4,8 @@
 
 Skeleton holds layout space while content loads.
 
+It shows structure-colored placeholder boxes with a shimmer.
+
 ## Select when
 
 - Content shape is known but data is still loading.
@@ -18,7 +20,7 @@ Skeleton holds layout space while content loads.
 ## Import
 
 ```tsx
-import { Skeleton } from '@z-ui/react/skeleton';
+import { Skeleton } from '@z-ux/ui/skeleton';
 ```
 
 ## Compose

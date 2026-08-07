@@ -4,6 +4,8 @@
 
 Separator shows a divider between content regions.
 
+It uses a subtle border color in a horizontal or vertical orientation.
+
 ## Select when
 
 - You divide sections of content or toolbar groups.
@@ -18,7 +20,7 @@ Separator shows a divider between content regions.
 ## Import
 
 ```tsx
-import { Separator } from '@z-ui/react/separator';
+import { Separator } from '@z-ux/ui/separator';
 ```
 
 ## Compose

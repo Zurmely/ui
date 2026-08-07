@@ -4,6 +4,8 @@
 
 RadialProgress shows task completion in a compact circular indicator.
 
+Circular progress indicator.
+
 ## Select when
 
 - The layout has little space. A circular gauge fits it.
@@ -19,7 +21,7 @@ RadialProgress shows task completion in a compact circular indicator.
 ## Import
 
 ```tsx
-import { RadialProgress } from '@z-ui/react/radial-progress';
+import { RadialProgress } from '@z-ux/ui/radial-progress';
 ```
 
 ## Compose

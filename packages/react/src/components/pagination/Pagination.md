@@ -3,6 +3,7 @@
 ## Overview
 
 Pagination helps users move between pages of content.
+
 Pagination has previous and next controls, numbered links, and ellipsis gaps.
 
 ## When to use
@@ -20,19 +21,19 @@ Pagination has previous and next controls, numbered links, and ellipsis gaps.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
 import {
   Pagination,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 ```
 
 ## API

@@ -6,7 +6,7 @@ import {
   Breadcrumbs,
   Card,
   CardContent,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { withBasePath } from '../base-path';
@@ -52,7 +52,7 @@ export function ComponentPage() {
     return <Navigate to="/" replace />;
   }
 
-  const installCommand = 'pnpm add @z-ui/react @z-ui/tokens';
+  const installCommand = 'pnpm add @z-ux/ui @z-ux/tokens';
   const importLine = `import { ${doc.componentName} } from '${doc.importPath}';`;
 
   return (
@@ -108,7 +108,13 @@ export function ComponentPage() {
 
         {sections.map((section) => (
           <DocsSection key={section.id} id={section.id} title={section.title}>
-            <MarkdownContent content={section.body} sectionTitle={section.title} />
+            <MarkdownContent
+              content={section.body}
+              sectionTitle={section.title}
+              whenToUsePreviews={
+                section.title === 'When to use' ? doc.whenToUsePreviews : undefined
+              }
+            />
           </DocsSection>
         ))}
 

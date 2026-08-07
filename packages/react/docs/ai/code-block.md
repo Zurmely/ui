@@ -4,6 +4,8 @@
 
 CodeBlock shows short code text or a longer code sample.
 
+Use the single variant for token names and other short identifiers.
+
 ## Select when
 
 - You show a token name, a CSS variable, or a short command.
@@ -19,7 +21,7 @@ CodeBlock shows short code text or a longer code sample.
 ## Import
 
 ```tsx
-import { CodeBlock } from '@z-ui/react/code-block';
+import { CodeBlock } from '@z-ux/ui/code-block';
 ```
 
 ## Compose

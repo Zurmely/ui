@@ -2,7 +2,9 @@
 
 ## Overview
 
-Indicator puts a badge or dot on another element. Indicator shows status, a count, or that the user must look at the element. For example, Indicator can show an unread notification count on an avatar.
+Indicator puts a badge or dot on another element.
+
+Indicator shows status, a count, or that the user must look at the element.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Indicator puts a badge or dot on another element. Indicator shows status, a coun
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Avatar, Indicator, IndicatorItem } from '@z-ui/react';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Avatar, Indicator, IndicatorItem } from '@z-ux/ui';
 ```
 
 ## API

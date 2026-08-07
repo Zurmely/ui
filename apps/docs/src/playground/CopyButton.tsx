@@ -1,4 +1,4 @@
-import { Button } from '@z-ui/react';
+import { Button } from '@z-ux/ui';
 import { useCallback, useState } from 'react';
 
 interface CopyButtonProps {

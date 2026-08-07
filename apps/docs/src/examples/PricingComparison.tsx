@@ -23,7 +23,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 
 function CheckIcon() {
   return (

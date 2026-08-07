@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Tabs organize related content into switchable panels. Users can move between views without leaving the page.
+Tabs organize related content into switchable panels.
+
+Users can move between views without leaving the page.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Tabs organize related content into switchable panels. Users can move between vie
 ## Import
 
 ```tsx
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ui/react/tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ux/ui/tabs';
 ```
 
 ## Compose

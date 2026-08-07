@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Avatar shows an image for a user or an entity. If `src` has no value or the image does not load, Avatar shows a muted fallback. Avatar works in the light theme and in the dark theme.
+Avatar shows an image for a user or an entity.
+
+If `src` has no value or the image does not load, Avatar shows a muted fallback.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Avatar shows an image for a user or an entity. If `src` has no value or the imag
 ## Import
 
 ```tsx
-import { Avatar } from '@z-ui/react/avatar';
+import { Avatar } from '@z-ux/ui/avatar';
 ```
 
 ## Compose

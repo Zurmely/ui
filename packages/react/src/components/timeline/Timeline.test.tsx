@@ -29,6 +29,22 @@ describe('Timeline', () => {
     expect(container.querySelector('.z-timeline__dot')).toBeInTheDocument();
   });
 
+  it('keeps decorative rail hidden from assistive tech', () => {
+    const { container } = renderWithTheme(
+      <Timeline>
+        <TimelineItem title="One" />
+        <TimelineItem title="Two" />
+      </Timeline>,
+    );
+
+    const rails = container.querySelectorAll('.z-timeline__rail');
+    expect(rails).toHaveLength(2);
+    rails.forEach((rail) => {
+      expect(rail).toHaveAttribute('aria-hidden', 'true');
+    });
+    expect(container.querySelectorAll('.z-timeline__connector')).toHaveLength(2);
+  });
+
   it('supports custom children content', () => {
     renderWithTheme(
       <Timeline>

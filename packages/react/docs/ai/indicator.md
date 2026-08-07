@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Indicator puts a badge or dot on another element. Indicator shows status, a count, or that the user must look at the element. For example, Indicator can show an unread notification count on an avatar.
+Indicator puts a badge or dot on another element.
+
+Indicator shows status, a count, or that the user must look at the element.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Indicator puts a badge or dot on another element. Indicator shows status, a coun
 ## Import
 
 ```tsx
-import { Avatar, Indicator, IndicatorItem } from '@z-ui/react';
+import { Avatar, Indicator, IndicatorItem } from '@z-ux/ui';
 ```
 
 ## Compose

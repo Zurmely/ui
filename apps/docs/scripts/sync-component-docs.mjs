@@ -33,13 +33,23 @@ function folderForSlug(slug) {
   return SLUG_TO_FOLDER[slug] ?? slug;
 }
 
-function humanDocPath(slug, componentName) {
+function humanDocPath(slug, componentName, importPath) {
   const folder = folderForSlug(slug);
+  if (isChartsImport(importPath)) {
+    return path.join(root, 'packages/charts/src/components', folder, `${componentName}.md`);
+  }
   return path.join(root, 'packages/react/src/components', folder, `${componentName}.md`);
 }
 
-function aiDocPath(slug) {
+function aiDocPath(slug, importPath) {
+  if (isChartsImport(importPath)) {
+    return path.join(root, 'packages/charts/docs/ai', `${slug}.md`);
+  }
   return path.join(root, 'packages/react/docs/ai', `${slug}.md`);
+}
+
+function isChartsImport(importPath) {
+  return importPath?.startsWith('@z-ux/charts');
 }
 
 function extractQuotedField(content, field) {
@@ -170,6 +180,25 @@ function rewriteProseBlock(text) {
   return out.join('\n');
 }
 
+function rewriteOverview(text, summary) {
+  const rewritten = rewriteProseBlock(text);
+  const sentences =
+    rewritten.match(/[^.!?]+[.!?]+/g)?.map((sentence) => sentence.trim()) ?? [rewritten.trim()];
+
+  if (sentences.length >= 2) {
+    return `${sentences[0]}\n\n${sentences[1]}`;
+  }
+
+  const first = sentences[0] ?? '';
+  const second = summary ? rewriteSentence(summary.endsWith('.') ? summary : `${summary}.`) : '';
+
+  if (first && second && !first.toLowerCase().includes(second.toLowerCase().slice(0, 20))) {
+    return `${first}\n\n${second}`;
+  }
+
+  return first;
+}
+
 function ensureAccessibilityControllerFigma(sections) {
   if (sections.Figma?.trim()) return sections;
   sections.Figma = '| Accessibility settings | `AccessibilityController` |';
@@ -216,7 +245,7 @@ function extractImportLines(installSection) {
       .replace(/,\s*}/g, ' }')
       .replace(/,\s*,/g, ',')
       .trim();
-    if (!statement.includes('@z-ui/tokens')) imports.push(statement);
+    if (!statement.includes('@z-ux/tokens')) imports.push(statement);
   }
   return imports.length > 0 ? imports.join('\n') : null;
 }
@@ -410,13 +439,12 @@ function buildRelatedSection(meta, registry) {
     .join('\n');
 }
 
-function firstMeaningfulLine(text) {
-  return (
-    text
-      .split('\n')
-      .map((l) => l.trim())
-      .find((l) => l && !l.startsWith('**')) ?? ''
-  );
+function overviewForPurpose(text) {
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('**'))
+    .join('\n\n');
 }
 
 function buildAiDoc(meta, sections, registry) {
@@ -458,7 +486,7 @@ function buildAiDoc(meta, sections, registry) {
   const importLines = extractImportLines(install);
   const importBlock =
     importLines ??
-    `import { ${meta.componentName} } from '${meta.importPath ?? `@z-ui/react/${folderForSlug(meta.slug)}`}';`;
+    `import { ${meta.componentName} } from '${meta.importPath ?? `@z-ux/ui/${folderForSlug(meta.slug)}`}';`;
 
   const compose = buildComposeSection(api, meta.componentName);
 
@@ -496,7 +524,7 @@ function buildAiDoc(meta, sections, registry) {
     '',
     '## Purpose',
     '',
-    firstMeaningfulLine(overview) || meta.summary,
+    overviewForPurpose(overview) || meta.summary,
     '',
     '## Select when',
     '',
@@ -544,7 +572,11 @@ function processHumanDoc(meta, rawContent) {
 
   for (const sectionName of STE_SECTIONS) {
     if (sections[sectionName]) {
-      sections[sectionName] = rewriteProseBlock(sections[sectionName]);
+      if (sectionName === 'Overview') {
+        sections[sectionName] = rewriteOverview(sections[sectionName], meta.summary);
+      } else {
+        sections[sectionName] = rewriteProseBlock(sections[sectionName]);
+      }
     }
   }
 
@@ -561,7 +593,7 @@ function main() {
   let aiUpdated = 0;
 
   for (const meta of registry) {
-    const humanPath = humanDocPath(meta.slug, meta.componentName);
+    const humanPath = humanDocPath(meta.slug, meta.componentName, meta.importPath);
     if (!fs.existsSync(humanPath)) {
       console.error(`Missing human doc: ${humanPath}`);
       process.exit(1);
@@ -577,7 +609,7 @@ function main() {
 
     const { sections } = parseSections(updatedHuman);
     const aiContent = buildAiDoc(meta, sections, registry);
-    const aiPath = aiDocPath(meta.slug);
+    const aiPath = aiDocPath(meta.slug, meta.importPath);
     const existingAi = fs.existsSync(aiPath) ? fs.readFileSync(aiPath, 'utf8') : '';
 
     fs.writeFileSync(aiPath, aiContent);
@@ -586,18 +618,35 @@ function main() {
     }
   }
 
-  const aiFiles = fs
+  const reactRegistry = registry.filter((meta) => !isChartsImport(meta.importPath));
+  const chartsRegistry = registry.filter((meta) => isChartsImport(meta.importPath));
+
+  const reactAiFiles = fs
     .readdirSync(path.join(root, 'packages/react/docs/ai'))
     .filter((f) => f.endsWith('.md') && f !== 'README.md' && f !== 'TEMPLATE.md');
+
+  const chartsAiDir = path.join(root, 'packages/charts/docs/ai');
+  fs.mkdirSync(chartsAiDir, { recursive: true });
+  const chartsAiFiles = fs
+    .readdirSync(chartsAiDir)
+    .filter((f) => f.endsWith('.md'));
 
   console.log(`sync-component-docs: processed ${registry.length} components`);
   console.log(`  human docs updated: ${humanUpdated}`);
   console.log(`  ai docs written/updated: ${aiUpdated}`);
-  console.log(`  ai files on disk: ${aiFiles.length}`);
+  console.log(`  react ai files on disk: ${reactAiFiles.length}`);
+  console.log(`  charts ai files on disk: ${chartsAiFiles.length}`);
 
-  if (aiFiles.length !== registry.length) {
+  if (reactAiFiles.length !== reactRegistry.length) {
     console.error(
-      `Expected ${registry.length} ai docs, found ${aiFiles.length}`,
+      `Expected ${reactRegistry.length} react ai docs, found ${reactAiFiles.length}`,
+    );
+    process.exit(1);
+  }
+
+  if (chartsAiFiles.length !== chartsRegistry.length) {
+    console.error(
+      `Expected ${chartsRegistry.length} charts ai docs, found ${chartsAiFiles.length}`,
     );
     process.exit(1);
   }

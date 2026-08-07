@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Checkbox records a boolean choice. Checkbox uses consistent semantic styling and accessible keyboard interaction in the light theme and in the dark theme.
+Checkbox records a boolean choice.
+
+Checkbox uses consistent semantic styling and accessible keyboard interaction in the light theme and in the dark theme.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Checkbox records a boolean choice. Checkbox uses consistent semantic styling and
 ## Import
 
 ```tsx
-import { Checkbox } from '@z-ui/react/checkbox';
+import { Checkbox } from '@z-ux/ui/checkbox';
 ```
 
 ## Compose

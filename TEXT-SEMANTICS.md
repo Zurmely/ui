@@ -185,16 +185,16 @@ Primitives use `--z-font-*`; semantics use `--z-text-*`.
 ### 9.1 Install
 
 ```bash
-pnpm add @z-ui/tokens
+pnpm add @z-ux/tokens
 ```
 
 ### 9.2 Import
 
 ```tsx
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/react/styles.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/ui/styles.css';
 ```
 
 Text tokens are **opt-in at the app layer** — React component CSS references semantic variables; the consuming app must import `text.css` (alongside `colors.css` and `sizes.css`).

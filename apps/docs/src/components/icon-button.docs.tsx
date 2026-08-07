@@ -1,4 +1,4 @@
-import { IconButton, Toolbar } from '@z-ui/react';
+import { Button, IconButton, Toolbar } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import {
@@ -24,7 +24,7 @@ export const iconButtonDoc: ComponentDoc = (() => {
   name: 'IconButton',
   category: 'Actions',
   summary: 'Icon-only button with required accessible name.',
-  importPath: '@z-ui/react/icon-button',
+  importPath: '@z-ux/ui/icon-button',
   componentName: 'IconButton',
   controls: {
     variant: actionVariantControl(),
@@ -60,26 +60,40 @@ export const iconButtonDoc: ComponentDoc = (() => {
     ].filter(Boolean);
     return `<IconButton ${parts.join(' ')}>\n  {/* icon */}\n</IconButton>`;
   },
+  whenToUsePreviews: {
+    use: () => (
+      <IconButton aria-label="Add item" variant="primary">
+        {plusIcon}
+      </IconButton>
+    ),
+    doNotUse: () => (
+      <Button variant="ghost" size="sm">
+        {plusIcon}
+      </Button>
+    ),
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<icon-button />',
-      render: () => doc.render(defaults),
+      label: 'Add item',
+      description: 'Primary icon button with an accessible name.',
+      code: '<IconButton aria-label="Add">{/* plus icon */}</IconButton>',
+      render: () => (
+        <IconButton aria-label="Add" variant="primary">
+          {plusIcon}
+        </IconButton>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, iconChoice: 'search' }) : '<icon-button />',
-      render: () => doc.render({ ...defaults, iconChoice: 'search' }),
-    },
-    {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<icon-button />',
-      render: () => doc.render(defaults),
+      label: 'Search',
+      description: 'Ghost icon button for toolbar search.',
+      code: '<IconButton aria-label="Search" variant="ghost">{/* search icon */}</IconButton>',
+      render: () => (
+        <IconButton aria-label="Search" variant="ghost">
+          {searchIcon}
+        </IconButton>
+      ),
     },
     {
       label: 'Toolbar icons',

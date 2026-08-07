@@ -1,4 +1,4 @@
-import { Button, Separator } from '@z-ui/react';
+import { Button, Separator } from '@z-ux/ui';
 import { useState } from 'react';
 import type { Example } from './types';
 import { CodeBlock } from './CodeBlock';

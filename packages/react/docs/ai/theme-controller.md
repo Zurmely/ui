@@ -2,7 +2,9 @@
 
 ## Purpose
 
-ThemeController lets the user switch between light, dark, and system color themes. ThemeController sets `data-theme` on the document root.
+ThemeController lets the user switch between light, dark, and system color themes.
+
+ThemeController sets `data-theme` on the document root.
 
 ## Select when
 
@@ -18,7 +20,7 @@ ThemeController lets the user switch between light, dark, and system color theme
 ## Import
 
 ```tsx
-import { ThemeController } from '@z-ui/react/theme-controller';
+import { ThemeController } from '@z-ux/ui/theme-controller';
 ```
 
 ## Compose

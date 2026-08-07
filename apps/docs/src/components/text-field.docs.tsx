@@ -1,4 +1,9 @@
-import { TextField } from '@z-ui/react';
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+  TextField,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl, textControl } from './shared-controls';
@@ -15,7 +20,7 @@ export const textFieldDoc: ComponentDoc = (() => {
   name: 'TextField',
   category: 'Forms',
   summary: 'Single-line text input with field context integration.',
-  importPath: '@z-ui/react/text-field',
+  importPath: '@z-ux/ui/text-field',
   componentName: 'TextField',
   controls: {
     placeholder: textControl('placeholder', 'Enter your name'),
@@ -39,26 +44,46 @@ export const textFieldDoc: ComponentDoc = (() => {
     ].filter(Boolean);
     return `<TextField ${parts.join(' ')} />`;
   },
+    whenToUsePreviews: {
+      use: () => (
+        <Field style={{ width: '100%', maxWidth: '24rem' }}>
+          <FieldLabel>Username</FieldLabel>
+          <TextField placeholder="jane_doe" />
+          <FieldDescription>Visible on your public profile.</FieldDescription>
+        </Field>
+      ),
+      doNotUse: () => <TextField placeholder="jane_doe" aria-label="Username" />,
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<text-field />',
-      render: () => doc.render(defaults),
+      label: 'Name input',
+      description: 'Single-line text field with placeholder.',
+      code: '<TextField placeholder="Enter your name" aria-label="Name" />',
+      render: () => <TextField placeholder="Enter your name" aria-label="Name" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<text-field />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Email with error',
+      description: 'Invalid text field after form validation.',
+      code: '<TextField type="email" invalid aria-label="Email" placeholder="you@example.com" />',
+      render: () => <TextField type="email" invalid aria-label="Email" placeholder="you@example.com" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<text-field />',
-      render: () => doc.render(defaults),
+      label: 'Labeled field',
+      description: 'TextField composed inside a Field with label and helper text.',
+      code: `<Field>
+  <FieldLabel>Username</FieldLabel>
+  <TextField aria-label="Username" placeholder="jane_doe" />
+  <FieldDescription>Visible on your public profile.</FieldDescription>
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '24rem' }}>
+          <FieldLabel>Username</FieldLabel>
+          <TextField aria-label="Username" placeholder="jane_doe" />
+          <FieldDescription>Visible on your public profile.</FieldDescription>
+        </Field>
+      ),
     },
   ];
   return doc;

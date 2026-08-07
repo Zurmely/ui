@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Textarea gives a styled native `<textarea>`. Textarea works with `Field` context for ids, validation state, and `aria-describedby` wiring.
+Textarea gives a styled native `<textarea>`.
+
+Textarea works with `Field` context for ids, validation state, and `aria-describedby` wiring.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Textarea gives a styled native `<textarea>`. Textarea works with `Field` context
 ## Import
 
 ```tsx
-import { Textarea } from '@z-ui/react/textarea';
+import { Textarea } from '@z-ux/ui/textarea';
 ```
 
 ## Compose

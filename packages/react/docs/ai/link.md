@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Link shows styled navigation to another location. Link uses semantic tokens for link text color in the light theme and in the dark theme.
+Link shows styled navigation to another location.
+
+Link uses semantic tokens for link text color in the light theme and in the dark theme.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Link shows styled navigation to another location. Link uses semantic tokens for 
 ## Import
 
 ```tsx
-import { Link } from '@z-ui/react/link';
+import { Link } from '@z-ux/ui/link';
 ```
 
 ## Compose

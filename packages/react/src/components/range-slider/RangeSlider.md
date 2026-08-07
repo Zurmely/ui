@@ -3,6 +3,7 @@
 ## Overview
 
 RangeSlider selects a numeric value or a range on a track.
+
 Use one thumb or two thumbs in range mode.
 
 ## When to use
@@ -19,7 +20,7 @@ Use one thumb or two thumbs in range mode.
 ## Install
 
 ```tsx
-import { RangeSlider } from '@z-ui/react/range-slider';
+import { RangeSlider } from '@z-ux/ui/range-slider';
 ```
 
 ## API

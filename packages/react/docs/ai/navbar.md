@@ -4,6 +4,8 @@
 
 Navbar shows a top application bar with dedicated logo and navigation content areas.
 
+Top navigation bar with logo and links.
+
 ## Select when
 
 - Primary site navigation must stay visible at the top of the page.
@@ -19,7 +21,7 @@ Navbar shows a top application bar with dedicated logo and navigation content ar
 ## Import
 
 ```tsx
-import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ui/react';
+import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ux/ui';
 ```
 
 ## Compose

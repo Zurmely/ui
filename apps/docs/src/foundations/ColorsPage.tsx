@@ -1,4 +1,4 @@
-import { Button } from '@z-ui/react';
+import { Button } from '@z-ux/ui';
 import { FoundationPageHeader } from '../components/FoundationPageHeader';
 import { Section, TokenGroup, TokenSubGroup } from './FoundationSection';
 import {
@@ -141,6 +141,39 @@ const BORDER_SUBGROUPS: readonly ColorTokenSubgroup[] = [
   },
 ];
 
+const CHART_SUBGROUPS: readonly ColorTokenSubgroup[] = [
+  {
+    title: 'Series',
+    tokens: [
+      { token: 'chart-series-1', label: 'Series 1', useWhen: 'First categorical data series' },
+      { token: 'chart-series-2', label: 'Series 2', useWhen: 'Second categorical data series' },
+      { token: 'chart-series-3', label: 'Series 3', useWhen: 'Third categorical data series' },
+      { token: 'chart-series-4', label: 'Series 4', useWhen: 'Fourth categorical data series' },
+      { token: 'chart-series-5', label: 'Series 5', useWhen: 'Fifth categorical data series' },
+      { token: 'chart-series-6', label: 'Series 6', useWhen: 'Sixth categorical data series' },
+      { token: 'chart-series-7', label: 'Series 7', useWhen: 'Seventh categorical data series' },
+      { token: 'chart-series-8', label: 'Series 8', useWhen: 'Eighth categorical data series' },
+    ],
+  },
+  {
+    title: 'Structure',
+    tokens: [
+      { token: 'chart-grid', label: 'Grid', useWhen: 'Chart grid line strokes' },
+      { token: 'chart-axis', label: 'Axis', useWhen: 'Axis line strokes' },
+      { token: 'chart-axis-label', label: 'Axis label', useWhen: 'Tick and axis label color' },
+      { token: 'chart-reference', label: 'Reference', useWhen: 'Threshold and reference lines' },
+      { token: 'chart-muted', label: 'Muted', useWhen: 'De-emphasized chart chrome' },
+    ],
+  },
+  {
+    title: 'Direction',
+    tokens: [
+      { token: 'chart-positive', label: 'Positive', useWhen: 'Upward or favorable change' },
+      { token: 'chart-negative', label: 'Negative', useWhen: 'Downward or unfavorable change' },
+    ],
+  },
+];
+
 function PrimitiveScale({ family }: { family: string }) {
   return (
     <div className="docs-primitive-scale">
@@ -255,6 +288,12 @@ export function ColorsPage() {
         <TokenGroup title="Border">
           {BORDER_SUBGROUPS.map((subgroup) => (
             <ColorTokenSubgroupStrip key={subgroup.title} subgroup={subgroup} kind="border" />
+          ))}
+        </TokenGroup>
+
+        <TokenGroup title="Charts">
+          {CHART_SUBGROUPS.map((subgroup) => (
+            <ColorTokenSubgroupStrip key={subgroup.title} subgroup={subgroup} kind="fill" />
           ))}
         </TokenGroup>
 

@@ -450,6 +450,31 @@
   /* ----- Focus ----- */
   --z-color-focus-ring: var(--neutral-950);
 
+  /* ----- Chart ----- */
+  --z-color-chart-series-1: var(--blue-600);
+  --z-color-chart-series-2: var(--green-600);
+  --z-color-chart-series-3: var(--purple-600);
+  --z-color-chart-series-4: var(--orange-600);
+  --z-color-chart-series-5: var(--pink-600);
+  --z-color-chart-series-6: var(--olive-600);
+  --z-color-chart-series-7: var(--salmon-600);
+  --z-color-chart-series-8: var(--rose-600);
+  --z-color-chart-series-1-subtle: var(--blue-200);
+  --z-color-chart-series-2-subtle: var(--green-200);
+  --z-color-chart-series-3-subtle: var(--purple-200);
+  --z-color-chart-series-4-subtle: var(--orange-200);
+  --z-color-chart-series-5-subtle: var(--pink-200);
+  --z-color-chart-series-6-subtle: var(--olive-200);
+  --z-color-chart-series-7-subtle: var(--salmon-200);
+  --z-color-chart-series-8-subtle: var(--rose-200);
+  --z-color-chart-grid: var(--neutral-300);
+  --z-color-chart-axis: var(--neutral-500);
+  --z-color-chart-axis-label: var(--neutral-700);
+  --z-color-chart-reference: var(--neutral-600);
+  --z-color-chart-muted: var(--neutral-600);
+  --z-color-chart-positive: var(--z-color-success-600);
+  --z-color-chart-negative: var(--z-color-danger-600);
+
   /* ----- Overlay ----- */
   --z-color-overlay-scrim: oklch(0 0 0 / 0.45);
   --z-color-overlay-tooltip: var(--neutral-900);
@@ -605,6 +630,31 @@
   /* ----- Focus ----- */
   --z-color-focus-ring: var(--neutral-950);
 
+  /* ----- Chart ----- */
+  --z-color-chart-series-1: var(--blue-500);
+  --z-color-chart-series-2: var(--green-500);
+  --z-color-chart-series-3: var(--purple-500);
+  --z-color-chart-series-4: var(--orange-500);
+  --z-color-chart-series-5: var(--pink-500);
+  --z-color-chart-series-6: var(--olive-500);
+  --z-color-chart-series-7: var(--salmon-500);
+  --z-color-chart-series-8: var(--rose-500);
+  --z-color-chart-series-1-subtle: var(--blue-900);
+  --z-color-chart-series-2-subtle: var(--green-900);
+  --z-color-chart-series-3-subtle: var(--purple-900);
+  --z-color-chart-series-4-subtle: var(--orange-900);
+  --z-color-chart-series-5-subtle: var(--pink-900);
+  --z-color-chart-series-6-subtle: var(--olive-900);
+  --z-color-chart-series-7-subtle: var(--salmon-900);
+  --z-color-chart-series-8-subtle: var(--rose-900);
+  --z-color-chart-grid: var(--neutral-400);
+  --z-color-chart-axis: var(--neutral-500);
+  --z-color-chart-axis-label: var(--neutral-700);
+  --z-color-chart-reference: var(--neutral-600);
+  --z-color-chart-muted: var(--neutral-500);
+  --z-color-chart-positive: var(--z-color-success-500);
+  --z-color-chart-negative: var(--z-color-danger-500);
+
   /* ----- Overlay ----- */
   --z-color-overlay-scrim: oklch(0 0 0 / 0.65);
   --z-color-overlay-tooltip: var(--neutral-200);
@@ -626,6 +676,9 @@
     --z-color-border-default: var(--neutral-800);
     --z-color-border-strong: var(--neutral-900);
     --z-color-border-disabled: var(--neutral-700);
+    --z-color-chart-grid: var(--neutral-600);
+    --z-color-chart-axis: var(--neutral-700);
+    --z-color-chart-axis-label: var(--z-color-text-primary);
   }
 
   [data-theme="dark"]:not([data-contrast="standard"]) {
@@ -636,6 +689,9 @@
     --z-color-border-default: var(--neutral-800);
     --z-color-border-strong: var(--neutral-900);
     --z-color-border-disabled: var(--neutral-600);
+    --z-color-chart-grid: var(--neutral-500);
+    --z-color-chart-axis: var(--neutral-600);
+    --z-color-chart-axis-label: var(--z-color-text-primary);
   }
 }
 
@@ -648,6 +704,9 @@
   --z-color-border-default: var(--neutral-800);
   --z-color-border-strong: var(--neutral-900);
   --z-color-border-disabled: var(--neutral-700);
+  --z-color-chart-grid: var(--neutral-700);
+  --z-color-chart-axis: var(--neutral-800);
+  --z-color-chart-axis-label: var(--z-color-text-primary);
 }
 
 [data-theme="dark"][data-contrast="high"] {
@@ -658,6 +717,9 @@
   --z-color-border-default: var(--neutral-800);
   --z-color-border-strong: var(--neutral-900);
   --z-color-border-disabled: var(--neutral-600);
+  --z-color-chart-grid: var(--neutral-600);
+  --z-color-chart-axis: var(--neutral-700);
+  --z-color-chart-axis-label: var(--z-color-text-primary);
 }
 
 /* ----- Reduced transparency ----- */

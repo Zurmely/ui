@@ -1,5 +1,5 @@
-import { Indicator, IndicatorItem } from '@z-ui/react';
-import { Button } from '@z-ui/react';
+import { Indicator, IndicatorItem } from '@z-ux/ui';
+import { Button } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { textControl } from './shared-controls';
@@ -10,7 +10,7 @@ export const indicatorDoc: ComponentDoc = (() => {
   name: 'Indicator',
   category: 'Display',
   summary: 'Notification badge overlay on a trigger element.',
-  importPath: '@z-ui/react/indicator',
+  importPath: '@z-ux/ui/indicator',
   componentName: 'Indicator',
   controls: {
     variant: {
@@ -42,26 +42,59 @@ export const indicatorDoc: ComponentDoc = (() => {
   <Button variant="secondary">Inbox</Button>
   <IndicatorItem variant="${props.variant}" placement="${props.placement}">${props.variant === 'badge' ? props.label : ''}</IndicatorItem>
 </Indicator>`,
+  whenToUsePreviews: {
+    use: () => (
+      <Indicator>
+        <Button variant="secondary">Inbox</Button>
+        <IndicatorItem variant="badge" placement="top-end">3</IndicatorItem>
+      </Indicator>
+    ),
+    doNotUse: () => <Button variant="secondary">Inbox (3)</Button>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<indicator />',
-      render: () => doc.render(defaults),
+      label: 'Unread dot',
+      description: 'Subtle dot indicator on a navigation icon.',
+      code: `<Indicator>
+  <Button variant="secondary">Inbox</Button>
+  <IndicatorItem variant="dot" placement="top-end" />
+</Indicator>`,
+      render: () => (
+        <Indicator>
+          <Button variant="secondary">Inbox</Button>
+          <IndicatorItem variant="dot" placement="top-end" />
+        </Indicator>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, variant: 'dot', placement: 'bottom-start' }) : '<indicator />',
-      render: () => doc.render({ ...defaults, variant: 'dot', placement: 'bottom-start' }),
+      label: 'Notification badge',
+      description: 'Numeric badge on an icon button.',
+      code: `<Indicator>
+  <Button variant="secondary">Inbox</Button>
+  <IndicatorItem variant="badge" placement="top-end">5</IndicatorItem>
+</Indicator>`,
+      render: () => (
+        <Indicator>
+          <Button variant="secondary">Inbox</Button>
+          <IndicatorItem variant="badge" placement="top-end">5</IndicatorItem>
+        </Indicator>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<indicator />',
-      render: () => doc.render(defaults),
+      label: 'Bottom placement',
+      description: 'Badge anchored to the bottom-start of a trigger.',
+      code: `<Indicator>
+  <Button variant="ghost" size="sm">Messages</Button>
+  <IndicatorItem variant="badge" placement="bottom-start">12</IndicatorItem>
+</Indicator>`,
+      render: () => (
+        <Indicator>
+          <Button variant="ghost" size="sm">Messages</Button>
+          <IndicatorItem variant="badge" placement="bottom-start">12</IndicatorItem>
+        </Indicator>
+      ),
     },
   ];
   return doc;

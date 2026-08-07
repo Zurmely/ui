@@ -55,7 +55,7 @@ A product team should be able to change its foundation tokens and selected found
 - Supporting frameworks other than React.
 - Providing a utility CSS framework or requiring Tailwind CSS.
 - Offering a fully unstyled/headless component package.
-- Shipping application templates, page builders, charts, data grids, or rich-text editors.
+- Shipping application templates, page builders, data grids, or rich-text editors.
 - Supporting React Native or native mobile platforms.
 - Guaranteeing WCAG conformance for applications that override tokens or misuse component APIs.
 - Supporting Internet Explorer, legacy React versions, or non-ESM build systems.
@@ -93,8 +93,8 @@ The React package provides typed components, component styles, theme styles, and
 
 Proposed public packages:
 
-- `@z-ui/react`: React components and component styles.
-- `@z-ui/tokens`: platform-neutral token data plus CSS custom properties.
+- `@z-ux/ui`: React components and component styles.
+- `@z-ux/tokens`: platform-neutral token data plus CSS custom properties.
 
 An icon package may be evaluated after v1 and is not required for the initial release.
 

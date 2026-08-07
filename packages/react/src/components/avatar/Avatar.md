@@ -2,7 +2,9 @@
 
 ## Overview
 
-Avatar shows an image for a user or an entity. If `src` has no value or the image does not load, Avatar shows a muted fallback. Avatar works in the light theme and in the dark theme.
+Avatar shows an image for a user or an entity.
+
+If `src` has no value or the image does not load, Avatar shows a muted fallback.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Avatar shows an image for a user or an entity. If `src` has no value or the imag
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Avatar } from '@z-ui/react/avatar';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Avatar } from '@z-ux/ui/avatar';
 ```
 
 ## API

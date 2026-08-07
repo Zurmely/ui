@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { Separator } from '@z-ui/react';
+import { Separator } from '@z-ux/ui';
 import type { AnyComponentDoc } from './types';
 import { getDefaultProps } from './types';
 import { Controls } from './Controls';

@@ -2,7 +2,9 @@
 
 ## Overview
 
-Textarea gives a styled native `<textarea>`. Textarea works with `Field` context for ids, validation state, and `aria-describedby` wiring.
+Textarea gives a styled native `<textarea>`.
+
+Textarea works with `Field` context for ids, validation state, and `aria-describedby` wiring.
 
 ## When to use
 
@@ -18,15 +20,15 @@ Textarea gives a styled native `<textarea>`. Textarea works with `Field` context
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Textarea } from '@z-ui/react/textarea';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Textarea } from '@z-ux/ui/textarea';
 ```
 
 ## API

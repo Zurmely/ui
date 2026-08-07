@@ -1,10 +1,13 @@
 import {
+  Field,
+  FieldLabel,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@z-ui/react';
+  TextField,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { booleanControl } from './shared-controls';
@@ -20,7 +23,7 @@ export const selectDoc: ComponentDoc = (() => {
   name: 'Select',
   category: 'Forms',
   summary: 'Dropdown selection with keyboard navigation.',
-  importPath: '@z-ui/react/select',
+  importPath: '@z-ux/ui/select',
   componentName: 'Select',
   controls: {
     value: {
@@ -59,26 +62,95 @@ export const selectDoc: ComponentDoc = (() => {
   </SelectContent>
 </Select>`;
   },
+    whenToUsePreviews: {
+      use: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Country</FieldLabel>
+          <Select defaultValue="us">
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="us">United States</SelectItem>
+              <SelectItem value="ca">Canada</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      ),
+      doNotUse: () => (
+        <TextField placeholder="United States" aria-label="Country" style={{ width: '100%', maxWidth: '20rem' }} />
+      ),
+    },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<select />',
-      render: () => doc.render(defaults),
+      label: 'Fruit picker',
+      description: 'Single selection from a short list.',
+      code: `<Select defaultValue="apple">
+  <SelectTrigger aria-label="Fruit"><SelectValue placeholder="Select a fruit" /></SelectTrigger>
+  <SelectContent>
+    <SelectItem value="apple">Apple</SelectItem>
+    <SelectItem value="banana">Banana</SelectItem>
+  </SelectContent>
+</Select>`,
+      render: () => (
+        <Select defaultValue="apple">
+          <SelectTrigger aria-label="Fruit">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="orange">Orange</SelectItem>
+          </SelectContent>
+        </Select>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, value: 'banana' }) : '<select />',
-      render: () => doc.render({ ...defaults, value: 'banana' }),
+      label: 'Country field',
+      description: 'Select inside a labeled form field.',
+      code: `<Field>
+  <FieldLabel>Country</FieldLabel>
+  <Select defaultValue="us">
+    <SelectTrigger aria-label="Country"><SelectValue /></SelectTrigger>
+    <SelectContent>
+      <SelectItem value="us">United States</SelectItem>
+      <SelectItem value="ca">Canada</SelectItem>
+    </SelectContent>
+  </Select>
+</Field>`,
+      render: () => (
+        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+          <FieldLabel>Country</FieldLabel>
+          <Select defaultValue="us">
+            <SelectTrigger aria-label="Country">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="us">United States</SelectItem>
+              <SelectItem value="ca">Canada</SelectItem>
+              <SelectItem value="uk">United Kingdom</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<select />',
-      render: () => doc.render(defaults),
+      label: 'Loading form',
+      description: 'Read-only select while form data is loading.',
+      code: '<Select disabled defaultValue="apple">...</Select>',
+      render: () => (
+        <Select disabled defaultValue="apple">
+          <SelectTrigger aria-label="Fruit">
+            <SelectValue placeholder="Select a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+          </SelectContent>
+        </Select>
+      ),
     },
   ];
   return doc;

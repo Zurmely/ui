@@ -1,4 +1,7 @@
-import { Avatar } from '@z-ui/react';
+import {
+  Avatar,
+  Stack,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { sizeControl, textControl } from './shared-controls';
@@ -15,7 +18,7 @@ export const avatarDoc: ComponentDoc = (() => {
   name: 'Avatar',
   category: 'Display',
   summary: 'Displays a user image with fallback initials.',
-  importPath: '@z-ui/react/avatar',
+  importPath: '@z-ux/ui/avatar',
   componentName: 'Avatar',
   controls: {
     size: sizeControl(),
@@ -50,26 +53,43 @@ export const avatarDoc: ComponentDoc = (() => {
     ].filter(Boolean);
     return `<Avatar ${parts.join(' ')} />`;
   },
+  whenToUsePreviews: {
+    use: () => (
+      <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+        <Avatar fallback="MR" alt="Morgan Reed" />
+        <span>Morgan Reed</span>
+      </Stack>
+    ),
+    doNotUse: () => <span>MR</span>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<avatar />',
-      render: () => doc.render(defaults),
+      label: 'Initials fallback',
+      description: 'Show user initials when no image is available.',
+      code: '<Avatar fallback="JD" alt="Jane Doe" />',
+      render: () => <Avatar fallback="JD" alt="Jane Doe" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, src: 'image' }) : '<avatar />',
-      render: () => doc.render({ ...defaults, src: 'image' }),
+      label: 'Large profile',
+      description: 'Larger avatar for profile headers and account settings.',
+      code: '<Avatar size="lg" fallback="AC" alt="Alex Chen" />',
+      render: () => <Avatar size="lg" fallback="AC" alt="Alex Chen" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<avatar />',
-      render: () => doc.render(defaults),
+      label: 'Team member row',
+      description: 'Avatar paired with a name in a member list.',
+      code: `<Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+  <Avatar fallback="MR" alt="Morgan Reed" />
+  <span>Morgan Reed</span>
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <Avatar fallback="MR" alt="Morgan Reed" />
+          <span>Morgan Reed</span>
+        </Stack>
+      ),
     },
   ];
   return doc;

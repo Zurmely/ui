@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Badge shows a short status label or a count. Badge uses a subtle background color for each tone, in the light theme and in the dark theme.
+Badge shows a short status label or a count.
+
+Badge uses a subtle background color for each tone, in the light theme and in the dark theme.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Badge shows a short status label or a count. Badge uses a subtle background colo
 ## Import
 
 ```tsx
-import { Badge } from '@z-ui/react/badge';
+import { Badge } from '@z-ux/ui/badge';
 ```
 
 ## Compose

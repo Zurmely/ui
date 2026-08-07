@@ -1,4 +1,7 @@
-import { Spinner } from '@z-ui/react';
+import {
+  Button,
+  Spinner,
+} from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { sizeControl } from './shared-controls';
@@ -9,32 +12,40 @@ export const spinnerDoc: ComponentDoc = (() => {
   name: 'Spinner',
   category: 'Display',
   summary: 'Loading spinner indicator.',
-  importPath: '@z-ui/react/spinner',
+  importPath: '@z-ux/ui/spinner',
   componentName: 'Spinner',
   controls: {
     size: sizeControl(),
   },
   render: (props) => <Spinner size={props.size as 'sm' | 'md' | 'lg'} />,
+  whenToUsePreviews: {
+    use: () => <Spinner aria-label="Loading content" />,
+    doNotUse: () => <Button variant="primary" isLoading>Saving</Button>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<spinner />',
-      render: () => doc.render(defaults),
+      label: 'Inline loading',
+      description: 'Small spinner beside button text.',
+      code: '<Spinner size="sm" aria-label="Loading" />',
+      render: () => <Spinner size="sm" aria-label="Loading" />,
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<spinner />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Page loading',
+      description: 'Medium spinner centered in a content area.',
+      code: '<Spinner aria-label="Loading page" />',
+      render: () => <Spinner aria-label="Loading page" />,
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<spinner />',
-      render: () => doc.render(defaults),
+      label: 'Button loading',
+      description: 'Use Button isLoading for action feedback; reserve Spinner for standalone loading regions.',
+      code: '<Button variant="primary" isLoading>Saving</Button>',
+      render: () => (
+        <Button variant="primary" isLoading>
+          Saving
+        </Button>
+      ),
     },
   ];
   return doc;

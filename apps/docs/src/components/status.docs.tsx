@@ -1,4 +1,4 @@
-import { Status } from '@z-ui/react';
+import { Badge, Stack, Status } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { sizeControl, textControl, toneControl } from './shared-controls';
@@ -9,7 +9,7 @@ export const statusDoc: ComponentDoc = (() => {
   name: 'Status',
   category: 'Display',
   summary: 'Status indicator with dot and label.',
-  importPath: '@z-ui/react/status',
+  importPath: '@z-ux/ui/status',
   componentName: 'Status',
   controls: {
     tone: toneControl('success'),
@@ -23,26 +23,59 @@ export const statusDoc: ComponentDoc = (() => {
       label={props.label as string}
     />
   ),
+  whenToUsePreviews: {
+    use: () => (
+      <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+        <span>Payments API</span>
+        <Status tone="success" label="Operational" size="sm" />
+      </Stack>
+    ),
+    doNotUse: () => <Badge tone="success">Operational</Badge>,
+  },
   };
   const defaults = getDefaultProps(doc.controls);
   doc.examples = [
     {
-      label: 'Default',
-      description: 'Default playground configuration.',
-      code: doc.code ? doc.code(defaults) : '<status />',
-      render: () => doc.render(defaults),
+      label: 'Service healthy',
+      description: 'Operational status beside a service name on a status dashboard.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <span>Payments API</span>
+  <Status tone="success" label="Operational" size="sm" />
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <span>Payments API</span>
+          <Status tone="success" label="Operational" size="sm" />
+        </Stack>
+      ),
     },
     {
-      label: 'Alternate state',
-      description: 'Another common configuration from the playground controls.',
-      code: doc.code ? doc.code({ ...defaults, ...defaults }) : '<status />',
-      render: () => doc.render({ ...defaults,  }),
+      label: 'Degraded service',
+      description: 'Warning status when a service is partially unavailable.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <span>Search API</span>
+  <Status tone="warning" label="Degraded" size="sm" />
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <span>Search API</span>
+          <Status tone="warning" label="Degraded" size="sm" />
+        </Stack>
+      ),
     },
     {
-      label: 'Interactive preview',
-      description: 'Live render of the component with default props.',
-      code: doc.code ? doc.code(defaults) : '<status />',
-      render: () => doc.render(defaults),
+      label: 'Service outage',
+      description: 'Danger status when a service is fully offline.',
+      code: `<Stack direction="horizontal" gap="sm">
+  <span>Auth API</span>
+  <Status tone="danger" label="Offline" />
+</Stack>`,
+      render: () => (
+        <Stack direction="horizontal" gap="sm" style={{ alignItems: 'center' }}>
+          <span>Auth API</span>
+          <Status tone="danger" label="Offline" />
+        </Stack>
+      ),
     },
   ];
   return doc;

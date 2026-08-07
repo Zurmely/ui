@@ -1,4 +1,4 @@
-import { Button, Separator, Toolbar } from '@z-ui/react';
+import { Button, Separator, Toolbar } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { textControl } from './shared-controls';
 
@@ -7,7 +7,7 @@ export const toolbarDoc: ComponentDoc = {
   name: 'Toolbar',
   category: 'Layout',
   summary: 'Grouped actions with leading, center, and trailing regions and roving keyboard focus.',
-  importPath: '@z-ui/react/toolbar',
+  importPath: '@z-ux/ui/toolbar',
   componentName: 'Toolbar',
   controls: {
     label: textControl('label', 'Document actions'),
@@ -36,6 +36,18 @@ export const toolbarDoc: ComponentDoc = {
   <Separator orientation="${props.orientation === 'vertical' ? 'horizontal' : 'vertical'}" />
   <Button size="sm" variant="secondary">Cancel</Button>
 </Toolbar>`,
+  whenToUsePreviews: {
+    use: () => (
+      <Toolbar label="Document actions" style={{ width: '100%', maxWidth: '24rem' }}>
+        <Button size="sm">Save</Button>
+        <Separator orientation="vertical" />
+        <Button size="sm" variant="secondary">
+          Cancel
+        </Button>
+      </Toolbar>
+    ),
+    doNotUse: () => <Button size="sm">Save</Button>,
+  },
   examples: [
     {
       label: 'Horizontal actions',

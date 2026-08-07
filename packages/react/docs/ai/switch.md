@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Switch turns a setting on or off with immediate effect. Switch uses semantic tokens for track and thumb states in the light theme and in the dark theme.
+Switch turns a setting on or off with immediate effect.
+
+Switch uses semantic tokens for track and thumb states in the light theme and in the dark theme.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Switch turns a setting on or off with immediate effect. Switch uses semantic tok
 ## Import
 
 ```tsx
-import { Switch } from '@z-ui/react/switch';
+import { Switch } from '@z-ux/ui/switch';
 ```
 
 ## Compose

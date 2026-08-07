@@ -1,9 +1,31 @@
 {
-  "name": "@z-ui/tokens",
-  "version": "0.0.0",
+  "name": "@z-ux/tokens",
+  "version": "0.1.0",
   "description": "Z-UI semantic design tokens (color, spacing, radius, text, motion, and elevation)",
   "type": "module",
-  "files": ["dist"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zurmely/ui.git",
+    "directory": "packages/tokens"
+  },
+  "bugs": {
+    "url": "https://github.com/Zurmely/ui/issues"
+  },
+  "homepage": "https://github.com/Zurmely/ui/tree/main/packages/tokens",
+  "keywords": [
+    "design-tokens",
+    "css-variables",
+    "design-system",
+    "z-ux"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "exports": {
     "./colors.css": "./dist/colors.css",
     "./sizes.css": "./dist/sizes.css",
@@ -12,6 +34,7 @@
     "./elevation.css": "./dist/elevation.css"
   },
   "scripts": {
+    "prepublishOnly": "pnpm run build",
     "build": "node scripts/build.mjs",
     "contrast": "node scripts/contrast.mjs",
     "typecheck": "echo 'No TypeScript in tokens package'",

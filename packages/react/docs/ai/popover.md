@@ -4,6 +4,8 @@
 
 Popover shows rich content near a trigger.
 
+The rest of the page stays interactive.
+
 ## Select when
 
 - You show filters, pickers, or short forms near a control.
@@ -19,7 +21,7 @@ Popover shows rich content near a trigger.
 ## Import
 
 ```tsx
-import { Popover, PopoverContent, PopoverTrigger } from '@z-ui/react/popover';
+import { Popover, PopoverContent, PopoverTrigger } from '@z-ux/ui/popover';
 ```
 
 ## Compose

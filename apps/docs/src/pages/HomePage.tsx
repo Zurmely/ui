@@ -1,4 +1,4 @@
-import { Card, CardDescription, CardHeader, CardTitle } from '@z-ui/react';
+import { Card, CardDescription, CardHeader, CardTitle } from '@z-ux/ui';
 import { Link } from 'react-router-dom';
 import { componentRegistry } from '../components/registry';
 import { elementRegistry, pageExampleRegistry } from '../examples/registry';

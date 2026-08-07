@@ -13,7 +13,7 @@ import {
   Stack,
   Switch,
   TextField,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import type { ControlDef } from './types';
 
 interface ControlsProps {

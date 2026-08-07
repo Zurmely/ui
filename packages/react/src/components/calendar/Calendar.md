@@ -2,7 +2,9 @@
 
 ## Overview
 
-Calendar shows an accessible month grid for picking a single date. Day buttons accept keyboard focus. You can move between months.
+Calendar shows an accessible month grid for picking a single date.
+
+Day buttons accept keyboard focus.
 
 ## When to use
 
@@ -18,15 +20,15 @@ Calendar shows an accessible month grid for picking a single date. Day buttons a
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Calendar } from '@z-ui/react/calendar';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Calendar } from '@z-ux/ui/calendar';
 ```
 
 ## API

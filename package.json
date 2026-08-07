@@ -7,13 +7,15 @@
     "dev": "pnpm --filter @z-ui/docs dev",
     "docs": "pnpm --filter @z-ui/docs dev",
     "dev:preview": "pnpm --filter @z-ui/preview dev",
-    "dev:react": "pnpm --filter @z-ui/react dev",
+    "dev:ui": "pnpm --filter @z-ux/ui dev",
     "preview": "pnpm --filter @z-ui/preview dev",
     "lint": "pnpm -r lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "pnpm -r test",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "version:packages": "node scripts/bump-publishable-versions.mjs",
+    "publish:packages": "pnpm --filter @z-ux/tokens publish --access public --no-git-checks && pnpm --filter @z-ux/ui publish --access public --no-git-checks && pnpm --filter @z-ux/charts publish --access public --no-git-checks"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

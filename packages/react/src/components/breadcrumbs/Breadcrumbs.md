@@ -2,7 +2,9 @@
 
 ## Overview
 
-Breadcrumbs show the current page location in a site hierarchy. Breadcrumbs let you go to ancestor pages with one click.
+Breadcrumbs show the current page location in a site hierarchy.
+
+Breadcrumbs let you go to ancestor pages with one click.
 
 ## When to use
 
@@ -19,19 +21,19 @@ Breadcrumbs show the current page location in a site hierarchy. Breadcrumbs let 
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
 import {
   BreadcrumbItem,
   BreadcrumbLink,
   Breadcrumbs,
   BreadcrumbSeparator,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 ```
 
 ## API

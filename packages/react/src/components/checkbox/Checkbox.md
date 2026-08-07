@@ -2,7 +2,9 @@
 
 ## Overview
 
-Checkbox records a boolean choice. Checkbox uses consistent semantic styling and accessible keyboard interaction in the light theme and in the dark theme.
+Checkbox records a boolean choice.
+
+Checkbox uses consistent semantic styling and accessible keyboard interaction in the light theme and in the dark theme.
 
 ## When to use
 
@@ -19,15 +21,15 @@ Checkbox records a boolean choice. Checkbox uses consistent semantic styling and
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { Checkbox } from '@z-ui/react/checkbox';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { Checkbox } from '@z-ux/ui/checkbox';
 ```
 
 ## API

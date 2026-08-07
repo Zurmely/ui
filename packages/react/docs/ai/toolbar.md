@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center. trailing areas. Slot allowlists keep toolbars visually consistent.
+Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center.
+
+trailing areas.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Toolbar groups related actions and controls in a single keyboard-navigable regio
 ## Import
 
 ```tsx
-import { Toolbar, Button, Separator } from '@z-ui/react';
+import { Toolbar, Button, Separator } from '@z-ux/ui';
 ```
 
 ## Compose

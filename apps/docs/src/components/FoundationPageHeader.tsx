@@ -3,7 +3,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Breadcrumbs,
-} from '@z-ui/react';
+} from '@z-ux/ui';
 import type { ReactNode } from 'react';
 import { withBasePath } from '../base-path';
 

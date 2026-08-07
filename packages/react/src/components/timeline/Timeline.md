@@ -2,7 +2,9 @@
 
 ## Overview
 
-Timeline shows a sequence of events with markers, dates, titles, and descriptions. Timeline supports vertical and horizontal layouts.
+Timeline shows a sequence of events with markers, dates, titles, and descriptions.
+
+Timeline supports vertical and horizontal layouts.
 
 ## When to use
 
@@ -19,14 +21,14 @@ Timeline shows a sequence of events with markers, dates, titles, and description
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import { Timeline, TimelineItem } from '@z-ui/react/timeline';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import { Timeline, TimelineItem } from '@z-ux/ui/timeline';
 ```
 
 ## API
@@ -51,7 +53,7 @@ import { Timeline, TimelineItem } from '@z-ui/react/timeline';
 
 ## Accessibility
 
-Set `aria-label` on `Timeline` when the list purpose is not clear from surrounding content. Markers are decorative (`aria-hidden`).
+Set `aria-label` on `Timeline` when the list purpose is not clear from surrounding content. The rail (marker and connector) is decorative (`aria-hidden`).
 
 ## Keyboard
 

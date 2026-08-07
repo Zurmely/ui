@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Dialog shows focused modal content that needs user attention or action. Dialog blocks interaction with the page behind it.
+Dialog shows focused modal content that needs user attention or action.
+
+Dialog blocks interaction with the page behind it.
 
 ## Select when
 
@@ -18,7 +20,7 @@ Dialog shows focused modal content that needs user attention or action. Dialog b
 ## Import
 
 ```tsx
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@z-ui/react/dialog';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@z-ux/ui/dialog';
 ```
 
 ## Compose

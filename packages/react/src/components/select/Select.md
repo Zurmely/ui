@@ -4,6 +4,8 @@
 
 Select lets the user choose one value from a list in a compact, field-like control with an accessible dropdown menu.
 
+Dropdown selection with keyboard navigation.
+
 ## When to use
 
 **Use when:**
@@ -19,21 +21,21 @@ Select lets the user choose one value from a list in a compact, field-like contr
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from '@z-ui/react/select';
+} from '@z-ux/ui/select';
 ```
 
 ## API

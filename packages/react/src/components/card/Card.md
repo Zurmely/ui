@@ -2,7 +2,9 @@
 
 ## Overview
 
-Card groups related content in a bordered surface. Card has optional header, body, and footer slots.
+Card groups related content in a bordered surface.
+
+Card has optional header, body, and footer slots.
 
 ## When to use
 
@@ -19,13 +21,13 @@ Card groups related content in a bordered surface. Card has optional header, bod
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
 import {
   Card,
   CardContent,
@@ -33,7 +35,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@z-ui/react/card';
+} from '@z-ux/ui/card';
 ```
 
 ## API

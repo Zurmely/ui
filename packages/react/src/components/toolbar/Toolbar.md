@@ -2,7 +2,9 @@
 
 ## Overview
 
-Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center. trailing areas. Slot allowlists keep toolbars visually consistent.
+Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center.
+
+trailing areas.
 
 ## When to use
 
@@ -19,13 +21,13 @@ Toolbar groups related actions and controls in a single keyboard-navigable regio
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import { Toolbar, Button, Separator } from '@z-ui/react';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import { Toolbar, Button, Separator } from '@z-ux/ui';
 ```
 
 ## API

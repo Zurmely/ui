@@ -3,9 +3,8 @@
 ## Overview
 
 CodeBlock shows short code text or a longer code sample.
+
 Use the single variant for token names and other short identifiers.
-Use the multi variant for a highlighted block of code.
-Every CodeBlock includes a copy control.
 
 ## When to use
 
@@ -22,15 +21,15 @@ Every CodeBlock includes a copy control.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { CodeBlock } from '@z-ui/react/code-block';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { CodeBlock } from '@z-ux/ui/code-block';
 ```
 
 ## API
@@ -106,6 +105,6 @@ The copy control is focusable. Activate it with `Enter` or `Space`.
 <CodeBlock
   variant="multi"
   language="tsx"
-  code={`import { Button } from '@z-ui/react';`}
+  code={`import { Button } from '@z-ux/ui';`}
 />
 ```

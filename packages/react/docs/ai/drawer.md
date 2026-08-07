@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Drawer shows slide-in panel content from an edge of the viewport. Drawer blocks interaction with the page behind it. Drawer suits navigation, filters. secondary workflows that need more space than a dialog but do not navigate away.
+Drawer shows slide-in panel content from an edge of the viewport.
+
+Drawer blocks interaction with the page behind it.
 
 ## Select when
 
@@ -19,7 +21,7 @@ Drawer shows slide-in panel content from an edge of the viewport. Drawer blocks 
 ## Import
 
 ```tsx
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@z-ui/react/drawer';
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@z-ux/ui/drawer';
 ```
 
 ## Compose

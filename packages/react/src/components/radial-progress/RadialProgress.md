@@ -4,6 +4,8 @@
 
 RadialProgress shows task completion in a compact circular indicator.
 
+Circular progress indicator.
+
 ## When to use
 
 **Use when:**
@@ -19,14 +21,14 @@ RadialProgress shows task completion in a compact circular indicator.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/motion.css';
-import { RadialProgress } from '@z-ui/react/radial-progress';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/motion.css';
+import { RadialProgress } from '@z-ux/ui/radial-progress';
 ```
 
 ## API

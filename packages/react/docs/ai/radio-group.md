@@ -4,6 +4,8 @@
 
 Radio Group lets the user pick one option from a small set.
 
+The group has consistent styling and full keyboard navigation.
+
 ## Select when
 
 - Users must choose one option from 2–7 visible choices.
@@ -19,7 +21,7 @@ Radio Group lets the user pick one option from a small set.
 ## Import
 
 ```tsx
-import { RadioGroup, RadioGroupItem } from '@z-ui/react/radio-group';
+import { RadioGroup, RadioGroupItem } from '@z-ux/ui/radio-group';
 ```
 
 ## Compose

@@ -4,6 +4,8 @@
 
 Pagination helps users move between pages of content.
 
+Pagination has previous and next controls, numbered links, and ellipsis gaps.
+
 ## Select when
 
 - You split content across many pages.
@@ -18,7 +20,7 @@ Pagination helps users move between pages of content.
 ## Import
 
 ```tsx
-import { Pagination, PaginationEllipsis, PaginationItem, PaginationLink } from '@z-ui/react';
+import { Pagination, PaginationEllipsis, PaginationItem, PaginationLink } from '@z-ux/ui';
 ```
 
 ## Compose

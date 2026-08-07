@@ -3,6 +3,7 @@
 ## Overview
 
 Radio Group lets the user pick one option from a small set.
+
 The group has consistent styling and full keyboard navigation.
 
 ## When to use
@@ -20,15 +21,15 @@ The group has consistent styling and full keyboard navigation.
 ## Install
 
 ```bash
-pnpm add @z-ui/react @z-ui/tokens
+pnpm add @z-ux/ui @z-ux/tokens
 ```
 
 ```tsx
-import '@z-ui/tokens/colors.css';
-import '@z-ui/tokens/sizes.css';
-import '@z-ui/tokens/text.css';
-import '@z-ui/tokens/motion.css';
-import { RadioGroup, RadioGroupItem } from '@z-ui/react/radio-group';
+import '@z-ux/tokens/colors.css';
+import '@z-ux/tokens/sizes.css';
+import '@z-ux/tokens/text.css';
+import '@z-ux/tokens/motion.css';
+import { RadioGroup, RadioGroupItem } from '@z-ux/ui/radio-group';
 ```
 
 ## API

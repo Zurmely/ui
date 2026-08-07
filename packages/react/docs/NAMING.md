@@ -132,7 +132,7 @@ Set on `document.documentElement` (or omit to follow the OS). See [ACCESSIBILITY
 | `data-transparency` | `full`, `reduced` | Opaque overlay scrims |
 | `data-link-underline` | `auto`, `always` | Force link underline via `--z-text-link-decoration` |
 
-Use `applyAccessibilityPreferences` or `<AccessibilityController />` from `@z-ui/react/accessibility`.
+Use `applyAccessibilityPreferences` or `<AccessibilityController />` from `@z-ux/ui/accessibility`.
 
 ## Token usage
 
@@ -152,17 +152,17 @@ Do not reference primitive scales (`--purple-500`, `--neutral-950`, `--z-font-si
 - `--z-text-*` — typography (font family, size, weight, line-height)
 - `--z-color-text-*` — foreground color for text
 
-Import `@z-ui/tokens/text.css` alongside `colors.css`, `sizes.css`, `motion.css`, and `elevation.css`. Apply semantic text roles (`text.control`, `text.label`, `text.caption`, `text.body`, `text.title`, `text.h1`–`text.h6`, `text.display`) via `--z-text-{role}-{property}` variables.
+Import `@z-ux/tokens/text.css` alongside `colors.css`, `sizes.css`, `motion.css`, and `elevation.css`. Apply semantic text roles (`text.control`, `text.label`, `text.caption`, `text.body`, `text.title`, `text.h1`–`text.h6`, `text.display`) via `--z-text-{role}-{property}` variables.
 
 ### Motion tokens
 
-Import `@z-ui/tokens/motion.css` alongside the other token stylesheets. Apply semantic motion aliases (`motion.duration.interaction`, `motion.easing.interaction`, `motion.duration.layout`, `motion.duration.enter`, `motion.easing.enter`, `motion.duration.exit`, `motion.easing.exit`, `motion.duration.continuous`, `motion.easing.continuous`) via `--z-motion-{property}-{purpose}` variables.
+Import `@z-ux/tokens/motion.css` alongside the other token stylesheets. Apply semantic motion aliases (`motion.duration.interaction`, `motion.easing.interaction`, `motion.duration.layout`, `motion.duration.enter`, `motion.easing.enter`, `motion.duration.exit`, `motion.easing.exit`, `motion.duration.continuous`, `motion.easing.continuous`) via `--z-motion-{property}-{purpose}` variables.
 
 Do not reference primitive motion scales (`--z-duration-150`, `--z-easing-standard`, `--z-easing-decelerate`) in component CSS.
 
 ### Elevation tokens
 
-Import `@z-ui/tokens/elevation.css` alongside the other token stylesheets. Apply semantic elevation aliases (`elevation.raised`, `elevation.overlay`, `elevation.modal`, `elevation.ring`) via `--z-elevation-{purpose}` variables.
+Import `@z-ux/tokens/elevation.css` alongside the other token stylesheets. Apply semantic elevation aliases (`elevation.raised`, `elevation.overlay`, `elevation.modal`, `elevation.ring`) via `--z-elevation-{purpose}` variables.
 
 Do not use literal `box-shadow` values in component CSS unless documented as an approved exception in `ELEVATION-SEMANTICS.md`.
 

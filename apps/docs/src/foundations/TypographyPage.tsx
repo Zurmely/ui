@@ -171,7 +171,7 @@ export function TypographyPage() {
             title="Monospace"
             note="font.family.mono via --z-font-family-mono for code and technical strings"
           >
-            <code className="docs-recipe-mono">pnpm add @z-ui/tokens</code>
+            <code className="docs-recipe-mono">pnpm add @z-ux/tokens</code>
           </RecipePanel>
         </div>
       </Section>
