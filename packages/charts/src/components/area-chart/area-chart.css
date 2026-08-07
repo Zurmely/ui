@@ -1,7 +1,0 @@
-.z-area-chart__area {
-  transition: fill-opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-area-chart__area:hover {
-  fill-opacity: 0.8;
-}

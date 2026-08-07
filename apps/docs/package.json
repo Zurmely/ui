@@ -13,7 +13,6 @@
     "lint": "echo 'No lint in docs app'"
   },
   "dependencies": {
-    "@z-ux/charts": "workspace:*",
     "@z-ux/ui": "workspace:*",
     "@z-ux/tokens": "workspace:*",
     "prism-react-renderer": "^2.4.1",

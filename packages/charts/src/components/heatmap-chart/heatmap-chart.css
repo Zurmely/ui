@@ -1,7 +1,0 @@
-.z-heatmap-chart__cell {
-  transition: opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-heatmap-chart__cell:hover {
-  opacity: 0.85;
-}

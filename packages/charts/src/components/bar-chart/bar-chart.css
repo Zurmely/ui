@@ -1,7 +1,0 @@
-.z-bar-chart__bar {
-  transition: opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-bar-chart__bar:hover {
-  opacity: 0.85;
-}

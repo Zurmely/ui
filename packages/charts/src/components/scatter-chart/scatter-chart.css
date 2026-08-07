@@ -1,7 +1,0 @@
-.z-scatter-chart__point {
-  transition: r var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-scatter-chart__point:hover {
-  r: 7;
-}

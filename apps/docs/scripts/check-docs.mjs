@@ -80,6 +80,8 @@ function readRegistryEntries() {
     const content = fs.readFileSync(path.join(docsDir, file), 'utf8');
     const slug = content.match(/slug: '([^']+)'/)?.[1];
     const importPath = content.match(/importPath: '([^']+)'/)?.[1];
+    // Charts are parked locally (gitignored) until design-system ready.
+    if (isChartsImport(importPath)) continue;
     if (slug) entries.push({ slug, importPath });
   }
   return entries;

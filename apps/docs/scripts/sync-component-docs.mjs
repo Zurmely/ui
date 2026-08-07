@@ -77,6 +77,8 @@ function readRegistry() {
     const importPath = extractQuotedField(content, 'importPath');
     const category = extractQuotedField(content, 'category');
     const summary = extractSummary(content);
+    // Charts are parked locally (gitignored) until design-system ready.
+    if (isChartsImport(importPath)) continue;
     if (!slug || !componentName) {
       throw new Error(`Could not parse metadata from ${file}`);
     }
@@ -619,34 +621,19 @@ function main() {
   }
 
   const reactRegistry = registry.filter((meta) => !isChartsImport(meta.importPath));
-  const chartsRegistry = registry.filter((meta) => isChartsImport(meta.importPath));
 
   const reactAiFiles = fs
     .readdirSync(path.join(root, 'packages/react/docs/ai'))
     .filter((f) => f.endsWith('.md') && f !== 'README.md' && f !== 'TEMPLATE.md');
 
-  const chartsAiDir = path.join(root, 'packages/charts/docs/ai');
-  fs.mkdirSync(chartsAiDir, { recursive: true });
-  const chartsAiFiles = fs
-    .readdirSync(chartsAiDir)
-    .filter((f) => f.endsWith('.md'));
-
   console.log(`sync-component-docs: processed ${registry.length} components`);
   console.log(`  human docs updated: ${humanUpdated}`);
   console.log(`  ai docs written/updated: ${aiUpdated}`);
   console.log(`  react ai files on disk: ${reactAiFiles.length}`);
-  console.log(`  charts ai files on disk: ${chartsAiFiles.length}`);
 
   if (reactAiFiles.length !== reactRegistry.length) {
     console.error(
       `Expected ${reactRegistry.length} react ai docs, found ${reactAiFiles.length}`,
-    );
-    process.exit(1);
-  }
-
-  if (chartsAiFiles.length !== chartsRegistry.length) {
-    console.error(
-      `Expected ${chartsRegistry.length} charts ai docs, found ${chartsAiFiles.length}`,
     );
     process.exit(1);
   }

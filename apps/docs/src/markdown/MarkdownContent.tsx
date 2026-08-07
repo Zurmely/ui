@@ -215,11 +215,6 @@ const markdownModules = {
     import: 'default',
     eager: true,
   }),
-  ...import.meta.glob('../../../../packages/charts/src/components/*/*.md', {
-    query: '?raw',
-    import: 'default',
-    eager: true,
-  }),
 } as Record<string, string>;
 
 export function getComponentMarkdown(slug: string): string | undefined {

@@ -1,8 +1,0 @@
-.z-line-chart__path {
-  fill: none;
-  transition: stroke-width var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-line-chart__path:hover {
-  stroke-width: 3;
-}

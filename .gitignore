@@ -9,3 +9,13 @@ coverage/
 __pycache__/
 *.pyc
 .idea/
+
+# Charts package + docs — parked until design-system quality is ready
+packages/charts/
+apps/docs/src/components/charts-registry.ts
+apps/docs/src/components/chart-sample-data.ts
+apps/docs/src/components/*-chart.docs.tsx
+apps/docs/src/components/sparkline.docs.tsx
+apps/docs/src/pages/ChartPage.tsx
+apps/docs/src/pages/ChartsGalleryPage.tsx
+apps/docs/scripts/bootstrap-chart-docs.mjs

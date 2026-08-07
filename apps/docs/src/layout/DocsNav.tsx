@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { withBasePath } from '../base-path';
 import { ELEMENT_NAV, PAGE_EXAMPLE_NAV } from '../examples/registry';
 import { FOUNDATION_NAV, getNavGroups } from '../components/registry';
-import { CHARTS_GALLERY_PATH } from '../components/charts-registry';
 import { getActiveSection, SECTIONS, sectionHasSidebar } from './sections';
 
 function DocsNavLink({
@@ -139,14 +138,6 @@ export function DocsNavContent({ onNavigate }: { onNavigate?: () => void }) {
           <div key={group.category} className="docs-sidebar__group">
             <h2 className="docs-sidebar__group-title">{group.category}</h2>
             <ul className="docs-sidebar__list">
-              {group.category === 'Charts' ? (
-                <DocsNavLink
-                  to={CHARTS_GALLERY_PATH}
-                  label="Overview"
-                  selected={pathname === CHARTS_GALLERY_PATH}
-                  onNavigate={onNavigate}
-                />
-              ) : null}
               {group.items.map((item) => (
                 <DocsNavLink
                   key={item.slug}

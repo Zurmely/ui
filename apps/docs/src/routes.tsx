@@ -13,7 +13,6 @@ import { SizesPage } from './foundations/SizesPage';
 import { TypographyPage } from './foundations/TypographyPage';
 import { MotionPage } from './foundations/MotionPage';
 import { ElevationPage } from './foundations/ElevationPage';
-import { ChartsGalleryPage } from './pages/ChartsGalleryPage';
 
 function withLayout(page: ReactNode) {
   return <DocsLayout>{page}</DocsLayout>;
@@ -29,7 +28,6 @@ export function AppRoutes() {
       <Route path="/foundations/motion" element={withLayout(<MotionPage />)} />
       <Route path="/foundations/elevation" element={withLayout(<ElevationPage />)} />
       <Route path="/components" element={withLayout(<ComponentsIndexPage />)} />
-      <Route path="/components/charts" element={withLayout(<ChartsGalleryPage />)} />
       <Route path="/components/:slug" element={withLayout(<ComponentPage />)} />
       <Route path="/elements" element={withLayout(<ElementsIndexPage />)} />
       <Route path="/elements/:slug" element={withLayout(<ElementPage />)} />

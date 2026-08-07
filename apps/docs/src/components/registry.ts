@@ -50,8 +50,6 @@ import { tooltipDoc } from './tooltip.docs';
 import { themeControllerDoc } from './theme-controller.docs';
 import { accessibilityControllerDoc } from './accessibility-controller.docs';
 import { validatorDoc } from './validator.docs';
-import { chartDocs } from './charts-registry';
-
 export const componentRegistry: AnyComponentDoc[] = [
   buttonDoc,
   iconButtonDoc,
@@ -104,7 +102,6 @@ export const componentRegistry: AnyComponentDoc[] = [
   tabsDoc,
   themeControllerDoc,
   accessibilityControllerDoc,
-  ...chartDocs,
 ];
 
 export const componentBySlug = new Map(

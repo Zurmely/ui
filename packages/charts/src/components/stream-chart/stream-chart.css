@@ -1,7 +1,0 @@
-.z-stream-chart__layer {
-  transition: fill-opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-stream-chart__layer:hover {
-  fill-opacity: 0.9;
-}

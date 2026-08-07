@@ -1,7 +1,0 @@
-.z-bubble-chart__bubble {
-  transition: fill-opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
-}
-
-.z-bubble-chart__bubble:hover {
-  fill-opacity: 0.9;
-}
