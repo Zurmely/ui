@@ -6,6 +6,6 @@
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    d="M7 7h10M17 7 7 17M7 17h10"
+    d="M4 4h16M20 4 4 20M4 20h16"
   />
 </svg>
