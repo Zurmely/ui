@@ -8,7 +8,8 @@ import {
 } from '@z-ux/ui';
 import { useLocation } from 'react-router-dom';
 import { DocsHeader, DOCS_NAV_DRAWER_ID } from './DocsHeader';
-import { DocsMobileNav, DocsNavContent } from './DocsNav';
+import { DocsMobileNav } from './DocsNav';
+import { DocsSidebar, useDocsSidebarCollapsed } from './DocsSidebar';
 import { getActiveSection, sectionHasSidebar } from './sections';
 
 const DEFAULT_ACCESSIBILITY: AccessibilityPreferences = {
@@ -20,6 +21,7 @@ const DEFAULT_ACCESSIBILITY: AccessibilityPreferences = {
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useDocsSidebarCollapsed();
   const [accessibility, setAccessibility] = useState<AccessibilityPreferences>(DEFAULT_ACCESSIBILITY);
   const location = useLocation();
   const activeSection = getActiveSection(location.pathname);
@@ -28,12 +30,10 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div
-      className={`docs-shell${showTocGrid ? ' docs-shell--with-toc' : ''}${showSidebar ? '' : ' docs-shell--no-sidebar'}`}
+      className={`docs-shell${showTocGrid ? ' docs-shell--with-toc' : ''}${showSidebar ? '' : ' docs-shell--no-sidebar'}${sidebarCollapsed && showSidebar ? ' docs-shell--sidebar-collapsed' : ''}`}
     >
       {showSidebar ? (
-        <aside className="docs-sidebar docs-sidebar--desktop">
-          <DocsNavContent />
-        </aside>
+        <DocsSidebar collapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed} />
       ) : null}
 
       <div className="docs-main">

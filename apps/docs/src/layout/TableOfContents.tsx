@@ -2,6 +2,14 @@ import { ListItem } from '@z-ux/ui';
 import { useEffect, useState, type MouseEvent } from 'react';
 import { prefersReducedMotion } from '../prefers-reduced-motion';
 
+function isHeadingVisible(element: HTMLElement): boolean {
+  if (element.closest('[hidden]')) {
+    return false;
+  }
+  const style = window.getComputedStyle(element);
+  return style.display !== 'none' && style.visibility !== 'hidden';
+}
+
 export interface TocItem {
   id: string;
   title: string;
@@ -51,14 +59,15 @@ export function TableOfContents({
         }
       },
       {
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0,
+        root: null,
+        rootMargin: '-5.5rem 0px -55% 0px',
+        threshold: [0, 0.1, 1],
       },
     );
 
     for (const item of items) {
       const element = document.getElementById(item.id);
-      if (element) {
+      if (element && isHeadingVisible(element)) {
         observer.observe(element);
       }
     }
@@ -78,7 +87,6 @@ export function TableOfContents({
 
   const nav = (
     <nav className="docs-toc__nav" aria-label="On this page">
-      <p className="docs-toc__label">On this page</p>
       <ul className="docs-toc__list">
         {items.map((item) => (
           <li key={item.id}>
@@ -111,9 +119,13 @@ export function TableOfContents({
     <aside className="docs-toc">
       <div className="docs-toc__mobile">
         {mobilePageHeader}
+        <p className="docs-toc__label">On this page</p>
         {nav}
       </div>
-      <div className="docs-toc__desktop">{nav}</div>
+      <div className="docs-toc__desktop">
+        <p className="docs-toc__label">On this page</p>
+        {nav}
+      </div>
     </aside>
   );
 }
