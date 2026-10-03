@@ -33,13 +33,13 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@z-ux/
 
 ## API
 
-| Prop / attribute | Values | Notes |
-| --- | --- | --- |
-| `open` | `boolean` | Controlled visibility |
-| `defaultOpen` | `boolean` | Uncontrolled initial visibility |
-| `delayDuration` | `number` | Provider delay in ms |
-| `side` | `top`, `right`, `bottom`, `left` | Placement |
-| `sideOffset` | `number` | Distance from trigger (default `4`) |
+| Component | Prop / attribute | Values | Notes |
+| --- | --- | --- | --- |
+| `TooltipProvider` | `delayDuration` | `number` | Hover/focus delay in ms (Radix default `700`) |
+| `Tooltip` | `open` / `defaultOpen` | `boolean` | Controlled or uncontrolled visibility |
+| `Tooltip` | `onOpenChange` | `(open: boolean) => void` | Visibility change handler |
+| `TooltipContent` | `side` | `top`, `right`, `bottom`, `left` | Placement |
+| `TooltipContent` | `sideOffset` | `number` | Distance from the trigger (default `4`) |
 
 ### Slots
 

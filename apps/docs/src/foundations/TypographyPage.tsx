@@ -42,10 +42,13 @@ export function TypographyPage() {
     <div className="docs-page">
       <FoundationPageHeader
         title="Typography"
+        path="/foundations/typography"
         summary={
           <>
             Font primitives and semantic text roles. {primitives.length} primitives,{' '}
-            {semantics.length} semantics parsed from <code>text.css</code>.
+            {semantics.length} semantics parsed from <code>text.css</code>. Use{' '}
+            <code>--z-text-*</code> for type and <code>--z-color-text-*</code> for foreground
+            color. 12px (<code>font.size.1</code> / <code>text.badge</code>) is the minimum.
           </>
         }
       />

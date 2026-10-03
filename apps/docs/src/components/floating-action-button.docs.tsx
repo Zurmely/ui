@@ -14,7 +14,8 @@ export const floatingActionButtonDoc: ComponentDoc = (() => {
   slug: 'floating-action-button',
   name: 'FloatingActionButton',
   category: 'Actions',
-  summary: 'Prominent circular action button.',
+  summary:
+      'Icon-only primary action. Always position:fixed in the bottom-right of the viewport — not an inline button.',
   importPath: '@z-ux/ui/floating-action-button',
   componentName: 'FloatingActionButton',
   controls: {

@@ -233,19 +233,33 @@ export function ColorsPage() {
     <div className="docs-page">
       <FoundationPageHeader
         title="Colors"
+        path="/foundations/colors"
         summary={
           <>
             Primitive OKLCH scales and semantic color tokens for light and dark themes.{' '}
             {primitiveCount} primitives, {semanticCount} semantics parsed from{' '}
-            <code>colors.css</code>.
+            <code>colors.css</code>. Pick a token by role (background, text, icon, border), then
+            meaning, then state. Components must use <code>--z-color-*</code> semantics, not raw
+            family scales.
           </>
         }
       />
 
+      <Section title="How to choose">
+        <p className="docs-page__intro">
+          Start with the job, not the hue. Body copy is <code>--z-color-text-primary</code>. A
+          primary button fill is <code>--z-color-background-primary</code> with{' '}
+          <code>--z-color-text-on-primary</code>. Danger and success use the matching meaning
+          pair. Do not pick a primitive because the swatch looks close — retheme the semantic
+          role instead.
+        </p>
+      </Section>
+
       <Section title="Primitives">
         <p className="docs-page__intro">
           Raw OKLCH family scales (50–950). Theme authors bind these; components consume semantic
-          tokens.
+          tokens. Color must not be the only cue for state — pair fills with labels, icons, or
+          attributes.
         </p>
         <div className="docs-primitive-scales">
           {COLOR_FAMILIES.map((family) => (

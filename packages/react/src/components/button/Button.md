@@ -41,6 +41,7 @@ import { Button } from '@z-ux/ui/button';
 | `isLoading` | `boolean` | `false` |
 | `disabled` | `boolean` | `false` |
 | `icon` | `ReactNode` | — |
+| `type` | native button type | `button` |
 | `asChild` | `boolean` | `false` |
 
 ### Data attributes
@@ -75,7 +76,8 @@ Set visible text in `children`, or give an explicit `aria-label` when the button
 | Secondary surface | `--z-color-background-surface`, `--z-color-border-subtle`, `--z-color-border-default` |
 | Ghost hover | `--z-color-background-subtle` |
 | Danger fill | `--z-color-background-danger`, `.hover`, `.active`, `.disabled`, `--z-color-border-danger` |
-| Label on solid | `--z-color-text-on-solid` |
+| Primary label | `--z-color-text-on-primary` |
+| Danger label | `--z-color-text-on-solid` |
 | Disabled label | `--z-color-text-disabled` |
 | Focus ring | `--z-color-focus-ring` |
 | Control padding | `--z-spacing-inset-control-y`, `--z-spacing-inset-control-x` |
@@ -98,8 +100,8 @@ Set visible text in `children`, or give an explicit `aria-label` when the button
 
 - **SSR:** SSR is safe. The import does not use browser globals.
 - **Portal:** No.
-- **Form:** Renders native `<button>`. Respects `type="submit"` and `disabled`.
-- **Reduced motion:** Button sets hover and press motion to zero duration when the `prefers-reduced-motion: reduce` media query applies.
+- **Form:** Renders native `<button>`. Default `type` is `"button"`. Respects `type="submit"` and `disabled`.
+- **asChild + isLoading:** When `asChild` is true, `isLoading` disables the slotted host and does not render a spinner.
 
 ## Examples
 

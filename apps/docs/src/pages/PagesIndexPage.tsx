@@ -8,8 +8,9 @@ export function PagesIndexPage() {
       <header className="docs-page__header">
         <h1 className="docs-page__title">Page examples</h1>
         <p className="docs-page__summary">
-          Full page layouts composed from the design system. Use these as reference when building
-          application screens.
+          Full-page layouts composed from the design system. Use them as reference for how
+          Navbar, Field, Table, and related parts work together — not as a separate visual
+          language.
         </p>
       </header>
 

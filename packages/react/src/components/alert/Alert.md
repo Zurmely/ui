@@ -4,7 +4,7 @@
 
 Alert shows an important status message.
 
-Alert uses a subtle background for each tone. Status tones do not use a colored border. The fill and the text carry the meaning.
+Most tones use a subtle fill and matching status text. Status tones do not use a colored border. The fill and the text carry the meaning. `tone="primary"` uses the solid primary fill and `--z-color-text-on-primary`.
 
 ## When to use
 
@@ -36,6 +36,10 @@ import { Alert } from '@z-ux/ui/alert';
 | Prop | Values | Default |
 | --- | --- | --- |
 | `tone` | `neutral`, `primary`, `success`, `warning`, `danger`, `info` | `neutral` |
+| `title` | `ReactNode` | — |
+| `description` | `ReactNode` | Falls back to `children` |
+| `action` | `ReactNode` | Optional secondary action |
+| `children` | `ReactNode` | Used as description when `description` is omitted |
 
 ### Data attributes
 
@@ -63,12 +67,12 @@ Focus behavior depends on the content in the `action` slot. The alert container 
 | Part | Semantic tokens |
 | --- | --- |
 | Neutral | `--z-color-background-subtle`, `--z-color-text-primary` |
-| Primary | `--z-color-background-primary-subtle`, `--z-color-text-primary`, `--z-color-border-primary` |
+| Primary | `--z-color-background-primary`, `--z-color-text-on-primary`, `--z-color-border-primary` |
 | Success | `--z-color-background-success-subtle`, `--z-color-text-success` |
 | Warning | `--z-color-background-warning-subtle`, `--z-color-text-warning` |
 | Danger | `--z-color-background-danger-subtle`, `--z-color-text-danger` |
 | Info | `--z-color-background-info-subtle`, `--z-color-text-info` |
-| Container padding | `--z-spacing-inset-box` |
+| Container padding | `--z-spacing-inset-box-comfortable` |
 | Content gap | `--z-spacing-gap-inline` |
 | Corner radius | `--z-radius-surface` |
 | Title typography | `--z-text-title-*` |

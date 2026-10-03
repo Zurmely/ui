@@ -46,7 +46,7 @@ function miniTableWithPagination() {
           <PaginationLink href="#">1</PaginationLink>
         </PaginationItem>
         <PaginationItem>
-          <PaginationLink href="#" aria-current="page">
+          <PaginationLink href="#" current>
             2
           </PaginationLink>
         </PaginationItem>
@@ -68,45 +68,76 @@ export const paginationDoc: ComponentDoc = (() => {
     slug: 'pagination',
     name: 'Pagination',
     category: 'Navigation',
-    summary: 'Navigate between pages of content.',
+    summary:
+      'Previous, next, page numbers, and ellipsis. Set current on PaginationLink for the active page.',
     importPath: '@z-ux/ui',
     componentName: 'Pagination',
     controls: {
       page: { type: 'number', label: 'current page', defaultValue: 2, min: 1, max: 10 },
     },
-    render: (props) => (
-      <Pagination>
-        <PaginationItem>
-          <PaginationLink href="#" aria-label="Previous page">
-            ‹
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" aria-current="page">
-            {props.page as number}
-          </PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#">3</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationEllipsis />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink href="#" aria-label="Next page">
-            ›
-          </PaginationLink>
-        </PaginationItem>
-      </Pagination>
-    ),
-    code: (props) => `<Pagination>
+    render: (props) => {
+      const page = props.page as number;
+      return (
+        <Pagination>
+          <PaginationItem>
+            <PaginationLink href="#" aria-label="Previous page" disabled={page <= 1}>
+              ‹
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" current={page === 1}>
+              1
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" current={page === 2}>
+              2
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" current={page === 3}>
+              3
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" current={page >= 10}>
+              10
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" aria-label="Next page" disabled={page >= 10}>
+              ›
+            </PaginationLink>
+          </PaginationItem>
+        </Pagination>
+      );
+    },
+    code: (props) => {
+      const page = props.page as number;
+      return `<Pagination>
   <PaginationItem>
-    <PaginationLink href="#" aria-current="page">${props.page}</PaginationLink>
+    <PaginationLink href="#" aria-label="Previous page"${page <= 1 ? ' disabled' : ''}>‹</PaginationLink>
   </PaginationItem>
-</Pagination>`,
+  <PaginationItem>
+    <PaginationLink href="#"${page === 1 ? ' current' : ''}>1</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#"${page === 2 ? ' current' : ''}>2</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#"${page === 3 ? ' current' : ''}>3</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationEllipsis />
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" aria-label="Next page"${page >= 10 ? ' disabled' : ''}>›</PaginationLink>
+  </PaginationItem>
+</Pagination>`;
+    },
     whenToUsePreviews: {
       use: () => miniTableWithPagination(),
       doNotUse: () => (
@@ -120,12 +151,12 @@ export const paginationDoc: ComponentDoc = (() => {
   doc.examples = [
     {
       label: 'Table pages',
-      description: 'Pagination below a data table.',
+      description: 'Pagination below a data table. current marks the active page.',
       code: `<Stack gap="md">
   <Table>...</Table>
   <Pagination>
     <PaginationItem><PaginationLink href="#">1</PaginationLink></PaginationItem>
-    <PaginationItem><PaginationLink href="#" aria-current="page">2</PaginationLink></PaginationItem>
+    <PaginationItem><PaginationLink href="#" current>2</PaginationLink></PaginationItem>
     <PaginationItem><PaginationLink href="#">3</PaginationLink></PaginationItem>
   </Pagination>
 </Stack>`,
@@ -133,15 +164,29 @@ export const paginationDoc: ComponentDoc = (() => {
     },
     {
       label: 'First page',
-      description: 'Pagination at the start of a result set.',
+      description: 'Disable Previous on page 1 so users cannot go before the start.',
       code: `<Pagination>
-  <PaginationItem><PaginationLink href="#" aria-current="page">1</PaginationLink></PaginationItem>
-  <PaginationItem><PaginationLink href="#">2</PaginationLink></PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" aria-label="Previous page" disabled>‹</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" current>1</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#">2</PaginationLink>
+  </PaginationItem>
 </Pagination>`,
       render: () => (
         <Pagination>
           <PaginationItem>
-            <PaginationLink href="#" aria-current="page">1</PaginationLink>
+            <PaginationLink href="#" aria-label="Previous page" disabled>
+              ‹
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" current>
+              1
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationLink href="#">2</PaginationLink>
@@ -154,21 +199,46 @@ export const paginationDoc: ComponentDoc = (() => {
     },
     {
       label: 'Last page',
-      description: 'Pagination near the end of a long list.',
+      description: 'Disable Next on the last page. Use PaginationEllipsis for skipped ranges.',
       code: `<Pagination>
-  <PaginationItem><PaginationLink href="#">9</PaginationLink></PaginationItem>
-  <PaginationItem><PaginationLink href="#" aria-current="page">10</PaginationLink></PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" aria-label="Previous page">‹</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationEllipsis />
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#">9</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" current>10</PaginationLink>
+  </PaginationItem>
+  <PaginationItem>
+    <PaginationLink href="#" aria-label="Next page" disabled>›</PaginationLink>
+  </PaginationItem>
 </Pagination>`,
       render: () => (
         <Pagination>
           <PaginationItem>
-            <PaginationLink href="#" aria-label="Previous page">‹</PaginationLink>
+            <PaginationLink href="#" aria-label="Previous page">
+              ‹
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
           </PaginationItem>
           <PaginationItem>
             <PaginationLink href="#">9</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href="#" aria-current="page">10</PaginationLink>
+            <PaginationLink href="#" current>
+              10
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href="#" aria-label="Next page" disabled>
+              ›
+            </PaginationLink>
           </PaginationItem>
         </Pagination>
       ),

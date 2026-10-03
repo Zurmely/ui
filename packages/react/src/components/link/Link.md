@@ -35,7 +35,7 @@ import { Link } from '@z-ux/ui/link';
 
 | Prop | Values | Default |
 | --- | --- | --- |
-| `disabled` | `boolean` | `false` |
+| `disabled` | `boolean` | `false`. Removes `href`, sets `tabIndex={-1}`, and suppresses click. |
 | `href` | `string` | — |
 
 ### Data attributes

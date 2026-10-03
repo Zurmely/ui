@@ -7,7 +7,8 @@ export const tabsDoc: ComponentDoc = (() => {
     slug: 'tabs',
     name: 'Tabs',
     category: 'Overlays',
-    summary: 'Tabbed content panels.',
+    summary:
+      'In-page panels switched from a tab list. Pair every TabsTrigger with a matching TabsContent.',
     importPath: '@z-ux/ui/tabs',
     componentName: 'Tabs',
     controls: {
@@ -87,15 +88,22 @@ export const tabsDoc: ComponentDoc = (() => {
   <TabsList>
     <TabsTrigger value="week">Week</TabsTrigger>
     <TabsTrigger value="month">Month</TabsTrigger>
+    <TabsTrigger value="year">Year</TabsTrigger>
   </TabsList>
+  <TabsContent value="week">Weekly traffic</TabsContent>
+  <TabsContent value="month">Monthly traffic</TabsContent>
+  <TabsContent value="year">Yearly traffic</TabsContent>
 </Tabs>`,
       render: () => (
-        <Tabs defaultValue="week">
+        <Tabs defaultValue="week" style={{ width: '100%', maxWidth: '24rem' }}>
           <TabsList>
             <TabsTrigger value="week">Week</TabsTrigger>
             <TabsTrigger value="month">Month</TabsTrigger>
             <TabsTrigger value="year">Year</TabsTrigger>
           </TabsList>
+          <TabsContent value="week">Weekly traffic</TabsContent>
+          <TabsContent value="month">Monthly traffic</TabsContent>
+          <TabsContent value="year">Yearly traffic</TabsContent>
         </Tabs>
       ),
     },

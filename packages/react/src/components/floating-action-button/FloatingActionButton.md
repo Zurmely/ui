@@ -41,6 +41,7 @@ import { FloatingActionButton } from '@z-ux/ui/floating-action-button';
 | `isLoading` | `boolean` | `false` |
 | `disabled` | `boolean` | `false` |
 | `icon` | `ReactNode` | — |
+| `children` | `ReactNode` | Used when `icon` is omitted (`children ?? icon`) |
 | `asChild` | `boolean` | `false` |
 | `aria-label` | `string` | required |
 
@@ -54,7 +55,7 @@ If `disabled` or `isLoading` is true, the `asChild` host is behaviorally disable
 
 | Slot | Required | Notes |
 | --- | --- | --- |
-| `icon` / `children` | Yes | Icon content (icon-only) |
+| `icon` / `children` | One of them | Icon content. Both are optional in TypeScript; an empty FAB has no visible glyph. |
 
 ## Accessibility
 
@@ -91,6 +92,8 @@ You need to give `aria-label` because the control is icon-only.
 - **SSR:** FloatingActionButton is safe for SSR. It uses `position: fixed` without browser globals at import.
 - **Portal:** No.
 - **Form:** FloatingActionButton renders a native `<button>`. It respects `type` and `disabled`.
+- **Position:** CSS is `position: fixed` in the bottom-right of the viewport. Do not nest a FAB inside a scrolling panel and expect it to stay with that panel.
+- **asChild + isLoading:** When `asChild` is true, `isLoading` disables the slotted host and does not render a spinner.
 
 ## Examples
 

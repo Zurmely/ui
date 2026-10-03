@@ -14,7 +14,8 @@ export const validatorDoc: ComponentDoc = (() => {
   slug: 'validator',
   name: 'Validator',
   category: 'Forms',
-  summary: 'Wraps a control with async validation feedback.',
+  summary:
+      'Runs sync or async validate against a controlled value and exposes invalid through Field. validateOn="submit" runs only when you call touch() from useValidatorContext — there is no native form submit hook.',
   importPath: '@z-ux/ui/validator',
   componentName: 'Validator',
   controls: {
@@ -84,6 +85,35 @@ export const validatorDoc: ComponentDoc = (() => {
       render: () => (
         <Validator value="jane" validate={(v) => (v.length < 3 ? 'Too short' : undefined)} defaultTouched>
           <TextField value="jane" onChange={() => {}} aria-label="Username" style={{ width: '100%', maxWidth: '20rem' }} />
+          <ValidatorMessage />
+        </Validator>
+      ),
+    },
+    {
+      label: 'Async check',
+      description: 'validate may return a Promise. ValidatorMessage shows the resolved error.',
+      code: `<Validator
+  value={username}
+  validate={async (v) => {
+    const taken = await checkUsername(v);
+    return taken ? 'Username is taken' : undefined;
+  }}
+>
+  <TextField aria-label="Username" />
+  <ValidatorMessage />
+</Validator>`,
+      render: () => (
+        <Validator
+          value="taken"
+          validate={async () => 'Username is taken'}
+          defaultTouched
+        >
+          <TextField
+            value="taken"
+            onChange={() => {}}
+            aria-label="Username"
+            style={{ width: '100%', maxWidth: '20rem' }}
+          />
           <ValidatorMessage />
         </Validator>
       ),

@@ -8,7 +8,8 @@ export const radialProgressDoc: ComponentDoc = (() => {
   slug: 'radial-progress',
   name: 'RadialProgress',
   category: 'Display',
-  summary: 'Circular progress indicator.',
+  summary:
+      'Circular determinate or indeterminate progress. Same value rules as Progress.',
   importPath: '@z-ux/ui/radial-progress',
   componentName: 'RadialProgress',
   controls: {

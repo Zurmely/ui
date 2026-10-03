@@ -50,6 +50,8 @@ const COMPONENT_MAPPING = [
   { component: 'Card', role: 'raised' },
   { component: 'Menu', role: 'overlay' },
   { component: 'Popover', role: 'overlay' },
+  { component: 'Megamenu', role: 'overlay' },
+  { component: 'Select', role: 'overlay' },
   { component: 'Tooltip', role: 'overlay' },
   { component: 'Toast', role: 'overlay' },
   { component: 'Dialog', role: 'modal' },
@@ -68,10 +70,13 @@ export function ElevationPage() {
     <div className="docs-page">
       <FoundationPageHeader
         title="Elevation"
+        path="/foundations/elevation"
         summary={
           <>
             Shadow tokens for raised surfaces, overlays, modals, and rings. {primitives.length}{' '}
-            primitives, {semanticCount} semantics parsed from <code>elevation.css</code>.
+            primitives, {semanticCount} semantics parsed from <code>elevation.css</code>. Use{' '}
+            <code>elevation.ring</code> for outline halos; use raised through modal for drop
+            shadows.
           </>
         }
       />

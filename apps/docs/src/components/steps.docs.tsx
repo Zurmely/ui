@@ -7,7 +7,8 @@ export const stepsDoc: ComponentDoc = (() => {
     slug: 'steps',
     name: 'Steps',
     category: 'Navigation',
-    summary: 'Multi-step progress indicator.',
+    summary:
+      'Ordered wizard or checkout stages. currentStep sets upcoming, current, and completed states.',
     importPath: '@z-ux/ui',
     componentName: 'Steps',
     controls: {
@@ -32,11 +33,21 @@ export const stepsDoc: ComponentDoc = (() => {
         </Step>
       </Steps>
     ),
-    code: () => `<Steps>
-  <Step>
-    <StepIndicator />
+    code: (props) => `<Steps currentStep={${props.currentStep}}>
+  <Step step={1}>
+    <StepIndicator step={1} />
     <StepTitle>Account</StepTitle>
     <StepDescription>Create your account</StepDescription>
+  </Step>
+  <Step step={2}>
+    <StepIndicator step={2} />
+    <StepTitle>Profile</StepTitle>
+    <StepDescription>Set up your profile</StepDescription>
+  </Step>
+  <Step step={3}>
+    <StepIndicator step={3} />
+    <StepTitle>Complete</StepTitle>
+    <StepDescription>Review and finish</StepDescription>
   </Step>
 </Steps>`,
     whenToUsePreviews: {

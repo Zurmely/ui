@@ -10,7 +10,8 @@ export const separatorDoc: ComponentDoc = (() => {
   slug: 'separator',
   name: 'Separator',
   category: 'Display',
-  summary: 'Visual divider between content sections.',
+  summary:
+      'Horizontal or vertical rule. Default role is separator. Use role="none" when the rule is decorative.',
   importPath: '@z-ux/ui/separator',
   componentName: 'Separator',
   controls: {

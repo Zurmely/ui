@@ -37,7 +37,8 @@ export const carouselDoc: ComponentDoc = (() => {
     slug: 'carousel',
     name: 'Carousel',
     category: 'Data',
-    summary: 'Scrollable content with previous and next controls.',
+    summary:
+      'One viewport-wide slide at a time. CarouselContent is required inside Carousel; arrows scroll by one viewport.',
     importPath: '@z-ux/ui/carousel',
     componentName: 'Carousel',
     controls: {

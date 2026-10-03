@@ -8,7 +8,8 @@ export const otpInputDoc: ComponentDoc = (() => {
   slug: 'otp-input',
   name: 'OTPInput',
   category: 'Forms',
-  summary: 'One-time password input with multiple digit fields.',
+  summary:
+      'Digit cells for one-time codes. The first cell uses FieldLabel via aria-labelledby; later cells use aria-label.',
   importPath: '@z-ux/ui/otp-input',
   componentName: 'OTPInput',
   controls: {

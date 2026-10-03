@@ -89,6 +89,7 @@ Use native table navigation when a cell has an interactive element.
 - **SSR:** Safe.
 - **Portal:** No.
 - **Form:** Cells can contain form controls.
+- **Ref:** `ref` on `Table` attaches to the inner `<table>`, not the scroll wrapper.
 
 ## Examples
 

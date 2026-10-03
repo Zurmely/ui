@@ -8,7 +8,7 @@ export const ratingDoc: ComponentDoc = (() => {
   slug: 'rating',
   name: 'Rating',
   category: 'Forms',
-  summary: 'Star rating input.',
+  summary: 'Integer star rating. Stars fill in whole steps — 4.5 displays as 4 filled stars.',
   importPath: '@z-ux/ui/rating',
   componentName: 'Rating',
   controls: {
@@ -49,9 +49,9 @@ export const ratingDoc: ComponentDoc = (() => {
     },
     {
       label: 'Read-only score',
-      description: 'Display average rating without editing.',
-      code: '<Rating value={4.5} readOnly aria-label="Average rating" />',
-      render: () => <Rating value={4.5} readOnly aria-label="Average rating" />,
+      description: 'Display a whole-star score without editing. Rating does not render half stars.',
+      code: '<Rating value={4} readOnly aria-label="Average rating" />',
+      render: () => <Rating value={4} readOnly aria-label="Average rating" />,
     },
     {
       label: 'Custom scale',

@@ -17,11 +17,13 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
     slug: 'breadcrumbs',
     name: 'Breadcrumbs',
     category: 'Navigation',
-    summary: 'Shows the current page location within a hierarchy.',
+    summary:
+      'Hierarchical page trail. Mark the last crumb with current so it renders as text, not a link.',
     importPath: '@z-ux/ui',
     componentName: 'Breadcrumbs',
     controls: {
       currentPage: textControl('currentPage', 'Breadcrumbs'),
+      label: textControl('label', 'Breadcrumb'),
       depth: {
         type: 'select',
         label: 'depth',
@@ -34,7 +36,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
       const isDeep = props.depth === 'deep';
 
       return (
-        <Breadcrumbs>
+        <Breadcrumbs label={props.label as string}>
           <BreadcrumbItem>
             <BreadcrumbLink href="#">Home</BreadcrumbLink>
           </BreadcrumbItem>
@@ -48,9 +50,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
             </>
           ) : null}
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" aria-current="page">
-              {currentPage}
-            </BreadcrumbLink>
+            <BreadcrumbLink current>{currentPage}</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumbs>
       );
@@ -60,19 +60,19 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
       const isDeep = props.depth === 'deep';
 
       if (isDeep) {
-        return `<Breadcrumbs>
+        return `<Breadcrumbs label="${props.label}">
   <BreadcrumbItem><BreadcrumbLink href="#">Home</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem><BreadcrumbLink href="#">Components</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
-  <BreadcrumbItem><BreadcrumbLink href="#" aria-current="page">${currentPage}</BreadcrumbLink></BreadcrumbItem>
+  <BreadcrumbItem><BreadcrumbLink current>${currentPage}</BreadcrumbLink></BreadcrumbItem>
 </Breadcrumbs>`;
       }
 
-      return `<Breadcrumbs>
+      return `<Breadcrumbs label="${props.label}">
   <BreadcrumbItem><BreadcrumbLink href="#">Home</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
-  <BreadcrumbItem><BreadcrumbLink href="#" aria-current="page">${currentPage}</BreadcrumbLink></BreadcrumbItem>
+  <BreadcrumbItem><BreadcrumbLink current>${currentPage}</BreadcrumbLink></BreadcrumbItem>
 </Breadcrumbs>`;
     },
     whenToUsePreviews: {
@@ -87,9 +87,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" aria-current="page">
-              Breadcrumbs
-            </BreadcrumbLink>
+            <BreadcrumbLink current>Breadcrumbs</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumbs>
       ),
@@ -113,7 +111,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
       code: `<Breadcrumbs>
   <BreadcrumbItem><BreadcrumbLink href="#">Home</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
-  <BreadcrumbItem><BreadcrumbLink href="#" aria-current="page">Settings</BreadcrumbLink></BreadcrumbItem>
+  <BreadcrumbItem><BreadcrumbLink current>Settings</BreadcrumbLink></BreadcrumbItem>
 </Breadcrumbs>`,
       render: () => (
         <Breadcrumbs>
@@ -122,9 +120,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" aria-current="page">
-              Settings
-            </BreadcrumbLink>
+            <BreadcrumbLink current>Settings</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumbs>
       ),
@@ -137,7 +133,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
   <BreadcrumbSeparator />
   <BreadcrumbItem><BreadcrumbLink href="#">Components</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
-  <BreadcrumbItem><BreadcrumbLink href="#" aria-current="page">Button</BreadcrumbLink></BreadcrumbItem>
+  <BreadcrumbItem><BreadcrumbLink current>Button</BreadcrumbLink></BreadcrumbItem>
 </Breadcrumbs>`,
       render: () => (
         <Breadcrumbs>
@@ -150,9 +146,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" aria-current="page">
-              Button
-            </BreadcrumbLink>
+            <BreadcrumbLink current>Button</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumbs>
       ),
@@ -165,7 +159,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
   <BreadcrumbSeparator />
   <BreadcrumbItem><BreadcrumbLink href="#">Accessories</BreadcrumbLink></BreadcrumbItem>
   <BreadcrumbSeparator />
-  <BreadcrumbItem><BreadcrumbLink href="#" aria-current="page">Desk lamp</BreadcrumbLink></BreadcrumbItem>
+  <BreadcrumbItem><BreadcrumbLink current>Desk lamp</BreadcrumbLink></BreadcrumbItem>
 </Breadcrumbs>`,
       render: () => (
         <Breadcrumbs>
@@ -178,9 +172,7 @@ export const breadcrumbsDoc: ComponentDoc = (() => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="#" aria-current="page">
-              Desk lamp
-            </BreadcrumbLink>
+            <BreadcrumbLink current>Desk lamp</BreadcrumbLink>
           </BreadcrumbItem>
         </Breadcrumbs>
       ),

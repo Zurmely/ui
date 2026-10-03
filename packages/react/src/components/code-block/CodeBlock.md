@@ -48,13 +48,11 @@ import { CodeBlock } from '@z-ux/ui/code-block';
 
 | Slot | Required | Notes |
 | --- | --- | --- |
-| `children` | No | Code text when `code` is not set |
-| `code` | No | Prefer for multi-line samples |
-| `language` | No | Label in the multi header; drives highlighting |
+| `children` | No | Code text when `code` is not set. Non-string, non-number children resolve to an empty string. |
 
 ## Accessibility
 
-CodeBlock uses native `code` and `pre` elements.
+`variant="single"` renders `<code>` inside a `<span>`. `variant="multi"` renders `<pre>`.
 The copy control is an `IconButton` with an accessible name (`Copy code` / `Copied`).
 Set clear surrounding context so the meaning of the code is clear.
 

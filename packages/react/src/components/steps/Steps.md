@@ -43,6 +43,7 @@ import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ux/ui
 
 - `data-state="upcoming" | "current" | "completed"` on `Step` and `StepIndicator`
 - `aria-current="step"` on the current `Step`
+- Completed `StepIndicator` shows `✓` unless you pass `children`
 
 ## Accessibility
 

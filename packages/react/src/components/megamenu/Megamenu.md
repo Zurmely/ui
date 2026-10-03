@@ -35,8 +35,13 @@ import { Megamenu, MegamenuContent, MegamenuItem, MegamenuTrigger } from '@z-ux/
 
 | Prop | Component | Values | Default |
 | --- | --- | --- | --- |
-| `selected` | `MegamenuItem` | `boolean` | `false` |
-| `open` / `defaultOpen` | `Megamenu` | `boolean` | uncontrolled |
+| `open` / `defaultOpen` / `onOpenChange` | `Megamenu` | `boolean` / handler | uncontrolled |
+| `asChild` | `MegamenuTrigger` | `boolean` | `false` |
+| `align` | `MegamenuContent` | `start`, `center`, `end` | `start` |
+| `sideOffset` | `MegamenuContent` | `number` | `8` |
+| `selected` | `MegamenuItem` | `boolean` | `false` (`data-selected="true"`) |
+
+`Megamenu` is the Radix Popover root. `MegamenuItem` renders a plain `<a>`, not `Link`.
 
 ### Data attributes
 

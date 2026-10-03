@@ -98,6 +98,7 @@ Carousel uses `behavior: 'auto'` for scroll when the `prefers-reduced-motion: re
 - **SSR:** SSR is safe. Scroll state starts on the client.
 - **Portal:** No.
 - **Form:** Not a form control.
+- **Composition:** `CarouselContent` must sit inside `Carousel`. Each `CarouselItem` is one viewport wide (`flex: 0 0 100%`) and snaps. Previous and next scroll by one viewport.
 
 ## Examples
 

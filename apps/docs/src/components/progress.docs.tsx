@@ -8,7 +8,8 @@ export const progressDoc: ComponentDoc = (() => {
   slug: 'progress',
   name: 'Progress',
   category: 'Display',
-  summary: 'Linear progress indicator.',
+  summary:
+      'Determinate or indeterminate bar. Omit value with indeterminate={false} and the fill is 0%.',
   importPath: '@z-ux/ui/progress',
   componentName: 'Progress',
   controls: {

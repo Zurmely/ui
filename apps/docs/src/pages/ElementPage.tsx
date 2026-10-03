@@ -6,6 +6,7 @@ import {
 } from '@z-ux/ui';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { withBasePath } from '../base-path';
+import { componentBySlug } from '../components/registry';
 import { elementBySlug } from '../examples/registry';
 
 export function ElementPage() {
@@ -40,9 +41,24 @@ export function ElementPage() {
         <div className="docs-example-frame">{doc.render()}</div>
       </section>
 
-      <p className="docs-page__intro">
-        Built with <Link to="/components">Z-UI components</Link> only.
-      </p>
+      <section className="docs-section">
+        <h2 className="docs-section__title">Components used</h2>
+        <p className="docs-page__intro">
+          This element is assembled from published library parts. Open a component page for its
+          playground and API.
+        </p>
+        <ul className="docs-about__list">
+          {doc.components.map((componentSlug) => {
+            const component = componentBySlug.get(componentSlug);
+            return (
+              <li key={componentSlug}>
+                <Link to={`/components/${componentSlug}`}>{component?.name ?? componentSlug}</Link>
+                {component ? ` — ${component.summary}` : null}
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </div>
   );
 }

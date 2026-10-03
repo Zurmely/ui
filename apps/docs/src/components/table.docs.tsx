@@ -9,6 +9,7 @@ import {
   TableBody,
   TableCaption,
   TableCell,
+  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -21,7 +22,8 @@ export const tableDoc: ComponentDoc = (() => {
     slug: 'table',
     name: 'Table',
     category: 'Data',
-    summary: 'Structured data table.',
+    summary:
+      'Semantic table parts in a horizontally scrollable wrapper. ref attaches to the table, not the scroll wrapper.',
     importPath: '@z-ux/ui/table',
     componentName: 'Table',
     controls: {
@@ -259,6 +261,59 @@ export const tableDoc: ComponentDoc = (() => {
               </TableCell>
             </TableRow>
           </TableBody>
+        </Table>
+      ),
+      fullWidth: true,
+    },
+    {
+      label: 'Totals footer',
+      description: 'TableFooter for a totals row. TableHead defaults to scope="col".',
+      code: `<Table>
+  <TableCaption>Invoices this month</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Invoice</TableHead>
+      <TableHead>Amount</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>INV001</TableCell>
+      <TableCell>$250.00</TableCell>
+    </TableRow>
+  </TableBody>
+  <TableFooter>
+    <TableRow>
+      <TableCell>Total</TableCell>
+      <TableCell>$400.00</TableCell>
+    </TableRow>
+  </TableFooter>
+</Table>`,
+      render: () => (
+        <Table>
+          <TableCaption>Invoices this month</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Invoice</TableHead>
+              <TableHead>Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>INV001</TableCell>
+              <TableCell>$250.00</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>INV002</TableCell>
+              <TableCell>$150.00</TableCell>
+            </TableRow>
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell>Total</TableCell>
+              <TableCell>$400.00</TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       ),
       fullWidth: true,

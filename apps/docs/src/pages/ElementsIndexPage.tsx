@@ -8,8 +8,8 @@ export function ElementsIndexPage() {
       <header className="docs-page__header">
         <h1 className="docs-page__title">Elements</h1>
         <p className="docs-page__summary">
-          Composed interface elements built from Z-UI components. Each example shows how primitives
-          combine into reusable patterns.
+          Composed interface patterns built only from published Z-UI components. Each page lists
+          the parts it uses so you can open the matching API docs.
         </p>
       </header>
 

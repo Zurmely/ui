@@ -10,8 +10,9 @@ export function ComponentsIndexPage() {
       <header className="docs-page__header">
         <h1 className="docs-page__title">Components</h1>
         <p className="docs-page__summary">
-          Browse all {componentRegistry.length} Z-UI components. Each card shows a live preview —
-          open any component for the playground, API reference, and code snippets.
+          Browse all {componentRegistry.length} published Z-UI components. Each card shows a live
+          preview. Open a page for the playground, copyable examples, when-to-use guidance, and
+          the API, accessibility, keyboard, and token contract.
         </p>
       </header>
 

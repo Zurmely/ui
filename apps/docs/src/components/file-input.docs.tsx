@@ -14,7 +14,8 @@ export const fileInputDoc: ComponentDoc = (() => {
   slug: 'file-input',
   name: 'FileInput',
   category: 'Forms',
-  summary: 'Styled file upload control.',
+  summary:
+      'File picker with optional dropzone. Customize dropLabel and browseLabel; native input is not in the tab order.',
   importPath: '@z-ux/ui/file-input',
   componentName: 'FileInput',
   controls: {

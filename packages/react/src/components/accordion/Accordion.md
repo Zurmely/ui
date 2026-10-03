@@ -4,7 +4,7 @@
 
 Accordion shows and hides sections of related content.
 
-By default, one section is open at a time.
+`type="single"` allows at most one open section. No section is open until you set `defaultValue` or `value`.
 
 ## When to use
 

@@ -2,9 +2,7 @@
 
 ## Overview
 
-Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center.
-
-trailing areas.
+Toolbar groups related actions and controls in a single keyboard-navigable region with leading, center, and trailing areas.
 
 ## When to use
 
