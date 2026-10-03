@@ -1,13 +1,29 @@
 import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { DOC_TAB_QUERY_KEY, type DocTabId, parseDocTabParam } from './constants';
+import {
+  COMPONENT_DOC_TABS,
+  DOC_TAB_QUERY_KEY,
+  DOC_TABS,
+  type DocTabId,
+  parseDocTabParam,
+} from './constants';
 
-export function useDocTab() {
+type UseDocTabOptions = {
+  /** When true, `?tab=playground` is accepted; foundation pages omit this. */
+  componentPage?: boolean;
+};
+
+export function useDocTab(options: UseDocTabOptions = {}) {
+  const validTabValues = useMemo(
+    () => (options.componentPage ? COMPONENT_DOC_TABS.map((tab) => tab.value) : DOC_TABS.map((tab) => tab.value)),
+    [options.componentPage],
+  );
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const activeTab = useMemo(
-    () => parseDocTabParam(searchParams.get(DOC_TAB_QUERY_KEY)),
-    [searchParams],
+    () => parseDocTabParam(searchParams.get(DOC_TAB_QUERY_KEY), validTabValues),
+    [searchParams, validTabValues],
   );
 
   const setActiveTab = useCallback(

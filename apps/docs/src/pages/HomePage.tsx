@@ -72,17 +72,22 @@ export function HomePage() {
       <section className="docs-section">
         <h2 className="docs-section__title">How to read a component page</h2>
         <p className="docs-page__intro">
-          Each component and foundation page uses the same four tabs. The title and summary stay
-          above the tab row; prev/next links stay below.
+          Foundation pages use four tabs. Component pages add a Playground tab between Design usage
+          and Code reference. The title and summary stay above the tab row; prev/next links stay
+          below on component pages.
         </p>
         <ul className="docs-about__list">
           <li>
-            <strong>Design usage</strong> — when to use, anatomy, states, the playground, and
-            examples. Defaults to this tab when you open a page.
+            <strong>Design usage</strong> — when-to-use guidance and previews. Defaults to this tab
+            when you open a page.
           </li>
           <li>
-            <strong>Code reference</strong> — imports, props, and types from the markdown contract
-            only.
+            <strong>Playground</strong> — interactive preview and controls (component pages only).
+            Registry example cards appear here under Examples when they exist.
+          </li>
+          <li>
+            <strong>Code reference</strong> — import, anatomy, props, types, states, and markdown
+            example fences from the component contract.
           </li>
           <li>
             <strong>Content / writing</strong> — label, button, empty-state, error, and helper-text
