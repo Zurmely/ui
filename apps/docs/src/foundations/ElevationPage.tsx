@@ -4,36 +4,38 @@ import {
   foundationTocItem,
   FoundationTabbedPage,
 } from '../docs-tabs/FoundationTabbedPage';
-import { TokenTable } from '../components/TokenTable';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';
 import {
+  ElevationReservedRoleSwatch,
   ElevationSwatch,
-  PrimitiveShadowSample,
   RecipePanel,
 } from '../tokens/TokenSwatches';
 import { Section, TokenGroup, TokenSubGroup } from './FoundationSection';
 
 const ELEVATION_SUBGROUPS = [
   {
-    title: 'Shadows',
+    title: 'Reserved roles (none)',
     tokens: [
       {
         token: 'raised',
         label: 'Raised',
-        useWhen: 'Cards, subtle lift above canvas',
-        variant: 'shadow' as const,
+        role: 'raised' as const,
+        useWhen:
+          'Cards and other raised panels use color.background.surface on color.background.canvas. elevation.raised is none — not box-shadow.',
       },
       {
         token: 'overlay',
         label: 'Overlay',
-        useWhen: 'Select, Menu, Popover, Tooltip, Toast',
-        variant: 'shadow' as const,
+        role: 'overlay' as const,
+        useWhen:
+          'Menu, Popover, Select, Toast, Calendar, and similar floating panels use color.background.surface on the canvas. elevation.overlay is none.',
       },
       {
         token: 'modal',
         label: 'Modal',
-        useWhen: 'Dialog, Drawer',
-        variant: 'shadow' as const,
+        role: 'modal' as const,
+        useWhen:
+          'Dialog and Drawer panels use color.background.surface over a flat color.overlay.scrim. elevation.modal is none.',
       },
     ],
   },
@@ -43,7 +45,7 @@ const ELEVATION_SUBGROUPS = [
       {
         token: 'ring',
         label: 'Ring',
-        useWhen: 'Outline halo separating a node from its background',
+        useWhen: 'Outline halo separating a node from its background (not a drop shadow)',
         variant: 'ring' as const,
       },
     ],
@@ -63,8 +65,6 @@ const COMPONENT_MAPPING = [
   { component: 'Timeline', role: 'ring' },
 ] as const;
 
-const SHADOW_STEPS = ['1', '2', '3', '4'] as const;
-
 export function ElevationPage() {
   const manifest = buildTokenManifest();
   const primitives = getTokensByTier(manifest, 'elevation', 'primitive');
@@ -73,7 +73,15 @@ export function ElevationPage() {
   const summary = (
     <>
       Fill-based depth and outline halos for the page, raised panels, sunk wells, and modal scrims.{' '}
-      {primitives.length} primitives, {semanticCount} semantics parsed from <code>elevation.css</code>.
+      {primitives.length > 0 ? (
+        <>
+          {primitives.length} primitives, {semanticCount} semantics parsed from <code>elevation.css</code>.
+        </>
+      ) : (
+        <>
+          {semanticCount} semantics parsed from <code>elevation.css</code>.
+        </>
+      )}
       Depth uses <code>color.background</code> structure, not drop shadows: canvas (step 100), raised{' '}
       <code>surface</code> (light 50, dark 200), sunk <code>subtle</code> (light 200, dark 50). Modals
       dim with flat <code>color.overlay.scrim</code>. <code>elevation.ring</code> is an outline halo;{' '}
@@ -91,13 +99,22 @@ export function ElevationPage() {
         <div className="docs-recipes-grid">
           <RecipePanel
             title="Depth stack"
-            note="elevation.raised, elevation.overlay, and elevation.modal layered above canvas"
+            note="background.canvas, background.surface on canvas, and overlay.scrim behind modal panels — elevation.raised, elevation.overlay, and elevation.modal are none"
           >
             <div className="docs-recipe-depth-stack">
               <div className="docs-recipe-depth-stack__canvas" aria-hidden="true" />
-              <div className="docs-recipe-depth-stack__raised">elevation.raised</div>
-              <div className="docs-recipe-depth-stack__overlay">elevation.overlay</div>
-              <div className="docs-recipe-depth-stack__modal">elevation.modal</div>
+              <div className="docs-recipe-depth-stack__surface docs-recipe-depth-stack__surface--card">
+                background.surface (card on canvas)
+              </div>
+              <div className="docs-recipe-depth-stack__surface docs-recipe-depth-stack__surface--float">
+                background.surface (menu, popover, select, toast)
+              </div>
+              <div className="docs-recipe-depth-stack__modal-scene">
+                <div className="docs-recipe-depth-stack__scrim" aria-hidden="true" />
+                <div className="docs-recipe-depth-stack__surface docs-recipe-depth-stack__surface--modal">
+                  background.surface + overlay.scrim (dialog, drawer)
+                </div>
+              </div>
             </div>
           </RecipePanel>
 
@@ -138,49 +155,36 @@ export function ElevationPage() {
           {ELEVATION_SUBGROUPS.map((subgroup) => (
             <TokenSubGroup key={subgroup.title} title={subgroup.title}>
               <div className="docs-elevation-grid">
-                {subgroup.tokens.map((item) => (
-                  <ElevationSwatch
-                    key={item.token}
-                    token={item.token}
-                    label={item.label}
-                    useWhen={item.useWhen}
-                    variant={item.variant}
-                  />
-                ))}
+                {subgroup.tokens.map((item) =>
+                  'role' in item ? (
+                    <ElevationReservedRoleSwatch
+                      key={item.token}
+                      token={item.token}
+                      label={item.label}
+                      useWhen={item.useWhen}
+                      role={item.role}
+                    />
+                  ) : (
+                    <ElevationSwatch
+                      key={item.token}
+                      token={item.token}
+                      label={item.label}
+                      useWhen={item.useWhen}
+                      variant="ring"
+                    />
+                  ),
+                )}
               </div>
             </TokenSubGroup>
           ))}
         </TokenGroup>
       </Section>
-
-      <Section title="Primitives">
-        <p className="docs-page__intro">
-          Raw shadow scale. Components consume semantic <code>--z-elevation-*</code> aliases only.
-        </p>
-        <TokenSubGroup title="Shadow scale">
-          <div className="docs-elevation-primitives-grid">
-            {SHADOW_STEPS.map((step) => (
-              <PrimitiveShadowSample key={step} step={step} />
-            ))}
-          </div>
-        </TokenSubGroup>
-        <TokenTable
-          rows={primitives.map((t) => ({
-            name: t.theme ? `${t.name} (${t.theme})` : t.name,
-            value: t.value,
-          }))}
-        />
-      </Section>
     </>
   );
 
-  const tocByTab = buildFoundationToc(
-    [foundationTocItem('recipes', 'Recipes')],
-    [
-      foundationTocItem('semantic-elevation', 'Semantic elevation'),
-      foundationTocItem('primitives', 'Primitives'),
-    ],
-  );
+  const codeToc = [foundationTocItem('semantic-elevation', 'Semantic elevation')];
+
+  const tocByTab = buildFoundationToc([foundationTocItem('recipes', 'Recipes')], codeToc);
 
   return (
     <FoundationTabbedPage
