@@ -12,7 +12,6 @@ import { componentBySlug, componentRegistry } from '../components/registry';
 import { ChangelogPanel } from '../docs-tabs/ChangelogPanel';
 import { DOC_TAB_IDS, type DocTabId } from '../docs-tabs/constants';
 import { DocPageTabs } from '../docs-tabs/DocPageTabs';
-import { splitDesignTabSections } from '../docs-tabs/designSections';
 import { partitionMarkdownSections } from '../docs-tabs/partitionSections';
 import { ComponentWritingPanel } from '../docs-tabs/WritingPanel';
 import { useDocTab } from '../docs-tabs/useDocTab';
@@ -32,21 +31,13 @@ function writingTocId(title: string): string {
 function buildTocForTab(
   tab: DocTabId,
   slug: string,
-  designLead: DocSection[],
-  markdownExamples: { id: string; title: string } | null,
+  designSections: DocSection[],
   codeSections: ReturnType<typeof partitionMarkdownSections>['code'],
-  hasExamples: boolean,
 ): TocItem[] {
   switch (tab) {
     case DOC_TAB_IDS.design: {
-      const items = designLead.map((section) => ({ id: section.id, title: section.title }));
-      items.push({ id: 'playground', title: 'Playground' });
-      if (hasExamples) {
-        items.push({ id: 'examples', title: 'Examples' });
-      }
-      if (markdownExamples) {
-        items.push({ id: markdownExamples.id, title: markdownExamples.title });
-      }
+      const items = designSections.map((section) => ({ id: section.id, title: section.title }));
+      items.push({ id: 'examples', title: 'Examples' });
       return items;
     }
     case DOC_TAB_IDS.code: {
@@ -71,28 +62,19 @@ export function ComponentPage() {
   const { sentinelRef, pinned: subheaderPinned } = usePageHeaderPinned();
 
   const markdown = doc ? getComponentMarkdown(doc.slug) : undefined;
-  const { design, code } = useMemo(
-    () => (markdown && doc ? partitionMarkdownSections(markdown, doc.slug) : { design: [], code: [] }),
+  const { design, code, markdownExamples } = useMemo(
+    () =>
+      markdown && doc
+        ? partitionMarkdownSections(markdown, doc.slug)
+        : { design: [], code: [], markdownExamples: null },
     [markdown, doc],
   );
-  const { lead: designLead, markdownExamples } = useMemo(
-    () => splitDesignTabSections(design),
-    [design],
-  );
 
-  const hasExamples = Boolean(doc?.examples && doc.examples.length > 0);
+  const hasRegistryExamples = Boolean(doc?.examples && doc.examples.length > 0);
 
   const tocItems = useMemo(
-    () =>
-      buildTocForTab(
-        activeTab,
-        doc?.slug ?? '',
-        designLead,
-        markdownExamples,
-        code,
-        hasExamples,
-      ),
-    [activeTab, doc?.slug, designLead, markdownExamples, code, hasExamples],
+    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code),
+    [activeTab, doc?.slug, design, code],
   );
 
   const pager = useMemo(() => {
@@ -157,7 +139,7 @@ export function ComponentPage() {
           }
           design={
             <div className="docs-tab-panel">
-              {designLead.map((section) => (
+              {design.map((section) => (
                 <DocsSection key={section.id} id={section.id} title={section.title}>
                   <MarkdownContent
                     content={section.body}
@@ -169,24 +151,16 @@ export function ComponentPage() {
                 </DocsSection>
               ))}
 
-              <DocsSection id="playground" title="Playground">
+              <DocsSection id="examples" title="Examples">
                 <Playground doc={doc} />
-              </DocsSection>
-
-              {hasExamples ? (
-                <DocsSection id="examples" title="Examples">
-                  <ExamplesSection examples={doc.examples!} />
-                </DocsSection>
-              ) : null}
-
-              {markdownExamples ? (
-                <DocsSection id={markdownExamples.id} title={markdownExamples.title}>
+                {hasRegistryExamples ? <ExamplesSection examples={doc.examples!} /> : null}
+                {markdownExamples ? (
                   <MarkdownContent
                     content={markdownExamples.body}
                     sectionTitle={markdownExamples.title}
                   />
-                </DocsSection>
-              ) : null}
+                ) : null}
+              </DocsSection>
             </div>
           }
           code={

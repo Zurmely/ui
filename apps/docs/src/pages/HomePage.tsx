@@ -86,7 +86,7 @@ export function HomePage() {
           </li>
           <li>
             <strong>Content / writing</strong> — label, button, empty-state, error, and helper-text
-            tips. Sections are reserved for copy the writer publishes later.
+            tip sections (filled when the writer publishes copy).
           </li>
           <li>
             <strong>Changelog</strong> — short release notes per change. Most pages start with an

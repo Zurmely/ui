@@ -29,3 +29,11 @@ export function getAiAnatomySupplement(slug: string): string {
 export function getAiPropsSupplement(slug: string): string {
   return sectionBody(slug, 'Props that change behavior');
 }
+
+export function getAiImportSupplement(slug: string): string {
+  const body = sectionBody(slug, 'Import');
+  if (!body) {
+    return '';
+  }
+  return body.startsWith('```') ? body : `\`\`\`tsx\n${body}\n\`\`\``;
+}

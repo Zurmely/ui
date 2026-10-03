@@ -27,22 +27,6 @@ function WritingSections({ sections }: { sections: WritingSection[] }) {
 
 export function ComponentWritingPanel({ slug }: { slug: string }) {
   const sections = getComponentWritingSections(slug);
-  const documented = sections.filter((section) => section.body.trim());
-
-  if (documented.length === 0) {
-    return (
-      <>
-        <div className="docs-writing-empty" role="status">
-          <p className="docs-writing-empty__text">
-            Writing tips for labels, buttons, empty states, errors, and helper text will appear in
-            the sections below when copy is published.
-          </p>
-        </div>
-        <WritingSections sections={sections} />
-      </>
-    );
-  }
-
   return <WritingSections sections={sections} />;
 }
 

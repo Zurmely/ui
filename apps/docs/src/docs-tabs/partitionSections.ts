@@ -1,11 +1,17 @@
 import type { DocSection } from '../markdown/sections';
 import { parseAllSections } from '../markdown/sections';
-import { getAiAnatomySupplement, getAiPropsSupplement } from './aiDocContent';
+import {
+  getAiAnatomySupplement,
+  getAiImportSupplement,
+  getAiPropsSupplement,
+} from './aiDocContent';
+import { extractTypeSnippets, stripTypeCodeFences } from './extractTypes';
 import { appendMarkdownSection, splitApiSection } from './splitApiSection';
 
 export interface PartitionedDocSections {
   design: DocSection[];
   code: DocSection[];
+  markdownExamples: DocSection | null;
 }
 
 function section(title: string, body: string): DocSection | null {
@@ -25,27 +31,10 @@ function findSection(sections: DocSection[], title: string): DocSection | undefi
   return sections.find((entry) => entry.title === title);
 }
 
-function extractTypeSnippets(markdown: string): string {
-  const blocks: string[] = [];
-  const pattern = /```(?:tsx?|typescript)\n([\s\S]*?)```/g;
-  for (const match of markdown.matchAll(pattern)) {
-    const body = match[1].trim();
-    if (/^(export\s+)?(type|interface|enum)\s/m.test(body)) {
-      blocks.push(`\`\`\`tsx\n${body}\n\`\`\``);
-    }
-  }
-  return blocks.join('\n\n');
-}
-
 export function partitionMarkdownSections(markdown: string, slug: string): PartitionedDocSections {
   const parsed = parseAllSections(markdown);
   const design: DocSection[] = [];
   const code: DocSection[] = [];
-
-  const overview = findSection(parsed, 'Overview');
-  if (overview) {
-    design.push(overview);
-  }
 
   const whenToUse = findSection(parsed, 'When to use');
   if (whenToUse) {
@@ -63,78 +52,66 @@ export function partitionMarkdownSections(markdown: string, slug: string): Parti
   }
 
   const api = findSection(parsed, 'API');
+  let apiPropsBody = '';
+  let apiStatesBody = '';
+
   if (api) {
     const split = splitApiSection(api.body);
     anatomyBody = appendMarkdownSection(anatomyBody, split.anatomy);
-    anatomyBody = appendMarkdownSection(anatomyBody, getAiAnatomySupplement(slug));
-
-    let statesBody = split.states;
-    const accessibility = findSection(parsed, 'Accessibility');
-    if (accessibility) {
-      statesBody = appendMarkdownSection(statesBody, accessibility.body);
-    }
-    const keyboard = findSection(parsed, 'Keyboard');
-    if (keyboard) {
-      statesBody = appendMarkdownSection(statesBody, keyboard.body);
-    }
-    const notes = findSection(parsed, 'Notes');
-    if (notes) {
-      statesBody = appendMarkdownSection(statesBody, notes.body);
-    }
-
-    const anatomySection = section('Anatomy', anatomyBody);
-    if (anatomySection) {
-      design.push(anatomySection);
-    }
-
-    const statesSection = section('States', statesBody);
-    if (statesSection) {
-      design.push(statesSection);
-    }
-
-    const propsBody = appendMarkdownSection(split.props, getAiPropsSupplement(slug));
-    const propsSection = section('Props', propsBody);
-    const typesSection = section('Types', extractTypeSnippets(propsBody));
-    if (propsSection) {
-      code.push(propsSection);
-    }
-    if (typesSection) {
-      code.push(typesSection);
-    }
-  } else {
-    const anatomySection = section('Anatomy', appendMarkdownSection(anatomyBody, getAiAnatomySupplement(slug)));
-    if (anatomySection) {
-      design.push(anatomySection);
-    }
-
-    let statesBody = '';
-    const accessibility = findSection(parsed, 'Accessibility');
-    if (accessibility) {
-      statesBody = appendMarkdownSection(statesBody, accessibility.body);
-    }
-    const keyboard = findSection(parsed, 'Keyboard');
-    if (keyboard) {
-      statesBody = appendMarkdownSection(statesBody, keyboard.body);
-    }
-    const notes = findSection(parsed, 'Notes');
-    if (notes) {
-      statesBody = appendMarkdownSection(statesBody, notes.body);
-    }
-    const statesSection = section('States', statesBody);
-    if (statesSection) {
-      design.push(statesSection);
-    }
+    apiPropsBody = split.props;
+    apiStatesBody = split.states;
   }
 
-  const examples = findSection(parsed, 'Examples');
-  if (examples) {
-    design.push(examples);
+  anatomyBody = appendMarkdownSection(anatomyBody, getAiAnatomySupplement(slug));
+  const anatomySection = section('Anatomy', anatomyBody);
+  if (anatomySection) {
+    design.push(anatomySection);
+  }
+
+  let statesBody = apiStatesBody;
+  const accessibility = findSection(parsed, 'Accessibility');
+  if (accessibility) {
+    statesBody = appendMarkdownSection(statesBody, accessibility.body);
+  }
+  const keyboard = findSection(parsed, 'Keyboard');
+  if (keyboard) {
+    statesBody = appendMarkdownSection(statesBody, keyboard.body);
+  }
+
+  const statesSection = section('States', statesBody);
+  if (statesSection) {
+    design.push(statesSection);
   }
 
   const install = findSection(parsed, 'Install');
-  if (install) {
-    code.push({ ...install, title: 'Import', id: 'import' });
+  const importBody = install
+    ? appendMarkdownSection(install.body, getAiImportSupplement(slug))
+    : getAiImportSupplement(slug);
+
+  let propsBody = appendMarkdownSection(apiPropsBody, getAiPropsSupplement(slug));
+  const typesBody = extractTypeSnippets(markdown, api?.body ?? '', propsBody, importBody);
+  propsBody = stripTypeCodeFences(propsBody);
+
+  const importSection = section('Import', importBody);
+  if (importSection) {
+    code.push(importSection);
   }
 
-  return { design, code };
+  const propsSection = section('Props', propsBody);
+  if (propsSection) {
+    code.push(propsSection);
+  }
+
+  const typesSection = section('Types', typesBody);
+  if (typesSection) {
+    code.push(typesSection);
+  }
+
+  const examples = findSection(parsed, 'Examples');
+
+  return {
+    design,
+    code,
+    markdownExamples: examples ?? null,
+  };
 }
