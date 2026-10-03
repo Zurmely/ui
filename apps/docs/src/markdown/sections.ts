@@ -12,7 +12,7 @@ function slugify(title: string): string {
     .replace(/\s+/g, '-');
 }
 
-export function parseSections(markdown: string): DocSection[] {
+function parseSectionParts(markdown: string, includeExamples: boolean): DocSection[] {
   const normalized = markdown.replace(/\r\n/g, '\n').trim();
   if (!normalized) {
     return [];
@@ -39,7 +39,10 @@ export function parseSections(markdown: string): DocSection[] {
     const title = newlineIndex === -1 ? part.trim() : part.slice(0, newlineIndex).trim();
     const body = newlineIndex === -1 ? '' : part.slice(newlineIndex + 1).trim();
 
-    if (!title || title.toLowerCase() === 'examples') {
+    if (!title) {
+      continue;
+    }
+    if (!includeExamples && title.toLowerCase() === 'examples') {
       continue;
     }
 
@@ -51,4 +54,14 @@ export function parseSections(markdown: string): DocSection[] {
   }
 
   return sections;
+}
+
+/** Legacy parser: skips the markdown Examples section (live examples live in the docs registry). */
+export function parseSections(markdown: string): DocSection[] {
+  return parseSectionParts(markdown, false);
+}
+
+/** Full parser including the markdown Examples section for design-tab snippets. */
+export function parseAllSections(markdown: string): DocSection[] {
+  return parseSectionParts(markdown, true);
 }

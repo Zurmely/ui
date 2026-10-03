@@ -16,7 +16,9 @@ function WritingSections({ sections }: { sections: WritingSection[] }) {
           id={slugifyWritingTitle(section.title)}
           title={section.title}
         >
-          <MarkdownContent content={section.body} sectionTitle={section.title} />
+          {section.body.trim() ? (
+            <MarkdownContent content={section.body} sectionTitle={section.title} />
+          ) : null}
         </DocsSection>
       ))}
     </>
@@ -25,14 +27,19 @@ function WritingSections({ sections }: { sections: WritingSection[] }) {
 
 export function ComponentWritingPanel({ slug }: { slug: string }) {
   const sections = getComponentWritingSections(slug);
+  const documented = sections.filter((section) => section.body.trim());
 
-  if (sections.length === 0) {
+  if (documented.length === 0) {
     return (
-      <div className="docs-writing-empty" role="status">
-        <p className="docs-writing-empty__text">
-          No additional content or writing rules are documented for this component.
-        </p>
-      </div>
+      <>
+        <div className="docs-writing-empty" role="status">
+          <p className="docs-writing-empty__text">
+            Writing tips for labels, buttons, empty states, errors, and helper text will appear in
+            the sections below when copy is published.
+          </p>
+        </div>
+        <WritingSections sections={sections} />
+      </>
     );
   }
 
