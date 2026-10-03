@@ -25,14 +25,3 @@ export function parseDocTabParam(value: string | null): DocTabId {
   return DOC_TAB_IDS.design;
 }
 
-export const DESIGN_USAGE_SECTION_TITLES = new Set(['Overview', 'When to use']);
-
-export const CODE_REFERENCE_SECTION_TITLES = new Set([
-  'Install',
-  'API',
-  'Accessibility',
-  'Keyboard',
-  'Tokens',
-  'Figma',
-  'Notes',
-]);

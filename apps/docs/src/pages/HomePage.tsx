@@ -77,16 +77,16 @@ export function HomePage() {
         </p>
         <ul className="docs-about__list">
           <li>
-            <strong>Design usage</strong> — where the component fits, what to pair it with, and when
-            to pick a sibling instead. Defaults to this tab when you open a page.
+            <strong>Design usage</strong> — when to use, anatomy, states, the playground, and
+            examples. Defaults to this tab when you open a page.
           </li>
           <li>
-            <strong>Code reference</strong> — playground, examples, install commands, API tables,
-            accessibility, keyboard, tokens, and implementation notes from the markdown contract.
+            <strong>Code reference</strong> — imports, props, and types from the markdown contract
+            only.
           </li>
           <li>
-            <strong>Content / writing</strong> — label and copy rules implied by the component. An
-            honest fallback appears when nothing extra is documented.
+            <strong>Content / writing</strong> — label, button, empty-state, error, and helper-text
+            tip sections (filled when the writer publishes copy).
           </li>
           <li>
             <strong>Changelog</strong> — short release notes per change. Most pages start with an

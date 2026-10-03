@@ -19,7 +19,7 @@ import { DocsSection } from '../layout/DocsSection';
 import { TableOfContents, type TocItem } from '../layout/TableOfContents';
 import { usePageHeaderPinned } from '../layout/usePageHeaderPinned';
 import { MarkdownContent, getComponentMarkdown } from '../markdown/MarkdownContent';
-import { parseSections } from '../markdown/sections';
+import type { DocSection } from '../markdown/sections';
 import { ExamplesSection } from '../playground/ExamplesSection';
 import { Playground } from '../playground/Playground';
 import { getComponentWritingSections } from '../docs-tabs/writingContent';
@@ -31,22 +31,17 @@ function writingTocId(title: string): string {
 function buildTocForTab(
   tab: DocTabId,
   slug: string,
-  designSections: ReturnType<typeof partitionMarkdownSections>['design'],
+  designSections: DocSection[],
   codeSections: ReturnType<typeof partitionMarkdownSections>['code'],
-  hasExamples: boolean,
 ): TocItem[] {
   switch (tab) {
-    case DOC_TAB_IDS.design:
-      return designSections.map((section) => ({ id: section.id, title: section.title }));
-    case DOC_TAB_IDS.code: {
-      const items: TocItem[] = [{ id: 'playground', title: 'Playground' }];
-      if (hasExamples) {
-        items.push({ id: 'examples', title: 'Examples' });
-      }
-      for (const section of codeSections) {
-        items.push({ id: section.id, title: section.title });
-      }
+    case DOC_TAB_IDS.design: {
+      const items = designSections.map((section) => ({ id: section.id, title: section.title }));
+      items.push({ id: 'examples', title: 'Examples' });
       return items;
+    }
+    case DOC_TAB_IDS.code: {
+      return codeSections.map((section) => ({ id: section.id, title: section.title }));
     }
     case DOC_TAB_IDS.writing:
       return getComponentWritingSections(slug).map((section) => ({
@@ -67,14 +62,19 @@ export function ComponentPage() {
   const { sentinelRef, pinned: subheaderPinned } = usePageHeaderPinned();
 
   const markdown = doc ? getComponentMarkdown(doc.slug) : undefined;
-  const sections = useMemo(() => (markdown ? parseSections(markdown) : []), [markdown]);
-  const { design, code } = useMemo(() => partitionMarkdownSections(sections), [sections]);
+  const { design, code, markdownExamples } = useMemo(
+    () =>
+      markdown && doc
+        ? partitionMarkdownSections(markdown, doc.slug)
+        : { design: [], code: [], markdownExamples: null },
+    [markdown, doc],
+  );
 
-  const hasExamples = Boolean(doc?.examples && doc.examples.length > 0);
+  const hasRegistryExamples = Boolean(doc?.examples && doc.examples.length > 0);
 
   const tocItems = useMemo(
-    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code, hasExamples),
-    [activeTab, doc?.slug, design, code, hasExamples],
+    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code),
+    [activeTab, doc?.slug, design, code],
   );
 
   const pager = useMemo(() => {
@@ -150,20 +150,21 @@ export function ComponentPage() {
                   />
                 </DocsSection>
               ))}
+
+              <DocsSection id="examples" title="Examples">
+                <Playground doc={doc} />
+                {hasRegistryExamples ? <ExamplesSection examples={doc.examples!} /> : null}
+                {markdownExamples ? (
+                  <MarkdownContent
+                    content={markdownExamples.body}
+                    sectionTitle={markdownExamples.title}
+                  />
+                ) : null}
+              </DocsSection>
             </div>
           }
           code={
             <div className="docs-tab-panel">
-              <DocsSection id="playground" title="Playground">
-                <Playground doc={doc} />
-              </DocsSection>
-
-              {hasExamples ? (
-                <DocsSection id="examples" title="Examples">
-                  <ExamplesSection examples={doc.examples!} />
-                </DocsSection>
-              ) : null}
-
               {code.map((section) => (
                 <DocsSection key={section.id} id={section.id} title={section.title}>
                   <MarkdownContent content={section.body} sectionTitle={section.title} />
