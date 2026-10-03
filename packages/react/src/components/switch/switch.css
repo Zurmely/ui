@@ -5,7 +5,7 @@
   width: 2.25rem;
   height: 1.25rem;
   flex-shrink: 0;
-  border: 1px solid var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-pill);
   background-color: var(--z-color-background-surface);
   cursor: pointer;

@@ -35,7 +35,7 @@ Use `Toast` as documented in the human API section. Add child controls or slots 
 
 ## Style with tokens
 
-- **Surface:** `--z-color-background-surface`, `--z-color-border-subtle`, `--z-radius-surface`
+- **Surface:** `--z-color-background-surface`, `--z-elevation-overlay`, `--z-radius-surface`
 - **Title / body:** `--z-text-title-*`, `--z-text-body-*`, `--z-color-text-primary`, `--z-color-text-secondary`
 - **Action:** `--z-color-background-primary-subtle`, `--z-color-border-primary`, `--z-color-text-primary`
 - **Viewport offset:** `--z-spacing-gap-page-section`

@@ -33,7 +33,7 @@ Semantic sizes answer: *"How much space should sit between form label and input?
 ### 2.1 Base unit
 
 - **Base unit:** 8px = `0.5rem` at a 16px root font size.
-- **Half-step:** 4px = `0.25rem` — use only for tight inline rhythm (tab lists, tooltip padding, form label stacks).
+- **Half-step:** 4px = `0.25rem` — use only for tight inline rhythm (tooltip padding, badge sm, menu viewport inset).
 - **Authoring unit:** `rem` for zoom and reflow compatibility.
 
 ### 2.2 Spacing primitive scale
@@ -164,7 +164,7 @@ Primitives use `--z-space-*` / `--z-radius-*`; spacing semantics use `--z-spacin
 
 | Token | Use when… |
 | --- | --- |
-| `spacing.stack.form` | Label, description, and error in a field |
+| `spacing.stack.form` | Label, description, and error in a field (`space.1` / 8px) |
 | `spacing.stack.control` | Radio/checkbox item lists |
 | `spacing.stack.component` | Content below a tab list |
 | `spacing.stack.section` | Between sections in a form or settings page |

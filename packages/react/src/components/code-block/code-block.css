@@ -6,7 +6,7 @@
   font-weight: var(--z-text-caption-weight);
   line-height: var(--z-text-caption-line-height);
   color: var(--z-color-text-primary);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   transition:
     background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
     border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
@@ -32,7 +32,6 @@
 .z-code-block[data-variant='single']:hover,
 .z-code-block[data-variant='single']:focus-within {
   background-color: var(--z-color-background-subtle);
-  border-color: var(--z-color-border-default);
 }
 
 .z-code-block[data-variant='single'] .z-code-block__code {

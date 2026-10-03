@@ -35,7 +35,7 @@ Use `Table` as documented in the human API section. Add child controls or slots 
 
 ## Style with tokens
 
-- **Wrapper border/radius:** `--z-color-border-subtle`, `--z-radius-container`
+- **Wrapper radius:** `--z-radius-container` (no outer border; row rules use `--z-color-border-subtle`)
 - **Surface:** `--z-color-background-surface`, `--z-color-background-subtle`
 - **Header/footer text:** `--z-text-label-*`, `--z-color-text-secondary`
 - **Body text:** `--z-text-body-*`, `--z-color-text-primary`

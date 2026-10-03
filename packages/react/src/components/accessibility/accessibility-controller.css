@@ -26,9 +26,9 @@
   align-items: center;
   gap: var(--z-spacing-gap-inline-tight);
   padding: var(--z-spacing-inset-box-tight);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-container);
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
 }
 
 .z-accessibility-controller__option {

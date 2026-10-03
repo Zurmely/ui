@@ -1,5 +1,6 @@
 import { forwardRef, type HTMLAttributes } from 'react';
 import { cx } from '../../shared';
+import '../../shared/control-on-surface.css';
 import './card.css';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {}

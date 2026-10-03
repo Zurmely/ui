@@ -35,7 +35,7 @@ Use `Select` as documented in the human API section. Add child controls or slots
 
 ## Style with tokens
 
-- **Trigger surface:** `--z-color-background-surface`, `--z-color-border-subtle`, `--z-color-text-primary`
+- **Trigger surface:** `--z-color-background-surface` (transparent border at rest), `--z-color-text-primary`
 - **Trigger hover:** `--z-color-background-subtle`
 - **Focus:** `--z-color-border-focus`, `--z-color-focus-ring`
 - **Invalid:** `--z-color-border-danger`

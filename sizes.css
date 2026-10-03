@@ -60,7 +60,7 @@
   --z-spacing-gap-page-section: var(--z-space-6);
 
   /* ----- Stack: vertical rhythm ----- */
-  --z-spacing-stack-form: var(--z-space-0-5);
+  --z-spacing-stack-form: var(--z-space-1);
   --z-spacing-stack-control: var(--z-space-1);
   --z-spacing-stack-component: var(--z-space-2);
   --z-spacing-stack-section: var(--z-space-4);

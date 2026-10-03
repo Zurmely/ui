@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-circle);
   background-color: var(--z-color-background-muted);
   color: var(--z-color-text-secondary);

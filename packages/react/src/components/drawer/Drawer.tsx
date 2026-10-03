@@ -2,6 +2,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { forwardRef, type ComponentPropsWithoutRef, type ElementRef, type HTMLAttributes } from 'react';
 import { cx } from '../../shared';
 import '../../shared/focus-ring.css';
+import '../../shared/control-on-surface.css';
 import './drawer.css';
 
 export const Drawer = DialogPrimitive.Root;

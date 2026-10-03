@@ -7,7 +7,7 @@
   width: 2.5rem;
   height: 2.75rem;
   padding: 0;
-  border: 1px solid var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-control);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
@@ -18,11 +18,13 @@
   font-optical-sizing: auto;
   font-style: normal;
   text-align: center;
-  transition: border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
 }
 
 .z-otp-input__digit:hover:not(:disabled) {
-  border-color: var(--z-color-border-default);
+  background-color: var(--z-color-background-subtle);
 }
 
 .z-otp-input__digit:focus-visible {

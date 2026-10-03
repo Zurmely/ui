@@ -41,9 +41,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ux/ui/tabs';
 
 ## Style with tokens
 
-- **List chrome:** `--z-color-background-surface`, `--z-color-border-subtle`
-- **Unselected trigger:** `--z-color-background-surface`
-- **Selected trigger:** `--z-color-background-selected`
+- **List chrome:** transparent row; triggers use label + bottom border for active (`--z-color-border-primary`)
+- **Unselected trigger:** `--z-color-text-secondary`
+- **Selected trigger:** `--z-color-text-primary`, underline via `--z-color-border-primary`
+- **Panel offset:** `--z-spacing-stack-section` below the tab row
 - **Label:** `--z-color-text-primary`, `--z-color-text-disabled`
 - **Focus ring:** `--z-color-focus-ring`
 - **Control typography:** `--z-text-control-*`

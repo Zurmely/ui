@@ -103,9 +103,9 @@ Fills for pages, surfaces, controls, and status containers.
 
 | Token | Use when… |
 | --- | --- |
-| `color.background.canvas` | App/page base behind content |
-| `color.background.surface` | Cards, panels, elevated sections on canvas |
-| `color.background.subtle` | Quiet secondary regions, table headers, sidebars |
+| `color.background.canvas` | App/page base behind content (light: `neutral-100`) |
+| `color.background.surface` | Cards, panels, elevated sections on canvas (light: `neutral-50`) |
+| `color.background.subtle` | Quiet secondary regions, table headers, sidebars (light: `neutral-200`; must differ from canvas and surface) |
 | `color.background.muted` | Disabled-looking fills, skeleton placeholders (not for critical actions) |
 | `color.background.inverse` | High-contrast inverted blocks (e.g. dark bar in light theme) |
 | `color.background.primary` | Primary actions and neutral emphasis fills (default = neutral **950** in light) |
@@ -170,7 +170,7 @@ Dividers, control outlines, and emphasis edges.
 | Token | Use when… |
 | --- | --- |
 | `color.border.default` | Interactive control hover/focus step-up; meets ≥3:1 UI component floor on `background.surface` |
-| `color.border.subtle` | Resting card/chrome edges, dividers, separators (decorative; may be below 3:1) |
+| `color.border.subtle` | Hairline where two surfaces of the **same** fill meet (table row rules, accordion item rules, code-block header/body, separators, menu separators, timeline connectors). Not for resting control chrome or status containers. |
 | `color.border.strong` | High-emphasis outlines, selected rows, active pagination |
 | `color.border.disabled` | Disabled control borders |
 | `color.border.primary` | Primary emphasis borders on solid fills |
