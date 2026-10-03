@@ -1,6 +1,8 @@
 import {
   AccessibilityController,
   Badge,
+  Filter,
+  FilterItem,
   IconButton,
   Megamenu,
   MegamenuContent,
@@ -8,23 +10,12 @@ import {
   ThemeController,
   type AccessibilityPreferences,
 } from '@z-ux/ui';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Menu } from 'lucide-react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { docsIconProps } from '../icons/docs-icon';
 import { getActiveSection, SECTIONS } from './sections';
 
 export const DOCS_NAV_DRAWER_ID = 'docs-nav-drawer';
-
-function MenuIcon() {
-  return (
-    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
-      <path
-        d="M2 4h12M2 8h12M2 12h12"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export function DocsHeader({
   accessibility,
@@ -38,6 +29,7 @@ export function DocsHeader({
   onMenuClick: () => void;
 }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const activeSection = getActiveSection(pathname);
 
   return (
@@ -51,7 +43,7 @@ export function DocsHeader({
         size="sm"
         onClick={onMenuClick}
       >
-        <MenuIcon />
+        <Menu {...docsIconProps()} />
       </IconButton>
 
       <div className="docs-header__brand">
@@ -63,24 +55,25 @@ export function DocsHeader({
         </Badge>
       </div>
 
-      <nav className="docs-header__sections" aria-label="Documentation section">
-        <ul className="docs-header__nav-list">
-          {SECTIONS.map((section) => {
-            const isActive = activeSection === section.id;
-            return (
-              <li key={section.id}>
-                <NavLink
-                  to={section.path}
-                  className={`docs-header__nav-link${isActive ? ' docs-header__nav-link--active' : ''}`}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {section.label}
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <Filter
+        className="docs-header__sections"
+        type="single"
+        value={activeSection}
+        onValueChange={(value) => {
+          const section = SECTIONS.find((item) => item.id === value);
+          if (section) {
+            navigate(section.path);
+          }
+        }}
+        size="sm"
+        aria-label="Documentation section"
+      >
+        {SECTIONS.map((section) => (
+          <FilterItem key={section.id} value={section.id}>
+            {section.label}
+          </FilterItem>
+        ))}
+      </Filter>
 
       <div className="docs-header__spacer" />
 
