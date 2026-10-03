@@ -13,8 +13,9 @@
     "lint": "echo 'No lint in docs app'"
   },
   "dependencies": {
-    "@z-ux/ui": "workspace:*",
     "@z-ux/tokens": "workspace:*",
+    "@z-ux/ui": "workspace:*",
+    "lucide-react": "^1.51.0",
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

@@ -1,4 +1,6 @@
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { IconButton } from '@z-ux/ui';
+import { docsIconProps } from '../icons/docs-icon';
 import { useEffect, useState } from 'react';
 import {
   Drawer,
@@ -20,20 +22,6 @@ const DEFAULT_ACCESSIBILITY: AccessibilityPreferences = {
 };
 
 const SIDEBAR_COLLAPSED_STORAGE_KEY = 'docs-sidebar-collapsed';
-
-function SidebarCollapseIcon({ collapsed }: { collapsed: boolean }) {
-  return (
-    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
-      <path
-        d={collapsed ? 'M6 4l4 4-4 4' : 'M10 4L6 8l4 4'}
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
@@ -82,7 +70,11 @@ export function DocsLayout({ children }: { children: React.ReactNode }) {
               aria-expanded={!sidebarCollapsed}
               onClick={toggleSidebarCollapsed}
             >
-              <SidebarCollapseIcon collapsed={sidebarCollapsed} />
+              {sidebarCollapsed ? (
+                <ChevronRight {...docsIconProps()} />
+              ) : (
+                <ChevronLeft {...docsIconProps()} />
+              )}
             </IconButton>
           </div>
           {!sidebarCollapsed ? <DocsNavContent /> : null}

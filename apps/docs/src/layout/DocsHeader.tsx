@@ -10,23 +10,12 @@ import {
   ThemeController,
   type AccessibilityPreferences,
 } from '@z-ux/ui';
+import { Menu } from 'lucide-react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { docsIconProps } from '../icons/docs-icon';
 import { getActiveSection, SECTIONS } from './sections';
 
 export const DOCS_NAV_DRAWER_ID = 'docs-nav-drawer';
-
-function MenuIcon() {
-  return (
-    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
-      <path
-        d="M2 4h12M2 8h12M2 12h12"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export function DocsHeader({
   accessibility,
@@ -54,7 +43,7 @@ export function DocsHeader({
         size="sm"
         onClick={onMenuClick}
       >
-        <MenuIcon />
+        <Menu {...docsIconProps()} />
       </IconButton>
 
       <div className="docs-header__brand">

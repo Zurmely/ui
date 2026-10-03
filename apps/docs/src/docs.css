@@ -95,11 +95,11 @@ body {
 }
 
 .docs-section-block__anchor {
+  display: inline-flex;
+  align-items: center;
   opacity: 0;
   color: var(--z-color-text-tertiary);
   text-decoration: none;
-  font-family: var(--z-font-family-mono);
-  font-size: var(--z-text-caption-size);
   transition: opacity var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
 }
 
@@ -2575,6 +2575,8 @@ body {
 }
 
 .docs-markdown__heading-anchor {
+  display: inline-flex;
+  align-items: center;
   margin-right: var(--z-spacing-gap-inline-tight);
   color: var(--z-color-text-tertiary);
   text-decoration: none;
