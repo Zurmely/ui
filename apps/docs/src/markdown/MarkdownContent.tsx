@@ -11,7 +11,6 @@ import { isValidElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Card, CardContent, CardHeader, CardTitle } from '@z-ux/ui';
-import { DocsHeadingLinkIcon } from '../icons/DocsHeadingLinkIcon';
 import { CodeBlock } from '../playground/CodeBlock';
 import { folderForSlug } from './component-slugs';
 
@@ -133,7 +132,7 @@ function WhenToUseCards({ content, usePreview, doNotUsePreview }: WhenToUseCards
 function HeadingAnchor({ id }: { id: string }) {
   return (
     <a href={`#${id}`} className="docs-markdown__heading-anchor" aria-label="Link to section">
-      <DocsHeadingLinkIcon />
+      #
     </a>
   );
 }

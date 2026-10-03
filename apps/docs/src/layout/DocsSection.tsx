@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { DocsHeadingLinkIcon } from '../icons/DocsHeadingLinkIcon';
 
 interface DocsSectionProps {
   id: string;
@@ -13,7 +12,7 @@ export function DocsSection({ id, title, children, className }: DocsSectionProps
     <section id={id} className={`docs-section-block ${className ?? ''}`.trim()}>
       <h2 className="docs-section-block__title">
         <a href={`#${id}`} className="docs-section-block__anchor" aria-label={`Link to ${title}`}>
-          <DocsHeadingLinkIcon />
+          #
         </a>
         {title}
       </h2>
