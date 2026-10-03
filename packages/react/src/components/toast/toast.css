@@ -16,8 +16,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--z-spacing-gap-inline);
-  padding: var(--z-spacing-inset-box);
-  border: 1px solid var(--z-color-border-subtle);
+  padding: var(--z-spacing-inset-box-comfortable);
+  border: none;
   border-radius: var(--z-radius-surface);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);

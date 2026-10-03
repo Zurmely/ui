@@ -22,14 +22,16 @@
   justify-content: center;
   gap: var(--z-spacing-stack-control);
   padding: var(--z-spacing-inset-box-comfortable);
-  border: 1px dashed var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-control);
   background-color: var(--z-color-background-surface);
-  transition: border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
+  transition:
+    background-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction),
+    border-color var(--z-motion-duration-interaction) var(--z-motion-easing-interaction);
 }
 
 .z-file-input[data-drag-drop='true'] .z-file-input__dropzone:hover {
-  border-color: var(--z-color-border-default);
+  background-color: var(--z-color-background-subtle);
 }
 
 .z-file-input[data-invalid='true'] .z-file-input__dropzone {

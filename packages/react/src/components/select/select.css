@@ -6,7 +6,7 @@
   width: 100%;
   min-height: auto;
   padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
-  border: 1px solid var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-control);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
@@ -71,7 +71,7 @@
 
 .z-select__content {
   overflow: hidden;
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-container);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);

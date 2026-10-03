@@ -43,7 +43,7 @@ import { Button } from '@z-ux/ui/button';
 ## Style with tokens
 
 - **Primary fill:** `--z-color-background-primary`, `.hover`, `.active`, `.disabled`, `--z-color-border-primary`
-- **Secondary surface:** `--z-color-background-surface`, `--z-color-border-subtle`, `--z-color-border-default`
+- **Secondary surface:** `--z-color-background-subtle`, `--z-color-background-muted` (hover)
 - **Ghost hover:** `--z-color-background-subtle`
 - **Danger fill:** `--z-color-background-danger`, `.hover`, `.active`, `.disabled`, `--z-color-border-danger`
 - **Label on solid:** `--z-color-text-on-solid`

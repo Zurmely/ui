@@ -20,7 +20,7 @@
   flex-direction: column;
   gap: var(--z-spacing-gap-component);
   padding: var(--z-spacing-inset-box-comfortable);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
   box-shadow: var(--z-elevation-modal);
@@ -138,9 +138,9 @@
 .z-drawer__close {
   align-self: flex-end;
   padding: var(--z-spacing-inset-control-compact-y) var(--z-spacing-inset-control-compact-x);
-  border: 1px solid var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-control-compact);
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-primary);
   font-family: var(--z-text-control-font-family);
   font-size: var(--z-text-control-size);
@@ -152,7 +152,7 @@
 }
 
 .z-drawer__close:hover:not(:disabled) {
-  background-color: var(--z-color-background-subtle);
+  background-color: var(--z-color-background-muted);
 }
 
 @keyframes z-drawer-overlay-in {

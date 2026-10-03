@@ -131,6 +131,7 @@ import {
   type AccessibilityPreferences,
 } from '@z-ux/ui';
 import TokensPreview from './TokensPreview';
+import VisualPassStage from './VisualPassStage';
 
 function PlusIcon() {
   return (
@@ -237,6 +238,14 @@ export default function App() {
   const [rangeValue, setRangeValue] = useState<[number, number]>([25, 75]);
   const [toastOpen, setToastOpen] = useState(false);
   const [validatorEmail, setValidatorEmail] = useState('');
+
+  const isVisualPassStage =
+    typeof window !== 'undefined' &&
+    new URLSearchParams(window.location.search).get('stage') === 'visual-pass';
+
+  if (isVisualPassStage) {
+    return <VisualPassStage />;
+  }
 
   return (
     <TooltipProvider>

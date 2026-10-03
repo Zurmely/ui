@@ -62,7 +62,7 @@ Focus behavior depends on the content in the `action` slot. The alert container 
 
 | Part | Semantic tokens |
 | --- | --- |
-| Neutral | `--z-color-background-subtle`, `--z-color-text-primary`, `--z-color-border-subtle` |
+| Neutral | `--z-color-background-subtle`, `--z-color-text-primary` |
 | Primary | `--z-color-background-primary-subtle`, `--z-color-text-primary`, `--z-color-border-primary` |
 | Success | `--z-color-background-success-subtle`, `--z-color-text-success` |
 | Warning | `--z-color-background-warning-subtle`, `--z-color-text-warning` |

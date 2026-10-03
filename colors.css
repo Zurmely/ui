@@ -14,8 +14,8 @@
 
 :root,
 [data-theme="light"] {
-  --green-50: oklch(0.961 0.063 150.7);
-  --green-100: oklch(0.949 0.08 149.7);
+  --green-50: oklch(0.961 0.078 150.7);
+  --green-100: oklch(0.949 0.096 149.7);
   --green-200: oklch(0.888 0.11 149.6);
   --green-300: oklch(0.799 0.158 149.5);
   --green-400: oklch(0.736 0.189 149.6);
@@ -25,15 +25,15 @@
   --green-800: oklch(0.356 0.106 147);
   --green-900: oklch(0.23 0.072 145);
   --green-950: oklch(0.185 0.061 143.6);
-  --blue-50: oklch(0.958 0.048 198);
-  --blue-100: oklch(0.943 0.058 200);
+  --blue-50: oklch(0.958 0.058 198);
+  --blue-100: oklch(0.943 0.068 200);
   --blue-200: oklch(0.886 0.085 202);
   --blue-300: oklch(0.804 0.11 204);
   --blue-400: oklch(0.76 0.112 205);
   --blue-500: oklch(0.745 0.112 206);
   --blue-600: oklch(0.701 0.108 207);
-  --blue-700: oklch(0.57 0.09 208);
-  --blue-800: oklch(0.37 0.062 209);
+  --blue-700: oklch(0.57 0.102 208);
+  --blue-800: oklch(0.37 0.072 209);
   --blue-900: oklch(0.238 0.042 210);
   --blue-950: oklch(0.194 0.036 211);
   --purple-50: oklch(0.958 0.02 257.5);
@@ -102,17 +102,17 @@
   --orange-800: oklch(0.353 0.128 33.8);
   --orange-900: oklch(0.225 0.09 29.9);
   --orange-950: oklch(0.184 0.076 29.2);
-  --yellow-50: oklch(0.949 0.055 85.1);
-  --yellow-100: oklch(0.941 0.064 85.4);
+  --yellow-50: oklch(0.949 0.068 85.1);
+  --yellow-100: oklch(0.941 0.078 85.4);
   --yellow-200: oklch(0.911 0.09 83.2);
   --yellow-300: oklch(0.867 0.132 81.4);
   --yellow-400: oklch(0.838 0.161 81);
   --yellow-500: oklch(0.827 0.171 80.5);
-  --yellow-600: oklch(0.798 0.171 72.2);
-  --yellow-700: oklch(0.66 0.152 62.1);
-  --yellow-800: oklch(0.407 0.098 57.2);
-  --yellow-900: oklch(0.24 0.066 47.8);
-  --yellow-950: oklch(0.182 0.055 41.5);
+  --yellow-600: oklch(0.798 0.171 80);
+  --yellow-700: oklch(0.66 0.158 82);
+  --yellow-800: oklch(0.407 0.105 84);
+  --yellow-900: oklch(0.24 0.072 86);
+  --yellow-950: oklch(0.182 0.062 88);
   --olive-50: oklch(0.97 0.069 109.4);
   --olive-100: oklch(0.949 0.079 108.6);
   --olive-200: oklch(0.889 0.112 109);
@@ -148,7 +148,7 @@
  */
 [data-theme="dark"] {
   --green-50: oklch(0.17 0.038 143.6);
-  --green-100: oklch(0.208 0.05 145);
+  --green-100: oklch(0.208 0.066 145);
   --green-200: oklch(0.279 0.087 147);
   --green-300: oklch(0.379 0.141 148.8);
   --green-400: oklch(0.483 0.197 149.5);
@@ -159,14 +159,14 @@
   --green-900: oklch(0.893 0.06 149.7);
   --green-950: oklch(0.938 0.045 150.7);
   --blue-50: oklch(0.171 0.022 211);
-  --blue-100: oklch(0.209 0.028 210);
+  --blue-100: oklch(0.235 0.055 204);
   --blue-200: oklch(0.281 0.05 209);
   --blue-300: oklch(0.382 0.082 208);
   --blue-400: oklch(0.486 0.112 207);
   --blue-500: oklch(0.579 0.118 206);
   --blue-600: oklch(0.659 0.115 205);
-  --blue-700: oklch(0.744 0.095 204);
-  --blue-800: oklch(0.828 0.068 202);
+  --blue-700: oklch(0.744 0.115 204);
+  --blue-800: oklch(0.828 0.078 202);
   --blue-900: oklch(0.892 0.045 200);
   --blue-950: oklch(0.938 0.035 198);
   --purple-50: oklch(0.169 0.043 278);
@@ -235,11 +235,11 @@
   --orange-800: oklch(0.824 0.075 51.9);
   --orange-900: oklch(0.888 0.043 61);
   --orange-950: oklch(0.935 0.032 64);
-  --yellow-50: oklch(0.17 0.034 41.5);
-  --yellow-100: oklch(0.209 0.046 47.8);
-  --yellow-200: oklch(0.286 0.081 57.2);
-  --yellow-300: oklch(0.393 0.14 62.1);
-  --yellow-400: oklch(0.498 0.176 72.2);
+  --yellow-50: oklch(0.17 0.042 88);
+  --yellow-100: oklch(0.248 0.098 84);
+  --yellow-200: oklch(0.286 0.105 82);
+  --yellow-300: oklch(0.393 0.145 81);
+  --yellow-400: oklch(0.498 0.176 81);
   --yellow-500: oklch(0.589 0.179 80.5);
   --yellow-600: oklch(0.669 0.173 81);
   --yellow-700: oklch(0.752 0.129 81.4);
@@ -374,8 +374,8 @@
   /* ----- Background: structure ----- */
   --z-color-background-canvas: var(--neutral-100);
   --z-color-background-surface: var(--neutral-50);
-  --z-color-background-subtle: var(--neutral-100);
-  --z-color-background-muted: var(--neutral-200);
+  --z-color-background-subtle: var(--neutral-200);
+  --z-color-background-muted: var(--neutral-300);
   --z-color-background-inverse: var(--neutral-900);
   --z-color-background-selected: var(--neutral-200);
 

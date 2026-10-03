@@ -3,9 +3,10 @@
   flex-direction: column;
   gap: var(--z-spacing-stack-control);
   padding: var(--z-spacing-inset-box);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-surface);
   background-color: var(--z-color-background-surface);
+  box-shadow: var(--z-elevation-raised);
 }
 
 .z-calendar[data-invalid='true'] {
@@ -43,9 +44,9 @@
   width: 2rem;
   height: 2rem;
   padding: 0;
-  border: 1px solid var(--z-color-border-subtle);
+  border: 1px solid transparent;
   border-radius: var(--z-radius-control-compact);
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-primary);
   cursor: pointer;
   transition:
@@ -54,7 +55,6 @@
 }
 
 .z-calendar__nav:hover:not(:disabled):not([data-disabled='true']) {
-  border-color: var(--z-color-border-default);
   background-color: var(--z-color-background-muted);
 }
 

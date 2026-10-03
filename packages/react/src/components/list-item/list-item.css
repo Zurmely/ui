@@ -23,9 +23,9 @@
 }
 
 .z-list-item[data-variant='contained'] {
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-surface);
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
 }
 
 .z-list-item[data-variant='contained'][data-interactive='true'] {

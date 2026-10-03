@@ -42,7 +42,8 @@ Use `TextField` as documented in the human API section. Add child controls or sl
 ## Style with tokens
 
 - **Background:** `--z-color-background-surface`, `--z-color-background-muted` (disabled)
-- **Border:** `--z-color-border-subtle`, `.default`, `.focus`, `.danger`, `.disabled`
+- **Rest fill:** `--z-color-background-surface`; hover `--z-color-background-subtle`
+- **Border:** transparent at rest; `--z-color-border-focus`, `--z-color-border-danger`, `--z-color-border-disabled` for focus/invalid/disabled
 - **Value text:** `--z-color-text-primary`, `--z-color-text-disabled`
 - **Placeholder:** `--z-color-text-tertiary`, `--z-color-text-disabled`
 - **Focus ring:** `--z-color-focus-ring`

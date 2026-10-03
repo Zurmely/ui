@@ -12,10 +12,11 @@
   z-index: 50;
   min-width: 12rem;
   padding: var(--z-spacing-inset-box);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-surface);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
+  box-shadow: var(--z-elevation-overlay);
 }
 
 .z-popover__content[data-side='bottom'][data-state='open'] {

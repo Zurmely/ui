@@ -1,0 +1,50 @@
+/*
+ * Recessed control wells on surface panels (card, dialog, drawer).
+ * Resting outline is transparent; focus and invalid borders stay on the control.
+ */
+.z-card :is(
+    .z-text-field,
+    .z-textarea,
+    .z-select__trigger,
+    .z-file-input__dropzone,
+    .z-otp-input__digit,
+    .z-checkbox,
+    .z-radio-group__item,
+    .z-switch
+  ),
+.z-dialog__content :is(
+    .z-text-field,
+    .z-textarea,
+    .z-select__trigger,
+    .z-file-input__dropzone,
+    .z-otp-input__digit,
+    .z-checkbox,
+    .z-radio-group__item,
+    .z-switch
+  ),
+.z-drawer__content :is(
+    .z-text-field,
+    .z-textarea,
+    .z-select__trigger,
+    .z-file-input__dropzone,
+    .z-otp-input__digit,
+    .z-checkbox,
+    .z-radio-group__item,
+    .z-switch
+  ) {
+  background-color: var(--z-color-background-subtle);
+}
+
+.z-card :is(.z-text-field, .z-textarea, .z-select__trigger, .z-file-input__dropzone):hover:not(
+    :disabled
+  ):not([data-disabled='true']),
+.z-dialog__content
+  :is(.z-text-field, .z-textarea, .z-select__trigger, .z-file-input__dropzone):hover:not(
+    :disabled
+  ):not([data-disabled='true']),
+.z-drawer__content
+  :is(.z-text-field, .z-textarea, .z-select__trigger, .z-file-input__dropzone):hover:not(
+    :disabled
+  ):not([data-disabled='true']) {
+  background-color: var(--z-color-background-muted);
+}

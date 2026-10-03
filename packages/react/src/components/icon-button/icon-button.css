@@ -56,13 +56,13 @@
 }
 
 .z-icon-button[data-variant='secondary'] {
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-primary);
-  border-color: var(--z-color-border-subtle);
+  border-color: transparent;
 }
 
 .z-icon-button[data-variant='secondary']:hover:not(:disabled):not([data-disabled='true']) {
-  border-color: var(--z-color-border-default);
+  background-color: var(--z-color-background-muted);
 }
 
 .z-icon-button[data-variant='secondary']:disabled,

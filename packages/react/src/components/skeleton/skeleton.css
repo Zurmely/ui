@@ -4,7 +4,7 @@
   width: 100%;
   height: 1em;
   overflow: hidden;
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-control);
   pointer-events: none;
   user-select: none;

@@ -1,17 +1,18 @@
 .z-card {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-container);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
+  box-shadow: var(--z-elevation-raised);
 }
 
 .z-card__header {
   display: flex;
   flex-direction: column;
   gap: var(--z-spacing-stack-form);
-  padding: var(--z-spacing-inset-box);
+  padding: var(--z-spacing-inset-box-comfortable);
   padding-bottom: 0;
 }
 
@@ -38,7 +39,7 @@
 }
 
 .z-card__content {
-  padding: var(--z-spacing-inset-box);
+  padding: var(--z-spacing-inset-box-comfortable);
   color: var(--z-color-text-primary);
   font-family: var(--z-text-body-font-family);
   font-size: var(--z-text-body-size);
@@ -56,7 +57,7 @@
   display: flex;
   align-items: center;
   gap: var(--z-spacing-gap-inline);
-  padding: var(--z-spacing-inset-box);
+  padding: var(--z-spacing-inset-box-comfortable);
   padding-top: 0;
   color: var(--z-color-text-secondary);
 }

@@ -31,7 +31,6 @@
 .z-badge[data-tone='neutral'] {
   background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-secondary);
-  border-color: var(--z-color-border-subtle);
 }
 
 .z-badge[data-tone='primary'] {

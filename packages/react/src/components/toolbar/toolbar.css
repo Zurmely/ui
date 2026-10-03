@@ -3,9 +3,9 @@
   align-items: center;
   gap: var(--z-spacing-gap-component);
   padding: var(--z-spacing-inset-box-compact);
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-surface);
-  background-color: var(--z-color-background-surface);
+  background-color: var(--z-color-background-subtle);
 }
 
 .z-toolbar[data-orientation='vertical'] {

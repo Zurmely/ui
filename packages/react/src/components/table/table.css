@@ -1,7 +1,7 @@
 .z-table__wrapper {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid var(--z-color-border-subtle);
+  border: none;
   border-radius: var(--z-radius-container);
   background-color: var(--z-color-background-surface);
 }
@@ -23,7 +23,7 @@
 }
 
 .z-table__head {
-  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  padding: var(--z-spacing-inset-box);
   border-bottom: 1px solid var(--z-color-border-subtle);
   text-align: left;
   font-family: var(--z-text-label-font-family);
@@ -35,7 +35,7 @@
 }
 
 .z-table__cell {
-  padding: var(--z-spacing-inset-control-y) var(--z-spacing-inset-control-x);
+  padding: var(--z-spacing-inset-box);
   border-bottom: 1px solid var(--z-color-border-subtle);
   font-family: var(--z-text-body-font-family);
   font-size: var(--z-text-body-size);
