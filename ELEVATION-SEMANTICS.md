@@ -10,11 +10,9 @@ This document defines how **elevation semantics** work in Z-UI: purpose-based to
 
 ## Gabriel's rule
 
-Use this rule when you decide whether a region should read as raised, sunk, or flat on the page.
+The page is the background. Don't put text in a surface, and don't put a surface inside a surface.
 
-1. **Lift only when you must.** A surface lifts only when separation from the page (or from a parent region) is required for meaning or interaction. Do not nest boxes for decoration: a text block inside another box, or a panel that only frames more panels, is the wrong pattern.
-2. **The first step is a lighter fill.** The first elevation step is always a fill **lighter** than the surface it sits on (`background.surface` on `background.canvas`). It is not a border, not a drop shadow, and not an extra wrapper box.
-3. **Deeper steps stay on the fill ladder.** Further depth uses the same fill ladder: raised stays lighter than the page; sunk wells use `background.subtle` (**darker** than the page). There is no shadow scale. `elevation.raised`, `elevation.overlay`, and `elevation.modal` stay `none`; focus rings stay; modals may dim the page with the flat scrim only.
+A lighter fill is only for something that actually floats, like a dialog, a menu, or a card that holds an action. If the parent is already raised, the child stays on that same fill. The first lift is that one lighter step, not a border and not a second level.
 
 ---
 
@@ -29,9 +27,9 @@ Semantic elevation answers: *"How should this panel read against the page?"* or 
 
 **Rules:**
 
-1. **Do not** use drop shadows for depth in product UI. Raised cards, menus, dialogs, and toasts separate by **fill step** only.
-2. Components **must** use `background.surface` for raised floating panels (card, menu, popover, select menu, toast, calendar, dialog, drawer).
-3. Sunk control wells on a raised panel use `background.subtle` (see `control-on-surface.css`).
+1. **Do not** use drop shadows for depth in product UI. Floating UI separates from the page by **one lighter fill step** only (`background.surface` on `background.canvas`).
+2. Use `background.surface` only for UI that actually floats (dialog, menu, popover, select menu, toast, calendar, drawer, and cards that hold an action). Do not wrap body copy or layout regions in `background.surface` on the page.
+3. Do not nest `background.surface` inside `background.surface`. On a raised parent, children stay on that same fill. Sunk control wells use `background.subtle` (darker fill, not a second raised level; see `control-on-surface.css`).
 4. Use `elevation.ring` for outline-style halos that separate a node from its background (timeline marker). It is not a drop shadow.
 5. Focus rings use `color.focus.ring` / shared focus foundations (`elevation.ring` is not a substitute for `:focus-visible`).
 6. `elevation.raised`, `elevation.overlay`, and `elevation.modal` resolve to **`none`** — kept for API stability; do not apply `box-shadow` for depth.
@@ -138,7 +136,7 @@ Do **not** add `box-shadow` for lift. Do **not** use elevation tokens for text s
 
 | Component | Depth mechanism | Tokens |
 | --- | --- | --- |
-| Card | Raised fill | `background.surface` |
+| Card (action grouping on canvas) | Raised fill | `background.surface` |
 | Select (content) | Raised fill | `background.surface` |
 | Menu (content) | Raised fill | `background.surface` |
 | Popover (content) | Raised fill | `background.surface` |

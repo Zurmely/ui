@@ -2,7 +2,7 @@
 
 ## Overview
 
-Card groups related content on a raised fill surface (`background.surface` on the page).
+Card groups actionable content that floats on the page canvas (`background.surface` per Gabriel's rule in `ELEVATION-SEMANTICS.md`; not nested inside another raised surface).
 
 Card has optional header, body, and footer slots.
 
