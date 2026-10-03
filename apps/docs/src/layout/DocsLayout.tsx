@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { IconButton } from '@z-ux/ui';
+import { useEffect, useState } from 'react';
 import {
   Drawer,
   DrawerContent,
@@ -18,21 +19,73 @@ const DEFAULT_ACCESSIBILITY: AccessibilityPreferences = {
   linkUnderline: 'auto',
 };
 
+const SIDEBAR_COLLAPSED_STORAGE_KEY = 'docs-sidebar-collapsed';
+
+function SidebarCollapseIcon({ collapsed }: { collapsed: boolean }) {
+  return (
+    <svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true">
+      <path
+        d={collapsed ? 'M6 4l4 4-4 4' : 'M10 4L6 8l4 4'}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function DocsLayout({ children }: { children: React.ReactNode }) {
   const [navOpen, setNavOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [accessibility, setAccessibility] = useState<AccessibilityPreferences>(DEFAULT_ACCESSIBILITY);
   const location = useLocation();
   const activeSection = getActiveSection(location.pathname);
   const showSidebar = sectionHasSidebar(activeSection);
   const showTocGrid = location.pathname.startsWith('/components/');
 
+  useEffect(() => {
+    try {
+      setSidebarCollapsed(window.localStorage.getItem(SIDEBAR_COLLAPSED_STORAGE_KEY) === 'true');
+    } catch {
+      setSidebarCollapsed(false);
+    }
+  }, []);
+
+  const toggleSidebarCollapsed = () => {
+    setSidebarCollapsed((value) => {
+      const next = !value;
+      try {
+        window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, next ? 'true' : 'false');
+      } catch {
+        /* ignore */
+      }
+      return next;
+    });
+  };
+
   return (
     <div
       className={`docs-shell${showTocGrid ? ' docs-shell--with-toc' : ''}${showSidebar ? '' : ' docs-shell--no-sidebar'}`}
     >
       {showSidebar ? (
-        <aside className="docs-sidebar docs-sidebar--desktop">
-          <DocsNavContent />
+        <aside
+          className={`docs-sidebar docs-sidebar--desktop${sidebarCollapsed ? ' docs-sidebar--collapsed' : ''}`}
+        >
+          <div className="docs-sidebar__toolbar">
+            <IconButton
+              type="button"
+              size="sm"
+              variant="secondary"
+              className="docs-sidebar__collapse"
+              aria-label={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+              aria-expanded={!sidebarCollapsed}
+              onClick={toggleSidebarCollapsed}
+            >
+              <SidebarCollapseIcon collapsed={sidebarCollapsed} />
+            </IconButton>
+          </div>
+          {!sidebarCollapsed ? <DocsNavContent /> : null}
         </aside>
       ) : null}
 

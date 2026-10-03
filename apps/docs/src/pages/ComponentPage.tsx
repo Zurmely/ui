@@ -121,7 +121,7 @@ export function ComponentPage() {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           design={
-            <div className="docs-tab-panel docs-surface-stack">
+            <div className="docs-tab-panel">
               {design.map((section) => (
                 <DocsSection key={section.id} id={section.id} title={section.title}>
                   <MarkdownContent
@@ -136,7 +136,7 @@ export function ComponentPage() {
             </div>
           }
           code={
-            <div className="docs-tab-panel docs-surface-stack">
+            <div className="docs-tab-panel">
               <DocsSection id="playground" title="Playground">
                 <Playground doc={doc} />
               </DocsSection>
