@@ -121,69 +121,72 @@ export function ComponentPage() {
           <p className="docs-page__summary">{doc.summary}</p>
           <div ref={sentinelRef} className="docs-page__header-sentinel" aria-hidden="true" />
         </header>
+      </div>
 
-        <DocPageTabs
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          subheaderPinned={subheaderPinned}
-          subheaderInfo={
-            <>
-              <Badge size="sm" tone="neutral" className="docs-page__subheader-category">
-                {doc.category}
-              </Badge>
-              <div className="docs-page__subheader-text">
-                <p className="docs-page__subheader-title">{doc.name}</p>
-                <p className="docs-page__subheader-summary">{doc.summary}</p>
-              </div>
-            </>
-          }
-          design={
-            <div className="docs-tab-panel">
-              {design.map((section) => (
-                <DocsSection key={section.id} id={section.id} title={section.title}>
-                  <MarkdownContent
-                    content={section.body}
-                    sectionTitle={section.title}
-                    whenToUsePreviews={
-                      section.title === 'When to use' ? doc.whenToUsePreviews : undefined
-                    }
-                  />
-                </DocsSection>
-              ))}
-
-              <DocsSection id="examples" title="Examples">
-                <Playground doc={doc} />
-                {hasRegistryExamples ? <ExamplesSection examples={doc.examples!} /> : null}
-                {markdownExamples ? (
-                  <MarkdownContent
-                    content={markdownExamples.body}
-                    sectionTitle={markdownExamples.title}
-                  />
-                ) : null}
+      <DocPageTabs
+        className="docs-page-tabs--component"
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        subheaderPinned={subheaderPinned}
+        subheaderInfo={
+          <>
+            <Badge size="sm" tone="neutral" className="docs-page__subheader-category">
+              {doc.category}
+            </Badge>
+            <div className="docs-page__subheader-text">
+              <p className="docs-page__subheader-title">{doc.name}</p>
+              <p className="docs-page__subheader-summary">{doc.summary}</p>
+            </div>
+          </>
+        }
+        design={
+          <div className="docs-tab-panel">
+            {design.map((section) => (
+              <DocsSection key={section.id} id={section.id} title={section.title}>
+                <MarkdownContent
+                  content={section.body}
+                  sectionTitle={section.title}
+                  whenToUsePreviews={
+                    section.title === 'When to use' ? doc.whenToUsePreviews : undefined
+                  }
+                />
               </DocsSection>
-            </div>
-          }
-          code={
-            <div className="docs-tab-panel">
-              {code.map((section) => (
-                <DocsSection key={section.id} id={section.id} title={section.title}>
-                  <MarkdownContent content={section.body} sectionTitle={section.title} />
-                </DocsSection>
-              ))}
-            </div>
-          }
-          writing={
-            <div className="docs-tab-panel">
-              <ComponentWritingPanel slug={doc.slug} />
-            </div>
-          }
-          changelog={
-            <div className="docs-tab-panel">
-              <ChangelogPanel pageKey={doc.slug} />
-            </div>
-          }
-        />
+            ))}
 
+            <DocsSection id="examples" title="Examples">
+              <Playground doc={doc} />
+              {hasRegistryExamples ? <ExamplesSection examples={doc.examples!} /> : null}
+              {markdownExamples ? (
+                <MarkdownContent
+                  content={markdownExamples.body}
+                  sectionTitle={markdownExamples.title}
+                />
+              ) : null}
+            </DocsSection>
+          </div>
+        }
+        code={
+          <div className="docs-tab-panel">
+            {code.map((section) => (
+              <DocsSection key={section.id} id={section.id} title={section.title}>
+                <MarkdownContent content={section.body} sectionTitle={section.title} />
+              </DocsSection>
+            ))}
+          </div>
+        }
+        writing={
+          <div className="docs-tab-panel">
+            <ComponentWritingPanel slug={doc.slug} />
+          </div>
+        }
+        changelog={
+          <div className="docs-tab-panel">
+            <ChangelogPanel pageKey={doc.slug} />
+          </div>
+        }
+      />
+
+      <div className="docs-page__main">
         <nav className="docs-pager" aria-label="Component navigation">
           {pager.prev ? (
             <Link to={`/components/${pager.prev.slug}`} className="docs-pager__link docs-pager__link--prev">
