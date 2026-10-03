@@ -47,6 +47,7 @@
 }
 
 .docs-page__subheader--pinned .docs-page__subheader-tabs {
+  flex: 0 1 auto;
   margin-inline-start: auto;
 }
 
@@ -55,7 +56,9 @@
     grid-template-columns: 1fr;
   }
 
-  .docs-page__subheader-tabs {
-    justify-content: flex-start;
+  /* docs.css tablet rule gives tabs flex: 1 1 auto, which keeps them beside the title when pinned. */
+  .docs-page__subheader--pinned .docs-page__subheader-tabs {
+    flex: 0 1 auto;
+    margin-inline-start: auto;
   }
 }
