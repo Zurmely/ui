@@ -554,10 +554,10 @@
   --z-color-info-900: var(--blue-900);
   --z-color-info-950: var(--blue-950);
 
-  /* ----- Background: structure ----- */
-  --z-color-background-canvas: var(--neutral-50);
-  --z-color-background-surface: var(--neutral-100);
-  --z-color-background-subtle: var(--neutral-200);
+  /* ----- Background: structure (page 100; raised 200; sunk wells 50) ----- */
+  --z-color-background-canvas: var(--neutral-100);
+  --z-color-background-surface: var(--neutral-200);
+  --z-color-background-subtle: var(--neutral-50);
   --z-color-background-muted: var(--neutral-300);
   /* Flipped chrome: light bar in dark theme */
   --z-color-background-inverse: var(--neutral-900);

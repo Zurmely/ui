@@ -6,7 +6,6 @@
   border: none;
   border-radius: var(--z-radius-surface);
   background-color: var(--z-color-background-surface);
-  box-shadow: var(--z-elevation-raised);
 }
 
 .z-calendar[data-invalid='true'] {

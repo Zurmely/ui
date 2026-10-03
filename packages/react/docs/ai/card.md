@@ -35,7 +35,7 @@ Use `Card` as documented in the human API section. Add child controls or slots t
 
 ## Style with tokens
 
-- **Surface:** `--z-color-background-surface`, `--z-elevation-raised`, `--z-radius-container`
+- **Surface:** `--z-color-background-surface`, `--z-radius-container` (raised fill; no drop shadow)
 - **Inset:** `--z-spacing-inset-box-comfortable`, `--z-spacing-stack-form`
 - **Title:** `--z-color-text-primary`, `--z-text-title-*`
 - **Description:** `--z-color-text-tertiary`, `--z-text-caption-*`

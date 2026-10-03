@@ -162,9 +162,9 @@ Do not reference primitive motion scales (`--z-duration-150`, `--z-easing-standa
 
 ### Elevation tokens
 
-Import `@z-ux/tokens/elevation.css` alongside the other token stylesheets. Apply semantic elevation aliases (`elevation.raised`, `elevation.overlay`, `elevation.modal`, `elevation.ring`) via `--z-elevation-{purpose}` variables.
+Import `@z-ux/tokens/elevation.css` alongside the other token stylesheets. Use `elevation.ring` via `--z-elevation-ring` for outline halos (for example timeline markers). Depth comes from `background.canvas` / `background.surface` / `background.subtle`, not drop shadows.
 
-Do not use literal `box-shadow` values in component CSS unless documented as an approved exception in `ELEVATION-SEMANTICS.md`.
+Do not use literal `box-shadow` values for depth in component CSS. `elevation.ring` and shared focus-ring styles are the approved `box-shadow` exceptions; see `ELEVATION-SEMANTICS.md`.
 
 ## Controlled / uncontrolled pairs
 

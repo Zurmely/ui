@@ -24,7 +24,6 @@
   border-radius: var(--z-radius-container);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
-  box-shadow: var(--z-elevation-overlay);
 }
 
 .z-menu__content[data-side='bottom'][data-state='open'] {

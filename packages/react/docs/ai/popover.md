@@ -42,7 +42,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@z-ux/ui/popover';
 ## Style with tokens
 
 - **Panel surface:** `--z-color-background-surface`
-- **Content surface:** `--z-color-background-surface`, `--z-elevation-overlay`
+- **Content surface:** `--z-color-background-surface` (raised fill; no drop shadow)
 - **Label:** `--z-color-text-primary`
 - **Focus ring:** `--z-color-focus-ring`
 - **Content enter/exit:** `--z-motion-duration-enter`, `--z-motion-easing-enter`, `--z-motion-duration-exit`, `--z-motion-easing-exit`

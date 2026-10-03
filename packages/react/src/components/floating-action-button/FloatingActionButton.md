@@ -78,7 +78,7 @@ You need to give `aria-label` because the control is icon-only.
 | Control typography | `--z-text-control-*` |
 | Interaction motion | `--z-motion-duration-interaction`, `--z-motion-easing-interaction` |
 
-**Token gap:** No semantic elevation token or shadow token exists for the floating lift effect.
+Lift reads from `background.surface` / `background.subtle` fills on the page; there is no drop shadow.
 
 ## Figma
 
