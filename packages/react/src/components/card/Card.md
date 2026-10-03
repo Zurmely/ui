@@ -2,7 +2,7 @@
 
 ## Overview
 
-Card groups related content in a bordered surface.
+Card groups related content on a raised fill surface (`background.surface` on the page).
 
 Card has optional header, body, and footer slots.
 
@@ -63,7 +63,7 @@ Not focusable by default. Each interactive child manages its own keyboard behavi
 
 | Part | Semantic tokens |
 | --- | --- |
-| Surface | `--z-color-background-surface`, `--z-color-border-subtle`, `--z-radius-container` |
+| Surface | `--z-color-background-surface`, `--z-radius-container` (raised fill; no drop shadow) |
 | Title | `--z-color-text-primary`, `--z-text-title-*` |
 | Description | `--z-color-text-tertiary`, `--z-text-caption-*` |
 | Content | `--z-color-text-primary`, `--z-text-body-*` |

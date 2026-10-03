@@ -8,6 +8,16 @@ This document defines how **elevation semantics** work in Z-UI: purpose-based to
 
 ---
 
+## Gabriel's rule
+
+Use this rule when you decide whether a region should read as raised, sunk, or flat on the page.
+
+1. **Lift only when you must.** A surface lifts only when separation from the page (or from a parent region) is required for meaning or interaction. Do not nest boxes for decoration: a text block inside another box, or a panel that only frames more panels, is the wrong pattern.
+2. **The first step is a lighter fill.** The first elevation step is always a fill **lighter** than the surface it sits on (`background.surface` on `background.canvas`). It is not a border, not a drop shadow, and not an extra wrapper box.
+3. **Deeper steps stay on the fill ladder.** Further depth uses the same fill ladder: raised stays lighter than the page; sunk wells use `background.subtle` (**darker** than the page). There is no shadow scale. `elevation.raised`, `elevation.overlay`, and `elevation.modal` stay `none`; focus rings stay; modals may dim the page with the flat scrim only.
+
+---
+
 ## 1. Why elevation semantics exist
 
 Semantic elevation answers: *"How should this panel read against the page?"* or *"What halo separates this node from its background?"*

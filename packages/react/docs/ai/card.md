@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Card groups related content in a bordered surface.
+Card groups related content on a raised fill surface (`background.surface` on the page).
 
 Card has optional header, body, and footer slots.
 

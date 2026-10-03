@@ -36,7 +36,7 @@ Set a theme on a root element:
 | `@z-ux/tokens/sizes.css` | Spacing, radius, and size scale |
 | `@z-ux/tokens/text.css` | Typography roles and properties |
 | `@z-ux/tokens/motion.css` | Duration and easing aliases |
-| `@z-ux/tokens/elevation.css` | Shadow and elevation roles |
+| `@z-ux/tokens/elevation.css` | Fill-based depth roles (`elevation.ring` halo; raised/overlay/modal reserved at `none`) |
 
 ## License
 

@@ -70,8 +70,7 @@ Add a heading inside `PopoverContent` when the panel has a distinct purpose.
 
 | Part | Semantic tokens |
 | --- | --- |
-| Panel surface | `--z-color-background-surface` |
-| Border | `--z-color-border-subtle` |
+| Panel surface | `--z-color-background-surface` (raised fill; no drop shadow) |
 | Label | `--z-color-text-primary` |
 | Focus ring | `--z-color-focus-ring` |
 | Content enter/exit | `--z-motion-duration-enter`, `--z-motion-easing-enter`, `--z-motion-duration-exit`, `--z-motion-easing-exit` |
