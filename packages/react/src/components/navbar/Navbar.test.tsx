@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { checkA11y, renderWithTheme } from '../../test/utils';
-import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from './Navbar';
+import { Navbar, NavbarLogo, NavbarContent, NavbarItem, NavbarItemIcon } from './Navbar';
 
 describe('Navbar', () => {
   it('renders logo and navigation items', () => {
@@ -25,6 +25,24 @@ describe('Navbar', () => {
     expect(screen.getByRole('navigation', { name: 'Main navigation' })).toBeInTheDocument();
     expect(screen.getByText('Z-UI')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Docs' })).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('renders optional item icon inside nav links', () => {
+    renderWithTheme(
+      <Navbar>
+        <NavbarContent>
+          <NavbarItem>
+            <a href="/docs">
+              <NavbarItemIcon>
+                <span data-testid="nav-icon">⌂</span>
+              </NavbarItemIcon>
+              Docs
+            </a>
+          </NavbarItem>
+        </NavbarContent>
+      </Navbar>,
+    );
+    expect(screen.getByTestId('nav-icon').parentElement).toHaveClass('z-navbar__item-icon');
   });
 
   it('applies z-navbar classes', () => {

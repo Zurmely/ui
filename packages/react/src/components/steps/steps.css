@@ -44,6 +44,11 @@
   color: var(--z-color-text-success);
 }
 
+.z-steps__indicator-icon {
+  display: inline-flex;
+  color: inherit;
+}
+
 .z-steps__title {
   display: block;
   color: var(--z-color-text-primary);

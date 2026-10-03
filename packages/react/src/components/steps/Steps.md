@@ -38,12 +38,14 @@ import { Step, StepDescription, StepIndicator, Steps, StepTitle } from '@z-ux/ui
 | `currentStep` | `Steps` | `number` | `1` |
 | `label` | `Steps` | `string` | `"Progress"` |
 | `step` | `Step`, `StepIndicator` | `number` | `1` |
+| `icon` | `StepIndicator` | `ReactNode` | — |
 
 ### Data attributes
 
 - `data-state="upcoming" | "current" | "completed"` on `Step` and `StepIndicator`
 - `aria-current="step"` on the current `Step`
-- Completed `StepIndicator` shows `✓` unless you pass `children`
+- Completed `StepIndicator` shows `✓` unless you pass `children` or `icon`
+- `icon` replaces the default step number or check mark when set
 
 ## Accessibility
 

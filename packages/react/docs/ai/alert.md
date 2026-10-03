@@ -28,6 +28,7 @@ import { Alert } from '@z-ux/ui/alert';
 - **title** (Optional): Alert heading.
 - **description** (Optional): Supporting text. Falls back to `children`.
 - **action** (Optional): Secondary action, such as an undo link.
+- **icon** (Optional): Tone icon when color alone is not enough. Pass a caller-supplied `ReactNode` (for example Lucide as a peer). Omit for no icon.
 - **children** (Optional): Acts as description when you omit `description`.
 
 ## Props that change behavior
@@ -35,6 +36,7 @@ import { Alert } from '@z-ux/ui/alert';
 | Prop | When to set |
 | --- | --- |
 | `tone` | for neutral, primary, success, warning, danger, info; default is neutral. |
+| `icon` | for ReactNode. No default icon. |
 
 ## Style with tokens
 

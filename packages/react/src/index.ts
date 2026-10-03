@@ -234,7 +234,9 @@ export {
   NavbarLogo,
   NavbarContent,
   NavbarItem,
+  NavbarItemIcon,
   type NavbarProps,
+  type NavbarItemIconProps,
 } from './components/navbar';
 export {
   Pagination,

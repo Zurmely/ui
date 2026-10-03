@@ -74,3 +74,14 @@
   color: var(--z-color-text-primary);
   background-color: var(--z-color-background-selected);
 }
+
+.z-navbar__item > a:has(.z-navbar__item-icon),
+.z-navbar__item > button:has(.z-navbar__item-icon) {
+  gap: var(--z-spacing-gap-inline-tight);
+}
+
+.z-navbar__item-icon {
+  display: inline-flex;
+  flex: none;
+  color: inherit;
+}

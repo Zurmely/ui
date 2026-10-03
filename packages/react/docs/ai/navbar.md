@@ -21,13 +21,14 @@ Top navigation bar with logo and links.
 ## Import
 
 ```tsx
-import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ux/ui';
+import { Navbar, NavbarLogo, NavbarContent, NavbarItem, NavbarItemIcon } from '@z-ux/ui';
 ```
 
 ## Compose
 
 - **NavbarLogo** (Optional): Logo or product name.
 - **NavbarContent** (Optional): List of `NavbarItem` children.
+- **NavbarItemIcon** (Optional): Icon inside a link or button when the glyph adds meaning beyond the label.
 
 ## Props that change behavior
 

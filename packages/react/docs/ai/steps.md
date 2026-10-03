@@ -34,6 +34,7 @@ Use `Steps` as documented in the human API section. Add child controls or slots 
 | `currentStep` | for number; default is 1. |
 | `label` | for string; default is "Progress". |
 | `step` | for number; default is 1. |
+| `icon` | on `StepIndicator` for ReactNode. Optional custom marker; omit for the default number or check. |
 
 ## Style with tokens
 

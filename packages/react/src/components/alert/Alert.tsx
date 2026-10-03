@@ -7,10 +7,11 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'
   title?: ReactNode;
   description?: ReactNode;
   action?: ReactNode;
+  icon?: ReactNode;
 }
 
 export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  { tone = 'neutral', title, description, action, className, children, ...props },
+  { tone = 'neutral', title, description, action, icon, className, children, ...props },
   ref,
 ) {
   const body = description ?? children;
@@ -23,9 +24,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
       data-tone={tone}
       {...props}
     >
-      {title ? <div className="z-alert__title">{title}</div> : null}
-      {body ? <div className="z-alert__description">{body}</div> : null}
-      {action ? <div className="z-alert__action">{action}</div> : null}
+      {icon ? (
+        <span className="z-alert__icon" aria-hidden="true">
+          {icon}
+        </span>
+      ) : null}
+      <div className="z-alert__content">
+        {title ? <div className="z-alert__title">{title}</div> : null}
+        {body ? <div className="z-alert__description">{body}</div> : null}
+        {action ? <div className="z-alert__action">{action}</div> : null}
+      </div>
     </div>
   );
 });

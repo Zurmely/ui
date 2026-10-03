@@ -1,10 +1,25 @@
 .z-alert {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
   gap: var(--z-spacing-gap-inline);
   padding: var(--z-spacing-inset-box-comfortable);
   border: 1px solid transparent;
   border-radius: var(--z-radius-surface);
+}
+
+.z-alert__content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: var(--z-spacing-gap-inline);
+  min-width: 0;
+}
+
+.z-alert__icon {
+  display: inline-flex;
+  flex: none;
+  color: inherit;
 }
 
 .z-alert[data-tone='neutral'] {

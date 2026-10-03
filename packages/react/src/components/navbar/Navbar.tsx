@@ -41,3 +41,16 @@ export const NavbarItem = forwardRef<HTMLLIElement, LiHTMLAttributes<HTMLLIEleme
   },
 );
 NavbarItem.displayName = 'NavbarItem';
+
+export type NavbarItemIconProps = HTMLAttributes<HTMLSpanElement>;
+
+export const NavbarItemIcon = forwardRef<HTMLSpanElement, NavbarItemIconProps>(
+  function NavbarItemIcon({ className, children, ...props }, ref) {
+    return (
+      <span ref={ref} className={cx('z-navbar__item-icon', className)} aria-hidden="true" {...props}>
+        {children}
+      </span>
+    );
+  },
+);
+NavbarItemIcon.displayName = 'NavbarItemIcon';
