@@ -10,6 +10,7 @@ import type { ReactNode } from 'react';
 import { isValidElement } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Card, CardContent, CardHeader, CardTitle } from '@z-ux/ui';
 import { CodeBlock } from '../playground/CodeBlock';
 import { folderForSlug } from './component-slugs';
 
@@ -90,28 +91,40 @@ function WhenToUseCards({ content, usePreview, doNotUsePreview }: WhenToUseCards
 
   return (
     <div className="docs-callout-grid">
-      <div className="docs-callout docs-callout--do">
-        <h4 className="docs-callout__title">Use when</h4>
-        {usePreview ? <WhenToUsePreview>{usePreview()}</WhenToUsePreview> : null}
-        <ul className="docs-markdown__ul">
-          {useWhen.map((item) => (
-            <li key={item} className="docs-markdown__li">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="docs-callout docs-callout--dont">
-        <h4 className="docs-callout__title">Do not use when</h4>
-        {doNotUsePreview ? <WhenToUsePreview>{doNotUsePreview()}</WhenToUsePreview> : null}
-        <ul className="docs-markdown__ul">
-          {doNotUse.map((item) => (
-            <li key={item} className="docs-markdown__li">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Card className="docs-callout docs-callout--do">
+        <CardHeader>
+          <CardTitle className="docs-callout__title">Use when</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {usePreview ? (
+            <WhenToUsePreview>{usePreview()}</WhenToUsePreview>
+          ) : null}
+          <ul className="docs-markdown__ul">
+            {useWhen.map((item) => (
+              <li key={item} className="docs-markdown__li">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+      <Card className="docs-callout docs-callout--dont">
+        <CardHeader>
+          <CardTitle className="docs-callout__title">Do not use when</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {doNotUsePreview ? (
+            <WhenToUsePreview>{doNotUsePreview()}</WhenToUsePreview>
+          ) : null}
+          <ul className="docs-markdown__ul">
+            {doNotUse.map((item) => (
+              <li key={item} className="docs-markdown__li">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 }
