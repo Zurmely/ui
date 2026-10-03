@@ -111,8 +111,8 @@ Fills for pages, surfaces, controls, and status containers.
 | `color.background.primary` | Primary actions and neutral emphasis fills (default = neutral **950** in light) |
 | `color.background.danger` | Destructive filled controls (default = danger **500**) |
 | `color.background.success` | Positive filled feedback (default = success **500**) |
-| `color.background.warning` | Caution filled feedback (default = warning **500**) |
-| `color.background.info` | Informational filled feedback (default = info **500**) |
+| `color.background.warning` | Caution filled feedback (default = warning **800** light / **600** dark) |
+| `color.background.info` | Informational filled feedback (default = info **800** light / **600** dark) |
 | `color.background.selected` | Chosen item in tabs, menus, or list rows |
 | `color.background.primary-subtle` | Quiet primary emphasis without a solid fill |
 | `color.background.danger-subtle` | Error or destructive context without a solid fill |
@@ -134,7 +134,9 @@ Content and labels. Prefer text tokens over hard-coding opacity on raw colors.
 | `color.text.tertiary` | Hints, placeholders (ensure contrast still passes where required) |
 | `color.text.disabled` | Disabled control labels |
 | `color.text.inverse` | Text on `background.inverse` only |
-| `color.text.on-solid` | Text on solid danger/success/warning/info fills (theme-paired ink) |
+| `color.text.on-solid` | Text on solid danger/success fills (theme-paired ink) |
+| `color.text.on-warning` | Text on solid warning fills (step **50** of the warning scale) |
+| `color.text.on-info` | Text on solid info fills (step **50** of the info scale) |
 | `color.text.on-primary` | Text on `background.primary` fills (end-of-ramp neutral) |
 | `color.text.danger` | Errors, destructive labels |
 | `color.text.success` | Success messages |
@@ -154,6 +156,8 @@ Icons follow **text** meanings so icon + label stay paired.
 | `color.icon.disabled` | `color.text.disabled` |
 | `color.icon.inverse` | `color.text.inverse` |
 | `color.icon.on-solid` | `color.text.on-solid` |
+| `color.icon.on-warning` | `color.text.on-warning` |
+| `color.icon.on-info` | `color.text.on-info` |
 | `color.icon.on-primary` | `color.text.on-primary` |
 | `color.icon.danger` / `success` / `warning` / `info` | Matching status text |
 
@@ -170,10 +174,10 @@ Dividers, control outlines, and emphasis edges.
 | `color.border.strong` | High-emphasis outlines, selected rows, active pagination |
 | `color.border.disabled` | Disabled control borders |
 | `color.border.primary` | Primary emphasis borders on solid fills |
-| `color.border.danger` | Invalid fields, destructive emphasis |
-| `color.border.success` | Success emphasis borders |
-| `color.border.warning` | Warning emphasis borders |
-| `color.border.info` | Informational emphasis borders |
+| `color.border.danger` | Invalid fields and destructive emphasis (not a status-container outline) |
+| `color.border.success` | Reserved status-scale border; do not use on status containers |
+| `color.border.warning` | Reserved status-scale border; do not use on status containers |
+| `color.border.info` | Reserved status-scale border; do not use on status containers |
 | `color.border.focus` | Focus outline color (often used with focus-ring foundations) |
 
 ### 4.5 `focus`
@@ -214,24 +218,35 @@ Meanings describe **intent**, not a fixed hue. Theme customization remaps primit
 
 ### 5.1 Background step rule (defaults)
 
-**Primary** emphasis uses the neutral scale’s **end-of-ramp** step (950 in light, 950 in dark — highlight-adjacent on the reversed dark ramp). **Status** meanings (danger, success, warning, info) use step **500** in light and step **400** in dark (deeper fills so light `on-solid` ink meets AA).
+**Primary** emphasis uses the neutral scale’s **end-of-ramp** step (950 in light, 950 in dark — highlight-adjacent on the reversed dark ramp). **Danger** and **success** solids use step **500** in light and step **400** in dark (deeper fills so light `on-solid` ink meets AA). **Warning** and **info** solids use step **800** in light and step **600** in dark, with step-**50** labels (`text.on-warning` / `text.on-info`). Step **500** is too light for a solid warning or info chip.
+
+Status containers (alerts, badges, and other soft status surfaces) carry meaning with **fill and text**, not a colored border. A hairline is only for two surfaces of the same color meeting.
 
 | Background kind | Default step / source | Examples |
 | --- | --- | --- |
 | **Structure** | Neutrals (not end-of-ramp) | `canvas`, `surface`, `subtle`, `muted`, `inverse` |
 | **Solid primary** | `neutral-950` (+ hover 900, active 800) | `background.primary` |
-| **Solid status (light)** | `{meaning}-500` | `background.danger`, `background.success`, … |
-| **Solid status (dark)** | `{meaning}-400` | `background.danger`, `background.success`, … |
+| **Solid danger/success (light)** | `{meaning}-500` | `background.danger`, `background.success` |
+| **Solid danger/success (dark)** | `{meaning}-400` | `background.danger`, `background.success` |
+| **Solid warning/info (light)** | `{meaning}-800` | `background.warning`, `background.info` |
+| **Solid warning/info (dark)** | `{meaning}-600` | `background.warning`, `background.info` |
 | **Status subtle** | `{meaning}-50` / `-100` (tints) | `background.danger-subtle`, … |
 | **Primary subtle** | `neutral-200` | `background.primary-subtle` |
 | **Selected** | `neutral-200` | `background.selected` |
 
-Interaction steps for status fills:
+Interaction steps for danger/success fills:
 
 | Theme | default | hover | active | disabled |
 | --- | --- | --- | --- | --- |
 | Light | `500` | `600` | `700` | neutral muted |
 | Dark | `400` | `300` | `200` | neutral muted |
+
+Interaction steps for warning/info fills:
+
+| Theme | default | hover | active | disabled |
+| --- | --- | --- | --- | --- |
+| Light | `800` | `900` | `950` | neutral muted |
+| Dark | `600` | `700` | `800` | neutral muted |
 
 Primary interaction steps (950 default in light):
 
@@ -241,7 +256,10 @@ Primary interaction steps (950 default in light):
 | Dark | `950` | `900` | `800` | `300` |
 
 `text.on-primary` / `icon.on-primary` pair with `background.primary`.  
-`text.on-solid` / `icon.on-solid` pair with solid status fills: dark ink in light (mid-luminance 500), light ink in dark (deeper 400).
+`text.on-solid` / `icon.on-solid` pair with solid danger/success fills: dark ink in light (mid-luminance 500), light ink in dark (deeper 400).  
+`text.on-warning` / `text.on-info` pair with those solid fills and map to step **50**.
+
+Soft status text stays at step **800** in light (danger **700**). In dark, info text uses step **700** so it is not duller than success.
 
 ---
 
@@ -279,7 +297,9 @@ color.background.primary.hover
 color.background.primary.active
 color.background.primary.disabled
 
-color.text.on-solid         → label on solid accent fills (enabled)
+color.text.on-solid         → label on solid danger/success fills (enabled)
+color.text.on-warning       → label on solid warning fills (enabled)
+color.text.on-info          → label on solid info fills (enabled)
 color.text.disabled         → text when control is disabled
 ```
 
@@ -357,7 +377,9 @@ Semantics are validated as **pairs**, not isolated swatches.
 | --- | --- |
 | `canvas` / `surface` / `subtle` | `text.primary`, `text.secondary`, `text.primary`, status texts as documented |
 | `primary` (solid, enabled) | `text.on-primary`, `icon.on-primary` |
-| `danger` / `success` / `warning` / `info` (solid, enabled) | `text.on-solid`, `icon.on-solid` |
+| `danger` / `success` (solid, enabled) | `text.on-solid`, `icon.on-solid` |
+| `warning` (solid, enabled) | `text.on-warning`, `icon.on-warning` |
+| `info` (solid, enabled) | `text.on-info`, `icon.on-info` |
 | `*.disabled` (solid) | `text.disabled`, `icon.disabled` |
 | `inverse` | `text.inverse`, `icon.inverse` only |
 
@@ -365,7 +387,9 @@ Semantics are validated as **pairs**, not isolated swatches.
 
 - Default themes: **WCAG 2.2 AA** for normal and large text as applicable.
 - Validate each **documented** pair in **light and dark**.
-- Solid status **default** fills with `text.on-solid` / `icon.on-solid` must meet **4.5:1**.
+- Solid danger/success **default** fills with `text.on-solid` / `icon.on-solid` must meet **4.5:1**.
+- Solid warning **default** fills with `text.on-warning` / `icon.on-warning` must meet **4.5:1**.
+- Solid info **default** fills with `text.on-info` / `icon.on-info` must meet **4.5:1**.
 - Solid status **hover/active** fills with the same ink must meet at least **3:1** (bold control labels); prefer 4.5:1 when the ramp allows.
 - Validate other interactive states (selected, etc.) with the same foreground they ship with.
 - Disabled pairs should remain legible as “disabled UI”; they may use the reduced-contrast patterns allowed for inactive UI, but must not become invisible.
@@ -673,6 +697,8 @@ This catalog is the intended public semantic surface. Exact primitive mappings s
 - `color.text.disabled`
 - `color.text.inverse`
 - `color.text.on-solid`
+- `color.text.on-warning`
+- `color.text.on-info`
 - `color.text.on-primary`
 - `color.text.danger`
 - `color.text.success`
@@ -687,6 +713,8 @@ This catalog is the intended public semantic surface. Exact primitive mappings s
 - `color.icon.disabled`
 - `color.icon.inverse`
 - `color.icon.on-solid`
+- `color.icon.on-warning`
+- `color.icon.on-info`
 - `color.icon.on-primary`
 - `color.icon.danger`
 - `color.icon.success`
@@ -766,7 +794,7 @@ These align with PRD open decisions and should be closed before v1 freeze:
 3. Exact disabled contrast policy (minimum ratios for inactive UI).
 4. Component-token naming template when semantics are insufficient.
 
-**Resolved:** solid accent labels use `text.on-solid` / `icon.on-solid` (dark ink on light mid-luminance 500 fills; light ink on dark deeper 400 fills); `text.inverse` pairs only with `background.inverse`. Solid meaning backgrounds default to step **500** (light) / **400** (dark).
+**Resolved:** solid danger/success labels use `text.on-solid` / `icon.on-solid` (dark ink on light mid-luminance 500 fills; light ink on dark deeper 400 fills). Solid warning/info labels use `text.on-warning` / `text.on-info` (step **50** on 800 light / 600 dark fills). `text.inverse` pairs only with `background.inverse`. Status containers use fill and text for meaning; they do not use a colored status border.
 
 ---
 

@@ -4,7 +4,7 @@
 
 Badge shows a short status label or a count.
 
-Badge uses a subtle background color for each tone, in the light theme and in the dark theme.
+Badge uses a subtle background color and matching status text for each tone, in the light theme and in the dark theme. Status tones do not use a colored border. The fill and the text carry the meaning.
 
 ## Select when
 
@@ -39,10 +39,10 @@ import { Badge } from '@z-ux/ui/badge';
 
 - **Neutral:** `--z-color-background-subtle`, `--z-color-text-secondary`, `--z-color-border-subtle`
 - **Primary:** `--z-color-background-primary-subtle`, `--z-color-text-primary`, `--z-color-border-primary`
-- **Success:** `--z-color-background-success-subtle`, `--z-color-text-success`, `--z-color-border-success`
-- **Warning:** `--z-color-background-warning-subtle`, `--z-color-text-warning`, `--z-color-border-warning`
-- **Danger:** `--z-color-background-danger-subtle`, `--z-color-text-danger`, `--z-color-border-danger`
-- **Info:** `--z-color-background-info-subtle`, `--z-color-text-info`, `--z-color-border-info`
+- **Success:** `--z-color-background-success-subtle`, `--z-color-text-success`
+- **Warning:** `--z-color-background-warning-subtle`, `--z-color-text-warning`
+- **Danger:** `--z-color-background-danger-subtle`, `--z-color-text-danger`
+- **Info:** `--z-color-background-info-subtle`, `--z-color-text-info`
 - **Corner radius:** `--z-radius-pill`
 - **size="sm" padding:** `--z-spacing-inset-box-tight`, `--z-spacing-inset-control-compact-x`
 - **size="md" padding:** `--z-spacing-inset-control-compact-y`, `--z-spacing-inset-control-x`

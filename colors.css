@@ -283,18 +283,25 @@
  *   step indices across themes.
  *
  *   Non-structure background defaults:
- *     light status → {meaning}-500 (mid-luminance; dark on-solid ink)
- *     dark status  → {meaning}-400 (deeper; light on-solid ink for AA)
+ *     light danger/success → {meaning}-500 (mid-luminance; dark on-solid ink)
+ *     light warning/info   → {meaning}-800 (deep fill; step-50 label)
+ *     dark danger/success  → {meaning}-400 (deeper; light on-solid ink for AA)
+ *     dark warning/info    → {meaning}-600 (brighter fill; step-50 label)
  *   Primary emphasis uses neutral end-of-ramp (950 default).
  *   Structure backgrounds (canvas, surface, subtle, muted, inverse) use neutrals.
- *   Status-subtle backgrounds use 50/100 tints (not 500).
+ *   Status-subtle backgrounds use 50/100 tints (not 500). Soft status
+ *   text uses 800 (danger 700) in light; dark info text uses 700.
  *
  *   Interaction steps from the solid default:
- *     light → hover 600, active 700 (darker)
- *     dark  → hover 300, active 200 (deeper on the reversed ramp)
+ *     light danger/success → hover 600, active 700 (darker)
+ *     light warning/info   → hover 900, active 950 (darker)
+ *     dark danger/success  → hover 300, active 200 (deeper on the reversed ramp)
+ *     dark warning/info    → hover 700, active 800 (lighter so step-50 ink holds)
  *
- *   text/icon.on-solid labels solid accent fills (not inverse).
+ *   text/icon.on-solid labels solid danger/success fills (not inverse).
+ *   text/icon.on-warning and on-info label those solid fills with step 50.
  *   text/icon.inverse pairs only with background.inverse.
+ *   Status meaning uses fill and text. Do not use a colored status border.
  */
 
 /* -------------------------------------------------------------------------- */
@@ -379,7 +386,8 @@
   --z-color-background-warning-subtle: var(--z-color-warning-50);
   --z-color-background-info-subtle: var(--z-color-info-50);
 
-  /* Solid interactive fills — primary uses neutral end-of-ramp; status uses 500 */
+  /* Solid interactive fills — primary uses neutral end-of-ramp;
+     danger/success use 500; warning/info use 800 so step-50 labels meet AA */
   --z-color-background-primary: var(--neutral-950);
   --z-color-background-primary-hover: var(--neutral-900);
   --z-color-background-primary-active: var(--neutral-800);
@@ -395,14 +403,14 @@
   --z-color-background-success-active: var(--z-color-success-700);
   --z-color-background-success-disabled: var(--neutral-300);
 
-  --z-color-background-warning: var(--z-color-warning-500);
-  --z-color-background-warning-hover: var(--z-color-warning-600);
-  --z-color-background-warning-active: var(--z-color-warning-700);
+  --z-color-background-warning: var(--z-color-warning-800);
+  --z-color-background-warning-hover: var(--z-color-warning-900);
+  --z-color-background-warning-active: var(--z-color-warning-950);
   --z-color-background-warning-disabled: var(--neutral-300);
 
-  --z-color-background-info: var(--z-color-info-500);
-  --z-color-background-info-hover: var(--z-color-info-600);
-  --z-color-background-info-active: var(--z-color-info-700);
+  --z-color-background-info: var(--z-color-info-800);
+  --z-color-background-info-hover: var(--z-color-info-900);
+  --z-color-background-info-active: var(--z-color-info-950);
   --z-color-background-info-disabled: var(--neutral-300);
 
   /* ----- Text ----- */
@@ -412,8 +420,11 @@
   --z-color-text-disabled: var(--neutral-700);
   /* Paired with background.inverse only */
   --z-color-text-inverse: var(--neutral-50);
-  /* On solid status fills: dark ink for AA (mid-luminance accents) */
+  /* On solid danger/success fills: dark ink for AA (mid-luminance accents) */
   --z-color-text-on-solid: var(--z-absolute-black);
+  /* On solid warning/info fills: step 50 (light ink on 800 fills) */
+  --z-color-text-on-warning: var(--z-color-warning-50);
+  --z-color-text-on-info: var(--z-color-info-50);
   /* On primary end-of-ramp fills */
   --z-color-text-on-primary: var(--neutral-50);
   --z-color-text-danger: var(--z-color-danger-700);
@@ -429,6 +440,8 @@
   --z-color-icon-disabled: var(--z-color-text-disabled);
   --z-color-icon-inverse: var(--z-color-text-inverse);
   --z-color-icon-on-solid: var(--z-color-text-on-solid);
+  --z-color-icon-on-warning: var(--z-color-text-on-warning);
+  --z-color-icon-on-info: var(--z-color-text-on-info);
   --z-color-icon-on-primary: var(--z-color-text-on-primary);
   --z-color-icon-danger: var(--z-color-text-danger);
   --z-color-icon-success: var(--z-color-text-success);
@@ -557,8 +570,9 @@
 
   /*
    * Primary emphasis uses neutral end-of-ramp (950 = highlight in dark).
-   * Status fills use step 400 (deeper than light’s 500) so light on-solid
-   * ink meets AA; hover 300 / active 200 on the reversed ramp.
+   * Danger/success fills use step 400 so light on-solid ink meets AA;
+   * hover 300 / active 200 on the reversed ramp.
+   * Warning/info fills use step 600 with step-50 labels (not 400).
    */
   --z-color-background-primary: var(--neutral-950);
   --z-color-background-primary-hover: var(--neutral-900);
@@ -575,14 +589,14 @@
   --z-color-background-success-active: var(--z-color-success-200);
   --z-color-background-success-disabled: var(--neutral-300);
 
-  --z-color-background-warning: var(--z-color-warning-400);
-  --z-color-background-warning-hover: var(--z-color-warning-300);
-  --z-color-background-warning-active: var(--z-color-warning-200);
+  --z-color-background-warning: var(--z-color-warning-600);
+  --z-color-background-warning-hover: var(--z-color-warning-700);
+  --z-color-background-warning-active: var(--z-color-warning-800);
   --z-color-background-warning-disabled: var(--neutral-300);
 
-  --z-color-background-info: var(--z-color-info-400);
-  --z-color-background-info-hover: var(--z-color-info-300);
-  --z-color-background-info-active: var(--z-color-info-200);
+  --z-color-background-info: var(--z-color-info-600);
+  --z-color-background-info-hover: var(--z-color-info-700);
+  --z-color-background-info-active: var(--z-color-info-800);
   --z-color-background-info-disabled: var(--neutral-300);
 
   /* ----- Text ----- */
@@ -592,14 +606,17 @@
   --z-color-text-disabled: var(--neutral-600);
   /* Dark ink on light inverse bar */
   --z-color-text-inverse: var(--neutral-50);
-  /* Light ink on deep solid status fills (400/300/200) */
+  /* Light ink on deep solid danger/success fills (400/300/200) */
   --z-color-text-on-solid: var(--z-absolute-white);
+  /* On solid warning/info fills: step 50 (dark ink on 600 fills in dark) */
+  --z-color-text-on-warning: var(--z-color-warning-50);
+  --z-color-text-on-info: var(--z-color-info-50);
   /* On primary end-of-ramp fills (dark ink on light bar in dark theme) */
   --z-color-text-on-primary: var(--neutral-50);
   --z-color-text-danger: var(--z-color-danger-600);
   --z-color-text-success: var(--z-color-success-600);
   --z-color-text-warning: var(--z-color-warning-600);
-  --z-color-text-info: var(--z-color-info-500);
+  --z-color-text-info: var(--z-color-info-700);
   --z-color-text-link: var(--z-color-text-primary);
   --z-color-text-link-hover: var(--neutral-800);
 
@@ -609,6 +626,8 @@
   --z-color-icon-disabled: var(--z-color-text-disabled);
   --z-color-icon-inverse: var(--z-color-text-inverse);
   --z-color-icon-on-solid: var(--z-color-text-on-solid);
+  --z-color-icon-on-warning: var(--z-color-text-on-warning);
+  --z-color-icon-on-info: var(--z-color-text-on-info);
   --z-color-icon-on-primary: var(--z-color-text-on-primary);
   --z-color-icon-danger: var(--z-color-text-danger);
   --z-color-icon-success: var(--z-color-text-success);

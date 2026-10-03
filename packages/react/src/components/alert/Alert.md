@@ -4,7 +4,7 @@
 
 Alert shows an important status message.
 
-Alert uses a subtle background for each tone.
+Alert uses a subtle background for each tone. Status tones do not use a colored border. The fill and the text carry the meaning.
 
 ## When to use
 
@@ -64,10 +64,10 @@ Focus behavior depends on the content in the `action` slot. The alert container 
 | --- | --- |
 | Neutral | `--z-color-background-subtle`, `--z-color-text-primary`, `--z-color-border-subtle` |
 | Primary | `--z-color-background-primary-subtle`, `--z-color-text-primary`, `--z-color-border-primary` |
-| Success | `--z-color-background-success-subtle`, `--z-color-text-success`, `--z-color-border-success` |
-| Warning | `--z-color-background-warning-subtle`, `--z-color-text-warning`, `--z-color-border-warning` |
-| Danger | `--z-color-background-danger-subtle`, `--z-color-text-danger`, `--z-color-border-danger` |
-| Info | `--z-color-background-info-subtle`, `--z-color-text-info`, `--z-color-border-info` |
+| Success | `--z-color-background-success-subtle`, `--z-color-text-success` |
+| Warning | `--z-color-background-warning-subtle`, `--z-color-text-warning` |
+| Danger | `--z-color-background-danger-subtle`, `--z-color-text-danger` |
+| Info | `--z-color-background-info-subtle`, `--z-color-text-info` |
 | Container padding | `--z-spacing-inset-box` |
 | Content gap | `--z-spacing-gap-inline` |
 | Corner radius | `--z-radius-surface` |

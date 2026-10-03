@@ -63,7 +63,7 @@ Indicator is decorative. Keyboard interaction belongs to the wrapped element.
 | Badge typography | `--z-text-badge-*` |
 | Badge padding | `--z-spacing-inset-compact` |
 | Badge/dot fill | `--z-color-background-{tone}` |
-| Badge text | `--z-color-text-on-solid`, `--z-color-text-secondary` |
+| Badge text | `--z-color-text-on-solid`, `--z-color-text-on-warning`, `--z-color-text-on-info`, `--z-color-text-secondary` |
 | Ring border | `--z-color-background-surface` |
 | Shape | `--z-radius-pill` |
 

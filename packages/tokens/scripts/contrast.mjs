@@ -147,12 +147,17 @@ const themes = parseBlocks(css);
 const highContrastOverrides = parseHighContrastOverrides(css);
 
 const STATUS = ['danger', 'success', 'warning', 'info'];
+const STATUS_ON_SOLID = ['danger', 'success'];
+const STATUS_ON_STEP_50 = [
+  { status: 'warning', fg: '--z-color-text-on-warning' },
+  { status: 'info', fg: '--z-color-text-on-info' },
+];
 
 const PAIRS = [
   { label: 'primary fill / on-primary ink', bg: '--z-color-background-primary', fg: '--z-color-text-on-primary', min: 4.5 },
   { label: 'primary hover / on-primary ink', bg: '--z-color-background-primary-hover', fg: '--z-color-text-on-primary', min: 4.5 },
   { label: 'primary active / on-primary ink', bg: '--z-color-background-primary-active', fg: '--z-color-text-on-primary', min: 4.5 },
-  ...STATUS.flatMap((status) => [
+  ...STATUS_ON_SOLID.flatMap((status) => [
     {
       label: `${status} fill / on-solid ink`,
       bg: `--z-color-background-${status}`,
@@ -171,6 +176,34 @@ const PAIRS = [
       bg: `--z-color-background-${status}-active`,
       fg: '--z-color-text-on-solid',
       min: 3,
+    },
+  ]),
+  ...STATUS_ON_STEP_50.flatMap(({ status, fg }) => [
+    {
+      label: `${status} fill / on-${status} ink`,
+      bg: `--z-color-background-${status}`,
+      fg,
+      min: 4.5,
+    },
+    {
+      label: `${status} hover / on-${status} ink`,
+      bg: `--z-color-background-${status}-hover`,
+      fg,
+      min: 3,
+    },
+    {
+      label: `${status} active / on-${status} ink`,
+      bg: `--z-color-background-${status}-active`,
+      fg,
+      min: 3,
+    },
+  ]),
+  ...STATUS.flatMap((status) => [
+    {
+      label: `${status} subtle / ${status} text`,
+      bg: `--z-color-background-${status}-subtle`,
+      fg: `--z-color-text-${status}`,
+      min: 4.5,
     },
   ]),
   { label: 'text primary on surface', bg: '--z-color-background-surface', fg: '--z-color-text-primary', min: 4.5 },

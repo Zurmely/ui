@@ -43,23 +43,19 @@
 .z-badge[data-tone='success'] {
   background-color: var(--z-color-background-success-subtle);
   color: var(--z-color-text-success);
-  border-color: var(--z-color-border-success);
 }
 
 .z-badge[data-tone='warning'] {
   background-color: var(--z-color-background-warning-subtle);
   color: var(--z-color-text-warning);
-  border-color: var(--z-color-border-warning);
 }
 
 .z-badge[data-tone='danger'] {
   background-color: var(--z-color-background-danger-subtle);
   color: var(--z-color-text-danger);
-  border-color: var(--z-color-border-danger);
 }
 
 .z-badge[data-tone='info'] {
   background-color: var(--z-color-background-info-subtle);
   color: var(--z-color-text-info);
-  border-color: var(--z-color-border-info);
 }
