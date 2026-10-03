@@ -92,6 +92,16 @@ export function ElevationPage() {
 
   const designUsage = (
     <>
+      <Section title="Depth on pages">
+        <p className="docs-page__intro docs-elevation-rule">
+          The page is the background. Do not put body text in a raised surface, and do not nest one
+          raised surface inside another. Use a lighter fill only when something actually floats — a
+          dialog, a menu, or a card that holds an action. If the parent is already raised, children
+          stay on that same fill. The first lift is that one lighter step — not a border and not a
+          second level.
+        </p>
+      </Section>
+
       <Section title="Recipes">
         <p className="docs-page__intro">
           Depth layering and component-to-role mapping from the elevation semantics contract.
@@ -184,7 +194,13 @@ export function ElevationPage() {
 
   const codeToc = [foundationTocItem('semantic-elevation', 'Semantic elevation')];
 
-  const tocByTab = buildFoundationToc([foundationTocItem('recipes', 'Recipes')], codeToc);
+  const tocByTab = buildFoundationToc(
+    [
+      foundationTocItem('depth-on-pages', 'Depth on pages'),
+      foundationTocItem('recipes', 'Recipes'),
+    ],
+    codeToc,
+  );
 
   return (
     <FoundationTabbedPage

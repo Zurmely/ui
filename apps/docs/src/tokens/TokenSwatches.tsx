@@ -1,6 +1,5 @@
 import {
   Button,
-  Card,
   CodeBlock,
   Dialog,
   DialogClose,
@@ -253,7 +252,7 @@ export function ColorSwatch({
   const pairClass = pairedPreviewClass(token);
 
   return (
-    <Card className="docs-color-token-card">
+    <article className="docs-color-token-card">
       <div
         className="docs-color-token-card__preview"
         style={kind === 'fill' ? { background: `var(${varName})` } : undefined}
@@ -305,7 +304,7 @@ export function ColorSwatch({
           textClassName="docs-color-token-card__text"
         />
       </div>
-    </Card>
+    </article>
   );
 }
 
@@ -323,7 +322,7 @@ function StripTokenCard({
   preview: ReactNode;
 }) {
   return (
-    <Card className="docs-color-token-card">
+    <article className="docs-color-token-card">
       <div className="docs-color-token-card__preview">
         <div className="docs-color-token-card__sample">{preview}</div>
       </div>
@@ -340,7 +339,7 @@ function StripTokenCard({
           textClassName="docs-color-token-card__text"
         />
       </div>
-    </Card>
+    </article>
   );
 }
 
@@ -360,7 +359,7 @@ function DemoTokenCard({
   className?: string;
 }) {
   return (
-    <Card className={className ? `docs-demo-token-card ${className}` : 'docs-demo-token-card'}>
+    <article className={className ? `docs-demo-token-card ${className}` : 'docs-demo-token-card'}>
       <div className="docs-demo-token-card__preview">
         <div className="docs-demo-token-card__sample">{preview}</div>
       </div>
@@ -375,7 +374,7 @@ function DemoTokenCard({
           textClassName="docs-demo-token-card__text"
         />
       </div>
-    </Card>
+    </article>
   );
 }
 

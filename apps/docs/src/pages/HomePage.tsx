@@ -54,18 +54,18 @@ export function HomePage() {
           its subpath or from <code>@z-ux/ui</code>.
         </p>
         <div className="docs-page__install">
-          <Card className="docs-page__install-row">
-            <CardContent className="docs-page__install-content">
+          <div className="docs-page__install-row">
+            <div className="docs-page__install-content">
               <code className="docs-page__install-code">{INSTALL}</code>
               <CopyButton text={INSTALL} />
-            </CardContent>
-          </Card>
-          <Card className="docs-page__install-row">
-            <CardContent className="docs-page__install-content">
+            </div>
+          </div>
+          <div className="docs-page__install-row">
+            <div className="docs-page__install-content">
               <code className="docs-page__install-code">{TOKEN_IMPORTS}</code>
               <CopyButton text={TOKEN_IMPORTS} />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -128,7 +128,7 @@ export function HomePage() {
                     {item.slug === 'sizes' && 'Spacing inset, gap, stack, offset, and radius roles.'}
                     {item.slug === 'typography' && 'Font primitives and text roles. 12px is the minimum size.'}
                     {item.slug === 'motion' && 'Duration and easing for interaction, layout, enter, exit, and loops.'}
-                    {item.slug === 'elevation' && 'Raised, overlay, modal shadows, and outline rings.'}
+                    {item.slug === 'elevation' && 'Canvas, surface, and subtle fills plus outline rings.'}
                   </CardDescription>
                 </CardHeader>
               </Card>

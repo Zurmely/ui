@@ -9,7 +9,7 @@ function slugifyWritingTitle(title: string): string {
 
 function WritingSections({ sections }: { sections: WritingSection[] }) {
   return (
-    <div className="docs-surface-stack">
+    <>
       {sections.map((section) => (
         <DocsSection
           key={section.title}
@@ -19,7 +19,7 @@ function WritingSections({ sections }: { sections: WritingSection[] }) {
           <MarkdownContent content={section.body} sectionTitle={section.title} />
         </DocsSection>
       ))}
-    </div>
+    </>
   );
 }
 
@@ -28,7 +28,7 @@ export function ComponentWritingPanel({ slug }: { slug: string }) {
 
   if (sections.length === 0) {
     return (
-      <div className="docs-surface docs-writing-empty" role="status">
+      <div className="docs-writing-empty" role="status">
         <p className="docs-writing-empty__text">
           No additional content or writing rules are documented for this component.
         </p>
@@ -42,7 +42,7 @@ export function ComponentWritingPanel({ slug }: { slug: string }) {
 export function FoundationWritingPanel({ children }: { children?: ReactNode }) {
   if (!children) {
     return (
-      <div className="docs-surface docs-writing-empty" role="status">
+      <div className="docs-writing-empty" role="status">
         <p className="docs-writing-empty__text">
           No additional content or writing rules are documented for this foundation.
         </p>
@@ -50,5 +50,5 @@ export function FoundationWritingPanel({ children }: { children?: ReactNode }) {
     );
   }
 
-  return <div className="docs-surface-stack">{children}</div>;
+  return <>{children}</>;
 }
