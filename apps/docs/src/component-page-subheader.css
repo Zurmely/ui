@@ -1,0 +1,61 @@
+/* Component page sticky subheader layout (apps/docs only). Loaded after docs.css. */
+
+.docs-page--component.docs-page--subheader-pinned {
+  --docs-sticky-subheader-height: 4.75rem;
+}
+
+.docs-page__subheader {
+  justify-content: flex-start;
+  row-gap: var(--z-spacing-gap-inline-tight);
+  column-gap: var(--z-spacing-gap-component);
+  margin-inline: 0;
+  padding-block: var(--z-spacing-gap-component);
+}
+
+.docs-page-tabs--component {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 14rem;
+  column-gap: var(--z-spacing-gap-page-section);
+  row-gap: var(--z-spacing-gap-component);
+}
+
+.docs-page-tabs--component .docs-page__subheader {
+  grid-column: 1 / -1;
+  margin-inline: calc(-1 * var(--z-spacing-inset-container));
+  padding-inline: var(--z-spacing-inset-container);
+}
+
+.docs-page-tabs--component .docs-page-tabs__panels {
+  grid-column: 1;
+  min-width: 0;
+}
+
+.docs-page--component.docs-page--with-toc > .docs-page__main {
+  grid-column: 1;
+}
+
+.docs-page--component.docs-page--with-toc > .docs-toc {
+  grid-column: 2;
+  grid-row: 1 / -1;
+}
+
+.docs-page__subheader--pinned {
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--z-spacing-inset-container);
+}
+
+.docs-page__subheader--pinned .docs-page__subheader-tabs {
+  margin-inline-start: auto;
+}
+
+@media (max-width: 64rem) {
+  .docs-page-tabs--component {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-page__subheader-tabs {
+    justify-content: flex-start;
+  }
+}
