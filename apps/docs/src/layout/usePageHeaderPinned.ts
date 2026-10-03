@@ -1,5 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
+/** Matches `.docs-page__subheader { top: 4.5rem }` when the header cannot be measured. */
+const DOCS_HEADER_FALLBACK_OFFSET_PX = 72;
+
+function getDocsHeaderOffsetPx(): number {
+  const header = document.querySelector('.docs-header');
+  if (header instanceof HTMLElement) {
+    return Math.ceil(header.getBoundingClientRect().height);
+  }
+  return DOCS_HEADER_FALLBACK_OFFSET_PX;
+}
+
 /**
  * True when the page header has scrolled under the sticky docs chrome.
  */
@@ -13,6 +24,7 @@ export function usePageHeaderPinned() {
       return;
     }
 
+    const topInsetPx = getDocsHeaderOffsetPx();
     const observer = new IntersectionObserver(
       ([entry]) => {
         setPinned(!entry.isIntersecting);
@@ -20,7 +32,7 @@ export function usePageHeaderPinned() {
       {
         root: null,
         threshold: 0,
-        rootMargin: '-4.5rem 0px 0px 0px',
+        rootMargin: `-${topInsetPx}px 0px 0px 0px`,
       },
     );
 
