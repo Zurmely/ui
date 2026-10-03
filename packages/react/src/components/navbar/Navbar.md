@@ -26,7 +26,7 @@ pnpm add @z-ux/ui @z-ux/tokens
 import '@z-ux/tokens/colors.css';
 import '@z-ux/tokens/sizes.css';
 import '@z-ux/tokens/text.css';
-import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ux/ui';
+import { Navbar, NavbarLogo, NavbarContent, NavbarItem, NavbarItemIcon } from '@z-ux/ui';
 ```
 
 ## API
@@ -41,6 +41,7 @@ import { Navbar, NavbarLogo, NavbarContent, NavbarItem } from '@z-ux/ui';
 | --- | --- | --- |
 | `NavbarLogo` | No | Logo or product name |
 | `NavbarContent` | No | List of `NavbarItem` children |
+| `NavbarItemIcon` | No | Optional decorative icon inside a nav link or button |
 
 ## Accessibility
 

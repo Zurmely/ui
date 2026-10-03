@@ -1,4 +1,11 @@
-import { createContext, forwardRef, useContext, type HTMLAttributes, type LiHTMLAttributes } from 'react';
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  type HTMLAttributes,
+  type LiHTMLAttributes,
+  type ReactNode,
+} from 'react';
 import { cx } from '../../shared';
 import './steps.css';
 
@@ -71,12 +78,26 @@ Step.displayName = 'Step';
 
 export interface StepIndicatorProps extends HTMLAttributes<HTMLSpanElement> {
   step?: number;
+  icon?: ReactNode;
 }
 
 export const StepIndicator = forwardRef<HTMLSpanElement, StepIndicatorProps>(
-  function StepIndicator({ step = 1, className, children, ...props }, ref) {
+  function StepIndicator({ step = 1, icon, className, children, ...props }, ref) {
     const { currentStep } = useContext(StepsContext);
     const state = resolveStepState(step, currentStep);
+
+    let marker: ReactNode;
+    if (icon) {
+      marker = (
+        <span className="z-steps__indicator-icon" aria-hidden="true">
+          {icon}
+        </span>
+      );
+    } else if (state === 'completed') {
+      marker = '✓';
+    } else {
+      marker = children ?? step;
+    }
 
     return (
       <span
@@ -86,7 +107,7 @@ export const StepIndicator = forwardRef<HTMLSpanElement, StepIndicatorProps>(
         aria-hidden="true"
         {...props}
       >
-        {state === 'completed' ? '✓' : (children ?? step)}
+        {marker}
       </span>
     );
   },

@@ -39,6 +39,7 @@ import { Alert } from '@z-ux/ui/alert';
 | `title` | `ReactNode` | — |
 | `description` | `ReactNode` | Falls back to `children` |
 | `action` | `ReactNode` | Optional secondary action |
+| `icon` | `ReactNode` | Optional tone icon (caller-supplied; no default) |
 | `children` | `ReactNode` | Used as description when `description` is omitted |
 
 ### Data attributes
@@ -52,6 +53,7 @@ import { Alert } from '@z-ux/ui/alert';
 | `title` | No | Alert heading |
 | `description` | No | Supporting text. Falls back to `children` |
 | `action` | No | Secondary action, such as an undo link |
+| `icon` | No | Optional tone icon beside the message. Pass a stroke icon at the current text color. |
 | `children` | No | Acts as description when you omit `description` |
 
 ## Accessibility

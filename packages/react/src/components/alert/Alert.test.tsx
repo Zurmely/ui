@@ -29,6 +29,19 @@ describe('Alert', () => {
     expect(ref.mock.calls[0][0]).toBeInstanceOf(HTMLDivElement);
   });
 
+  it('renders optional icon when provided', () => {
+    renderWithTheme(
+      <Alert tone="warning" title="Warning" icon={<span data-testid="tone-icon">!</span>} />,
+    );
+    expect(screen.getByTestId('tone-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('tone-icon').parentElement).toHaveClass('z-alert__icon');
+  });
+
+  it('renders no icon slot when icon is omitted', () => {
+    const { container } = renderWithTheme(<Alert title="Notice">Details</Alert>);
+    expect(container.querySelector('.z-alert__icon')).not.toBeInTheDocument();
+  });
+
   it('applies tone data attribute and action slot', () => {
     renderWithTheme(
       <Alert tone="danger" title="Error" action={<button type="button">Retry</button>} />,

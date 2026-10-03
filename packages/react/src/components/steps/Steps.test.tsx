@@ -33,6 +33,19 @@ describe('Steps', () => {
     expect(screen.getByText('✓')).toBeInTheDocument();
   });
 
+  it('renders optional marker icon on StepIndicator', () => {
+    renderWithTheme(
+      <Steps currentStep={1}>
+        <Step step={1}>
+          <StepIndicator step={1} icon={<span data-testid="step-icon">★</span>} />
+          <StepTitle>Account</StepTitle>
+        </Step>
+      </Steps>,
+    );
+    expect(screen.getByTestId('step-icon')).toBeInTheDocument();
+    expect(screen.queryByText('1')).not.toBeInTheDocument();
+  });
+
   it('applies z-steps classes', () => {
     renderWithTheme(
       <Steps currentStep={1}>
