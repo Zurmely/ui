@@ -71,22 +71,26 @@ export function HomePage() {
 
       <section className="docs-section">
         <h2 className="docs-section__title">How to read a component page</h2>
+        <p className="docs-page__intro">
+          Each component and foundation page uses the same four tabs. The title and summary stay
+          above the tab row; prev/next links stay below.
+        </p>
         <ul className="docs-about__list">
           <li>
-            <strong>Playground</strong> — change props and copy the generated snippet. The snippet
-            matches the live render.
+            <strong>Design usage</strong> — where the component fits, what to pair it with, and when
+            to pick a sibling instead. Defaults to this tab when you open a page.
           </li>
           <li>
-            <strong>Examples</strong> — realistic compositions. Prefer these when the playground
-            cannot show compound parts.
+            <strong>Code reference</strong> — playground, examples, install commands, API tables,
+            accessibility, keyboard, tokens, and implementation notes from the markdown contract.
           </li>
           <li>
-            <strong>When to use</strong> — product scenarios and the sibling component to use
-            instead.
+            <strong>Content / writing</strong> — label and copy rules implied by the component. An
+            honest fallback appears when nothing extra is documented.
           </li>
           <li>
-            <strong>API, accessibility, keyboard, tokens</strong> — the contract implemented in
-            code. Do not assume a behavior that is not listed.
+            <strong>Changelog</strong> — short release notes per change. Most pages start with an
+            empty changelog until something ships.
           </li>
         </ul>
       </section>

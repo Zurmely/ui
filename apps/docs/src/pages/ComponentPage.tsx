@@ -4,38 +4,76 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
   Breadcrumbs,
-  Card,
-  CardContent,
 } from '@z-ux/ui';
 import { useMemo } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { withBasePath } from '../base-path';
 import { componentBySlug, componentRegistry } from '../components/registry';
+import { ChangelogPanel } from '../docs-tabs/ChangelogPanel';
+import { DOC_TAB_IDS, type DocTabId } from '../docs-tabs/constants';
+import { DocPageTabs } from '../docs-tabs/DocPageTabs';
+import { partitionMarkdownSections } from '../docs-tabs/partitionSections';
+import { ComponentWritingPanel } from '../docs-tabs/WritingPanel';
+import { useDocTab } from '../docs-tabs/useDocTab';
 import { DocsSection } from '../layout/DocsSection';
 import { TableOfContents, type TocItem } from '../layout/TableOfContents';
 import { MarkdownContent, getComponentMarkdown } from '../markdown/MarkdownContent';
 import { parseSections } from '../markdown/sections';
-import { CopyButton } from '../playground/CopyButton';
 import { ExamplesSection } from '../playground/ExamplesSection';
 import { Playground } from '../playground/Playground';
+import { getComponentWritingSections } from '../docs-tabs/writingContent';
+
+function writingTocId(title: string): string {
+  return `writing-${title.toLowerCase().replace(/\s+/g, '-')}`;
+}
+
+function buildTocForTab(
+  tab: DocTabId,
+  slug: string,
+  designSections: ReturnType<typeof partitionMarkdownSections>['design'],
+  codeSections: ReturnType<typeof partitionMarkdownSections>['code'],
+  hasExamples: boolean,
+): TocItem[] {
+  switch (tab) {
+    case DOC_TAB_IDS.design:
+      return designSections.map((section) => ({ id: section.id, title: section.title }));
+    case DOC_TAB_IDS.code: {
+      const items: TocItem[] = [{ id: 'playground', title: 'Playground' }];
+      if (hasExamples) {
+        items.push({ id: 'examples', title: 'Examples' });
+      }
+      for (const section of codeSections) {
+        items.push({ id: section.id, title: section.title });
+      }
+      return items;
+    }
+    case DOC_TAB_IDS.writing:
+      return getComponentWritingSections(slug).map((section) => ({
+        id: writingTocId(section.title),
+        title: section.title,
+      }));
+    case DOC_TAB_IDS.changelog:
+      return [];
+    default:
+      return [];
+  }
+}
 
 export function ComponentPage() {
   const { slug } = useParams<{ slug: string }>();
   const doc = slug ? componentBySlug.get(slug) : undefined;
+  const { activeTab, setActiveTab } = useDocTab();
 
   const markdown = doc ? getComponentMarkdown(doc.slug) : undefined;
   const sections = useMemo(() => (markdown ? parseSections(markdown) : []), [markdown]);
+  const { design, code } = useMemo(() => partitionMarkdownSections(sections), [sections]);
 
-  const tocItems = useMemo<TocItem[]>(() => {
-    const items: TocItem[] = [{ id: 'playground', title: 'Playground' }];
-    if (doc?.examples && doc.examples.length > 0) {
-      items.push({ id: 'examples', title: 'Examples' });
-    }
-    for (const section of sections) {
-      items.push({ id: section.id, title: section.title });
-    }
-    return items;
-  }, [doc?.examples, sections]);
+  const hasExamples = Boolean(doc?.examples && doc.examples.length > 0);
+
+  const tocItems = useMemo(
+    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code, hasExamples),
+    [activeTab, doc?.slug, design, code, hasExamples],
+  );
 
   const pager = useMemo(() => {
     if (!doc) {
@@ -51,9 +89,6 @@ export function ComponentPage() {
   if (!doc) {
     return <Navigate to="/" replace />;
   }
-
-  const installCommand = 'pnpm add @z-ux/ui @z-ux/tokens';
-  const importLine = `import { ${doc.componentName} } from '${doc.importPath}';`;
 
   return (
     <div className="docs-page docs-page--with-toc">
@@ -80,43 +115,56 @@ export function ComponentPage() {
           </Badge>
           <h1 className="docs-page__title">{doc.name}</h1>
           <p className="docs-page__summary">{doc.summary}</p>
-          <div className="docs-page__install">
-            <Card className="docs-page__install-row">
-              <CardContent className="docs-page__install-content">
-                <code className="docs-page__install-code">{installCommand}</code>
-                <CopyButton text={installCommand} />
-              </CardContent>
-            </Card>
-            <Card className="docs-page__install-row">
-              <CardContent className="docs-page__install-content">
-                <code className="docs-page__install-code">{importLine}</code>
-                <CopyButton text={importLine} />
-              </CardContent>
-            </Card>
-          </div>
         </header>
 
-        <DocsSection id="playground" title="Playground">
-          <Playground doc={doc} />
-        </DocsSection>
+        <DocPageTabs
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          design={
+            <div className="docs-tab-panel docs-surface-stack">
+              {design.map((section) => (
+                <DocsSection key={section.id} id={section.id} title={section.title}>
+                  <MarkdownContent
+                    content={section.body}
+                    sectionTitle={section.title}
+                    whenToUsePreviews={
+                      section.title === 'When to use' ? doc.whenToUsePreviews : undefined
+                    }
+                  />
+                </DocsSection>
+              ))}
+            </div>
+          }
+          code={
+            <div className="docs-tab-panel docs-surface-stack">
+              <DocsSection id="playground" title="Playground">
+                <Playground doc={doc} />
+              </DocsSection>
 
-        {doc.examples && doc.examples.length > 0 ? (
-          <DocsSection id="examples" title="Examples">
-            <ExamplesSection examples={doc.examples} />
-          </DocsSection>
-        ) : null}
+              {hasExamples ? (
+                <DocsSection id="examples" title="Examples">
+                  <ExamplesSection examples={doc.examples!} />
+                </DocsSection>
+              ) : null}
 
-        {sections.map((section) => (
-          <DocsSection key={section.id} id={section.id} title={section.title}>
-            <MarkdownContent
-              content={section.body}
-              sectionTitle={section.title}
-              whenToUsePreviews={
-                section.title === 'When to use' ? doc.whenToUsePreviews : undefined
-              }
-            />
-          </DocsSection>
-        ))}
+              {code.map((section) => (
+                <DocsSection key={section.id} id={section.id} title={section.title}>
+                  <MarkdownContent content={section.body} sectionTitle={section.title} />
+                </DocsSection>
+              ))}
+            </div>
+          }
+          writing={
+            <div className="docs-tab-panel">
+              <ComponentWritingPanel slug={doc.slug} />
+            </div>
+          }
+          changelog={
+            <div className="docs-tab-panel">
+              <ChangelogPanel pageKey={doc.slug} />
+            </div>
+          }
+        />
 
         <nav className="docs-pager" aria-label="Component navigation">
           {pager.prev ? (
@@ -138,11 +186,7 @@ export function ComponentPage() {
         </nav>
       </div>
 
-      <TableOfContents
-        items={tocItems}
-        pageTitle={doc.name}
-        pageDescription={doc.summary}
-      />
+      <TableOfContents items={tocItems} pageTitle={doc.name} pageDescription={doc.summary} />
     </div>
   );
 }

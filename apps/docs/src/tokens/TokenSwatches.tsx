@@ -618,16 +618,49 @@ export function PrimitiveShadowSample({ step }: { step: string }) {
   );
 }
 
-export function ElevationSwatch({
+export function ElevationReservedRoleSwatch({
   token,
   label,
   useWhen,
-  variant = 'shadow',
+  role,
 }: {
   token: string;
   label: string;
   useWhen: string;
-  variant?: 'shadow' | 'ring';
+  role: 'raised' | 'overlay' | 'modal';
+}) {
+  const varName = token.startsWith('--') ? token : `--z-elevation-${token}`;
+
+  return (
+    <StripTokenCard
+      label={label}
+      token={varName}
+      resolved="none"
+      description={useWhen}
+      preview={
+        <div
+          className={`docs-elevation-fill-demo docs-elevation-fill-demo--${role}`}
+          aria-hidden="true"
+        >
+          <div className="docs-elevation-fill-demo__canvas" />
+          {role === 'modal' ? <div className="docs-elevation-fill-demo__scrim" /> : null}
+          <div className="docs-elevation-fill-demo__panel" />
+        </div>
+      }
+    />
+  );
+}
+
+export function ElevationSwatch({
+  token,
+  label,
+  useWhen,
+  variant = 'ring',
+}: {
+  token: string;
+  label: string;
+  useWhen: string;
+  variant?: 'ring';
 }) {
   const varName = token.startsWith('--') ? token : `--z-elevation-${token}`;
   const { ref, value } = useResolvedBoxShadow(varName);
@@ -639,16 +672,10 @@ export function ElevationSwatch({
       resolved={value || undefined}
       description={useWhen}
       preview={
-        <div
-          className={
-            variant === 'ring'
-              ? 'docs-elevation-demo docs-elevation-demo--ring-context'
-              : 'docs-elevation-demo'
-          }
-        >
+        <div className="docs-elevation-demo docs-elevation-demo--ring-context">
           <div
             ref={ref}
-            className={`docs-elevation-demo__surface${variant === 'ring' ? ' docs-elevation-demo__surface--ring' : ''}`}
+            className="docs-elevation-demo__surface docs-elevation-demo__surface--ring"
             style={{ boxShadow: `var(${varName})` }}
             aria-hidden="true"
           />

@@ -1,16 +1,37 @@
 import type { ReactNode } from 'react';
 
+function slugifySectionTitle(title: string): string {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-');
+}
+
 export function Section({
   title,
   children,
+  id,
 }: {
   title: string;
   children: ReactNode;
+  id?: string;
 }) {
+  const sectionId = id ?? slugifySectionTitle(title);
+
   return (
-    <section className="docs-section">
-      <h2 className="docs-section__title">{title}</h2>
-      {children}
+    <section id={sectionId} className="docs-section-block">
+      <h2 className="docs-section-block__title">
+        <a
+          href={`#${sectionId}`}
+          className="docs-section-block__anchor"
+          aria-label={`Link to ${title}`}
+        >
+          #
+        </a>
+        {title}
+      </h2>
+      <div className="docs-section-block__content">{children}</div>
     </section>
   );
 }

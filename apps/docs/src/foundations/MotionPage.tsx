@@ -1,4 +1,8 @@
-import { FoundationPageHeader } from '../components/FoundationPageHeader';
+import {
+  buildFoundationToc,
+  foundationTocItem,
+  FoundationTabbedPage,
+} from '../docs-tabs/FoundationTabbedPage';
 import { TokenTable } from '../components/TokenTable';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';
 import {
@@ -68,65 +72,18 @@ export function MotionPage() {
   const primitives = getTokensByTier(manifest, 'motion', 'primitive');
   const semantics = getTokensByTier(manifest, 'motion', 'semantic');
 
-  return (
-    <div className="docs-page">
-      <FoundationPageHeader
-        title="Motion"
-        path="/foundations/motion"
-        summary={
-          <>
-            Duration and easing tokens for interaction, layout, enter/exit, and continuous motion.{' '}
-            {primitives.length} primitives, {semantics.length} semantics parsed from{' '}
-            <code>motion.css</code>. Pair <code>motion.duration.*</code> with the matching{' '}
-            <code>motion.easing.*</code>. Layout duration uses interaction easing — there is no
-            separate layout easing token.
-          </>
-        }
-      />
+  const summary = (
+    <>
+      Duration and easing tokens for interaction, layout, enter/exit, and continuous motion.{' '}
+      {primitives.length} primitives, {semantics.length} semantics parsed from{' '}
+      <code>motion.css</code>. Pair <code>motion.duration.*</code> with the matching{' '}
+      <code>motion.easing.*</code>. Layout duration uses interaction easing — there is no separate
+      layout easing token.
+    </>
+  );
 
-      <Section title="Primitives">
-        <TokenTable rows={primitives.map((t) => ({ name: t.name, value: t.value }))} />
-      </Section>
-
-      <Section title="Semantic motion">
-        <p className="docs-page__intro">
-          Purpose-based duration and easing aliases. Components consume these; theme authors bind
-          the primitive scale.
-        </p>
-
-        <TokenGroup title="Duration">
-          <TokenSubGroup title="Purposes">
-            <div className="docs-demo-token-grid">
-              {DURATION_TOKENS.map((item) => (
-                <MotionDurationSample
-                  key={item.purpose}
-                  purpose={item.purpose}
-                  label={item.label}
-                  useWhen={item.useWhen}
-                />
-              ))}
-            </div>
-          </TokenSubGroup>
-        </TokenGroup>
-
-        <TokenGroup title="Easing">
-          <TokenSubGroup title="Purposes">
-            <div className="docs-demo-token-grid">
-              {EASING_TOKENS.map((item) => (
-                <MotionEasingSample
-                  key={item.purpose}
-                  purpose={item.purpose}
-                  label={item.label}
-                  useWhen={item.useWhen}
-                />
-              ))}
-            </div>
-          </TokenSubGroup>
-        </TokenGroup>
-
-        <TokenTable rows={semantics.map((t) => ({ name: t.name, value: t.value }))} />
-      </Section>
-
+  const designUsage = (
+    <>
       <Section title="Recipes">
         <p className="docs-page__intro">
           Interactive demos for each semantic motion purpose. Hover a card to preview timing.
@@ -177,6 +134,73 @@ export function MotionPage() {
           </RecipePanel>
         </div>
       </Section>
-    </div>
+    </>
+  );
+
+  const codeReference = (
+    <>
+      <Section title="Primitives">
+        <TokenTable rows={primitives.map((t) => ({ name: t.name, value: t.value }))} />
+      </Section>
+
+      <Section title="Semantic motion">
+        <p className="docs-page__intro">
+          Purpose-based duration and easing aliases. Components consume these; theme authors bind
+          the primitive scale.
+        </p>
+
+        <TokenGroup title="Duration">
+          <TokenSubGroup title="Purposes">
+            <div className="docs-demo-token-grid">
+              {DURATION_TOKENS.map((item) => (
+                <MotionDurationSample
+                  key={item.purpose}
+                  purpose={item.purpose}
+                  label={item.label}
+                  useWhen={item.useWhen}
+                />
+              ))}
+            </div>
+          </TokenSubGroup>
+        </TokenGroup>
+
+        <TokenGroup title="Easing">
+          <TokenSubGroup title="Purposes">
+            <div className="docs-demo-token-grid">
+              {EASING_TOKENS.map((item) => (
+                <MotionEasingSample
+                  key={item.purpose}
+                  purpose={item.purpose}
+                  label={item.label}
+                  useWhen={item.useWhen}
+                />
+              ))}
+            </div>
+          </TokenSubGroup>
+        </TokenGroup>
+
+        <TokenTable rows={semantics.map((t) => ({ name: t.name, value: t.value }))} />
+      </Section>
+    </>
+  );
+
+  const tocByTab = buildFoundationToc(
+    [foundationTocItem('recipes', 'Recipes')],
+    [
+      foundationTocItem('primitives', 'Primitives'),
+      foundationTocItem('semantic-motion', 'Semantic motion'),
+    ],
+  );
+
+  return (
+    <FoundationTabbedPage
+      title="Motion"
+      path="/foundations/motion"
+      summary={summary}
+      changelogKey="motion"
+      designUsage={designUsage}
+      codeReference={codeReference}
+      tocByTab={tocByTab}
+    />
   );
 }
