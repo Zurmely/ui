@@ -72,9 +72,13 @@ export function ElevationPage() {
 
   const summary = (
     <>
-      Shadow tokens for raised surfaces, overlays, modals, and rings. {primitives.length} primitives,{' '}
-      {semanticCount} semantics parsed from <code>elevation.css</code>. Use{' '}
-      <code>elevation.ring</code> for outline halos; use raised through modal for drop shadows.
+      Fill-based depth and outline halos for the page, raised panels, sunk wells, and modal scrims.{' '}
+      {primitives.length} primitives, {semanticCount} semantics parsed from <code>elevation.css</code>.
+      Depth uses <code>color.background</code> structure, not drop shadows: canvas (step 100), raised{' '}
+      <code>surface</code> (light 50, dark 200), sunk <code>subtle</code> (light 200, dark 50). Modals
+      dim with flat <code>color.overlay.scrim</code>. <code>elevation.ring</code> is an outline halo;{' '}
+      <code>elevation.raised</code>, <code>elevation.overlay</code>, and <code>elevation.modal</code> are{' '}
+      <code>none</code> — do not apply <code>box-shadow</code>. Focus rings use <code>color.focus.ring</code>.
     </>
   );
 
@@ -99,7 +103,7 @@ export function ElevationPage() {
 
           <RecipePanel
             title="Component mapping"
-            note="box-shadow: var(--z-elevation-*) — one semantic role per floating or raised surface"
+            note="color.background.surface on canvas for each raised floating panel — not box-shadow; elevation.raised, elevation.overlay, and elevation.modal stay none"
           >
             <div className="docs-recipe-elevation-map">
               {COMPONENT_MAPPING.map((item) => (
@@ -121,8 +125,14 @@ export function ElevationPage() {
     <>
       <Section title="Semantic elevation">
         <p className="docs-page__intro">
-          Purpose-based depth tokens. Use <code>elevation.ring</code> for outline halos; use raised
-          through modal for drop shadows. Toggle the theme to compare light and dark shadow values.
+          Purpose-based elevation semantics. Depth is <code>color.background.canvas</code> (step 100 in
+          both themes), raised <code>color.background.surface</code> (light 50, dark 200), and sunk{' '}
+          <code>color.background.subtle</code> (light 200, dark 50) — not drop shadows. Modals dim the
+          page with flat <code>color.overlay.scrim</code>. <code>elevation.ring</code> is an outline
+          halo, not lift. <code>elevation.raised</code>, <code>elevation.overlay</code>, and{' '}
+          <code>elevation.modal</code> are <code>none</code> and must not be applied as{' '}
+          <code>box-shadow</code>. Focus rings use <code>color.focus.ring</code>. Toggle the theme to
+          compare light and dark fill steps.
         </p>
         <TokenGroup title="Elevation">
           {ELEVATION_SUBGROUPS.map((subgroup) => (
