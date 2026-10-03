@@ -24,6 +24,7 @@ export const rangeSliderDoc: ComponentDoc = (() => {
         <Field style={{ width: '100%', maxWidth: '20rem' }}>
           <FieldLabel>{range ? 'Price range' : 'Volume'}</FieldLabel>
           <RangeSlider
+            key={range ? 'range' : 'single'}
             min={props.min as number}
             max={props.max as number}
             range={range}
