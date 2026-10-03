@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Z">
+  <rect width="24" height="24" fill="oklch(0.205 0.002 17.3)" />
+  <path
+    fill="none"
+    stroke="oklch(0.935 0 0)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M4 4h16M20 4 4 20M4 20h16"
+  />
+</svg>
