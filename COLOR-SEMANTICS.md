@@ -211,7 +211,7 @@ Scrims and temporary layers.
 | **Danger** | Destructive or error | `red.*` |
 | **Success** | Positive completion | `green.*` |
 | **Warning** | Caution, not yet error | Default: `yellow.*` |
-| **Info** | Neutral guidance | Default: `blue.*` |
+| **Info** | Neutral guidance | Default: `blue.*` (cyan-leaning, quieter chroma) |
 | **Inverse** | Flipped contrast block | High-contrast neutrals |
 
 Meanings describe **intent**, not a fixed hue. Theme customization remaps primitives; semantic names stay the same.
