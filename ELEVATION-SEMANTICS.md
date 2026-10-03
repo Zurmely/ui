@@ -8,6 +8,14 @@ This document defines how **elevation semantics** work in Z-UI: purpose-based to
 
 ---
 
+## When to lift
+
+The page is the background. Don't put text in a surface, and don't put a surface inside a surface.
+
+A lighter fill is only for something that actually floats, like a dialog, a menu, or a card that holds an action. If the parent is already raised, the child stays on that same fill. The first lift is that one lighter step, not a border and not a second level.
+
+---
+
 ## 1. Why elevation semantics exist
 
 Semantic elevation answers: *"How should this panel read against the page?"* or *"What halo separates this node from its background?"*
@@ -19,9 +27,9 @@ Semantic elevation answers: *"How should this panel read against the page?"* or 
 
 **Rules:**
 
-1. **Do not** use drop shadows for depth in product UI. Raised cards, menus, dialogs, and toasts separate by **fill step** only.
-2. Components **must** use `background.surface` for raised floating panels (card, menu, popover, select menu, toast, calendar, dialog, drawer).
-3. Sunk control wells on a raised panel use `background.subtle` (see `control-on-surface.css`).
+1. **Do not** use drop shadows for depth in product UI. Floating UI separates from the page by **one lighter fill step** only (`background.surface` on `background.canvas`).
+2. Use `background.surface` only for UI that actually floats (dialog, menu, popover, select menu, toast, calendar, drawer, and cards that hold an action). Do not wrap body copy or layout regions in `background.surface` on the page.
+3. Do not nest `background.surface` inside `background.surface`. On a raised parent, children stay on that same fill. Sunk control wells use `background.subtle` (darker fill, not a second raised level; see `control-on-surface.css`).
 4. Use `elevation.ring` for outline-style halos that separate a node from its background (timeline marker). It is not a drop shadow.
 5. Focus rings use `color.focus.ring` / shared focus foundations (`elevation.ring` is not a substitute for `:focus-visible`).
 6. `elevation.raised`, `elevation.overlay`, and `elevation.modal` resolve to **`none`** — kept for API stability; do not apply `box-shadow` for depth.
@@ -128,7 +136,7 @@ Do **not** add `box-shadow` for lift. Do **not** use elevation tokens for text s
 
 | Component | Depth mechanism | Tokens |
 | --- | --- | --- |
-| Card | Raised fill | `background.surface` |
+| Card (action grouping on canvas) | Raised fill | `background.surface` |
 | Select (content) | Raised fill | `background.surface` |
 | Menu (content) | Raised fill | `background.surface` |
 | Popover (content) | Raised fill | `background.surface` |

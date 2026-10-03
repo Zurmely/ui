@@ -69,7 +69,7 @@ The trigger must have visible text or an `aria-label`. Each `MenuItem` should ha
 
 | Part | Semantic tokens |
 | --- | --- |
-| Panel surface | `--z-color-background-surface`, `--z-color-border-subtle` |
+| Panel surface | `--z-color-background-surface` (raised fill; no drop shadow) |
 | Item hover | `--z-color-background-subtle` |
 | Item selected | `--z-color-background-selected` |
 | Disabled label | `--z-color-text-disabled` |

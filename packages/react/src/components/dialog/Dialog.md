@@ -80,7 +80,7 @@ Set `DialogTitle` for every dialog. Add `DialogDescription` when extra context h
 | Part | Semantic tokens |
 | --- | --- |
 | Scrim | `--z-color-overlay-scrim` (opaque when `data-transparency="reduced"`) |
-| Panel surface | `--z-color-background-surface`, `--z-color-border-subtle` |
+| Panel surface | `--z-color-background-surface` on flat scrim (raised fill; no chrome border, no drop shadow) |
 | Title | `--z-color-text-primary` |
 | Title typography | `--z-text-title-*` |
 | Description | `--z-color-text-secondary` |

@@ -75,12 +75,11 @@ Radix exposes `data-state` and swipe `data-swipe` on `Toast`.
 
 | Part | Semantic tokens |
 | --- | --- |
-| Surface | `--z-color-background-surface`, `--z-color-border-subtle`, `--z-radius-surface` |
+| Surface | `--z-color-background-surface`, `--z-radius-surface` (raised fill; no drop shadow) |
 | Title / body | `--z-text-title-*`, `--z-text-body-*`, `--z-color-text-primary`, `--z-color-text-secondary` |
 | Action | `--z-color-background-primary-subtle`, `--z-color-border-strong`, `--z-color-text-primary` |
 | Viewport offset | `--z-spacing-gap-page-section` |
 | Motion | `--z-motion-duration-interaction`, `--z-motion-easing-interaction` |
-| Surface | `--z-color-background-surface` (raised fill; no drop shadow) |
 
 ## Figma
 

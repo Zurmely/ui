@@ -66,7 +66,7 @@ Set `aria-label` on the root, or associate the calendar with `FieldLabel`.
 
 | Part | Semantic tokens |
 | --- | --- |
-| Surface | `--z-color-background-surface`, `--z-color-background-muted` |
+| Surface | `--z-color-background-surface`, `--z-color-background-muted` (raised fill; no drop shadow) |
 | Border | `--z-color-border-subtle`, `.default`, `.danger`, `.primary` |
 | Selected day | `--z-color-background-primary`, `--z-color-text-on-solid` |
 | Typography | `--z-text-label-*`, `--z-text-control-*`, `--z-text-caption-*` |
