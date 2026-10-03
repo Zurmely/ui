@@ -121,6 +121,14 @@ export function HomePage() {
           {FOUNDATION_NAV.map((item) => (
             <Link key={item.path} to={item.path} className="docs-home-card-link">
               <Card>
+                {item.slug === 'elevation' ? (
+                  <div
+                    className="docs-home-card__foundation-preview docs-home-card__foundation-preview--elevation"
+                    aria-hidden="true"
+                  >
+                    <span />
+                  </div>
+                ) : null}
                 <CardHeader>
                   <CardTitle>{item.name}</CardTitle>
                   <CardDescription>
