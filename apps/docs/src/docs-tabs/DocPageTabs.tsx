@@ -12,6 +12,7 @@ export interface DocPageTabPanels {
 interface DocPageTabsProps extends DocPageTabPanels {
   activeTab: DocTabId;
   onTabChange: (tab: DocTabId) => void;
+  className?: string;
   /** Compact page chrome shown on the left when the scroll subheader is pinned (component pages). */
   subheaderInfo?: ReactNode;
   subheaderPinned?: boolean;
@@ -26,6 +27,7 @@ export function DocPageTabs({
   changelog,
   subheaderInfo,
   subheaderPinned = false,
+  className,
 }: DocPageTabsProps) {
   const subheaderClassName = [
     'docs-page__subheader',
@@ -38,7 +40,7 @@ export function DocPageTabs({
     <Tabs
       value={activeTab}
       onValueChange={(value) => onTabChange(value as DocTabId)}
-      className="docs-page-tabs"
+      className={['docs-page-tabs', className].filter(Boolean).join(' ')}
     >
       <div className={subheaderClassName}>
         {subheaderInfo ? (
