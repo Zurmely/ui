@@ -32,6 +32,10 @@ export function TableOfContents({
   const [activeId, setActiveId] = useState(items[0]?.id ?? '');
 
   useEffect(() => {
+    setActiveId(items[0]?.id ?? '');
+  }, [items]);
+
+  useEffect(() => {
     if (items.length === 0) {
       return;
     }

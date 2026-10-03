@@ -1,5 +1,9 @@
 import { Badge } from '@z-ux/ui';
-import { FoundationPageHeader } from '../components/FoundationPageHeader';
+import {
+  buildFoundationToc,
+  foundationTocItem,
+  FoundationTabbedPage,
+} from '../docs-tabs/FoundationTabbedPage';
 import { TokenTable } from '../components/TokenTable';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';
 import {
@@ -66,21 +70,55 @@ export function ElevationPage() {
   const primitives = getTokensByTier(manifest, 'elevation', 'primitive');
   const semanticCount = ELEVATION_SUBGROUPS.reduce((count, group) => count + group.tokens.length, 0);
 
-  return (
-    <div className="docs-page">
-      <FoundationPageHeader
-        title="Elevation"
-        path="/foundations/elevation"
-        summary={
-          <>
-            Shadow tokens for raised surfaces, overlays, modals, and rings. {primitives.length}{' '}
-            primitives, {semanticCount} semantics parsed from <code>elevation.css</code>. Use{' '}
-            <code>elevation.ring</code> for outline halos; use raised through modal for drop
-            shadows.
-          </>
-        }
-      />
+  const summary = (
+    <>
+      Shadow tokens for raised surfaces, overlays, modals, and rings. {primitives.length} primitives,{' '}
+      {semanticCount} semantics parsed from <code>elevation.css</code>. Use{' '}
+      <code>elevation.ring</code> for outline halos; use raised through modal for drop shadows.
+    </>
+  );
 
+  const designUsage = (
+    <>
+      <Section title="Recipes">
+        <p className="docs-page__intro">
+          Depth layering and component-to-role mapping from the elevation semantics contract.
+        </p>
+        <div className="docs-recipes-grid">
+          <RecipePanel
+            title="Depth stack"
+            note="elevation.raised, elevation.overlay, and elevation.modal layered above canvas"
+          >
+            <div className="docs-recipe-depth-stack">
+              <div className="docs-recipe-depth-stack__canvas" aria-hidden="true" />
+              <div className="docs-recipe-depth-stack__raised">elevation.raised</div>
+              <div className="docs-recipe-depth-stack__overlay">elevation.overlay</div>
+              <div className="docs-recipe-depth-stack__modal">elevation.modal</div>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Component mapping"
+            note="box-shadow: var(--z-elevation-*) — one semantic role per floating or raised surface"
+          >
+            <div className="docs-recipe-elevation-map">
+              {COMPONENT_MAPPING.map((item) => (
+                <div key={item.component} className="docs-recipe-elevation-map__row">
+                  <span className="docs-recipe-elevation-map__component">{item.component}</span>
+                  <Badge size="sm" tone="neutral">
+                    elevation.{item.role}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </RecipePanel>
+        </div>
+      </Section>
+    </>
+  );
+
+  const codeReference = (
+    <>
       <Section title="Semantic elevation">
         <p className="docs-page__intro">
           Purpose-based depth tokens. Use <code>elevation.ring</code> for outline halos; use raised
@@ -123,41 +161,26 @@ export function ElevationPage() {
           }))}
         />
       </Section>
+    </>
+  );
 
-      <Section title="Recipes">
-        <p className="docs-page__intro">
-          Depth layering and component-to-role mapping from the elevation semantics contract.
-        </p>
-        <div className="docs-recipes-grid">
-          <RecipePanel
-            title="Depth stack"
-            note="elevation.raised, elevation.overlay, and elevation.modal layered above canvas"
-          >
-            <div className="docs-recipe-depth-stack">
-              <div className="docs-recipe-depth-stack__canvas" aria-hidden="true" />
-              <div className="docs-recipe-depth-stack__raised">elevation.raised</div>
-              <div className="docs-recipe-depth-stack__overlay">elevation.overlay</div>
-              <div className="docs-recipe-depth-stack__modal">elevation.modal</div>
-            </div>
-          </RecipePanel>
+  const tocByTab = buildFoundationToc(
+    [foundationTocItem('recipes', 'Recipes')],
+    [
+      foundationTocItem('semantic-elevation', 'Semantic elevation'),
+      foundationTocItem('primitives', 'Primitives'),
+    ],
+  );
 
-          <RecipePanel
-            title="Component mapping"
-            note="box-shadow: var(--z-elevation-*) — one semantic role per floating or raised surface"
-          >
-            <div className="docs-recipe-elevation-map">
-              {COMPONENT_MAPPING.map((item) => (
-                <div key={item.component} className="docs-recipe-elevation-map__row">
-                  <span className="docs-recipe-elevation-map__component">{item.component}</span>
-                  <Badge size="sm" tone="neutral">
-                    elevation.{item.role}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          </RecipePanel>
-        </div>
-      </Section>
-    </div>
+  return (
+    <FoundationTabbedPage
+      title="Elevation"
+      path="/foundations/elevation"
+      summary={summary}
+      changelogKey="elevation"
+      designUsage={designUsage}
+      codeReference={codeReference}
+      tocByTab={tocByTab}
+    />
   );
 }

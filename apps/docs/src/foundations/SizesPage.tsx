@@ -1,4 +1,8 @@
-import { FoundationPageHeader } from '../components/FoundationPageHeader';
+import {
+  buildFoundationToc,
+  foundationTocItem,
+  FoundationTabbedPage,
+} from '../docs-tabs/FoundationTabbedPage';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';
 import {
   PrimitiveRadiusSample,
@@ -152,20 +156,76 @@ export function SizesPage() {
   const primitives = getTokensByTier(manifest, 'sizes', 'primitive');
   const semantics = getTokensByTier(manifest, 'sizes', 'semantic');
 
-  return (
-    <div className="docs-page">
-      <FoundationPageHeader
-        title="Sizes"
-        path="/foundations/sizes"
-        summary={
-          <>
-            Spacing and radius tokens on an 8px grid. {primitives.length} primitives,{' '}
-            {semantics.length} semantics parsed from <code>sizes.css</code>. Use inset.control
-            for horizontal text controls and inset.box for cards, lists, and alerts.
-          </>
-        }
-      />
+  const summary = (
+    <>
+      Spacing and radius tokens on an 8px grid. {primitives.length} primitives, {semantics.length}{' '}
+      semantics parsed from <code>sizes.css</code>. Use inset.control for horizontal text controls
+      and inset.box for cards, lists, and alerts.
+    </>
+  );
 
+  const designUsage = (
+    <>
+      <Section title="Recipes">
+        <p className="docs-page__intro">
+          Layout patterns composed from semantic spacing and radius tokens.
+        </p>
+        <div className="docs-recipes-grid">
+          <RecipePanel
+            title="Form field stack"
+            note="spacing.stack.form between label, input, and helper text"
+          >
+            <div className="docs-recipe-form-stack">
+              <span className="docs-recipe-form-stack__label">Password</span>
+              <span className="docs-recipe-form-stack__input">••••••••</span>
+              <span className="docs-recipe-form-stack__hint">Must be at least 8 characters.</span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Control density"
+            note="spacing.inset.control.compact, .y/.x, and .comfortable for vertical and horizontal padding"
+          >
+            <div className="docs-recipe-control-density">
+              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--compact">
+                Compact
+              </span>
+              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--default">
+                Default
+              </span>
+              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--comfortable">
+                Comfortable
+              </span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Nested radius"
+            note="radius.container on outer panel; radius.control on inner control"
+          >
+            <div className="docs-recipe-nested-radius">
+              <div className="docs-recipe-nested-radius__outer">
+                <div className="docs-recipe-nested-radius__inner">Inner control</div>
+              </div>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Overlay offset"
+            note="spacing.offset.overlay — matches Radix sideOffset={4}"
+          >
+            <div className="docs-recipe-overlay-offset">
+              <span className="docs-recipe-overlay-offset__trigger">Trigger</span>
+              <span className="docs-recipe-overlay-offset__panel">Menu content</span>
+            </div>
+          </RecipePanel>
+        </div>
+      </Section>
+    </>
+  );
+
+  const codeReference = (
+    <>
       <Section title="Spacing primitives">
         <p className="docs-page__intro">
           Raw spacing scale on an 8px grid. <code>space.0-5</code> (4px) is the only half-step for
@@ -283,62 +343,29 @@ export function SizesPage() {
           </TokenSubGroup>
         </TokenGroup>
       </Section>
+    </>
+  );
 
-      <Section title="Recipes">
-        <p className="docs-page__intro">
-          Layout patterns composed from semantic spacing and radius tokens.
-        </p>
-        <div className="docs-recipes-grid">
-          <RecipePanel
-            title="Form field stack"
-            note="spacing.stack.form between label, input, and helper text"
-          >
-            <div className="docs-recipe-form-stack">
-              <span className="docs-recipe-form-stack__label">Password</span>
-              <span className="docs-recipe-form-stack__input">••••••••</span>
-              <span className="docs-recipe-form-stack__hint">Must be at least 8 characters.</span>
-            </div>
-          </RecipePanel>
+  const tocByTab = buildFoundationToc(
+    [foundationTocItem('recipes', 'Recipes')],
+    [
+      foundationTocItem('spacing-primitives', 'Spacing primitives'),
+      foundationTocItem('radius-primitives', 'Radius primitives'),
+      foundationTocItem('semantic-spacing', 'Semantic spacing'),
+      foundationTocItem('semantic-radius', 'Semantic radius'),
+      foundationTocItem('component-spacing', 'Component spacing'),
+    ],
+  );
 
-          <RecipePanel
-            title="Control density"
-            note="spacing.inset.control.compact, .y/.x, and .comfortable for vertical and horizontal padding"
-          >
-            <div className="docs-recipe-control-density">
-              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--compact">
-                Compact
-              </span>
-              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--default">
-                Default
-              </span>
-              <span className="docs-recipe-control-density__item docs-recipe-control-density__item--comfortable">
-                Comfortable
-              </span>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Nested radius"
-            note="radius.container on outer panel; radius.control on inner control"
-          >
-            <div className="docs-recipe-nested-radius">
-              <div className="docs-recipe-nested-radius__outer">
-                <div className="docs-recipe-nested-radius__inner">Inner control</div>
-              </div>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Overlay offset"
-            note="spacing.offset.overlay — matches Radix sideOffset={4}"
-          >
-            <div className="docs-recipe-overlay-offset">
-              <span className="docs-recipe-overlay-offset__trigger">Trigger</span>
-              <span className="docs-recipe-overlay-offset__panel">Menu content</span>
-            </div>
-          </RecipePanel>
-        </div>
-      </Section>
-    </div>
+  return (
+    <FoundationTabbedPage
+      title="Sizes"
+      path="/foundations/sizes"
+      summary={summary}
+      changelogKey="sizes"
+      designUsage={designUsage}
+      codeReference={codeReference}
+      tocByTab={tocByTab}
+    />
   );
 }

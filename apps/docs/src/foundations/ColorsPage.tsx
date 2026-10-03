@@ -1,5 +1,9 @@
 import { Button } from '@z-ux/ui';
-import { FoundationPageHeader } from '../components/FoundationPageHeader';
+import {
+  buildFoundationToc,
+  foundationTocItem,
+  FoundationTabbedPage,
+} from '../docs-tabs/FoundationTabbedPage';
 import { Section, TokenGroup, TokenSubGroup } from './FoundationSection';
 import {
   COLOR_FAMILIES,
@@ -229,22 +233,17 @@ export function ColorsPage() {
   const primitiveCount = manifest.colors.filter((t) => t.tier === 'primitive').length;
   const semanticCount = manifest.colors.filter((t) => t.tier === 'semantic').length;
 
-  return (
-    <div className="docs-page">
-      <FoundationPageHeader
-        title="Colors"
-        path="/foundations/colors"
-        summary={
-          <>
-            Primitive OKLCH scales and semantic color tokens for light and dark themes.{' '}
-            {primitiveCount} primitives, {semanticCount} semantics parsed from{' '}
-            <code>colors.css</code>. Pick a token by role (background, text, icon, border), then
-            meaning, then state. Components must use <code>--z-color-*</code> semantics, not raw
-            family scales.
-          </>
-        }
-      />
+  const summary = (
+    <>
+      Primitive OKLCH scales and semantic color tokens for light and dark themes.{' '}
+      {primitiveCount} primitives, {semanticCount} semantics parsed from <code>colors.css</code>.
+      Pick a token by role (background, text, icon, border), then meaning, then state. Components
+      must use <code>--z-color-*</code> semantics, not raw family scales.
+    </>
+  );
 
+  const designUsage = (
+    <>
       <Section title="How to choose">
         <p className="docs-page__intro">
           Start with the job, not the hue. Body copy is <code>--z-color-text-primary</code>. A
@@ -255,6 +254,74 @@ export function ColorsPage() {
         </p>
       </Section>
 
+      <Section title="Recipes">
+        <p className="docs-page__intro">
+          Interactive patterns composed from semantic color tokens. Pair foreground and background
+          tokens as documented in each card.
+        </p>
+        <div className="docs-recipes-grid">
+          <RecipePanel
+            title="Solid primary button"
+            note="background.primary + text.on-primary; hover, active, disabled, and focus.ring states"
+          >
+            <Button variant="primary">Save changes</Button>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Subtle status"
+            note="background.{meaning}-subtle + text.{meaning} for quiet feedback"
+          >
+            <div className="docs-recipe-color-subtle">
+              <span className="docs-recipe-color-subtle__item docs-recipe-color-subtle__item--danger">
+                Connection failed
+              </span>
+              <span className="docs-recipe-color-subtle__item docs-recipe-color-subtle__item--success">
+                Changes saved
+              </span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Text field"
+            note="background.surface, border.default → border.focus, text.primary, text.tertiary placeholder"
+          >
+            <div className="docs-recipe-color-field">
+              <span className="docs-recipe-color-field__input">name@example.com</span>
+              <span className="docs-recipe-color-field__input docs-recipe-color-field__input--invalid">
+                Invalid value
+              </span>
+              <span className="docs-recipe-color-field__error">Enter a valid email address.</span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Selected row"
+            note="background.selected + text.primary; add a non-color indicator (bar or check)"
+          >
+            <div className="docs-recipe-color-row">
+              <span className="docs-recipe-color-row__item">Inbox</span>
+              <span className="docs-recipe-color-row__item docs-recipe-color-row__item--selected">
+                <span className="docs-recipe-color-row__indicator" aria-hidden="true" />
+                Drafts
+              </span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Link"
+            note="text.link → text.link-hover; focus.ring on :focus-visible"
+          >
+            <a className="docs-recipe-color-link" href="#colors-recipes">
+              View color semantics contract
+            </a>
+          </RecipePanel>
+        </div>
+      </Section>
+    </>
+  );
+
+  const codeReference = (
+    <>
       <Section title="Primitives">
         <p className="docs-page__intro">
           Raw OKLCH family scales (50–950). Theme authors bind these; components consume semantic
@@ -334,70 +401,30 @@ export function ColorsPage() {
           </div>
         </TokenGroup>
       </Section>
+    </>
+  );
 
-      <Section title="Recipes">
-        <p className="docs-page__intro">
-          Interactive patterns composed from semantic color tokens. Pair foreground and background
-          tokens as documented in each card.
-        </p>
-        <div className="docs-recipes-grid">
-          <RecipePanel
-            title="Solid primary button"
-            note="background.primary + text.on-primary; hover, active, disabled, and focus.ring states"
-          >
-            <Button variant="primary">Save changes</Button>
-          </RecipePanel>
+  const tocByTab = buildFoundationToc(
+    [
+      foundationTocItem('how-to-choose', 'How to choose'),
+      foundationTocItem('recipes', 'Recipes'),
+    ],
+    [
+      foundationTocItem('primitives', 'Primitives'),
+      foundationTocItem('meaning-palettes', 'Meaning palettes'),
+      foundationTocItem('semantic-tokens', 'Semantic tokens'),
+    ],
+  );
 
-          <RecipePanel
-            title="Subtle status"
-            note="background.{meaning}-subtle + text.{meaning} for quiet feedback"
-          >
-            <div className="docs-recipe-color-subtle">
-              <span className="docs-recipe-color-subtle__item docs-recipe-color-subtle__item--danger">
-                Connection failed
-              </span>
-              <span className="docs-recipe-color-subtle__item docs-recipe-color-subtle__item--success">
-                Changes saved
-              </span>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Text field"
-            note="background.surface, border.default → border.focus, text.primary, text.tertiary placeholder"
-          >
-            <div className="docs-recipe-color-field">
-              <span className="docs-recipe-color-field__input">name@example.com</span>
-              <span className="docs-recipe-color-field__input docs-recipe-color-field__input--invalid">
-                Invalid value
-              </span>
-              <span className="docs-recipe-color-field__error">Enter a valid email address.</span>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Selected row"
-            note="background.selected + text.primary; add a non-color indicator (bar or check)"
-          >
-            <div className="docs-recipe-color-row">
-              <span className="docs-recipe-color-row__item">Inbox</span>
-              <span className="docs-recipe-color-row__item docs-recipe-color-row__item--selected">
-                <span className="docs-recipe-color-row__indicator" aria-hidden="true" />
-                Drafts
-              </span>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Link"
-            note="text.link → text.link-hover; focus.ring on :focus-visible"
-          >
-            <a className="docs-recipe-color-link" href="#colors-recipes">
-              View color semantics contract
-            </a>
-          </RecipePanel>
-        </div>
-      </Section>
-    </div>
+  return (
+    <FoundationTabbedPage
+      title="Colors"
+      path="/foundations/colors"
+      summary={summary}
+      changelogKey="colors"
+      designUsage={designUsage}
+      codeReference={codeReference}
+      tocByTab={tocByTab}
+    />
   );
 }

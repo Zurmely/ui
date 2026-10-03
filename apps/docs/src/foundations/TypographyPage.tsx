@@ -1,4 +1,9 @@
-import { FoundationPageHeader } from '../components/FoundationPageHeader';
+import {
+  buildFoundationToc,
+  foundationTocItem,
+  FoundationTabbedPage,
+} from '../docs-tabs/FoundationTabbedPage';
+import { DocsSection } from '../layout/DocsSection';
 import { buildTokenManifest, getTokensByTier } from '../tokens/parse';
 import {
   FontFamilySample,
@@ -38,21 +43,73 @@ export function TypographyPage() {
   const primitives = getTokensByTier(manifest, 'text', 'primitive');
   const semantics = getTokensByTier(manifest, 'text', 'semantic');
 
-  return (
-    <div className="docs-page">
-      <FoundationPageHeader
-        title="Typography"
-        path="/foundations/typography"
-        summary={
-          <>
-            Font primitives and semantic text roles. {primitives.length} primitives,{' '}
-            {semantics.length} semantics parsed from <code>text.css</code>. Use{' '}
-            <code>--z-text-*</code> for type and <code>--z-color-text-*</code> for foreground
-            color. 12px (<code>font.size.1</code> / <code>text.badge</code>) is the minimum.
-          </>
-        }
-      />
+  const summary = (
+    <>
+      Font primitives and semantic text roles. {primitives.length} primitives, {semantics.length}{' '}
+      semantics parsed from <code>text.css</code>. Use <code>--z-text-*</code> for type and{' '}
+      <code>--z-color-text-*</code> for foreground color. 12px (<code>font.size.1</code> /{' '}
+      <code>text.badge</code>) is the minimum.
+    </>
+  );
 
+  const designUsage = (
+    <>
+      <Section title="Recipes">
+        <p className="docs-page__intro">
+          Composed examples showing how semantic text roles work together in real UI patterns.
+        </p>
+        <div className="docs-recipes-grid">
+          <RecipePanel
+            title="Type hierarchy"
+            note="text.display, text.body, and text.caption for marketing hero stacks"
+          >
+            <div className="docs-recipe-type-stack">
+              <p className="docs-recipe-type-stack__display">Marketing headline</p>
+              <p className="docs-recipe-type-stack__body">
+                Supporting body copy explains the product value in a short paragraph.
+              </p>
+              <p className="docs-recipe-type-stack__caption">Caption or metadata line</p>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Field stack"
+            note="text.label, text.control, and text.caption with spacing.stack.form"
+          >
+            <div className="docs-recipe-field-stack">
+              <span className="docs-recipe-field-stack__label">Email address</span>
+              <span className="docs-recipe-field-stack__control">name@example.com</span>
+              <span className="docs-recipe-field-stack__caption">
+                We never share your email with third parties.
+              </span>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Dialog chrome"
+            note="text.title for the heading; text.body for the description"
+          >
+            <div className="docs-recipe-dialog">
+              <p className="docs-recipe-dialog__title">Confirm changes</p>
+              <p className="docs-recipe-dialog__body">
+                Your updates will apply immediately. You can undo this action from settings.
+              </p>
+            </div>
+          </RecipePanel>
+
+          <RecipePanel
+            title="Monospace"
+            note="font.family.mono via --z-font-family-mono for code and technical strings"
+          >
+            <code className="docs-recipe-mono">pnpm add @z-ux/tokens</code>
+          </RecipePanel>
+        </div>
+      </Section>
+    </>
+  );
+
+  const codeReference = (
+    <>
       <Section title="Font primitives">
         <p className="docs-page__intro">
           Raw font scales. Theme authors bind these; components consume semantic{' '}
@@ -126,58 +183,37 @@ export function TypographyPage() {
           </TokenSubGroup>
         </TokenGroup>
       </Section>
+    </>
+  );
 
-      <Section title="Recipes">
-        <p className="docs-page__intro">
-          Composed examples showing how semantic text roles work together in real UI patterns.
-        </p>
-        <div className="docs-recipes-grid">
-          <RecipePanel
-            title="Type hierarchy"
-            note="text.display, text.body, and text.caption for marketing hero stacks"
-          >
-            <div className="docs-recipe-type-stack">
-              <p className="docs-recipe-type-stack__display">Marketing headline</p>
-              <p className="docs-recipe-type-stack__body">
-                Supporting body copy explains the product value in a short paragraph.
-              </p>
-              <p className="docs-recipe-type-stack__caption">Caption or metadata line</p>
-            </div>
-          </RecipePanel>
+  const writing = (
+    <DocsSection id="writing-minimum-size" title="Minimum size">
+      <p className="docs-page__intro">
+        12px (<code>font.size.1</code> / <code>text.badge</code>) is the minimum font size in the
+        design system. Differentiate density with spacing, not smaller type.
+      </p>
+    </DocsSection>
+  );
 
-          <RecipePanel
-            title="Field stack"
-            note="text.label, text.control, and text.caption with spacing.stack.form"
-          >
-            <div className="docs-recipe-field-stack">
-              <span className="docs-recipe-field-stack__label">Email address</span>
-              <span className="docs-recipe-field-stack__control">name@example.com</span>
-              <span className="docs-recipe-field-stack__caption">
-                We never share your email with third parties.
-              </span>
-            </div>
-          </RecipePanel>
+  const tocByTab = buildFoundationToc(
+    [foundationTocItem('recipes', 'Recipes')],
+    [
+      foundationTocItem('font-primitives', 'Font primitives'),
+      foundationTocItem('text-roles', 'Text roles'),
+    ],
+    [foundationTocItem('writing-minimum-size', 'Minimum size')],
+  );
 
-          <RecipePanel
-            title="Dialog chrome"
-            note="text.title for the heading; text.body for the description"
-          >
-            <div className="docs-recipe-dialog">
-              <p className="docs-recipe-dialog__title">Confirm changes</p>
-              <p className="docs-recipe-dialog__body">
-                Your updates will apply immediately. You can undo this action from settings.
-              </p>
-            </div>
-          </RecipePanel>
-
-          <RecipePanel
-            title="Monospace"
-            note="font.family.mono via --z-font-family-mono for code and technical strings"
-          >
-            <code className="docs-recipe-mono">pnpm add @z-ux/tokens</code>
-          </RecipePanel>
-        </div>
-      </Section>
-    </div>
+  return (
+    <FoundationTabbedPage
+      title="Typography"
+      path="/foundations/typography"
+      summary={summary}
+      changelogKey="typography"
+      designUsage={designUsage}
+      codeReference={codeReference}
+      writing={writing}
+      tocByTab={tocByTab}
+    />
   );
 }
