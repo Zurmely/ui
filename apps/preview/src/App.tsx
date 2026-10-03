@@ -402,6 +402,7 @@ export default function App() {
                 <Status tone="success" label="Online" />
                 <Status tone="warning" label="Away" />
                 <Status tone="danger" label="Offline" />
+                <Status tone="info" label="Syncing" />
                 <Status tone="neutral" label="Unknown" />
               </div>
               <div className="preview__row">
@@ -411,10 +412,30 @@ export default function App() {
                   <IndicatorItem variant="dot" tone="success" label="Online" />
                 </Indicator>
                 <Indicator>
+                  <Avatar fallback="WN" />
+                  <IndicatorItem variant="dot" tone="warning" label="Away" />
+                </Indicator>
+                <Indicator>
+                  <Avatar fallback="IN" />
+                  <IndicatorItem variant="dot" tone="info" label="Syncing" />
+                </Indicator>
+                <Indicator>
                   <IconButton variant="secondary" aria-label="Notifications">
                     <PlusIcon />
                   </IconButton>
                   <IndicatorItem>3</IndicatorItem>
+                </Indicator>
+                <Indicator>
+                  <IconButton variant="secondary" aria-label="Warnings">
+                    <PlusIcon />
+                  </IconButton>
+                  <IndicatorItem tone="warning">!</IndicatorItem>
+                </Indicator>
+                <Indicator>
+                  <IconButton variant="secondary" aria-label="Updates">
+                    <PlusIcon />
+                  </IconButton>
+                  <IndicatorItem tone="info">i</IndicatorItem>
                 </Indicator>
                 <Spinner />
               </div>

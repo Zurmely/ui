@@ -36,7 +36,10 @@ function ColorSwatch({
       {kind === 'text' ? (
         <div
           className={`preview__swatch-chip preview__swatch-chip--text${
-            token.includes('inverse') || token.includes('on-solid')
+            token.includes('inverse') ||
+            token.includes('on-solid') ||
+            token.includes('on-warning') ||
+            token.includes('on-info')
               ? ' preview__swatch-chip--on-dark'
               : ''
           }`}
@@ -56,7 +59,10 @@ function ColorSwatch({
       {kind === 'icon' ? (
         <div
           className={`preview__swatch-chip preview__swatch-chip--icon${
-            token.includes('inverse') || token.includes('on-solid')
+            token.includes('inverse') ||
+            token.includes('on-solid') ||
+            token.includes('on-warning') ||
+            token.includes('on-info')
               ? ' preview__swatch-chip--on-dark'
               : ''
           }`}
@@ -145,6 +151,8 @@ const TEXT_TOKENS = [
   { token: 'text-disabled', label: 'Disabled' },
   { token: 'text-inverse', label: 'Inverse' },
   { token: 'text-on-solid', label: 'On solid' },
+  { token: 'text-on-warning', label: 'On warning' },
+  { token: 'text-on-info', label: 'On info' },
   { token: 'text-on-primary', label: 'On primary' },
   { token: 'text-danger', label: 'Danger' },
   { token: 'text-success', label: 'Success' },
@@ -160,6 +168,8 @@ const ICON_TOKENS = [
   { token: 'icon-disabled', label: 'Disabled' },
   { token: 'icon-inverse', label: 'Inverse' },
   { token: 'icon-on-solid', label: 'On solid' },
+  { token: 'icon-on-warning', label: 'On warning' },
+  { token: 'icon-on-info', label: 'On info' },
   { token: 'icon-on-primary', label: 'On primary' },
   { token: 'icon-danger', label: 'Danger' },
   { token: 'icon-success', label: 'Success' },

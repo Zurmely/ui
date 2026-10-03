@@ -77,7 +77,7 @@
 
 .z-indicator__item[data-variant='badge'][data-tone='warning'] {
   background-color: var(--z-color-background-warning);
-  color: var(--z-color-text-on-solid);
+  color: var(--z-color-text-on-warning);
 }
 
 .z-indicator__item[data-variant='badge'][data-tone='danger'] {
@@ -87,7 +87,7 @@
 
 .z-indicator__item[data-variant='badge'][data-tone='info'] {
   background-color: var(--z-color-background-info);
-  color: var(--z-color-text-on-solid);
+  color: var(--z-color-text-on-info);
 }
 
 .z-indicator__item[data-variant='dot'][data-tone='neutral'] {
