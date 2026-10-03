@@ -162,7 +162,7 @@ Do not reference primitive motion scales (`--z-duration-150`, `--z-easing-standa
 
 ### Elevation tokens
 
-Import `@z-ux/tokens/elevation.css` alongside the other token stylesheets. Use `elevation.ring` via `--z-elevation-ring` for outline halos (for example timeline markers). The page is `background.canvas`; don't put text in a surface or a surface inside a surface. Lighter `background.surface` is only for floating UI—see **Gabriel's rule** in `ELEVATION-SEMANTICS.md`.
+Import `@z-ux/tokens/elevation.css` alongside the other token stylesheets. Use `elevation.ring` via `--z-elevation-ring` for outline halos (for example timeline markers). The page is `background.canvas`; don't put text in a surface or a surface inside a surface. Lighter `background.surface` is only for floating UI—see **When to lift** in `ELEVATION-SEMANTICS.md`.
 
 Do not use literal `box-shadow` values for depth in component CSS. `elevation.ring` and shared focus-ring styles are the approved `box-shadow` exceptions; see `ELEVATION-SEMANTICS.md`.
 

@@ -8,7 +8,7 @@ This document defines how **elevation semantics** work in Z-UI: purpose-based to
 
 ---
 
-## Gabriel's rule
+## When to lift
 
 The page is the background. Don't put text in a surface, and don't put a surface inside a surface.
 
