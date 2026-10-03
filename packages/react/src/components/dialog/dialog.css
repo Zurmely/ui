@@ -28,7 +28,6 @@
   border-radius: var(--z-radius-container);
   background-color: var(--z-color-background-surface);
   color: var(--z-color-text-primary);
-  box-shadow: var(--z-elevation-modal);
   transform: translate(-50%, -50%);
   overflow: auto;
 }

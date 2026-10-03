@@ -116,7 +116,7 @@ Set `aria-label` or `aria-labelledby` on `SelectTrigger`, or pass the same `id` 
 | Disabled | `--z-color-border-disabled`, `--z-color-text-disabled`, `--z-color-background-muted` |
 | Placeholder | `--z-color-text-tertiary` |
 | Menu surface | `--z-color-background-surface`, `--z-color-border-subtle` |
-| Menu elevation | `--z-elevation-overlay` |
+| Menu surface | `--z-color-background-surface` (raised fill; no drop shadow) |
 | Item hover | `--z-color-background-subtle` |
 | Item highlighted/selected | `--z-color-background-selected` |
 | Control typography | `--z-text-control-*` |

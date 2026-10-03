@@ -2,50 +2,55 @@
 
 **Status:** Draft  
 **Audience:** Designers and developers  
-**Related:** [PRD.md](./PRD.md), [`elevation.css`](./elevation.css)
+**Related:** [PRD.md](./PRD.md), [`elevation.css`](./elevation.css), [COLOR-SEMANTICS.md](./COLOR-SEMANTICS.md)
 
-This document defines how **elevation semantics** work in Z-UI: purpose-based shadow tokens that keep surface depth consistent across components, support light and dark themes, and map cleanly between Figma and code.
+This document defines how **elevation semantics** work in Z-UI: purpose-based tokens for separating surfaces in space. **Depth is expressed with background structure fills** (`color.background.canvas`, `color.background.surface`, `color.background.subtle`), not drop shadows. Overlays use a lighter `surface` fill on the page; modals and drawers add a flat `overlay.scrim` behind the panel.
 
 ---
 
 ## 1. Why elevation semantics exist
 
-Primitive shadow values answer: *"What is shadow step 2?"*  
-Semantic elevation answers: *"How much lift should a dropdown have?"* or *"What depth does a modal need?"*
+Semantic elevation answers: *"How should this panel read against the page?"* or *"What halo separates this node from its background?"*
 
 | Layer | Answers | Example | Who uses it |
 | --- | --- | --- | --- |
-| **Primitive** | Raw shadow values | `shadow.1`, `shadow.2` | Theme authors only |
-| **Semantic** | UI purpose | `elevation.raised`, `elevation.overlay` | Designers & developers (default) |
+| **Structure (color)** | Page vs raised vs sunk wells | `background.canvas`, `background.surface`, `background.subtle` | Designers & developers (default) |
+| **Semantic** | Outline halos and reserved roles | `elevation.ring` | Designers & developers |
 
 **Rules:**
 
-1. Components **must** consume semantic elevation tokens — never raw primitives in component styles.
-2. Elevation tokens **must** define light and dark theme values.
-3. Use `elevation.ring` for outline-style halos that separate a node from its background; use `elevation.raised` through `elevation.modal` for drop shadows.
-4. Do not combine multiple elevation roles on one element unless documented (for example, `elevation.ring` on a timeline node that also sits on a raised surface).
+1. **Do not** use drop shadows for depth in product UI. Raised cards, menus, dialogs, and toasts separate by **fill step** only.
+2. Components **must** use `background.surface` for raised floating panels (card, menu, popover, select menu, toast, calendar, dialog, drawer).
+3. Sunk control wells on a raised panel use `background.subtle` (see `control-on-surface.css`).
+4. Use `elevation.ring` for outline-style halos that separate a node from its background (timeline marker). It is not a drop shadow.
+5. Focus rings use `color.focus.ring` / shared focus foundations (`elevation.ring` is not a substitute for `:focus-visible`).
+6. `elevation.raised`, `elevation.overlay`, and `elevation.modal` resolve to **`none`** — kept for API stability; do not apply `box-shadow` for depth.
 
 ---
 
-## 2. Primitive shadow scale
+## 2. Structure ladder (fill-based depth)
 
-| Token path | CSS variable | Light value | Dark value | Use |
-| --- | --- | --- | --- | --- |
-| `shadow.1` | `--shadow-1` | `0 1px 2px rgb(0 0 0 / 0.04)` | `0 1px 2px rgb(0 0 0 / 0.16)` | Subtle lift |
-| `shadow.2` | `--shadow-2` | `0 2px 8px rgb(0 0 0 / 0.06)` | `0 2px 8px rgb(0 0 0 / 0.22)` | Raised surfaces |
-| `shadow.3` | `--shadow-3` | `0 4px 12px rgb(0 0 0 / 0.08)` | `0 4px 12px rgb(0 0 0 / 0.28)` | Floating overlays |
-| `shadow.4` | `--shadow-4` | `0 8px 24px rgb(0 0 0 / 0.12)` | `0 8px 24px rgb(0 0 0 / 0.34)` | Modal depth |
+Light and dark use the **same semantic names**; primitive steps differ so “lighter than page” and “darker than page” stay true in both themes.
+
+| Role | Semantic token | Light (`neutral`) | Dark (`neutral`) |
+| --- | --- | --- | --- |
+| Page | `color.background.canvas` | `100` | `100` |
+| Raised (cards, overlays) | `color.background.surface` | `50` (lighter than page) | `200` (lighter than page) |
+| Sunk wells | `color.background.subtle` | `200` (darker than page) | `50` (darker than page) |
+| Quiet disabled / skeleton | `color.background.muted` | `300` | `300` |
+
+Modal and drawer panels use `background.surface` on top of `color.overlay.scrim` (flat dimmer, no glow).
 
 ---
 
 ## 3. Semantic elevation roles
 
-| Token path | CSS variable | Maps to | Use |
+| Token path | CSS variable | Value | Use |
 | --- | --- | --- | --- |
-| `elevation.raised` | `--z-elevation-raised` | `shadow.2` | Cards, subtle lift above canvas |
-| `elevation.overlay` | `--z-elevation-overlay` | `shadow.3` | Select content, Menu, Popover, Tooltip, Toast |
-| `elevation.modal` | `--z-elevation-modal` | `shadow.4` | Dialog, Drawer |
-| `elevation.ring` | `--z-elevation-ring` | `0 0 0 2px var(--z-color-background-surface)` | Timeline node halo, focus-adjacent rings |
+| `elevation.raised` | `--z-elevation-raised` | `none` | Reserved; depth via `background.surface` on canvas |
+| `elevation.overlay` | `--z-elevation-overlay` | `none` | Reserved; floating panels use `background.surface` |
+| `elevation.modal` | `--z-elevation-modal` | `none` | Reserved; dialog/drawer panel + flat scrim |
+| `elevation.ring` | `--z-elevation-ring` | `0 0 0 2px var(--z-color-background-surface)` | Timeline node halo |
 
 `elevation.ring` is a color-aware outline shadow, not a drop shadow. It uses `--z-color-background-surface` so the halo separates from adjacent fills in both themes.
 
@@ -62,7 +67,7 @@ elevation.{purpose}
 | Segment | Purpose | Examples |
 | --- | --- | --- |
 | `elevation` | Namespace for elevation semantics | — |
-| `purpose` | Why this depth exists | `raised`, `overlay`, `modal`, `ring` |
+| `purpose` | Why this token exists | `raised`, `overlay`, `modal`, `ring` |
 
 ### 4.2 CSS variable mapping
 
@@ -77,29 +82,23 @@ elevation.{purpose}
 
 ## 5. Authoring guidance
 
-### 5.1 Property selection
+### 5.1 Raised and floating surfaces
 
-Apply elevation with `box-shadow` only:
+Use structure background tokens only:
 
 ```css
 .z-card {
-  box-shadow: var(--z-elevation-raised);
+  background-color: var(--z-color-background-surface);
 }
 
-.z-select__content {
-  box-shadow: var(--z-elevation-overlay);
+.z-menu__content {
+  background-color: var(--z-color-background-surface);
 }
 ```
 
-Do **not** use elevation tokens for text shadows or inset shadows in v1.
+Do **not** add `box-shadow` for lift. Do **not** use elevation tokens for text shadows or inset shadows.
 
-### 5.2 Theme behavior
-
-Elevation primitives resolve per theme in `elevation.css`. Components reference semantic aliases only; theme switching requires no component-level selectors.
-
-### 5.3 Depth stack recipe
-
-Layer surfaces from canvas through modal using one semantic role per element:
+### 5.2 Depth stack recipe
 
 ```css
 .page {
@@ -107,15 +106,19 @@ Layer surfaces from canvas through modal using one semantic role per element:
 }
 
 .card {
-  box-shadow: var(--z-elevation-raised);
+  background: var(--z-color-background-surface);
 }
 
-.menu__content {
-  box-shadow: var(--z-elevation-overlay);
+.card .z-text-field {
+  background: var(--z-color-background-subtle);
+}
+
+.dialog__scrim {
+  background: var(--z-color-overlay-scrim);
 }
 
 .dialog__content {
-  box-shadow: var(--z-elevation-modal);
+  background: var(--z-color-background-surface);
 }
 ```
 
@@ -123,19 +126,20 @@ Layer surfaces from canvas through modal using one semantic role per element:
 
 ## 6. Component adoption matrix
 
-| Component | Elevation role | CSS variable |
+| Component | Depth mechanism | Tokens |
 | --- | --- | --- |
-| Card | `elevation.raised` | `--z-elevation-raised` |
-| Select (content) | `elevation.overlay` | `--z-elevation-overlay` |
-| Menu (content) | `elevation.overlay` | `--z-elevation-overlay` |
-| Popover (content) | `elevation.overlay` | `--z-elevation-overlay` |
-| Tooltip (content) | `elevation.overlay` | `--z-elevation-overlay` |
-| Toast | `elevation.overlay` | `--z-elevation-overlay` |
-| Dialog (content) | `elevation.modal` | `--z-elevation-modal` |
-| Drawer (content) | `elevation.modal` | `--z-elevation-modal` |
-| Timeline (node) | `elevation.ring` | `--z-elevation-ring` |
+| Card | Raised fill | `background.surface` |
+| Select (content) | Raised fill | `background.surface` |
+| Menu (content) | Raised fill | `background.surface` |
+| Popover (content) | Raised fill | `background.surface` |
+| Toast | Raised fill | `background.surface` |
+| Calendar | Raised fill | `background.surface` |
+| Dialog (content) | Raised fill + scrim | `background.surface`, `overlay.scrim` |
+| Drawer (content) | Raised fill + scrim | `background.surface`, `overlay.scrim` |
+| Floating action button | Surface / subtle fills | `background.*` per variant |
+| Timeline (node) | Halo ring | `elevation.ring` |
 
-Components without a listed role should not apply drop shadows unless a new semantic role is approved.
+Components without a listed role should not apply drop shadows.
 
 ---
 
@@ -151,13 +155,7 @@ import '@z-ux/tokens/motion.css';
 import '@z-ux/tokens/elevation.css';
 ```
 
-Override at the application root or a scoped subtree:
-
-```css
-[data-theme='compact'] {
-  --z-elevation-overlay: 0 6px 16px rgb(0 0 0 / 0.14);
-}
-```
+Override structure at the application root when theming; do not reintroduce shadow-based depth without a documented exception.
 
 ---
 
@@ -167,9 +165,9 @@ Use the same semantic names in Figma variables and CSS custom properties:
 
 | Figma variable | CSS variable |
 | --- | --- |
-| `elevation/raised` | `--z-elevation-raised` |
-| `elevation/overlay` | `--z-elevation-overlay` |
-| `elevation/modal` | `--z-elevation-modal` |
+| `color/background/canvas` | `--z-color-background-canvas` |
+| `color/background/surface` | `--z-color-background-surface` |
+| `color/background/subtle` | `--z-color-background-subtle` |
 | `elevation/ring` | `--z-elevation-ring` |
 
-Figma effect styles should reference semantic elevation variables, not ad-hoc shadow values.
+Figma should express depth with fill steps, not drop shadow effects.

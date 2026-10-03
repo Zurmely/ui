@@ -132,6 +132,7 @@ import {
 } from '@z-ux/ui';
 import TokensPreview from './TokensPreview';
 import VisualPassStage from './VisualPassStage';
+import ElevationVerifyStage from './ElevationVerifyStage';
 
 function PlusIcon() {
   return (
@@ -239,12 +240,17 @@ export default function App() {
   const [toastOpen, setToastOpen] = useState(false);
   const [validatorEmail, setValidatorEmail] = useState('');
 
-  const isVisualPassStage =
-    typeof window !== 'undefined' &&
-    new URLSearchParams(window.location.search).get('stage') === 'visual-pass';
+  const stage =
+    typeof window !== 'undefined'
+      ? new URLSearchParams(window.location.search).get('stage')
+      : null;
 
-  if (isVisualPassStage) {
+  if (stage === 'visual-pass') {
     return <VisualPassStage />;
+  }
+
+  if (stage === 'elevation-verify') {
+    return <ElevationVerifyStage />;
   }
 
   return (

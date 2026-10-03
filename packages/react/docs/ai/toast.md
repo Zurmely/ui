@@ -35,12 +35,11 @@ Use `Toast` as documented in the human API section. Add child controls or slots 
 
 ## Style with tokens
 
-- **Surface:** `--z-color-background-surface`, `--z-elevation-overlay`, `--z-radius-surface`
+- **Surface:** `--z-color-background-surface`, `--z-radius-surface` (raised fill; no drop shadow)
 - **Title / body:** `--z-text-title-*`, `--z-text-body-*`, `--z-color-text-primary`, `--z-color-text-secondary`
 - **Action:** `--z-color-background-primary-subtle`, `--z-color-border-primary`, `--z-color-text-primary`
 - **Viewport offset:** `--z-spacing-gap-page-section`
 - **Motion:** `--z-motion-duration-interaction`, `--z-motion-easing-interaction`
-- **Elevation:** `--z-elevation-overlay`
 - Use semantic `--z-color-*`, `--z-spacing-*`, `--z-text-*`, `--z-radius-*`, and `--z-motion-*` roles from the human doc Tokens table.
 - Do not hardcode colors, rem sizes, or easings when a semantic token exists.
 - Import token CSS at the app layer; do not bundle tokens inside component CSS.

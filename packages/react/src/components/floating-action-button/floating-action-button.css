@@ -69,7 +69,6 @@
   background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-primary);
   border-color: transparent;
-  box-shadow: var(--z-elevation-raised);
 }
 
 .z-floating-action-button[data-variant='secondary']:hover:not(:disabled):not([data-disabled='true']) {
@@ -87,7 +86,6 @@
   background-color: var(--z-color-background-subtle);
   color: var(--z-color-text-primary);
   border-color: transparent;
-  box-shadow: var(--z-elevation-raised);
 }
 
 .z-floating-action-button[data-variant='ghost']:hover:not(:disabled):not([data-disabled='true']) {

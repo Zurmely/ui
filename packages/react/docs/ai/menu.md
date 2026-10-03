@@ -44,7 +44,7 @@ import { Menu, MenuContent, MenuItem, MenuSeparator, MenuTrigger } from '@z-ux/u
 
 ## Style with tokens
 
-- **Panel surface:** `--z-color-background-surface`, `--z-elevation-overlay`
+- **Panel surface:** `--z-color-background-surface` (raised fill; no drop shadow)
 - **Item hover:** `--z-color-background-subtle`
 - **Item selected:** `--z-color-background-selected`
 - **Disabled label:** `--z-color-text-disabled`

@@ -80,7 +80,7 @@ Radix exposes `data-state` and swipe `data-swipe` on `Toast`.
 | Action | `--z-color-background-primary-subtle`, `--z-color-border-strong`, `--z-color-text-primary` |
 | Viewport offset | `--z-spacing-gap-page-section` |
 | Motion | `--z-motion-duration-interaction`, `--z-motion-easing-interaction` |
-| Elevation | `--z-elevation-overlay` |
+| Surface | `--z-color-background-surface` (raised fill; no drop shadow) |
 
 ## Figma
 

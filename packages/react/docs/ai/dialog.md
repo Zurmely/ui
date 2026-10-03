@@ -45,7 +45,7 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 ## Style with tokens
 
 - **Scrim:** `--z-color-overlay-scrim` (opaque when `data-transparency="reduced"`)
-- **Panel surface:** `--z-color-background-surface`, `--z-elevation-modal` (no chrome border)
+- **Panel surface:** `--z-color-background-surface` on flat `--z-color-overlay-scrim` (no chrome border, no drop shadow)
 - **Title:** `--z-color-text-primary`
 - **Title typography:** `--z-text-title-*`
 - **Description:** `--z-color-text-secondary`

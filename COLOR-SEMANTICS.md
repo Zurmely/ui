@@ -103,9 +103,9 @@ Fills for pages, surfaces, controls, and status containers.
 
 | Token | Use when… |
 | --- | --- |
-| `color.background.canvas` | App/page base behind content (light: `neutral-100`) |
-| `color.background.surface` | Cards, panels, elevated sections on canvas (light: `neutral-50`) |
-| `color.background.subtle` | Quiet secondary regions, table headers, sidebars (light: `neutral-200`; must differ from canvas and surface) |
+| `color.background.canvas` | App/page base behind content (light: `neutral-100`; dark: `neutral-100`) |
+| `color.background.surface` | Cards, panels, and floating overlays on canvas — **lighter than canvas** (light: `neutral-50`; dark: `neutral-200`) |
+| `color.background.subtle` | Sunk wells and recessed controls on a raised panel — **darker than canvas** (light: `neutral-200`; dark: `neutral-50`) |
 | `color.background.muted` | Disabled-looking fills, skeleton placeholders (not for critical actions) |
 | `color.background.inverse` | High-contrast inverted blocks (e.g. dark bar in light theme) |
 | `color.background.primary` | Primary actions and neutral emphasis fills (default = neutral **950** in light) |
@@ -233,6 +233,8 @@ Status containers (alerts, badges, and other soft status surfaces) carry meaning
 | **Status subtle** | `{meaning}-50` / `-100` (tints) | `background.danger-subtle`, … |
 | **Primary subtle** | `neutral-200` | `background.primary-subtle` |
 | **Selected** | `neutral-200` | `background.selected` |
+
+**Structure ladder (fill depth, not shadow):** In both themes the page uses `neutral-100`, raised surfaces use a step **lighter** than the page (`neutral-50` light, `neutral-200` dark), and sunk wells use a step **darker** than the page (`neutral-200` light, `neutral-50` dark). `muted` stays at `neutral-300`. Floating UI (menu, popover, dialog, toast, etc.) uses `background.surface`; modals dim the page with flat `overlay.scrim` only. See [ELEVATION-SEMANTICS.md](./ELEVATION-SEMANTICS.md).
 
 Interaction steps for danger/success fills:
 
