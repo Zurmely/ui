@@ -56,9 +56,16 @@
     grid-template-columns: 1fr;
   }
 
-  /* docs.css tablet rule gives tabs flex: 1 1 auto, which keeps them beside the title when pinned. */
+  /* docs.css tablet rule grows tabs and aligns triggers to the end — reset per pin state. */
+  .docs-page__subheader:not(.docs-page__subheader--pinned) .docs-page__subheader-tabs {
+    flex: 0 1 auto;
+    margin-inline-start: 0;
+    justify-content: flex-start;
+  }
+
   .docs-page__subheader--pinned .docs-page__subheader-tabs {
     flex: 0 1 auto;
     margin-inline-start: auto;
+    justify-content: flex-end;
   }
 }
