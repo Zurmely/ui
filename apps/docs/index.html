@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Z-UI Documentation</title>
+    <link id="docs-favicon" rel="icon" href="./favicon-light.svg" type="image/svg+xml" />
     <script>
       (function () {
         try {
@@ -16,6 +17,23 @@
                 : 'light';
           document.documentElement.setAttribute('data-theme', resolved);
         } catch (e) {}
+      })();
+    </script>
+    <script>
+      (function () {
+        var link = document.getElementById('docs-favicon');
+        if (!link) return;
+
+        function syncFavicon() {
+          var theme = document.documentElement.getAttribute('data-theme');
+          link.href = theme === 'dark' ? './favicon-dark.svg' : './favicon-light.svg';
+        }
+
+        syncFavicon();
+        new MutationObserver(syncFavicon).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme'],
+        });
       })();
     </script>
   </head>
