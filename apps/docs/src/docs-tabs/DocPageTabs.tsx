@@ -12,6 +12,9 @@ export interface DocPageTabPanels {
 interface DocPageTabsProps extends DocPageTabPanels {
   activeTab: DocTabId;
   onTabChange: (tab: DocTabId) => void;
+  /** Compact page chrome shown on the left when the scroll subheader is pinned (component pages). */
+  subheaderInfo?: ReactNode;
+  subheaderPinned?: boolean;
 }
 
 export function DocPageTabs({
@@ -21,20 +24,36 @@ export function DocPageTabs({
   code,
   writing,
   changelog,
+  subheaderInfo,
+  subheaderPinned = false,
 }: DocPageTabsProps) {
+  const subheaderClassName = [
+    'docs-page__subheader',
+    subheaderPinned ? 'docs-page__subheader--pinned' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <Tabs
       value={activeTab}
       onValueChange={(value) => onTabChange(value as DocTabId)}
       className="docs-page-tabs"
     >
-      <TabsList aria-label="Documentation sections">
-        {DOC_TABS.map((tab) => (
-          <TabsTrigger key={tab.value} value={tab.value}>
-            {tab.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      <div className={subheaderClassName}>
+        {subheaderInfo ? (
+          <div className="docs-page__subheader-info" aria-hidden={!subheaderPinned}>
+            {subheaderInfo}
+          </div>
+        ) : null}
+        <TabsList className="docs-page__subheader-tabs" aria-label="Documentation sections">
+          {DOC_TABS.map((tab) => (
+            <TabsTrigger key={tab.value} value={tab.value}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
 
       <div className="docs-page-tabs__panels">
         <TabsContent value="design">{design}</TabsContent>

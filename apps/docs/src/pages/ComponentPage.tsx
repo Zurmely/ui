@@ -17,6 +17,7 @@ import { ComponentWritingPanel } from '../docs-tabs/WritingPanel';
 import { useDocTab } from '../docs-tabs/useDocTab';
 import { DocsSection } from '../layout/DocsSection';
 import { TableOfContents, type TocItem } from '../layout/TableOfContents';
+import { usePageHeaderPinned } from '../layout/usePageHeaderPinned';
 import { MarkdownContent, getComponentMarkdown } from '../markdown/MarkdownContent';
 import { parseSections } from '../markdown/sections';
 import { ExamplesSection } from '../playground/ExamplesSection';
@@ -63,6 +64,7 @@ export function ComponentPage() {
   const { slug } = useParams<{ slug: string }>();
   const doc = slug ? componentBySlug.get(slug) : undefined;
   const { activeTab, setActiveTab } = useDocTab();
+  const { sentinelRef, pinned: subheaderPinned } = usePageHeaderPinned();
 
   const markdown = doc ? getComponentMarkdown(doc.slug) : undefined;
   const sections = useMemo(() => (markdown ? parseSections(markdown) : []), [markdown]);
@@ -91,7 +93,9 @@ export function ComponentPage() {
   }
 
   return (
-    <div className="docs-page docs-page--with-toc">
+    <div
+      className={`docs-page docs-page--with-toc docs-page--component${subheaderPinned ? ' docs-page--subheader-pinned' : ''}`}
+    >
       <div className="docs-page__main">
         <Breadcrumbs className="docs-page__breadcrumbs">
           <BreadcrumbItem>
@@ -115,11 +119,24 @@ export function ComponentPage() {
           </Badge>
           <h1 className="docs-page__title">{doc.name}</h1>
           <p className="docs-page__summary">{doc.summary}</p>
+          <div ref={sentinelRef} className="docs-page__header-sentinel" aria-hidden="true" />
         </header>
 
         <DocPageTabs
           activeTab={activeTab}
           onTabChange={setActiveTab}
+          subheaderPinned={subheaderPinned}
+          subheaderInfo={
+            <>
+              <Badge size="sm" tone="neutral" className="docs-page__subheader-category">
+                {doc.category}
+              </Badge>
+              <div className="docs-page__subheader-text">
+                <p className="docs-page__subheader-title">{doc.name}</p>
+                <p className="docs-page__subheader-summary">{doc.summary}</p>
+              </div>
+            </>
+          }
           design={
             <div className="docs-tab-panel">
               {design.map((section) => (
@@ -186,7 +203,7 @@ export function ComponentPage() {
         </nav>
       </div>
 
-      <TableOfContents items={tocItems} pageTitle={doc.name} pageDescription={doc.summary} />
+      <TableOfContents items={tocItems} />
     </div>
   );
 }
