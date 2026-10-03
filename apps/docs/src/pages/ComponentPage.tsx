@@ -10,7 +10,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { withBasePath } from '../base-path';
 import { componentBySlug, componentRegistry } from '../components/registry';
 import { ChangelogPanel } from '../docs-tabs/ChangelogPanel';
-import { DOC_TAB_IDS, type DocTabId } from '../docs-tabs/constants';
+import { COMPONENT_DOC_TABS, DOC_TAB_IDS, type DocTabId } from '../docs-tabs/constants';
 import { DocPageTabs } from '../docs-tabs/DocPageTabs';
 import { partitionMarkdownSections } from '../docs-tabs/partitionSections';
 import { ComponentWritingPanel } from '../docs-tabs/WritingPanel';
@@ -33,16 +33,15 @@ function buildTocForTab(
   slug: string,
   designSections: DocSection[],
   codeSections: ReturnType<typeof partitionMarkdownSections>['code'],
+  hasRegistryExamples: boolean,
 ): TocItem[] {
   switch (tab) {
-    case DOC_TAB_IDS.design: {
-      const items = designSections.map((section) => ({ id: section.id, title: section.title }));
-      items.push({ id: 'examples', title: 'Examples' });
-      return items;
-    }
-    case DOC_TAB_IDS.code: {
+    case DOC_TAB_IDS.design:
+      return designSections.map((section) => ({ id: section.id, title: section.title }));
+    case DOC_TAB_IDS.playground:
+      return hasRegistryExamples ? [{ id: 'examples', title: 'Examples' }] : [];
+    case DOC_TAB_IDS.code:
       return codeSections.map((section) => ({ id: section.id, title: section.title }));
-    }
     case DOC_TAB_IDS.writing:
       return getComponentWritingSections(slug).map((section) => ({
         id: writingTocId(section.title),
@@ -58,23 +57,23 @@ function buildTocForTab(
 export function ComponentPage() {
   const { slug } = useParams<{ slug: string }>();
   const doc = slug ? componentBySlug.get(slug) : undefined;
-  const { activeTab, setActiveTab } = useDocTab();
+  const { activeTab, setActiveTab } = useDocTab({ componentPage: true });
   const { sentinelRef, pinned: subheaderPinned } = usePageHeaderPinned();
 
   const markdown = doc ? getComponentMarkdown(doc.slug) : undefined;
-  const { design, code, markdownExamples } = useMemo(
+  const { design, code } = useMemo(
     () =>
       markdown && doc
         ? partitionMarkdownSections(markdown, doc.slug)
-        : { design: [], code: [], markdownExamples: null },
+        : { design: [], code: [] },
     [markdown, doc],
   );
 
   const hasRegistryExamples = Boolean(doc?.examples && doc.examples.length > 0);
 
   const tocItems = useMemo(
-    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code),
-    [activeTab, doc?.slug, design, code],
+    () => buildTocForTab(activeTab, doc?.slug ?? '', design, code, hasRegistryExamples),
+    [activeTab, doc?.slug, design, code, hasRegistryExamples],
   );
 
   const pager = useMemo(() => {
@@ -125,6 +124,7 @@ export function ComponentPage() {
 
       <DocPageTabs
         className="docs-page-tabs--component"
+        tabs={COMPONENT_DOC_TABS}
         activeTab={activeTab}
         onTabChange={setActiveTab}
         subheaderPinned={subheaderPinned}
@@ -152,17 +152,16 @@ export function ComponentPage() {
                 />
               </DocsSection>
             ))}
-
-            <DocsSection id="examples" title="Examples">
-              <Playground doc={doc} />
-              {hasRegistryExamples ? <ExamplesSection examples={doc.examples!} /> : null}
-              {markdownExamples ? (
-                <MarkdownContent
-                  content={markdownExamples.body}
-                  sectionTitle={markdownExamples.title}
-                />
-              ) : null}
-            </DocsSection>
+          </div>
+        }
+        playground={
+          <div className="docs-tab-panel">
+            <Playground doc={doc} />
+            {hasRegistryExamples ? (
+              <DocsSection id="examples" title="Examples">
+                <ExamplesSection examples={doc.examples!} />
+              </DocsSection>
+            ) : null}
           </div>
         }
         code={

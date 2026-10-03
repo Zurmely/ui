@@ -11,7 +11,6 @@ import { appendMarkdownSection, splitApiSection } from './splitApiSection';
 export interface PartitionedDocSections {
   design: DocSection[];
   code: DocSection[];
-  markdownExamples: DocSection | null;
 }
 
 function section(title: string, body: string): DocSection | null {
@@ -64,9 +63,6 @@ export function partitionMarkdownSections(markdown: string, slug: string): Parti
 
   anatomyBody = appendMarkdownSection(anatomyBody, getAiAnatomySupplement(slug));
   const anatomySection = section('Anatomy', anatomyBody);
-  if (anatomySection) {
-    design.push(anatomySection);
-  }
 
   let statesBody = apiStatesBody;
   const accessibility = findSection(parsed, 'Accessibility');
@@ -79,9 +75,6 @@ export function partitionMarkdownSections(markdown: string, slug: string): Parti
   }
 
   const statesSection = section('States', statesBody);
-  if (statesSection) {
-    design.push(statesSection);
-  }
 
   const install = findSection(parsed, 'Install');
   const importBody = install
@@ -93,25 +86,25 @@ export function partitionMarkdownSections(markdown: string, slug: string): Parti
   propsBody = stripTypeCodeFences(propsBody);
 
   const importSection = section('Import', importBody);
-  if (importSection) {
-    code.push(importSection);
-  }
-
   const propsSection = section('Props', propsBody);
-  if (propsSection) {
-    code.push(propsSection);
-  }
-
   const typesSection = section('Types', typesBody);
-  if (typesSection) {
-    code.push(typesSection);
-  }
-
   const examples = findSection(parsed, 'Examples');
+
+  for (const entry of [
+    importSection,
+    anatomySection,
+    propsSection,
+    typesSection,
+    statesSection,
+    examples,
+  ]) {
+    if (entry) {
+      code.push(entry);
+    }
+  }
 
   return {
     design,
     code,
-    markdownExamples: examples ?? null,
   };
 }

@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@z-ux/ui';
 import type { ReactNode } from 'react';
-import { DOC_TABS, type DocTabId } from './constants';
+import { DOC_TAB_IDS, DOC_TABS, type DocTabId } from './constants';
 
 export interface DocPageTabPanels {
   design: ReactNode;
@@ -13,6 +13,8 @@ interface DocPageTabsProps extends DocPageTabPanels {
   activeTab: DocTabId;
   onTabChange: (tab: DocTabId) => void;
   className?: string;
+  tabs?: { value: DocTabId; label: string }[];
+  playground?: ReactNode;
   /** Compact page chrome shown on the left when the scroll subheader is pinned (component pages). */
   subheaderInfo?: ReactNode;
   subheaderPinned?: boolean;
@@ -25,6 +27,8 @@ export function DocPageTabs({
   code,
   writing,
   changelog,
+  playground,
+  tabs = DOC_TABS,
   subheaderInfo,
   subheaderPinned = false,
   className,
@@ -49,7 +53,7 @@ export function DocPageTabs({
           </div>
         ) : null}
         <TabsList className="docs-page__subheader-tabs" aria-label="Documentation sections">
-          {DOC_TABS.map((tab) => (
+          {tabs.map((tab) => (
             <TabsTrigger key={tab.value} value={tab.value}>
               {tab.label}
             </TabsTrigger>
@@ -58,10 +62,13 @@ export function DocPageTabs({
       </div>
 
       <div className="docs-page-tabs__panels">
-        <TabsContent value="design">{design}</TabsContent>
-        <TabsContent value="code">{code}</TabsContent>
-        <TabsContent value="writing">{writing}</TabsContent>
-        <TabsContent value="changelog">{changelog}</TabsContent>
+        <TabsContent value={DOC_TAB_IDS.design}>{design}</TabsContent>
+        {playground !== undefined ? (
+          <TabsContent value={DOC_TAB_IDS.playground}>{playground}</TabsContent>
+        ) : null}
+        <TabsContent value={DOC_TAB_IDS.code}>{code}</TabsContent>
+        <TabsContent value={DOC_TAB_IDS.writing}>{writing}</TabsContent>
+        <TabsContent value={DOC_TAB_IDS.changelog}>{changelog}</TabsContent>
       </div>
     </Tabs>
   );

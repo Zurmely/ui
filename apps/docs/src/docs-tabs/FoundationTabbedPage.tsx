@@ -70,6 +70,7 @@ export function buildFoundationToc(
 ): Record<DocTabId, TocItem[]> {
   return {
     [DOC_TAB_IDS.design]: design,
+    [DOC_TAB_IDS.playground]: [],
     [DOC_TAB_IDS.code]: code,
     [DOC_TAB_IDS.writing]: writing,
     [DOC_TAB_IDS.changelog]: [],
