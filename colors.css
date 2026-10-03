@@ -159,8 +159,9 @@
   --green-900: oklch(0.893 0.06 149.7);
   --green-950: oklch(0.938 0.045 150.7);
   --blue-50: oklch(0.171 0.022 211);
-  --blue-100: oklch(0.235 0.055 204);
-  --blue-200: oklch(0.281 0.05 209);
+  /* Lift step 100 so soft info fills separate from canvas (parity with warning-100). */
+  --blue-100: oklch(0.248 0.088 204);
+  --blue-200: oklch(0.286 0.082 209);
   --blue-300: oklch(0.382 0.082 208);
   --blue-400: oklch(0.486 0.112 207);
   --blue-500: oklch(0.579 0.118 206);
