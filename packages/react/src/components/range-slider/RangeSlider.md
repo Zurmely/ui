@@ -30,7 +30,10 @@ import { RangeSlider } from '@z-ux/ui/range-slider';
 | `min` / `max` / `step` | `number` | `0` / `100` / `1` |
 | `range` | `boolean` | `false` |
 | `value` / `defaultValue` | `number` or `[number, number]` | `min` |
+| `onValueChange` | `(value: number \| [number, number]) => void` | — |
 | `disabled` / `invalid` / `required` | `boolean` | from `Field` context |
+
+Two thumbs render only when `range` is true. An array `defaultValue` without `range` still uses single-thumb mode (the second number).
 
 ## Accessibility
 

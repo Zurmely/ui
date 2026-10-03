@@ -38,8 +38,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '@z-ux/ui/popover';
 | `open` | `boolean` | Controlled open state |
 | `defaultOpen` | `boolean` | Uncontrolled initial state |
 | `onOpenChange` | `(open: boolean) => void` | Open state change handler |
-| `align` | `start`, `center`, `end` | Alignment along trigger edge |
-| `sideOffset` | `number` | Distance from trigger (default `4`) |
+
+### PopoverContent
+
+| Prop / attribute | Values | Notes |
+| --- | --- | --- |
+| `align` | `start`, `center`, `end` | Alignment along the trigger edge (default `center`) |
+| `sideOffset` | `number` | Distance from the trigger (default `4`) |
 
 ### Slots
 

@@ -28,17 +28,23 @@ pnpm add @z-ux/ui @z-ux/tokens
 import '@z-ux/tokens/colors.css';
 import '@z-ux/tokens/sizes.css';
 import '@z-ux/tokens/text.css';
-import { Avatar, Indicator, IndicatorItem } from '@z-ux/ui';
+import { Avatar, Indicator, IndicatorItem } from '@z-ux/ui/indicator';
 ```
 
 ## API
 
+### Indicator
+
+Wrapper around the annotated element. Accepts native HTML attributes.
+
+### IndicatorItem
+
 | Prop / attribute | Values | Notes |
 | --- | --- | --- |
-| `variant` | `badge`, `dot` | Badge shows content; dot is a status marker |
+| `variant` | `badge`, `dot` | Badge shows content; dot is a status marker (default `badge`) |
 | `placement` | `top-start`, `top-end`, `bottom-start`, `bottom-end` | Corner placement (default `top-end`) |
 | `tone` | `neutral`, `primary`, `success`, `warning`, `danger`, `info` | Fill color (default `danger`) |
-| `label` | `string` | Required accessible name for dot variant |
+| `label` | `string` | Required accessible name for the dot variant |
 
 ### Slots
 

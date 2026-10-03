@@ -29,8 +29,17 @@ import { Filter, FilterItem } from '@z-ux/ui/filter';
 | --- | --- | --- |
 | `type` | `single`, `multiple` | `single` |
 | `value` / `defaultValue` | `string` or `string[]` | — |
+| `onValueChange` | `(value: string \| string[]) => void` | — |
 | `size` | `sm`, `md`, `lg` | `md` |
 | `disabled` | `boolean` | — |
+
+### FilterItem
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `value` | `string` | required |
+| `disabled` | `boolean` | — |
+| `children` | `ReactNode` | Chip label |
 
 ## Accessibility
 
@@ -62,7 +71,7 @@ Set `aria-label` on `Filter` or connect `Filter` to visible label text.
 | --- | --- |
 | Filter chip group | `Filter` |
 | Filter chip | `FilterItem` |
-| Selected filter | `FilterItem` with `data-state="on"` |
+| Selected filter | `FilterItem` with `data-selected="true"` |
 
 ## Notes
 

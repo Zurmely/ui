@@ -36,7 +36,9 @@ import { Calendar } from '@z-ux/ui/calendar';
 | Prop | Values | Default |
 | --- | --- | --- |
 | `selected` / `defaultSelected` | `Date` | — |
-| `month` / `defaultMonth` | `Date` | today |
+| `onSelect` | `(date: Date \| undefined) => void` | — |
+| `month` / `defaultMonth` | `Date` | `defaultMonth ?? defaultSelected ?? new Date()` |
+| `onMonthChange` | `(month: Date) => void` | — |
 | `minDate` / `maxDate` | `Date` | — |
 | `disabled` | `boolean` | from `Field` context |
 | `invalid` | `boolean` | from `Field` context |

@@ -156,10 +156,12 @@ export function SizesPage() {
     <div className="docs-page">
       <FoundationPageHeader
         title="Sizes"
+        path="/foundations/sizes"
         summary={
           <>
             Spacing and radius tokens on an 8px grid. {primitives.length} primitives,{' '}
-            {semantics.length} semantics parsed from <code>sizes.css</code>.
+            {semantics.length} semantics parsed from <code>sizes.css</code>. Use inset.control
+            for horizontal text controls and inset.box for cards, lists, and alerts.
           </>
         }
       />
@@ -255,6 +257,30 @@ export function SizesPage() {
               </div>
             </TokenSubGroup>
           ))}
+        </TokenGroup>
+      </Section>
+
+      <Section title="Component spacing">
+        <p className="docs-page__intro">
+          A few published variables are scoped to one component when a shared semantic does not
+          fit. Select uses them for item padding. Prefer the shared inset and gap roles unless
+          you are styling Select itself.
+        </p>
+        <TokenGroup title="Select">
+          <TokenSubGroup title="Item">
+            <div className="docs-space-grid">
+              <SpaceBar
+                token="select-item-indicator-inset"
+                label="Indicator inset"
+                useWhen="Select item check inset from the start edge"
+              />
+              <SpaceBar
+                token="select-item-padding-start"
+                label="Item padding start"
+                useWhen="Select item text inset after the indicator column"
+              />
+            </div>
+          </TokenSubGroup>
         </TokenGroup>
       </Section>
 

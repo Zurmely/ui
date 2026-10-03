@@ -49,6 +49,11 @@ import {
 | `defaultOpen` | `boolean` | Uncontrolled initial state |
 | `onOpenChange` | `(open: boolean) => void` | Open state change handler |
 | `modal` | `boolean` | Trap focus and block outside interaction |
+
+### DrawerContent
+
+| Prop / attribute | Values | Notes |
+| --- | --- | --- |
 | `side` | `left`, `right`, `top`, `bottom` | Edge the panel slides from (default `right`) |
 
 ### Slots

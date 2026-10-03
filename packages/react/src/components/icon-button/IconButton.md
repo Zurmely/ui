@@ -74,7 +74,8 @@ You need to give `aria-label` because the button has no visible text label. The 
 | Secondary surface | `--z-color-background-surface`, `--z-color-border-subtle`, `--z-color-border-default` |
 | Ghost hover | `--z-color-background-subtle` |
 | Danger fill | `--z-color-background-danger`, `.hover`, `.active`, `.disabled`, `--z-color-border-danger` |
-| Label on solid | `--z-color-text-on-solid` |
+| Primary label | `--z-color-text-on-primary` |
+| Danger label | `--z-color-text-on-solid` |
 | Disabled label | `--z-color-text-disabled` |
 | Focus ring | `--z-color-focus-ring` |
 | Corner radius | `--z-radius-control` |
@@ -95,7 +96,7 @@ You need to give `aria-label` because the button has no visible text label. The 
 - **SSR:** IconButton is safe for SSR. It has no browser globals at import.
 - **Portal:** No.
 - **Form:** IconButton renders a native `<button>`. It respects `type="submit"` and `disabled`.
-- **Reduced motion:** If the user sets `prefers-reduced-motion: reduce`, motion for interactions uses zero duration.
+- **asChild + isLoading:** When `asChild` is true, `isLoading` disables the slotted host and does not render a spinner.
 
 ## Examples
 

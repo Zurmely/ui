@@ -27,9 +27,15 @@ import { Validator, ValidatorMessage } from '@z-ux/ui/validator';
 
 | Prop | Values | Default |
 | --- | --- | --- |
-| `value` | `unknown` | required |
-| `validate` | `(value) => string \| undefined` | — |
+| `value` | `T` | required |
+| `validate` | `(value: T) => string \| undefined \| null \| false \| Promise<…>` | — |
 | `validateOn` | `change`, `blur`, `submit` | `change` |
+| `touched` / `defaultTouched` | `boolean` | uncontrolled, `false` |
+| `onTouchedChange` | `(touched: boolean) => void` | — |
+| `id` | `string` | passed into `Field` context |
+| `disabled` / `required` | `boolean` | passed into `Field` context |
+
+`ValidatorMessage` reads the current error from `useValidatorContext`. `validateOn="submit"` runs only when you call `touch()` from that context. Validator does not hook native form `submit`.
 
 ## Accessibility
 

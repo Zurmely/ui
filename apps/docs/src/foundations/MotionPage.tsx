@@ -72,11 +72,14 @@ export function MotionPage() {
     <div className="docs-page">
       <FoundationPageHeader
         title="Motion"
+        path="/foundations/motion"
         summary={
           <>
             Duration and easing tokens for interaction, layout, enter/exit, and continuous motion.{' '}
             {primitives.length} primitives, {semantics.length} semantics parsed from{' '}
-            <code>motion.css</code>.
+            <code>motion.css</code>. Pair <code>motion.duration.*</code> with the matching{' '}
+            <code>motion.easing.*</code>. Layout duration uses interaction easing — there is no
+            separate layout easing token.
           </>
         }
       />

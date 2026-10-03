@@ -68,6 +68,8 @@ import { ListItem, ListItemIcon } from '@z-ux/ui/list-item';
 
 Use `ListItemIcon` for decorative SVG icons in leading or trailing slots.
 
+`ListItemRegions` is a lower-level export for custom row hosts. Prefer `ListItem` unless you need to reuse only the leading / content / trailing layout.
+
 ### Migration from removed components
 
 | Old component | New usage |

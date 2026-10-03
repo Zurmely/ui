@@ -2,9 +2,7 @@
 
 ## Overview
 
-Navbar shows a top application bar with dedicated logo and navigation content areas.
-
-Top navigation bar with logo and links.
+Navbar shows a top application bar. The root is a `<header>` that wraps a `<nav>` with `aria-label`.
 
 ## When to use
 

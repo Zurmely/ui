@@ -8,7 +8,8 @@ export const filterDoc: ComponentDoc = (() => {
   slug: 'filter',
   name: 'Filter',
   category: 'Forms',
-  summary: 'Toggle group for filtering content.',
+  summary:
+      'Chip-style single or multiple filters. Use defaultValue for uncontrolled demos; pair value with onValueChange when you own state.',
   importPath: '@z-ux/ui/filter',
   componentName: 'Filter',
   controls: {
@@ -76,13 +77,13 @@ export const filterDoc: ComponentDoc = (() => {
     {
       label: 'Status filter',
       description: 'Toggle between all, active, and archived items.',
-      code: `<Filter value="active" onValueChange={setValue}>
+      code: `<Filter defaultValue="active" onValueChange={setValue}>
   <FilterItem value="all">All</FilterItem>
   <FilterItem value="active">Active</FilterItem>
   <FilterItem value="archived">Archived</FilterItem>
 </Filter>`,
       render: () => (
-        <Filter value="active" onValueChange={() => {}}>
+        <Filter defaultValue="active">
           <FilterItem value="all">All</FilterItem>
           <FilterItem value="active">Active</FilterItem>
           <FilterItem value="archived">Archived</FilterItem>
@@ -92,12 +93,12 @@ export const filterDoc: ComponentDoc = (() => {
     {
       label: 'All items',
       description: 'Default view showing every record.',
-      code: `<Filter value="all" onValueChange={setValue}>
+      code: `<Filter defaultValue="all" onValueChange={setValue}>
   <FilterItem value="all">All</FilterItem>
   <FilterItem value="active">Active</FilterItem>
 </Filter>`,
       render: () => (
-        <Filter value="all" onValueChange={() => {}}>
+        <Filter defaultValue="all">
           <FilterItem value="all">All</FilterItem>
           <FilterItem value="active">Active</FilterItem>
           <FilterItem value="archived">Archived</FilterItem>

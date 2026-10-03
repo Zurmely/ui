@@ -4,8 +4,6 @@
 
 Progress shows how much of a task is complete with a horizontal bar.
 
-Linear progress indicator.
-
 ## When to use
 
 **Use when:**
@@ -39,6 +37,8 @@ import { Progress } from '@z-ux/ui/progress';
 | `max` | `number` | `100` |
 | `indeterminate` | `boolean` | `false` |
 | `aria-label` | `string` | `'Progress'` |
+
+Omit `value` with `indeterminate={false}` and the fill width is `0%`.
 
 ### Data attributes
 

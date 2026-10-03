@@ -60,7 +60,7 @@ Not focusable. No keyboard interactions.
 
 | Part | Semantic tokens |
 | --- | --- |
-| Indicator | `--z-color-border-primary` |
+| Indicator | `--z-color-border-strong` (top border is transparent while spinning) |
 | Rotation | `--z-motion-duration-continuous`, `--z-motion-easing-continuous` |
 
 ## Figma

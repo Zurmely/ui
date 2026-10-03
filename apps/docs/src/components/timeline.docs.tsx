@@ -8,7 +8,8 @@ export const timelineDoc: ComponentDoc = (() => {
     slug: 'timeline',
     name: 'Timeline',
     category: 'Data',
-    summary: 'Chronological list of events.',
+    summary:
+      'Dated event list. TimelineItem accepts date, title, description, icon, or children (children replace description).',
     importPath: '@z-ux/ui/timeline',
     componentName: 'Timeline',
     controls: {
@@ -25,14 +26,19 @@ export const timelineDoc: ComponentDoc = (() => {
         orientation={props.orientation as 'vertical' | 'horizontal'}
         style={{ width: '100%', maxWidth: '24rem' }}
       >
-        <TimelineItem title={props.latestEvent as string} description="Left warehouse" />
-        <TimelineItem title="In transit" description="Arriving tomorrow" />
-        <TimelineItem title="Delivered" description="Signed by recipient" />
+        <TimelineItem
+          date="Mon"
+          title={props.latestEvent as string}
+          description="Left warehouse"
+        />
+        <TimelineItem date="Tue" title="In transit" description="Arriving tomorrow" />
+        <TimelineItem date="Wed" title="Delivered" description="Signed by recipient" />
       </Timeline>
     ),
-    code: (props) => `<Timeline orientation="${props.orientation}">
-  <TimelineItem title="${props.latestEvent}" description="Left warehouse" />
-  <TimelineItem title="In transit" description="Arriving tomorrow" />
+    code: (props) => `<Timeline orientation="${props.orientation}" aria-label="Shipment">
+  <TimelineItem date="Mon" title="${props.latestEvent}" description="Left warehouse" />
+  <TimelineItem date="Tue" title="In transit" description="Arriving tomorrow" />
+  <TimelineItem date="Wed" title="Delivered" description="Signed by recipient" />
 </Timeline>`,
     whenToUsePreviews: {
       use: () => (
@@ -64,15 +70,16 @@ export const timelineDoc: ComponentDoc = (() => {
     {
       label: 'Order history',
       description: 'Vertical timeline of shipment events.',
-      code: `<Timeline>
-  <TimelineItem title="Shipped" description="Left warehouse" />
-  <TimelineItem title="In transit" description="Arriving tomorrow" />
+      code: `<Timeline aria-label="Shipment">
+  <TimelineItem date="Mon" title="Shipped" description="Left warehouse" />
+  <TimelineItem date="Tue" title="In transit" description="Arriving tomorrow" />
+  <TimelineItem date="Wed" title="Delivered" description="Signed by recipient" />
 </Timeline>`,
       render: () => (
-        <Timeline style={{ width: '100%', maxWidth: '24rem' }}>
-          <TimelineItem title="Shipped" description="Left warehouse" />
-          <TimelineItem title="In transit" description="Arriving tomorrow" />
-          <TimelineItem title="Delivered" description="Signed by recipient" />
+        <Timeline aria-label="Shipment" style={{ width: '100%', maxWidth: '24rem' }}>
+          <TimelineItem date="Mon" title="Shipped" description="Left warehouse" />
+          <TimelineItem date="Tue" title="In transit" description="Arriving tomorrow" />
+          <TimelineItem date="Wed" title="Delivered" description="Signed by recipient" />
         </Timeline>
       ),
     },
@@ -94,12 +101,16 @@ export const timelineDoc: ComponentDoc = (() => {
     {
       label: 'Horizontal',
       description: 'Horizontal timeline for compact dashboards.',
-      code: '<Timeline orientation="horizontal">...</Timeline>',
+      code: `<Timeline orientation="horizontal" aria-label="Release">
+  <TimelineItem date="Q1" title="Plan" />
+  <TimelineItem date="Q2" title="Build" />
+  <TimelineItem date="Q3" title="Ship" />
+</Timeline>`,
       render: () => (
-        <Timeline orientation="horizontal" style={{ width: '100%' }}>
-          <TimelineItem title="Plan" />
-          <TimelineItem title="Build" />
-          <TimelineItem title="Ship" />
+        <Timeline orientation="horizontal" aria-label="Release" style={{ width: '100%' }}>
+          <TimelineItem date="Q1" title="Plan" />
+          <TimelineItem date="Q2" title="Build" />
+          <TimelineItem date="Q3" title="Ship" />
         </Timeline>
       ),
       fullWidth: true,

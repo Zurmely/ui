@@ -41,7 +41,7 @@ import {
 | Prop | Component | Values | Default |
 | --- | --- | --- | --- |
 | `label` | `Breadcrumbs` | `string` | `"Breadcrumb"` |
-| `current` | `BreadcrumbLink` | `boolean` | `false` |
+| `current` | `BreadcrumbLink` | `boolean` | `false`. Renders a `<span aria-current="page">` instead of a link. |
 
 ### Data attributes
 

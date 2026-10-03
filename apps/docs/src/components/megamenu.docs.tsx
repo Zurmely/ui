@@ -36,7 +36,7 @@ function productCategoriesMegamenu({ defaultOpen = false }: { defaultOpen?: bool
       <MegamenuContent>
         <Stack gap="sm">
           {sectionLabel('Platform')}
-          <MegamenuItem href="#">Analytics</MegamenuItem>
+          <MegamenuItem href="#" selected>Analytics</MegamenuItem>
           <MegamenuItem href="#">Automation</MegamenuItem>
           <MegamenuItem href="#">Integrations</MegamenuItem>
         </Stack>
@@ -56,7 +56,8 @@ export const megamenuDoc: ComponentDoc = (() => {
     slug: 'megamenu',
     name: 'Megamenu',
     category: 'Navigation',
-    summary: 'Large dropdown navigation panel.',
+    summary:
+      'Wide navigation panel on Popover. MegamenuItem is a plain anchor. Use selected for the current destination.',
     importPath: '@z-ux/ui',
     componentName: 'Megamenu',
     controls: {},

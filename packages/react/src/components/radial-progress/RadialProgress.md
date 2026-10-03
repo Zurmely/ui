@@ -4,8 +4,6 @@
 
 RadialProgress shows task completion in a compact circular indicator.
 
-Circular progress indicator.
-
 ## When to use
 
 **Use when:**
@@ -40,6 +38,8 @@ import { RadialProgress } from '@z-ux/ui/radial-progress';
 | `indeterminate` | `boolean` | `false` |
 | `size` | `sm`, `md`, `lg` | `md` |
 | `aria-label` | `string` | `'Progress'` |
+
+Omit `value` with `indeterminate={false}` and the fill is `0%`.
 
 ### Data attributes
 

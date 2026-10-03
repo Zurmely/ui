@@ -77,7 +77,7 @@ Radix exposes `data-state` and swipe `data-swipe` on `Toast`.
 | --- | --- |
 | Surface | `--z-color-background-surface`, `--z-color-border-subtle`, `--z-radius-surface` |
 | Title / body | `--z-text-title-*`, `--z-text-body-*`, `--z-color-text-primary`, `--z-color-text-secondary` |
-| Action | `--z-color-background-primary-subtle`, `--z-color-border-primary`, `--z-color-text-primary` |
+| Action | `--z-color-background-primary-subtle`, `--z-color-border-strong`, `--z-color-text-primary` |
 | Viewport offset | `--z-spacing-gap-page-section` |
 | Motion | `--z-motion-duration-interaction`, `--z-motion-easing-interaction` |
 | Elevation | `--z-elevation-overlay` |
@@ -91,6 +91,7 @@ Radix exposes `data-state` and swipe `data-swipe` on `Toast`.
 ## Notes
 
 - **SSR:** Mount `ToastViewport` in the app shell. Control `open` from client state.
+- **Duration:** Radix `duration` on `Toast` or `ToastProvider` defaults to `5000` ms. Use `duration={Infinity}` or keep `open` controlled to hold a docs demo open.
 - **Portal:** Radix renders toasts in the viewport (fixed positioning).
 - **Reduced motion:** Toast turns off enter and exit animations when `prefers-reduced-motion: reduce` is active.
 

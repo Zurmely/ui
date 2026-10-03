@@ -51,8 +51,8 @@ import {
 
 ## Accessibility
 
-Set previous and next links an `aria-label`.
-Set `current` on `PaginationLink` for the active page.
+Set an `aria-label` on previous and next links.
+Set `current` on `PaginationLink` for the active page. `current` and `disabled` use the `Link` contract.
 
 ## Keyboard
 

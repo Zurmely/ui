@@ -14,7 +14,7 @@ export const textareaDoc: ComponentDoc = (() => {
   slug: 'textarea',
   name: 'Textarea',
   category: 'Forms',
-  summary: 'Multi-line text input.',
+  summary: 'Multi-line input that inherits id, invalid, disabled, and required from Field.',
   importPath: '@z-ux/ui/textarea',
   componentName: 'Textarea',
   controls: {

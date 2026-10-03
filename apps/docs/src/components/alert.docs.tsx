@@ -1,4 +1,4 @@
-import { Alert, Badge } from '@z-ux/ui';
+import { Alert, Badge, Link } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
 import { textControl, toneControl } from './shared-controls';
@@ -14,7 +14,8 @@ export const alertDoc: ComponentDoc = (() => {
     slug: 'alert',
     name: 'Alert',
     category: 'Feedback',
-    summary: 'Communicates important messages with semantic tone treatment.',
+    summary:
+      'Persistent inline status with tone, title, description, and an optional action slot. Uses role="alert".',
     importPath: '@z-ux/ui/alert',
     componentName: 'Alert',
     controls: {
@@ -70,6 +71,24 @@ export const alertDoc: ComponentDoc = (() => {
       code: '<Alert tone="danger" title="Payment failed" description="Update your billing details to continue." />',
       render: () => (
         <Alert tone="danger" title="Payment failed" description="Update your billing details to continue." />
+      ),
+    },
+    {
+      label: 'Success with action',
+      description: 'Saved state plus a secondary action in the action slot.',
+      code: `<Alert
+  tone="success"
+  title="Saved"
+  description="Your changes were saved."
+  action={<Link href="/history">View history</Link>}
+/>`,
+      render: () => (
+        <Alert
+          tone="success"
+          title="Saved"
+          description="Your changes were saved."
+          action={<Link href="#">View history</Link>}
+        />
       ),
     },
   ];

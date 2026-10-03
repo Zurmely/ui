@@ -8,7 +8,7 @@ export const statusDoc: ComponentDoc = (() => {
   slug: 'status',
   name: 'Status',
   category: 'Display',
-  summary: 'Status indicator with dot and label.',
+  summary: 'Non-interactive status with a tone-colored dot and optional label or children.',
   importPath: '@z-ux/ui/status',
   componentName: 'Status',
   controls: {

@@ -13,7 +13,8 @@ export const calendarDoc: ComponentDoc = (() => {
   slug: 'calendar',
   name: 'Calendar',
   category: 'Forms',
-  summary: 'Date picker grid for selecting a single date.',
+  summary:
+      'Single-date month grid. Use selected and onSelect for controlled value; defaultMonth falls back to defaultSelected or today.',
   importPath: '@z-ux/ui/calendar',
   componentName: 'Calendar',
   controls: {
@@ -65,10 +66,21 @@ export const calendarDoc: ComponentDoc = (() => {
       ),
     },
     {
-      label: 'Date picker',
-      description: 'Select a single date from a month grid.',
-      code: '<Calendar />',
-      render: () => <Calendar />,
+      label: 'Controlled date',
+      description: 'selected plus onSelect for a form that owns the date.',
+      code: `<Calendar
+  selected={date}
+  onSelect={setDate}
+  onMonthChange={setMonth}
+  aria-label="Appointment date"
+/>`,
+      render: () => (
+        <Calendar
+          defaultSelected={new Date(2026, 5, 15)}
+          defaultMonth={new Date(2026, 5, 1)}
+          aria-label="Appointment date"
+        />
+      ),
     },
     {
       label: 'Form submitting',

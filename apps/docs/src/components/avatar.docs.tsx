@@ -72,10 +72,16 @@ export const avatarDoc: ComponentDoc = (() => {
       render: () => <Avatar fallback="JD" alt="Jane Doe" />,
     },
     {
-      label: 'Large profile',
-      description: 'Larger avatar for profile headers and account settings.',
-      code: '<Avatar size="lg" fallback="AC" alt="Alex Chen" />',
-      render: () => <Avatar size="lg" fallback="AC" alt="Alex Chen" />,
+      label: 'Image with fallback',
+      description: 'Loaded photo with initials if the image fails.',
+      code: '<Avatar src="/avatar.jpg" fallback="AC" alt="Alex Chen" />',
+      render: () => (
+        <Avatar
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop"
+          fallback="AC"
+          alt="Alex Chen"
+        />
+      ),
     },
     {
       label: 'Team member row',

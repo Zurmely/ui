@@ -8,7 +8,8 @@ export const linkDoc: ComponentDoc = (() => {
   slug: 'link',
   name: 'Link',
   category: 'Actions',
-  summary: 'Styled anchor for navigation.',
+  summary:
+      'In-page or route navigation. disabled removes href, sets tabIndex={-1}, and blocks activation.',
   importPath: '@z-ux/ui/link',
   componentName: 'Link',
   controls: {

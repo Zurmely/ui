@@ -28,8 +28,12 @@ import { FileInput } from '@z-ux/ui/file-input';
 | Prop | Values | Default |
 | --- | --- | --- |
 | `enableDragDrop` | `boolean` | `true` |
+| `dropLabel` | `string` | `"Drag and drop files here, or"` |
+| `browseLabel` | `string` | `"browse"` |
 | `accept` | `string` | — |
 | `multiple` | `boolean` | — |
+| `name` | `string` | — |
+| `onChange` | native change handler | — |
 | `disabled` / `invalid` / `required` | `boolean` | from `Field` context |
 
 ## Accessibility

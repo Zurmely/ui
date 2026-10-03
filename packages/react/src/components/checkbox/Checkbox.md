@@ -72,7 +72,7 @@ Set an accessible name with an associated `<label>`, `aria-label`, or `aria-labe
 | Part | Semantic tokens |
 | --- | --- |
 | Unchecked surface | `--z-color-border-subtle`, `--z-color-background-surface` |
-| Checked fill | `--z-color-background-primary`, `--z-color-border-primary`, `--z-color-icon-on-solid` |
+| Checked fill | `--z-color-background-primary`, `--z-color-border-primary`, `--z-color-icon-on-primary` |
 | Focus | `--z-color-border-focus`, `--z-color-focus-ring` |
 | Invalid | `--z-color-border-danger` |
 | Disabled | `--z-color-border-disabled`, `--z-color-text-disabled`, `--z-color-background-muted` |

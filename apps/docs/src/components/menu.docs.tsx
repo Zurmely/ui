@@ -18,7 +18,7 @@ export const menuDoc: ComponentDoc = (() => {
     slug: 'menu',
     name: 'Menu',
     category: 'Overlays',
-    summary: 'Dropdown menu for actions.',
+    summary: 'Action menu on a trigger. Use selected on MenuItem for the current choice.',
     importPath: '@z-ux/ui/menu',
     componentName: 'Menu',
     controls: {},

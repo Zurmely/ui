@@ -8,7 +8,8 @@ export const radioGroupDoc: ComponentDoc = (() => {
   slug: 'radio-group',
   name: 'RadioGroup',
   category: 'Forms',
-  summary: 'Single selection from a group of options.',
+  summary:
+      'One option from a visible group. disabled, required, and invalid inherit from Field when omitted.',
   importPath: '@z-ux/ui/radio-group',
   componentName: 'RadioGroup',
   controls: {

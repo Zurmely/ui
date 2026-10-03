@@ -2,9 +2,9 @@
 
 ## Overview
 
-Rating gives a star input to collect or show scores from 1 to `max`.
+Rating gives a star input to collect or show whole-number scores from 0 to `max`.
 
-Star rating input.
+Stars fill in integer steps. A value of `4.5` displays as 4 filled stars.
 
 ## When to use
 
@@ -30,6 +30,7 @@ import { Rating } from '@z-ux/ui/rating';
 | `max` | `number` | `5` |
 | `readOnly` | `boolean` | `false` |
 | `value` / `defaultValue` | `number` | `0` |
+| `onValueChange` | `(value: number) => void` | — |
 | `disabled` / `invalid` / `required` | `boolean` | from `Field` context |
 
 ## Accessibility

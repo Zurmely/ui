@@ -16,7 +16,7 @@ It uses a subtle border color in a horizontal or vertical orientation.
 **Do not use when:**
 
 - Spacing alone is enough. Use layout spacing.
-- The divider is decorative in one semantic group. Set `aria-hidden` on a decorative element.
+- The divider is decorative in one semantic group. Set `role="none"` or `role="presentation"` so it is not announced as a separator.
 
 ## Install
 
@@ -36,6 +36,7 @@ import { Separator } from '@z-ux/ui/separator';
 | Prop | Values | Default |
 | --- | --- | --- |
 | `orientation` | `horizontal`, `vertical` | `horizontal` |
+| `role` | native role | `separator` |
 
 ### Data attributes
 
@@ -47,7 +48,7 @@ None.
 
 ## Accessibility
 
-You do not need an accessible name. The component uses `role="separator"` and `aria-orientation` for assistive technologies.
+You do not need an accessible name. The default `role` is `"separator"` with `aria-orientation`. For a purely decorative rule, pass `role="none"`.
 
 ## Keyboard
 

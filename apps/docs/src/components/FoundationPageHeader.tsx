@@ -10,9 +10,11 @@ import { withBasePath } from '../base-path';
 export function FoundationPageHeader({
   title,
   summary,
+  path,
 }: {
   title: string;
   summary: ReactNode;
+  path: string;
 }) {
   return (
     <>
@@ -22,7 +24,11 @@ export function FoundationPageHeader({
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink href={withBasePath('/')} current>
+          <BreadcrumbLink href={withBasePath('/foundations/colors')}>Foundations</BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        <BreadcrumbItem>
+          <BreadcrumbLink href={withBasePath(path)} current>
             {title}
           </BreadcrumbLink>
         </BreadcrumbItem>

@@ -4,7 +4,7 @@
 
 Badge shows a short status label or a count.
 
-Badge uses a subtle background color and matching status text for each tone, in the light theme and in the dark theme. Status tones do not use a colored border. The fill and the text carry the meaning.
+Most tones use a subtle fill and matching status text, in the light theme and in the dark theme. Status tones do not use a colored border. The fill and the text carry the meaning. `tone="primary"` uses the solid primary fill and `--z-color-text-on-primary`.
 
 ## When to use
 
@@ -61,7 +61,7 @@ Not focusable by default. No keyboard interactions.
 | Part | Semantic tokens |
 | --- | --- |
 | Neutral | `--z-color-background-subtle`, `--z-color-text-secondary` |
-| Primary | `--z-color-background-primary-subtle`, `--z-color-text-primary`, `--z-color-border-primary` |
+| Primary | `--z-color-background-primary`, `--z-color-text-on-primary`, `--z-color-border-primary` |
 | Success | `--z-color-background-success-subtle`, `--z-color-text-success` |
 | Warning | `--z-color-background-warning-subtle`, `--z-color-text-warning` |
 | Danger | `--z-color-background-danger-subtle`, `--z-color-text-danger` |

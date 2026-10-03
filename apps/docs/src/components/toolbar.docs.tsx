@@ -23,6 +23,16 @@ export const toolbarDoc: ComponentDoc = {
       label={props.label as string}
       orientation={props.orientation as 'horizontal' | 'vertical'}
       style={{ width: '100%', maxWidth: '28rem' }}
+      leading={
+        <Button size="sm" variant="ghost">
+          Back
+        </Button>
+      }
+      trailing={
+        <Button size="sm" variant="primary">
+          Publish
+        </Button>
+      }
     >
       <Button size="sm">Save</Button>
       <Separator orientation={props.orientation === 'vertical' ? 'horizontal' : 'vertical'} />
@@ -31,7 +41,12 @@ export const toolbarDoc: ComponentDoc = {
       </Button>
     </Toolbar>
   ),
-  code: (props) => `<Toolbar label="${props.label}" orientation="${props.orientation}">
+  code: (props) => `<Toolbar
+  label="${props.label}"
+  orientation="${props.orientation}"
+  leading={<Button size="sm" variant="ghost">Back</Button>}
+  trailing={<Button size="sm" variant="primary">Publish</Button>}
+>
   <Button size="sm">Save</Button>
   <Separator orientation="${props.orientation === 'vertical' ? 'horizontal' : 'vertical'}" />
   <Button size="sm" variant="secondary">Cancel</Button>
@@ -86,25 +101,36 @@ export const toolbarDoc: ComponentDoc = {
       ),
     },
     {
-      label: 'Editor toolbar',
-      description: 'Formatting actions in a text editor chrome.',
-      code: `<Toolbar label="Formatting">
+      label: 'Leading and trailing',
+      description: 'Back in leading, formatting in the center, publish in trailing.',
+      code: `<Toolbar
+  label="Document actions"
+  leading={<Button size="sm" variant="ghost">Back</Button>}
+  trailing={<Button size="sm" variant="primary">Publish</Button>}
+>
   <Button size="sm" variant="ghost">Bold</Button>
   <Button size="sm" variant="ghost">Italic</Button>
-  <Separator orientation="vertical" />
-  <Button size="sm" variant="primary">Publish</Button>
 </Toolbar>`,
       render: () => (
-        <Toolbar label="Formatting" style={{ width: '100%', maxWidth: '28rem' }}>
+        <Toolbar
+          label="Document actions"
+          style={{ width: '100%', maxWidth: '28rem' }}
+          leading={
+            <Button size="sm" variant="ghost">
+              Back
+            </Button>
+          }
+          trailing={
+            <Button size="sm" variant="primary">
+              Publish
+            </Button>
+          }
+        >
           <Button size="sm" variant="ghost">
             Bold
           </Button>
           <Button size="sm" variant="ghost">
             Italic
-          </Button>
-          <Separator orientation="vertical" />
-          <Button size="sm" variant="primary">
-            Publish
           </Button>
         </Toolbar>
       ),

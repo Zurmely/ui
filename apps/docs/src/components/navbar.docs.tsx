@@ -8,18 +8,22 @@ export const navbarDoc: ComponentDoc = (() => {
     slug: 'navbar',
     name: 'Navbar',
     category: 'Navigation',
-    summary: 'Top navigation bar with logo and links.',
+    summary:
+      'Site header landmark with NavbarLogo and NavbarContent. Default label is "Main navigation". Mark the current page with aria-current="page".',
     importPath: '@z-ux/ui',
     componentName: 'Navbar',
     controls: {
       brand: textControl('brand', 'Z-UI'),
+      label: textControl('label', 'Main navigation'),
     },
     render: (props) => (
-      <Navbar style={{ width: '100%' }}>
+      <Navbar label={props.label as string} style={{ width: '100%' }}>
         <NavbarLogo>{props.brand as string}</NavbarLogo>
         <NavbarContent>
           <NavbarItem>
-            <Link href="#">Docs</Link>
+            <Link href="#" aria-current="page">
+              Docs
+            </Link>
           </NavbarItem>
           <NavbarItem>
             <Link href="#">Components</Link>
@@ -27,10 +31,11 @@ export const navbarDoc: ComponentDoc = (() => {
         </NavbarContent>
       </Navbar>
     ),
-    code: (props) => `<Navbar>
+    code: (props) => `<Navbar label="${props.label}">
   <NavbarLogo>${props.brand}</NavbarLogo>
   <NavbarContent>
-    <NavbarItem><Link href="#">Docs</Link></NavbarItem>
+    <NavbarItem><Link href="#" aria-current="page">Docs</Link></NavbarItem>
+    <NavbarItem><Link href="#">Components</Link></NavbarItem>
   </NavbarContent>
 </Navbar>`,
     whenToUsePreviews: {
@@ -120,20 +125,22 @@ export const navbarDoc: ComponentDoc = (() => {
     {
       label: 'Docs site',
       description: 'Navigation for a documentation site with foundations and components.',
-      code: `<Navbar>
+      code: `<Navbar label="Documentation">
   <NavbarLogo>Design System</NavbarLogo>
   <NavbarContent>
-    <NavbarItem><Link href="#">Foundations</Link></NavbarItem>
+    <NavbarItem><Link href="#" aria-current="page">Foundations</Link></NavbarItem>
     <NavbarItem><Link href="#">Patterns</Link></NavbarItem>
     <NavbarItem><Button variant="secondary" size="sm">Sign in</Button></NavbarItem>
   </NavbarContent>
 </Navbar>`,
       render: () => (
-        <Navbar style={{ width: '100%' }}>
+        <Navbar label="Documentation" style={{ width: '100%' }}>
           <NavbarLogo>Design System</NavbarLogo>
           <NavbarContent>
             <NavbarItem>
-              <Link href="#">Foundations</Link>
+              <Link href="#" aria-current="page">
+                Foundations
+              </Link>
             </NavbarItem>
             <NavbarItem>
               <Link href="#">Patterns</Link>

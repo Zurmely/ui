@@ -66,11 +66,7 @@ export const iconButtonDoc: ComponentDoc = (() => {
         {plusIcon}
       </IconButton>
     ),
-    doNotUse: () => (
-      <Button variant="ghost" size="sm">
-        {plusIcon}
-      </Button>
-    ),
+    doNotUse: () => <Button variant="ghost">Add item</Button>,
   },
   };
   const defaults = getDefaultProps(doc.controls);

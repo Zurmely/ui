@@ -37,7 +37,7 @@ import { AccessibilityController } from '@z-ux/ui/accessibility';
 | Prop | Type | Default |
 | --- | --- | --- |
 | `value` | `AccessibilityPreferences` | — |
-| `defaultValue` | `AccessibilityPreferences` | all `system` / `auto` |
+| `defaultValue` | `AccessibilityPreferences` | Partial objects merge with `{ contrast/motion/transparency: 'system', linkUnderline: 'auto' }` |
 | `onChange` | `(preferences) => void` | — |
 
 ### Preference keys

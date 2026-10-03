@@ -22,7 +22,8 @@ export const selectDoc: ComponentDoc = (() => {
   slug: 'select',
   name: 'Select',
   category: 'Forms',
-  summary: 'Dropdown selection with keyboard navigation.',
+  summary:
+      'One value from a compact dropdown. Set id on SelectTrigger to match Field so FieldLabel focuses the trigger.',
   importPath: '@z-ux/ui/select',
   componentName: 'Select',
   controls: {
@@ -48,7 +49,7 @@ export const selectDoc: ComponentDoc = (() => {
   ),
   code: (props) => {
     const parts = [
-      `defaultValue="${props.value}"`,
+      `value="${props.value}"`,
       props.disabled ? 'disabled' : null,
     ].filter(Boolean);
     return `<Select ${parts.join(' ')}>
@@ -64,10 +65,10 @@ export const selectDoc: ComponentDoc = (() => {
   },
     whenToUsePreviews: {
       use: () => (
-        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+        <Field id="country-preview" style={{ width: '100%', maxWidth: '20rem' }}>
           <FieldLabel>Country</FieldLabel>
           <Select defaultValue="us">
-            <SelectTrigger>
+            <SelectTrigger id="country-preview" aria-label="Country">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -110,10 +111,10 @@ export const selectDoc: ComponentDoc = (() => {
     {
       label: 'Country field',
       description: 'Select inside a labeled form field.',
-      code: `<Field>
+      code: `<Field id="country">
   <FieldLabel>Country</FieldLabel>
   <Select defaultValue="us">
-    <SelectTrigger aria-label="Country"><SelectValue /></SelectTrigger>
+    <SelectTrigger id="country"><SelectValue /></SelectTrigger>
     <SelectContent>
       <SelectItem value="us">United States</SelectItem>
       <SelectItem value="ca">Canada</SelectItem>
@@ -121,10 +122,10 @@ export const selectDoc: ComponentDoc = (() => {
   </Select>
 </Field>`,
       render: () => (
-        <Field style={{ width: '100%', maxWidth: '20rem' }}>
+        <Field id="country" style={{ width: '100%', maxWidth: '20rem' }}>
           <FieldLabel>Country</FieldLabel>
           <Select defaultValue="us">
-            <SelectTrigger aria-label="Country">
+            <SelectTrigger id="country">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

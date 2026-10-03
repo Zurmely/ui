@@ -12,7 +12,7 @@ export const stackDoc: ComponentDoc = (() => {
   slug: 'stack',
   name: 'Stack',
   category: 'Layout',
-  summary: 'Flex layout with consistent gap spacing.',
+  summary: 'Flex row or column with semantic gap tokens. Accepts native div attributes.',
   importPath: '@z-ux/ui/stack',
   componentName: 'Stack',
   controls: {

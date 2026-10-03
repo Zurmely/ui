@@ -67,14 +67,14 @@ Each `TabsTrigger` must have visible text or an `aria-label`. Radix associates p
 
 | Part | Semantic tokens |
 | --- | --- |
-| List chrome | `--z-color-background-surface`, `--z-color-border-subtle` |
-| Unselected trigger | `--z-color-background-surface` |
-| Selected trigger | `--z-color-background-selected` |
-| Label | `--z-color-text-primary`, `--z-color-text-disabled` |
-| Focus ring | `--z-color-focus-ring` |
+| Tab list | Transparent row; `--z-spacing-gap-inline` between triggers |
+| Unselected trigger | `--z-color-text-secondary`, transparent bottom border |
+| Selected trigger | `--z-color-text-primary`, `--z-color-border-primary` bottom border (2px) |
+| Disabled trigger | `--z-color-text-disabled` |
+| Panel offset | `--z-spacing-stack-section` above panel content |
+| Focus ring | `--z-color-focus-ring` on panel focus-visible |
 | Control typography | `--z-text-control-*` |
-| List padding | `--z-spacing-inset-box-tight` |
-| List radius | `--z-radius-container` |
+| Trigger padding | `--z-spacing-inset-control-y`, `--z-spacing-inset-control-x` |
 | Active trigger motion | `--z-motion-duration-interaction`, `--z-motion-easing-interaction` |
 
 ## Figma

@@ -50,16 +50,23 @@ import {
 | `open` | `boolean` | — |
 | `defaultOpen` | `boolean` | `false` |
 | `onOpenChange` | `(open: boolean) => void` | — |
-| `disabled` | `boolean` | `false` |
-| `required` | `boolean` | `false` |
+| `disabled` | `boolean` | `false`, or from `Field` context |
+| `required` | `boolean` | `false`, or from `Field` context |
 | `name` | `string` | — |
 
 ### SelectTrigger
 
 | Prop | Values | Default |
 | --- | --- | --- |
-| `invalid` | `boolean` | `false` |
-| `disabled` | `boolean` | `false` |
+| `id` | `string` | Set this to the `Field` `id` so `FieldLabel` focuses the trigger. `SelectTrigger` does not inherit `id` from Field context. |
+| `invalid` | `boolean` | `false`, or from `Field` context |
+| `disabled` | `boolean` | `false`, or from `Field` context |
+
+### SelectContent
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `position` | Radix content position | `popper` |
 
 ### SelectValue
 
@@ -86,7 +93,7 @@ Select
 
 ## Accessibility
 
-Set `SelectTrigger` an `aria-label` or an `aria-labelledby`, or pair it with a visible `<label>` through `Field`.
+Set `aria-label` or `aria-labelledby` on `SelectTrigger`, or pass the same `id` to `Field` and `SelectTrigger` so `FieldLabel` can focus the trigger.
 
 ## Keyboard
 

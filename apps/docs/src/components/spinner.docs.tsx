@@ -11,7 +11,7 @@ export const spinnerDoc: ComponentDoc = (() => {
   slug: 'spinner',
   name: 'Spinner',
   category: 'Display',
-  summary: 'Loading spinner indicator.',
+  summary: 'Looping loading indicator. Default aria-label is "Loading".',
   importPath: '@z-ux/ui/spinner',
   componentName: 'Spinner',
   controls: {

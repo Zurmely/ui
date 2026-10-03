@@ -73,7 +73,7 @@ Set an accessible name with an associated `<label>`, `aria-label`, or `aria-labe
 | --- | --- |
 | Off track | `--z-color-border-subtle`, `--z-color-background-surface` |
 | On track | `--z-color-background-primary`, `--z-color-border-primary` |
-| Thumb (on) | `--z-color-icon-on-solid` |
+| Thumb (on) | `--z-color-icon-on-primary` |
 | Thumb (off) | `--z-color-icon-primary` |
 | Focus | `--z-color-border-focus`, `--z-color-focus-ring` |
 | Invalid | `--z-color-border-danger` |
@@ -92,7 +92,7 @@ Set an accessible name with an associated `<label>`, `aria-label`, or `aria-labe
 - **SSR:** Safe. The import does not use browser globals.
 - **Portal:** No.
 - **Form:** Supports `name`, `value`, and `required` for native form submission.
-- **Reduced motion:** If `prefers-reduced-motion: reduce` is active, Switch removes motion on the track and on the thumb.
+- **Field:** `disabled`, `invalid`, and `required` inherit from `Field` when you omit them.
 
 ## Examples
 

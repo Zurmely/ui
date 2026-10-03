@@ -17,7 +17,8 @@ export const toastDoc: ComponentDoc = (() => {
     slug: 'toast',
     name: 'Toast',
     category: 'Feedback',
-    summary: 'Brief notification message.',
+    summary:
+      'Transient notification. Wrap Toast in ToastProvider and ToastViewport. duration (Radix, default 5000 ms) controls auto-dismiss; pass duration={Infinity} or control open to keep it visible.',
     importPath: '@z-ux/ui/toast',
     componentName: 'Toast',
     controls: {
@@ -26,7 +27,7 @@ export const toastDoc: ComponentDoc = (() => {
     },
     render: (props) => (
       <ToastProvider>
-        <Toast open>
+        <Toast open duration={Infinity}>
           <ToastTitle>{props.title as string}</ToastTitle>
           <ToastDescription>{props.description as string}</ToastDescription>
           <ToastAction altText="Undo">Undo</ToastAction>
@@ -36,7 +37,7 @@ export const toastDoc: ComponentDoc = (() => {
       </ToastProvider>
     ),
     code: (props) => `<ToastProvider>
-  <Toast open>
+  <Toast open duration={Infinity}>
     <ToastTitle>${props.title}</ToastTitle>
     <ToastDescription>${props.description}</ToastDescription>
     <ToastAction altText="Undo">Undo</ToastAction>
@@ -47,7 +48,7 @@ export const toastDoc: ComponentDoc = (() => {
     whenToUsePreviews: {
       use: () => (
         <ToastProvider>
-          <Toast open>
+          <Toast open duration={Infinity}>
             <ToastTitle>Saved</ToastTitle>
             <ToastDescription>Your profile was updated.</ToastDescription>
             <ToastClose />
@@ -66,7 +67,7 @@ export const toastDoc: ComponentDoc = (() => {
       label: 'Scheduled reminder',
       description: 'Toast with title, description, and undo action.',
       code: `<ToastProvider>
-  <Toast open>
+  <Toast open duration={Infinity}>
     <ToastTitle>Scheduled</ToastTitle>
     <ToastDescription>Your meeting starts in 10 minutes.</ToastDescription>
     <ToastAction altText="Undo">Undo</ToastAction>
@@ -76,7 +77,7 @@ export const toastDoc: ComponentDoc = (() => {
 </ToastProvider>`,
       render: () => (
         <ToastProvider>
-          <Toast open>
+          <Toast open duration={Infinity}>
             <ToastTitle>Scheduled</ToastTitle>
             <ToastDescription>Your meeting starts in 10 minutes.</ToastDescription>
             <ToastAction altText="Undo">Undo</ToastAction>
@@ -90,7 +91,7 @@ export const toastDoc: ComponentDoc = (() => {
       label: 'Save confirmation',
       description: 'Brief success toast after saving changes.',
       code: `<ToastProvider>
-  <Toast open>
+  <Toast open duration={Infinity}>
     <ToastTitle>Saved</ToastTitle>
     <ToastDescription>Your profile was updated.</ToastDescription>
     <ToastClose />
@@ -99,7 +100,7 @@ export const toastDoc: ComponentDoc = (() => {
 </ToastProvider>`,
       render: () => (
         <ToastProvider>
-          <Toast open>
+          <Toast open duration={Infinity}>
             <ToastTitle>Saved</ToastTitle>
             <ToastDescription>Your profile was updated.</ToastDescription>
             <ToastClose />
@@ -112,7 +113,7 @@ export const toastDoc: ComponentDoc = (() => {
       label: 'Error notice',
       description: 'Toast for a failed background operation.',
       code: `<ToastProvider>
-  <Toast open>
+  <Toast open duration={Infinity}>
     <ToastTitle>Upload failed</ToastTitle>
     <ToastDescription>Try again or check your connection.</ToastDescription>
     <ToastClose />
@@ -121,7 +122,7 @@ export const toastDoc: ComponentDoc = (() => {
 </ToastProvider>`,
       render: () => (
         <ToastProvider>
-          <Toast open>
+          <Toast open duration={Infinity}>
             <ToastTitle>Upload failed</ToastTitle>
             <ToastDescription>Try again or check your connection.</ToastDescription>
             <ToastClose />

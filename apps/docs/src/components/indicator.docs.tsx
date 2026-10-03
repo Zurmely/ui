@@ -1,15 +1,16 @@
-import { Indicator, IndicatorItem } from '@z-ux/ui';
+import { Avatar, Indicator, IndicatorItem } from '@z-ux/ui';
 import { Button } from '@z-ux/ui';
 import type { ComponentDoc } from '../playground/types';
 import { getDefaultProps } from '../playground/types';
-import { textControl } from './shared-controls';
+import { textControl, toneControl } from './shared-controls';
 
 export const indicatorDoc: ComponentDoc = (() => {
   const doc: ComponentDoc = {
   slug: 'indicator',
   name: 'Indicator',
   category: 'Display',
-  summary: 'Notification badge overlay on a trigger element.',
+  summary:
+      'Badge or dot overlaid on another element. Dot variant needs label. Props live on IndicatorItem, not Indicator.',
   importPath: '@z-ux/ui/indicator',
   componentName: 'Indicator',
   controls: {
@@ -26,6 +27,7 @@ export const indicatorDoc: ComponentDoc = (() => {
       defaultValue: 'top-end',
     },
     label: textControl('label', '3'),
+    tone: toneControl('danger'),
   },
   render: (props) => (
     <Indicator>
@@ -33,14 +35,24 @@ export const indicatorDoc: ComponentDoc = (() => {
       <IndicatorItem
         variant={props.variant as 'dot' | 'badge'}
         placement={props.placement as 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end'}
+        tone={
+          props.tone as 'neutral' | 'primary' | 'success' | 'warning' | 'danger' | 'info'
+        }
+        label={props.variant === 'dot' ? 'Unread' : undefined}
       >
         {props.variant === 'badge' ? (props.label as string) : null}
       </IndicatorItem>
     </Indicator>
   ),
-  code: (props) => `<Indicator>
+  code: (props) =>
+    props.variant === 'dot'
+      ? `<Indicator>
   <Button variant="secondary">Inbox</Button>
-  <IndicatorItem variant="${props.variant}" placement="${props.placement}">${props.variant === 'badge' ? props.label : ''}</IndicatorItem>
+  <IndicatorItem variant="dot" placement="${props.placement}" tone="${props.tone}" label="Unread" />
+</Indicator>`
+      : `<Indicator>
+  <Button variant="secondary">Inbox</Button>
+  <IndicatorItem variant="badge" placement="${props.placement}" tone="${props.tone}">${props.label}</IndicatorItem>
 </Indicator>`,
   whenToUsePreviews: {
     use: () => (
@@ -59,12 +71,12 @@ export const indicatorDoc: ComponentDoc = (() => {
       description: 'Subtle dot indicator on a navigation icon.',
       code: `<Indicator>
   <Button variant="secondary">Inbox</Button>
-  <IndicatorItem variant="dot" placement="top-end" />
+  <IndicatorItem variant="dot" placement="top-end" label="Unread" />
 </Indicator>`,
       render: () => (
         <Indicator>
           <Button variant="secondary">Inbox</Button>
-          <IndicatorItem variant="dot" placement="top-end" />
+          <IndicatorItem variant="dot" placement="top-end" label="Unread" />
         </Indicator>
       ),
     },
@@ -93,6 +105,20 @@ export const indicatorDoc: ComponentDoc = (() => {
         <Indicator>
           <Button variant="ghost" size="sm">Messages</Button>
           <IndicatorItem variant="badge" placement="bottom-start">12</IndicatorItem>
+        </Indicator>
+      ),
+    },
+    {
+      label: 'Avatar status',
+      description: 'Dot on an avatar for online or presence status. label is required on dots.',
+      code: `<Indicator>
+  <IndicatorItem variant="dot" tone="success" label="Online" />
+  <Avatar fallback="AB" alt="Alex Brooks" />
+</Indicator>`,
+      render: () => (
+        <Indicator>
+          <IndicatorItem variant="dot" tone="success" label="Online" />
+          <Avatar fallback="AB" alt="Alex Brooks" />
         </Indicator>
       ),
     },

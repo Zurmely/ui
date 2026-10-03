@@ -11,7 +11,8 @@ export const skeletonDoc: ComponentDoc = (() => {
   slug: 'skeleton',
   name: 'Skeleton',
   category: 'Display',
-  summary: 'Placeholder loading state.',
+  summary:
+      'Decorative shimmer by default (aria-hidden). Set aria-label for a polite status, or size with a text role.',
   importPath: '@z-ux/ui/skeleton',
   componentName: 'Skeleton',
   controls: {
@@ -24,7 +25,7 @@ export const skeletonDoc: ComponentDoc = (() => {
     text: {
       type: 'select',
       label: 'text',
-      options: ['none', 'body', 'title', 'caption'],
+      options: ['none', 'body', 'title', 'caption', 'label', 'control', 'h1', 'h2'],
       defaultValue: 'none',
     },
     width: { type: 'number', label: 'width', defaultValue: 200, min: 50, max: 400 },
@@ -40,7 +41,11 @@ export const skeletonDoc: ComponentDoc = (() => {
           | 'pill'
           | 'circle'
       }
-      text={props.text === 'none' ? undefined : (props.text as 'body' | 'title' | 'caption')}
+      text={
+        props.text === 'none'
+          ? undefined
+          : (props.text as 'body' | 'title' | 'caption' | 'label' | 'control' | 'h1' | 'h2')
+      }
       width={props.width as number}
     />
   ),
@@ -70,6 +75,12 @@ export const skeletonDoc: ComponentDoc = (() => {
       description: 'Circular skeleton while profile data loads.',
       code: '<Skeleton radius="circle" width={40} height={40} />',
       render: () => <Skeleton radius="circle" width={40} height={40} />,
+    },
+    {
+      label: 'Named status',
+      description: 'aria-label promotes the skeleton to role="status" with aria-busy.',
+      code: '<Skeleton text="title" width={180} aria-label="Loading article" />',
+      render: () => <Skeleton text="title" width={180} aria-label="Loading article" />,
     },
     {
       label: 'Card loading',
